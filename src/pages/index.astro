@@ -93,6 +93,10 @@ const faqSchema = {
   
   <!-- Hero Section -->
   <section class="hero">
+    <div class="hero-background">
+      <img src="/images/projects/IMG_7656.jpeg" alt="Professional concrete work in Deptford, New Jersey" class="hero-image" />
+      <div class="hero-overlay"></div>
+    </div>
     <div class="hero-container">
       <h1>Pole Barn Foundation Specialists & Commercial Concrete Contractors in Deptford, New Jersey</h1>
       <p class="hero-subtitle">Expert pole barn foundation installation and large-scale concrete projects. Serving Deptford and surrounding areas with professional, reliable service.</p>
@@ -305,16 +309,49 @@ const faqSchema = {
 
 <style>
   .hero {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    position: relative;
     color: white;
-    padding: 4rem 0;
+    padding: 6rem 0;
     text-align: center;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.85) 0%, rgba(45, 45, 45, 0.75) 100%);
+    z-index: 1;
   }
   
   .hero-container {
+    position: relative;
+    z-index: 2;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1.5rem;
+    width: 100%;
   }
   
   .hero h1 {
