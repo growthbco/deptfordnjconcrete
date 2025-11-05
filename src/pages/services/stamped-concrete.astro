@@ -1,0 +1,245 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import { SITE_CONFIG } from '../../config';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Stamped Concrete Installation',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: SITE_CONFIG.name
+  },
+  areaServed: SITE_CONFIG.serviceAreas.map(city => ({
+    '@type': 'City',
+    name: city,
+    addressRegion: 'NJ'
+  }))
+};
+
+// Project images - using JPEG files for better web compatibility
+const projectImages = [
+  '/images/projects/IMG_7649.jpeg',
+  '/images/projects/IMG_7653.jpeg',
+  '/images/projects/IMG_7654.jpeg',
+  '/images/projects/IMG_7655.jpeg',
+  '/images/projects/IMG_7656.jpeg',
+  '/images/projects/IMG_7657.jpeg'
+];
+---
+
+<BaseLayout 
+  title="Stamped Concrete Installation in Deptford, NJ | Decorative Concrete Patterns"
+  description="Professional stamped concrete installation for patios, driveways, and walkways in Deptford, NJ. Beautiful decorative patterns with free estimates."
+  schema={serviceSchema}
+>
+  <section class="hero">
+    <div class="container">
+      <h1>Stamped Concrete Installation in Deptford, New Jersey</h1>
+      <p class="hero-subtitle">Professional decorative stamped concrete for patios, driveways, and walkways. Transform your outdoor spaces with beautiful patterns and textures.</p>
+      <a href="#contact-form" class="cta-primary">Get Free Stamped Concrete Estimate</a>
+    </div>
+  </section>
+
+  <section class="gallery-preview">
+    <div class="container">
+      <h2>Our Stamped Concrete Projects</h2>
+      <div class="image-grid">
+        {projectImages.map((image, index) => (
+          <div class="image-item">
+            <img src={image} alt={`Stamped concrete project ${index + 1} in Deptford, NJ`} loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>What is Stamped Concrete?</h2>
+      <p>Stamped concrete is a decorative concrete technique that creates beautiful patterns and textures, mimicking the look of natural stone, brick, tile, or wood. This cost-effective solution transforms ordinary concrete into stunning surfaces that enhance the beauty and value of your property.</p>
+
+      <h3>Stamped Concrete Applications</h3>
+      <p>We install stamped concrete for a variety of outdoor applications throughout Deptford and surrounding New Jersey communities:</p>
+      <ul>
+        <li><strong>Stamped Concrete Patios:</strong> Create beautiful outdoor living spaces with decorative patterns</li>
+        <li><strong>Stamped Concrete Driveways:</strong> Enhance curb appeal with elegant driveway designs</li>
+        <li><strong>Stamped Concrete Walkways:</strong> Add visual interest to pathways and sidewalks</li>
+        <li><strong>Pool Decks:</strong> Slip-resistant stamped concrete for pool areas</li>
+        <li><strong>Outdoor Kitchens:</strong> Durable stamped concrete for outdoor cooking areas</li>
+        <li><strong>Commercial Spaces:</strong> Decorative concrete for businesses and commercial properties</li>
+      </ul>
+
+      <h3>Popular Stamped Concrete Patterns</h3>
+      <p>Choose from a wide variety of patterns and textures to match your style:</p>
+      <ul>
+        <li>Ashlar Slate - Classic stone appearance</li>
+        <li>Herringbone - Elegant brick pattern</li>
+        <li>Wood Plank - Warm wood grain texture</li>
+        <li>Cobblestone - Old-world charm</li>
+        <li>Flagstone - Natural stone look</li>
+        <li>Random Stone - Varied natural appearance</li>
+        <li>And many more custom patterns</li>
+      </ul>
+
+      <h3>Benefits of Stamped Concrete</h3>
+      <ul>
+        <li><strong>Cost-Effective:</strong> More affordable than natural stone or pavers</li>
+        <li><strong>Durable:</strong> Long-lasting and low-maintenance</li>
+        <li><strong>Versatile:</strong> Wide variety of patterns and colors</li>
+        <li><strong>Customizable:</strong> Can match your home's style and color scheme</li>
+        <li><strong>Slip-Resistant:</strong> Safe for pool decks and walkways</li>
+        <li><strong>Value-Adding:</strong> Increases property value and curb appeal</li>
+      </ul>
+
+      <h3>Our Stamped Concrete Process</h3>
+      <ol>
+        <li><strong>Design Consultation:</strong> We help you choose the perfect pattern and color</li>
+        <li><strong>Site Preparation:</strong> Proper excavation and base preparation</li>
+        <li><strong>Concrete Pouring:</strong> High-quality concrete mix placement</li>
+        <li><strong>Stamping:</strong> Application of patterns and textures</li>
+        <li><strong>Coloring:</strong> Integral color or surface treatments</li>
+        <li><strong>Sealing:</strong> Protective sealant application for durability</li>
+        <li><strong>Final Inspection:</strong> Quality check and completion</li>
+      </ol>
+
+      <h3>Maintenance Tips</h3>
+      <p>Stamped concrete is low-maintenance but benefits from occasional care:</p>
+      <ul>
+        <li>Regular cleaning with mild detergent</li>
+        <li>Resealing every 2-3 years</li>
+        <li>Avoiding harsh chemicals or de-icers</li>
+        <li>Protecting from heavy impact</li>
+      </ul>
+
+      <h3>Areas We Serve</h3>
+      <p>We provide stamped concrete installation services throughout {SITE_CONFIG.serviceAreas.join(', ')} and surrounding areas.</p>
+
+      <p>Contact us today for a free estimate on your stamped concrete project in Deptford, New Jersey.</p>
+    </div>
+  </section>
+
+  <section id="contact-form" class="contact-section">
+    <div class="container">
+      <ContactForm 
+        title="Get Your Free Stamped Concrete Estimate"
+        service="stamped-concrete"
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+  }
+  
+  .cta-primary {
+    display: inline-block;
+    background: #ff6b35;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  
+  .cta-primary:hover {
+    background: #e55a2b;
+  }
+  
+  .gallery-preview {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .gallery-preview h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: #1a1a1a;
+  }
+  
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .image-item {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .image-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  }
+  
+  .image-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  
+  .content-section {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .content-section h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content-section h3 {
+    font-size: 1.5rem;
+    color: #ff6b35;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .content-section ul,
+  .content-section ol {
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content-section li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+</style>
+

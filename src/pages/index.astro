@@ -25,6 +25,7 @@ const localBusinessSchema = {
   serviceType: [
     'Pole Barn Foundation Installation',
     'Concrete Slab Installation',
+    'Stamped Concrete Installation',
     'Commercial Concrete',
     'Industrial Concrete',
     'Driveway Installation',
@@ -84,8 +85,8 @@ const faqSchema = {
 ---
 
 <BaseLayout 
-  title="Pole Barn Foundation & Large Slab Concrete Contractors in Deptford, NJ"
-  description="Professional pole barn foundation specialists and commercial concrete contractors serving Deptford, NJ. Free estimates on pole barn foundations, large slabs, and all concrete projects."
+  title="Pole Barn Foundation, Stamped Concrete & Large Slab Contractors in Deptford, NJ"
+  description="Professional pole barn foundation specialists, stamped concrete experts, and commercial concrete contractors serving Deptford, NJ. Free estimates on all concrete projects."
   schema={localBusinessSchema}
 >
   <SchemaMarkup type="FAQPage" data={faqSchema} />
@@ -98,6 +99,55 @@ const faqSchema = {
       <div class="hero-cta">
         <a href="#contact-form" class="cta-primary">Get Free Pole Barn Foundation Estimate</a>
         {SITE_CONFIG.phone && <a href={`tel:${SITE_CONFIG.phone}`} class="cta-secondary">Call Now</a>}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects Gallery -->
+  <section class="featured-gallery">
+    <div class="container">
+      <h2>Our Recent Projects</h2>
+      <p class="section-intro">See our quality work in action - from pole barn foundations to beautiful stamped concrete installations.</p>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="/images/projects/IMG_7649.jpeg" alt="Stamped concrete patio installation in Deptford, NJ" loading="lazy" />
+          <div class="gallery-overlay">
+            <p>Stamped Concrete Patio</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/projects/IMG_7653.jpeg" alt="Decorative stamped concrete driveway in Deptford, NJ" loading="lazy" />
+          <div class="gallery-overlay">
+            <p>Stamped Concrete Driveway</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/projects/IMG_7654.jpeg" alt="Professional concrete installation in Deptford, NJ" loading="lazy" />
+          <div class="gallery-overlay">
+            <p>Patterned Concrete</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/projects/IMG_7655.jpeg" alt="Concrete walkway installation in Deptford, NJ" loading="lazy" />
+          <div class="gallery-overlay">
+            <p>Concrete Walkway</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/projects/IMG_7656.jpeg" alt="Beautiful concrete project in Deptford, NJ" loading="lazy" />
+          <div class="gallery-overlay">
+            <p>Quality Workmanship</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/projects/IMG_7657.jpeg" alt="Professional concrete contractor work in Deptford, NJ" loading="lazy" />
+          <div class="gallery-overlay">
+            <p>Professional Installation</p>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-cta">
+        <a href="/gallery" class="cta-link">View Full Gallery →</a>
       </div>
     </div>
   </section>
@@ -136,16 +186,43 @@ const faqSchema = {
       </ul>
 
       <h3>Large Commercial Concrete Slabs</h3>
-      <p>Beyond pole barn foundations, we excel at large-scale concrete slab projects for commercial and industrial applications. From warehouse floors to manufacturing facility foundations, we handle projects of all sizes with precision and efficiency.</p>
+      <div class="content-with-image reverse">
+        <div class="content-text">
+          <p>Beyond pole barn foundations, we excel at large-scale concrete slab projects for commercial and industrial applications. From warehouse floors to manufacturing facility foundations, we handle projects of all sizes with precision and efficiency.</p>
 
-      <p>Our commercial concrete slab services include:</p>
-      <ul>
-        <li>Industrial floor slabs</li>
-        <li>Warehouse concrete foundations</li>
-        <li>Commercial building slabs</li>
-        <li>Heavy-duty concrete installations</li>
-        <li>Reinforced concrete for high-load applications</li>
-      </ul>
+          <p>Our commercial concrete slab services include:</p>
+          <ul>
+            <li>Industrial floor slabs</li>
+            <li>Warehouse concrete foundations</li>
+            <li>Commercial building slabs</li>
+            <li>Heavy-duty concrete installations</li>
+            <li>Reinforced concrete for high-load applications</li>
+          </ul>
+        </div>
+        <div class="content-image">
+          <img src="/images/projects/IMG_7656.jpeg" alt="Large commercial concrete slab installation in Deptford, NJ" loading="lazy" />
+        </div>
+      </div>
+
+      <h3>Stamped Concrete Services</h3>
+      <div class="content-with-image">
+        <div class="content-text">
+          <p>We also specialize in beautiful stamped concrete installation for patios, driveways, and walkways. Stamped concrete provides an elegant, cost-effective alternative to natural stone or pavers, with a wide variety of patterns and colors to match your style. Our stamped concrete work enhances curb appeal and adds value to your property.</p>
+
+          <p>Our stamped concrete services include:</p>
+          <ul>
+            <li>Stamped concrete patios and outdoor living spaces</li>
+            <li>Decorative concrete driveways</li>
+            <li>Patterned concrete walkways</li>
+            <li>Pool deck stamped concrete</li>
+            <li>Custom patterns and colors</li>
+            <li>Professional sealing and maintenance</li>
+          </ul>
+        </div>
+        <div class="content-image">
+          <img src="/images/projects/IMG_7653.jpeg" alt="Beautiful stamped concrete driveway installation in Deptford, NJ" loading="lazy" />
+        </div>
+      </div>
 
       <h3>Complete Concrete Services</h3>
       <p>While pole barn foundations and large slabs are our specialty, we also provide comprehensive concrete services for residential and commercial projects throughout our service area.</p>
@@ -411,6 +488,117 @@ const faqSchema = {
     font-size: 1.25rem;
   }
   
+  .featured-gallery {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .featured-gallery h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .gallery-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    aspect-ratio: 4/3;
+  }
+  
+  .gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 1.5rem;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+  
+  .gallery-overlay p {
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  .gallery-cta {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .cta-link {
+    color: #ff6b35;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+  }
+  
+  .cta-link:hover {
+    color: #e55a2b;
+    text-decoration: underline;
+  }
+  
+  .content-with-image {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin: 2rem 0;
+  }
+  
+  .content-with-image.reverse {
+    direction: rtl;
+  }
+  
+  .content-with-image.reverse > * {
+    direction: ltr;
+  }
+  
+  .content-text {
+    flex: 1;
+  }
+  
+  .content-image {
+    flex: 1;
+  }
+  
+  .content-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: block;
+  }
+  
   @media (max-width: 768px) {
     .hero h1 {
       font-size: 1.75rem;
@@ -421,8 +609,18 @@ const faqSchema = {
     }
     
     .services-grid,
-    .locations-grid {
+    .locations-grid,
+    .gallery-grid {
       grid-template-columns: 1fr;
+    }
+    
+    .content-with-image {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .content-with-image.reverse {
+      direction: ltr;
     }
   }
 </style>

@@ -4,39 +4,74 @@ import { SITE_CONFIG } from '../config';
 ---
 
 <BaseLayout 
-  title="Project Gallery | Pole Barn Foundations & Concrete Projects"
-  description="View our gallery of pole barn foundation and concrete projects throughout Deptford, NJ and surrounding areas."
+  title="Project Gallery | Stamped Concrete & Pole Barn Foundations"
+  description="View our gallery of stamped concrete, pole barn foundation, and concrete projects throughout Deptford, NJ and surrounding areas."
 >
   <section class="hero">
     <div class="container">
       <h1>Our Project Gallery</h1>
-      <p class="hero-subtitle">View our completed pole barn foundation and concrete projects throughout Deptford and surrounding areas.</p>
+      <p class="hero-subtitle">View our completed stamped concrete, pole barn foundation, and concrete projects throughout Deptford and surrounding areas.</p>
     </div>
   </section>
 
   <section class="gallery-section">
     <div class="container">
-      <p class="gallery-intro">Project photos will be displayed here. Add your images to the <code>public/images/projects/</code> directory.</p>
+      <h2>Stamped Concrete Projects</h2>
+      <p class="gallery-intro">View our beautiful stamped concrete installations throughout Deptford and surrounding New Jersey communities.</p>
       
       <div class="gallery-grid">
-        <!-- Gallery images will be displayed here when added -->
-        <div class="gallery-placeholder">
-          <p>Add your project photos to <code>public/images/projects/</code> to display them here.</p>
-          <p>Recommended image formats: JPG, PNG, WebP</p>
-          <p>Recommended naming: Use descriptive names like "pole-barn-foundation-deptford-nj.jpg"</p>
+        <!-- Stamped Concrete Images -->
+        <div class="gallery-item">
+          <img src="/images/projects/IMG_7649.jpeg" alt="Stamped concrete patio installation in Deptford, NJ" loading="lazy" />
+          <div class="gallery-overlay">
+            <p>Stamped Concrete Patio</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/projects/IMG_7653.jpeg" alt="Decorative stamped concrete driveway in Deptford, NJ" loading="lazy" />
+          <div class="gallery-overlay">
+            <p>Stamped Concrete Driveway</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/projects/IMG_7654.jpeg" alt="Patterned concrete installation in Deptford, NJ" loading="lazy" />
+          <div class="gallery-overlay">
+            <p>Decorative Patterned Concrete</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/projects/IMG_7655.jpeg" alt="Stamped concrete walkway in Deptford, NJ" loading="lazy" />
+          <div class="gallery-overlay">
+            <p>Stamped Concrete Walkway</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/projects/IMG_7656.jpeg" alt="Beautiful stamped concrete project in Deptford, NJ" loading="lazy" />
+          <div class="gallery-overlay">
+            <p>Stamped Concrete Project</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/projects/IMG_7657.jpeg" alt="Professional stamped concrete installation in Deptford, NJ" loading="lazy" />
+          <div class="gallery-overlay">
+            <p>Professional Installation</p>
+          </div>
         </div>
       </div>
       
       <div class="gallery-note">
-        <h3>Featured Projects</h3>
-        <p>We specialize in pole barn foundation installation and large commercial concrete projects. Our gallery showcases completed projects including:</p>
+        <h3>Our Services</h3>
+        <p>We specialize in pole barn foundation installation, large commercial concrete projects, and beautiful stamped concrete work. Our gallery showcases completed projects including:</p>
         <ul>
           <li>Pole barn foundation installations</li>
           <li>Large commercial concrete slabs</li>
+          <li>Stamped concrete patios and driveways</li>
+          <li>Decorative concrete patterns</li>
           <li>Industrial concrete floors</li>
           <li>Residential driveways and patios</li>
           <li>Concrete walkways and retaining walls</li>
         </ul>
+        <p><a href="/services/stamped-concrete">Learn more about our stamped concrete services →</a></p>
         <p>Contact us today to see how we can help with your next concrete project.</p>
       </div>
     </div>
@@ -88,6 +123,13 @@ import { SITE_CONFIG } from '../config';
     font-family: monospace;
   }
   
+  .gallery-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+  }
+  
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -95,25 +137,46 @@ import { SITE_CONFIG } from '../config';
     margin-bottom: 4rem;
   }
   
-  .gallery-placeholder {
-    grid-column: 1 / -1;
-    background: #f8f9fa;
-    padding: 3rem;
+  .gallery-item {
+    position: relative;
     border-radius: 8px;
-    text-align: center;
-    border: 2px dashed #ddd;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    aspect-ratio: 4/3;
   }
   
-  .gallery-placeholder p {
-    margin-bottom: 1rem;
-    color: #666;
+  .gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
   }
   
-  .gallery-placeholder code {
-    background: white;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-family: monospace;
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 1.5rem;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+  
+  .gallery-overlay p {
+    margin: 0;
+    font-weight: 600;
   }
   
   .gallery-note {
@@ -130,6 +193,16 @@ import { SITE_CONFIG } from '../config';
   .gallery-note ul {
     margin-left: 2rem;
     margin-bottom: 1rem;
+  }
+  
+  .gallery-note a {
+    color: #ff6b35;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .gallery-note a:hover {
+    text-decoration: underline;
   }
 </style>
 

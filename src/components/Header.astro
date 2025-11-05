@@ -1,13 +1,16 @@
 ---
 import { SITE_CONFIG } from '../config';
+import Logo from './Logo.astro';
+
+// Logo path - add your logo image to public/images/logo.png or update this path
+// Set to undefined or empty string to use text logo
+const logoPath = undefined; // Change to '/images/logo.png' when you have a logo
 ---
 
 <header class="header">
   <nav class="nav-container">
     <div class="nav-brand">
-      <a href="/" class="logo-link">
-        <h1 class="logo">{SITE_CONFIG.name}</h1>
-      </a>
+      <Logo logo={logoPath} />
     </div>
     <ul class="nav-menu">
       <li><a href="/">Home</a></li>

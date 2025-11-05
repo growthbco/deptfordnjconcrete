@@ -54,6 +54,14 @@
     "description": "Basement concrete floor installation and repair",
     "primary": false,
     "keywords": ["basement floor", "basement concrete", "basement flooring", "concrete basement floor"]
+  },
+  {
+    "id": "stamped-concrete",
+    "name": "Stamped Concrete",
+    "slug": "stamped-concrete",
+    "description": "Decorative stamped concrete for patios, driveways, and walkways",
+    "primary": false,
+    "keywords": ["stamped concrete", "decorative concrete", "patterned concrete", "stamped concrete patio", "stamped concrete driveway"]
   }
 ]
 

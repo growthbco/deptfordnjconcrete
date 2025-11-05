@@ -1,0 +1,38 @@
+---
+import { SITE_CONFIG } from '../config';
+
+interface Props {
+  logo?: string;
+}
+
+const { logo } = Astro.props;
+---
+
+<a href="/" class="logo-link">
+  {logo ? (
+    <img src={logo} alt={SITE_CONFIG.name} class="logo-image" />
+  ) : (
+    <h1 class="logo-text">{SITE_CONFIG.name}</h1>
+  )}
+</a>
+
+<style>
+  .logo-link {
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .logo-image {
+    height: 50px;
+    width: auto;
+    display: block;
+  }
+  
+  .logo-text {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+  }
+</style>
+
