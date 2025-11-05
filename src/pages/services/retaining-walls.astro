@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { SITE_CONFIG } from '../../config';
+---
+
+<BaseLayout 
+  title="Concrete Retaining Wall Installation in Deptford, NJ"
+  description="Professional concrete retaining wall construction in Deptford, NJ. Erosion control and landscaping solutions with free estimates."
+>
+  <section class="hero">
+    <div class="container">
+      <h1>Concrete Retaining Wall Installation in Deptford, New Jersey</h1>
+      <p class="hero-subtitle">Professional retaining wall construction for erosion control and landscaping. Durable concrete walls that protect your property.</p>
+      <a href="#contact-form" class="cta-primary">Get Free Retaining Wall Estimate</a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>Retaining Wall Services</h2>
+      <p>We build durable concrete retaining walls that control erosion, manage drainage, and enhance your property's appearance.</p>
+
+      <h3>Retaining Wall Benefits</h3>
+      <ul>
+        <li>Erosion control</li>
+        <li>Drainage management</li>
+        <li>Property protection</li>
+        <li>Landscaping enhancement</li>
+        <li>Increased usable space</li>
+      </ul>
+
+      <h3>Areas We Serve</h3>
+      <p>We serve {SITE_CONFIG.serviceAreas.join(', ')} and surrounding areas.</p>
+    </div>
+  </section>
+
+  <section id="contact-form" class="contact-section">
+    <div class="container">
+      <ContactForm 
+        title="Get Your Free Retaining Wall Estimate"
+        service="retaining-walls"
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+  }
+  
+  .cta-primary {
+    display: inline-block;
+    background: #ff6b35;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .content-section {
+    padding: 4rem 0;
+  }
+  
+  .content-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content-section h3 {
+    font-size: 1.5rem;
+    color: #ff6b35;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+</style>
+

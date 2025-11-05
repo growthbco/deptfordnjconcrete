@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import { SITE_CONFIG } from '../../config';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Large Concrete Slab Installation',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: SITE_CONFIG.name
+  },
+  areaServed: SITE_CONFIG.serviceAreas.map(city => ({
+    '@type': 'City',
+    name: city,
+    addressRegion: 'NJ'
+  }))
+};
+---
+
+<BaseLayout 
+  title="Large Concrete Slab Installation in Deptford, NJ | Commercial & Industrial"
+  description="Professional large concrete slab installation for commercial and industrial projects in Deptford, NJ. Free estimates on all slab projects."
+  schema={serviceSchema}
+>
+  <section class="hero">
+    <div class="container">
+      <h1>Large Concrete Slab Installation in Deptford, New Jersey</h1>
+      <p class="hero-subtitle">Commercial and industrial concrete slab specialists serving Deptford and surrounding areas. Free estimates on all large slab projects.</p>
+      <a href="#contact-form" class="cta-primary">Get Free Slab Estimate</a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>Commercial & Industrial Concrete Slabs</h2>
+      <p>We specialize in large-scale concrete slab installation for commercial and industrial applications throughout Deptford, West Deptford, Woodbury, and surrounding Gloucester County communities. From warehouse floors to manufacturing facility foundations, we handle projects of all sizes with precision and efficiency.</p>
+
+      <h3>Types of Concrete Slabs We Install</h3>
+      <ul>
+        <li><strong>Commercial Building Slabs:</strong> Foundation slabs for retail, office, and commercial structures</li>
+        <li><strong>Industrial Floor Slabs:</strong> Heavy-duty floors for warehouses, manufacturing facilities, and distribution centers</li>
+        <li><strong>Warehouse Floors:</strong> Durable, high-load capacity floors for storage and logistics operations</li>
+        <li><strong>Garage Slabs:</strong> Commercial garage and service bay concrete floors</li>
+        <li><strong>Reinforced Slabs:</strong> Slabs with rebar reinforcement for enhanced strength and durability</li>
+      </ul>
+
+      <h3>Our Slab Installation Process</h3>
+      <ol>
+        <li>Site preparation and excavation</li>
+        <li>Subgrade compaction and preparation</li>
+        <li>Vapor barrier installation (when required)</li>
+        <li>Reinforcement placement (rebar or wire mesh)</li>
+        <li>Concrete pouring and placement</li>
+        <li>Finishing and surface treatment</li>
+        <li>Proper curing for maximum strength</li>
+      </ol>
+
+      <h3>Areas We Serve</h3>
+      <p>We provide large concrete slab installation services throughout {SITE_CONFIG.serviceAreas.join(', ')} and surrounding areas.</p>
+
+      <p>Contact us today for a free estimate on your commercial or industrial concrete slab project.</p>
+    </div>
+  </section>
+
+  <section id="contact-form" class="contact-section">
+    <div class="container">
+      <ContactForm 
+        title="Get Your Free Concrete Slab Estimate"
+        service="concrete-slabs"
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+  }
+  
+  .cta-primary {
+    display: inline-block;
+    background: #ff6b35;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  
+  .cta-primary:hover {
+    background: #e55a2b;
+  }
+  
+  .content-section {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .content-section h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content-section h3 {
+    font-size: 1.5rem;
+    color: #ff6b35;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .content-section ul,
+  .content-section ol {
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+</style>
+

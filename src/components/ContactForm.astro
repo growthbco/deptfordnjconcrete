@@ -1,0 +1,126 @@
+---
+interface Props {
+  service?: string;
+  location?: string;
+  title?: string;
+}
+
+const { service = '', location = '', title = 'Get Your Free Estimate' } = Astro.props;
+---
+
+<div class="contact-form-container">
+  <h2>{title}</h2>
+  <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="contact" />
+    <p class="hidden">
+      <label>Don't fill this out: <input name="bot-field" /></label>
+    </p>
+    
+    <div class="form-group">
+      <label for="name">Name *</label>
+      <input type="text" id="name" name="name" required />
+    </div>
+    
+    <div class="form-group">
+      <label for="phone">Phone *</label>
+      <input type="tel" id="phone" name="phone" required />
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required />
+    </div>
+    
+    <div class="form-group">
+      <label for="service">Service Needed</label>
+      <select id="service" name="service">
+        <option value="">Select a service</option>
+        <option value="pole-barn-foundations" selected={service === 'pole-barn-foundations'}>Pole Barn Foundations</option>
+        <option value="concrete-slabs" selected={service === 'concrete-slabs'}>Concrete Slabs</option>
+        <option value="driveways" selected={service === 'driveways'}>Driveways</option>
+        <option value="patios" selected={service === 'patios'}>Patios</option>
+        <option value="walkways" selected={service === 'walkways'}>Walkways</option>
+        <option value="retaining-walls" selected={service === 'retaining-walls'}>Retaining Walls</option>
+        <option value="basement-flooring" selected={service === 'basement-flooring'}>Basement Flooring</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input type="text" id="location" name="location" value={location} placeholder="City, NJ" />
+    </div>
+    
+    <div class="form-group">
+      <label for="details">Project Details *</label>
+      <textarea id="details" name="details" rows="5" required></textarea>
+    </div>
+    
+    <button type="submit" class="submit-button">Get Free Estimate</button>
+  </form>
+</div>
+
+<style>
+  .contact-form-container {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .contact-form-container h2 {
+    margin-top: 0;
+    color: #1a1a1a;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #ff6b35;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .submit-button {
+    background: #ff6b35;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+  }
+  
+  .submit-button:hover {
+    background: #e55a2b;
+  }
+</style>
+

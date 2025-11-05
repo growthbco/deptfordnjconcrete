@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import { SITE_CONFIG } from '../../config';
+import servicesData from '../../content/services.json';
+
+const primaryServices = servicesData.filter(s => s.primary);
+const otherServices = servicesData.filter(s => !s.primary);
+const allServices = [...primaryServices, ...otherServices];
+---
+
+<BaseLayout 
+  title="Concrete Services | Pole Barn Foundations, Slabs & More"
+  description="Complete concrete services including pole barn foundations, large slabs, driveways, patios, and more. Serving Deptford, NJ and surrounding areas."
+>
+  <section class="hero">
+    <div class="container">
+      <h1>Our Concrete Services</h1>
+      <p class="hero-subtitle">From pole barn foundations to residential driveways, we provide professional concrete services throughout Deptford and surrounding New Jersey communities.</p>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <div class="container">
+      <h2>Primary Services</h2>
+      <p class="section-intro">Our specialty services focus on pole barn foundations and large commercial concrete projects.</p>
+      <div class="services-grid">
+        {primaryServices.map(service => (
+          <ServiceCard service={service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section alt">
+    <div class="container">
+      <h2>Additional Services</h2>
+      <p class="section-intro">We also provide comprehensive concrete services for residential and commercial projects.</p>
+      <div class="services-grid">
+        {otherServices.map(service => (
+          <ServiceCard service={service} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .services-section {
+    padding: 4rem 0;
+  }
+  
+  .services-section.alt {
+    background: #f8f9fa;
+  }
+  
+  .services-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .section-intro {
+    text-align: center;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+</style>
+

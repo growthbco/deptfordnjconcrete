@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { SITE_CONFIG } from '../../config';
+---
+
+<BaseLayout 
+  title="Basement Concrete Floor Installation in Deptford, NJ"
+  description="Professional basement concrete floor installation and repair in Deptford, NJ. Durable basement flooring with free estimates."
+>
+  <section class="hero">
+    <div class="container">
+      <h1>Basement Concrete Floor Installation in Deptford, New Jersey</h1>
+      <p class="hero-subtitle">Professional basement floor installation and repair services. Transform your basement with durable concrete flooring.</p>
+      <a href="#contact-form" class="cta-primary">Get Free Basement Floor Estimate</a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>Basement Flooring Services</h2>
+      <p>We provide professional basement concrete floor installation and repair services for residential and commercial properties.</p>
+
+      <h3>Basement Floor Services</h3>
+      <ul>
+        <li>New basement floor installation</li>
+        <li>Basement floor repair</li>
+        <li>Floor leveling</li>
+        <li>Moisture barrier installation</li>
+        <li>Basement floor refinishing</li>
+      </ul>
+
+      <h3>Areas We Serve</h3>
+      <p>We serve {SITE_CONFIG.serviceAreas.join(', ')} and surrounding areas.</p>
+    </div>
+  </section>
+
+  <section id="contact-form" class="contact-section">
+    <div class="container">
+      <ContactForm 
+        title="Get Your Free Basement Floor Estimate"
+        service="basement-flooring"
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+  }
+  
+  .cta-primary {
+    display: inline-block;
+    background: #ff6b35;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .content-section {
+    padding: 4rem 0;
+  }
+  
+  .content-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content-section h3 {
+    font-size: 1.5rem;
+    color: #ff6b35;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+</style>
+

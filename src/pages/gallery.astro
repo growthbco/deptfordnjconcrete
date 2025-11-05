@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_CONFIG } from '../config';
+---
+
+<BaseLayout 
+  title="Project Gallery | Pole Barn Foundations & Concrete Projects"
+  description="View our gallery of pole barn foundation and concrete projects throughout Deptford, NJ and surrounding areas."
+>
+  <section class="hero">
+    <div class="container">
+      <h1>Our Project Gallery</h1>
+      <p class="hero-subtitle">View our completed pole barn foundation and concrete projects throughout Deptford and surrounding areas.</p>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="container">
+      <p class="gallery-intro">Project photos will be displayed here. Add your images to the <code>public/images/projects/</code> directory.</p>
+      
+      <div class="gallery-grid">
+        <!-- Gallery images will be displayed here when added -->
+        <div class="gallery-placeholder">
+          <p>Add your project photos to <code>public/images/projects/</code> to display them here.</p>
+          <p>Recommended image formats: JPG, PNG, WebP</p>
+          <p>Recommended naming: Use descriptive names like "pole-barn-foundation-deptford-nj.jpg"</p>
+        </div>
+      </div>
+      
+      <div class="gallery-note">
+        <h3>Featured Projects</h3>
+        <p>We specialize in pole barn foundation installation and large commercial concrete projects. Our gallery showcases completed projects including:</p>
+        <ul>
+          <li>Pole barn foundation installations</li>
+          <li>Large commercial concrete slabs</li>
+          <li>Industrial concrete floors</li>
+          <li>Residential driveways and patios</li>
+          <li>Concrete walkways and retaining walls</li>
+        </ul>
+        <p>Contact us today to see how we can help with your next concrete project.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .gallery-section {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .gallery-intro {
+    text-align: center;
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+  }
+  
+  .gallery-intro code {
+    background: #f8f9fa;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  
+  .gallery-placeholder {
+    grid-column: 1 / -1;
+    background: #f8f9fa;
+    padding: 3rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 2px dashed #ddd;
+  }
+  
+  .gallery-placeholder p {
+    margin-bottom: 1rem;
+    color: #666;
+  }
+  
+  .gallery-placeholder code {
+    background: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+  
+  .gallery-note {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  
+  .gallery-note h3 {
+    color: #ff6b35;
+    margin-bottom: 1rem;
+  }
+  
+  .gallery-note ul {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+  }
+</style>
+

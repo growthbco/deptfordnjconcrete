@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_CONFIG } from '../config';
+---
+
+<BaseLayout 
+  title="About Us | Deptford Concrete Contractors"
+  description="Learn about Deptford Concrete Contractors - your trusted pole barn foundation specialists and concrete contractors in Deptford, NJ."
+>
+  <section class="hero">
+    <div class="container">
+      <h1>About Deptford Concrete Contractors</h1>
+      <p class="hero-subtitle">Pole barn foundation specialists and professional concrete contractors serving Deptford and surrounding New Jersey communities.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>Your Trusted Pole Barn Foundation Experts</h2>
+      <p>Deptford Concrete Contractors is a leading concrete contractor specializing in pole barn foundation installation and large-scale commercial concrete projects throughout Deptford, New Jersey, and surrounding Gloucester County communities.</p>
+
+      <h3>Our Specialty: Pole Barn Foundations</h3>
+      <p>Pole barn foundations are our primary focus. We have extensive experience installing concrete foundations for post-frame buildings, agricultural structures, storage facilities, and commercial pole barns. Our team understands the unique requirements of pole barn construction and ensures every foundation meets structural requirements and local building codes.</p>
+
+      <h3>Comprehensive Concrete Services</h3>
+      <p>While pole barn foundations are our specialty, we also provide comprehensive concrete services including:</p>
+      <ul>
+        <li>Large commercial and industrial concrete slabs</li>
+        <li>Residential and commercial driveways</li>
+        <li>Custom concrete patios</li>
+        <li>Concrete walkways and pathways</li>
+        <li>Retaining wall construction</li>
+        <li>Basement flooring installation</li>
+      </ul>
+
+      <h3>Why Choose Us?</h3>
+      <ul>
+        <li><strong>Specialized Expertise:</strong> Pole barn foundations are our primary specialty</li>
+        <li><strong>Local Knowledge:</strong> We understand local building codes and requirements</li>
+        <li><strong>Quality Workmanship:</strong> Every project is completed to the highest standards</li>
+        <li><strong>Free Estimates:</strong> No-obligation estimates on all projects</li>
+        <li><strong>Reliable Service:</strong> Professional, timely, and dependable</li>
+      </ul>
+
+      <h3>Areas We Serve</h3>
+      <p>We proudly serve {SITE_CONFIG.serviceAreas.join(', ')} and surrounding Gloucester County communities. Whether you need a pole barn foundation in Deptford or concrete services in West Deptford, Woodbury, or any of our other service areas, we're here to help.</p>
+
+      <h3>Contact Us Today</h3>
+      <p>Ready to start your pole barn foundation or concrete project? Contact Deptford Concrete Contractors today for your free estimate. We're committed to providing exceptional service and quality workmanship on every project.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .content-section {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .content-section h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content-section h3 {
+    font-size: 1.5rem;
+    color: #ff6b35;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .content-section ul {
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content-section li {
+    margin-bottom: 0.5rem;
+  }
+</style>
+

@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LocationCard from '../../components/LocationCard.astro';
+import { SITE_CONFIG } from '../../config';
+import locationsData from '../../content/locations.json';
+---
+
+<BaseLayout 
+  title="Service Areas | Concrete Contractors Serving Deptford, NJ & Surrounding Areas"
+  description="We provide pole barn foundation and concrete services throughout Deptford, West Deptford, Woodbury, Glassboro, and surrounding New Jersey communities."
+>
+  <section class="hero">
+    <div class="container">
+      <h1>Areas We Serve</h1>
+      <p class="hero-subtitle">Professional pole barn foundation and concrete services throughout Gloucester County and surrounding New Jersey communities.</p>
+    </div>
+  </section>
+
+  <section class="locations-section">
+    <div class="container">
+      <p class="section-intro">We proudly serve the following communities with expert pole barn foundation installation and comprehensive concrete services:</p>
+      <div class="locations-grid">
+        {locationsData.map(location => (
+          <LocationCard location={location} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>Our Service Area</h2>
+      <p>Deptford Concrete Contractors specializes in pole barn foundation installation and large-scale concrete projects throughout Gloucester County, New Jersey. Whether you need a pole barn foundation in Deptford, a large commercial slab in West Deptford, or concrete services in Woodbury, Glassboro, or any of our other service areas, we're here to help.</p>
+      
+      <p>Our primary focus is pole barn foundations, but we also provide comprehensive concrete services including driveways, patios, walkways, retaining walls, and basement flooring throughout our service area.</p>
+      
+      <p>Contact us today for a free estimate on your concrete project in any of these communities.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .locations-section {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .section-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+  }
+  
+  .locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .content-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .content-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+</style>
+

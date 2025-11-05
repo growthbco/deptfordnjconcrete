@@ -1,0 +1,59 @@
+[
+  {
+    "id": "pole-barn-foundations",
+    "name": "Pole Barn Foundations",
+    "slug": "pole-barn-foundations",
+    "description": "Professional pole barn foundation installation and repair services",
+    "primary": true,
+    "keywords": ["pole barn foundation", "pole barn concrete", "post frame building foundation", "pole barn footing"]
+  },
+  {
+    "id": "concrete-slabs",
+    "name": "Concrete Slabs",
+    "slug": "concrete-slabs",
+    "description": "Large commercial and industrial concrete slab installation",
+    "primary": true,
+    "keywords": ["concrete slab", "commercial concrete slab", "industrial slab", "foundation slab"]
+  },
+  {
+    "id": "driveways",
+    "name": "Driveways",
+    "slug": "driveways",
+    "description": "Residential and commercial driveway installation and repair",
+    "primary": false,
+    "keywords": ["concrete driveway", "driveway installation", "driveway repair", "driveway contractor"]
+  },
+  {
+    "id": "patios",
+    "name": "Patios",
+    "slug": "patios",
+    "description": "Custom concrete patio design and installation",
+    "primary": false,
+    "keywords": ["concrete patio", "patio installation", "patio contractor", "outdoor patio"]
+  },
+  {
+    "id": "walkways",
+    "name": "Walkways",
+    "slug": "walkways",
+    "description": "Concrete walkway and pathway installation",
+    "primary": false,
+    "keywords": ["concrete walkway", "pathway installation", "sidewalk", "walkway contractor"]
+  },
+  {
+    "id": "retaining-walls",
+    "name": "Retaining Walls",
+    "slug": "retaining-walls",
+    "description": "Concrete retaining wall construction and installation",
+    "primary": false,
+    "keywords": ["retaining wall", "concrete retaining wall", "wall installation", "erosion control"]
+  },
+  {
+    "id": "basement-flooring",
+    "name": "Basement Flooring",
+    "slug": "basement-flooring",
+    "description": "Basement concrete floor installation and repair",
+    "primary": false,
+    "keywords": ["basement floor", "basement concrete", "basement flooring", "concrete basement floor"]
+  }
+]
+

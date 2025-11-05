@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { SITE_CONFIG } from '../../config';
+---
+
+<BaseLayout 
+  title="Concrete Patio Installation in Deptford, NJ | Custom Patios"
+  description="Custom concrete patio design and installation in Deptford, NJ. Professional patio contractors with free estimates."
+>
+  <section class="hero">
+    <div class="container">
+      <h1>Custom Concrete Patio Installation in Deptford, New Jersey</h1>
+      <p class="hero-subtitle">Professional patio design and installation services. Create the perfect outdoor living space with our expert concrete patio contractors.</p>
+      <a href="#contact-form" class="cta-primary">Get Free Patio Estimate</a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>Custom Patio Services</h2>
+      <p>Transform your outdoor space with a beautiful, durable concrete patio. We design and install custom patios that complement your home and lifestyle.</p>
+
+      <h3>Patio Features</h3>
+      <ul>
+        <li>Custom patio design</li>
+        <li>Decorative concrete options</li>
+        <li>Stamped concrete patios</li>
+        <li>Colored concrete patios</li>
+        <li>Patio expansion and repairs</li>
+      </ul>
+
+      <h3>Areas We Serve</h3>
+      <p>We serve {SITE_CONFIG.serviceAreas.join(', ')} and surrounding areas.</p>
+    </div>
+  </section>
+
+  <section id="contact-form" class="contact-section">
+    <div class="container">
+      <ContactForm 
+        title="Get Your Free Patio Estimate"
+        service="patios"
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+  }
+  
+  .cta-primary {
+    display: inline-block;
+    background: #ff6b35;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .content-section {
+    padding: 4rem 0;
+  }
+  
+  .content-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content-section h3 {
+    font-size: 1.5rem;
+    color: #ff6b35;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+</style>
+

@@ -1,0 +1,278 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import { SITE_CONFIG } from '../../config';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Pole Barn Foundation Installation',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: SITE_CONFIG.name
+  },
+  areaServed: SITE_CONFIG.serviceAreas.map(city => ({
+    '@type': 'City',
+    name: city,
+    addressRegion: 'NJ'
+  })),
+  description: 'Professional pole barn foundation installation and repair services in Deptford, NJ and surrounding areas.'
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does a pole barn foundation cost?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Pole barn foundation costs typically range from $4-$8 per square foot, depending on size, soil conditions, and local requirements. We provide free estimates for accurate pricing.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does pole barn foundation installation take?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most pole barn foundation projects are completed within 1-3 days, depending on size and complexity. We will provide a detailed timeline during your free estimate.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you handle permits for pole barn foundations?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, we assist with all permit applications and ensure compliance with local building codes for pole barn construction in Deptford and surrounding areas.'
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout 
+  title="Pole Barn Foundation Contractors in Deptford, NJ | Free Estimates"
+  description="Professional pole barn foundation installation and repair services in Deptford, New Jersey. Expert post-frame building foundations with free estimates."
+  schema={serviceSchema}
+>
+  <SchemaMarkup type="FAQPage" data={faqSchema} />
+  
+  <section class="hero">
+    <div class="container">
+      <h1>Professional Pole Barn Foundation Installation in Deptford, New Jersey</h1>
+      <p class="hero-subtitle">Expert pole barn foundation specialists serving Deptford and surrounding Gloucester County communities. Free estimates on all pole barn foundation projects.</p>
+      <div class="hero-cta">
+        <a href="#contact-form" class="cta-primary">Get Free Pole Barn Foundation Estimate</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>Why Choose Us for Your Pole Barn Foundation?</h2>
+      <p>Pole barn foundations are our primary specialty. We have extensive experience installing concrete foundations for pole barns and post-frame buildings throughout Deptford, West Deptford, Woodbury, and surrounding New Jersey communities. Our team understands the unique requirements of post-frame construction and ensures your pole barn foundation meets all structural and code requirements.</p>
+
+      <h3>What is a Pole Barn Foundation?</h3>
+      <p>A pole barn foundation provides the structural base for post-frame buildings. Unlike traditional foundations, pole barn foundations typically use concrete footings or piers to support the vertical posts, combined with a concrete slab floor. This construction method is cost-effective, durable, and ideal for agricultural buildings, storage facilities, workshops, and commercial structures.</p>
+
+      <h3>Types of Pole Barn Foundations</h3>
+      <p>We install various types of pole barn foundations depending on your specific needs:</p>
+      
+      <ul>
+        <li><strong>Concrete Footings:</strong> Individual concrete footings placed at each post location, typically 12-24 inches in diameter and 4-6 feet deep, depending on soil conditions and local codes.</li>
+        <li><strong>Slab-on-Grade:</strong> A monolithic concrete slab that serves as both the foundation and floor, ideal for smaller pole barns and structures requiring a smooth interior surface.</li>
+        <li><strong>Perimeter Foundation:</strong> A concrete foundation wall around the perimeter with interior footings for posts, providing additional stability for larger structures.</li>
+        <li><strong>Reinforced Concrete:</strong> Foundations with rebar reinforcement for enhanced strength and durability, required for larger pole barns or structures in areas with challenging soil conditions.</li>
+      </ul>
+
+      <h3>Our Pole Barn Foundation Installation Process</h3>
+      <p>Our proven installation process ensures your pole barn foundation is built correctly and efficiently:</p>
+      
+      <ol>
+        <li><strong>Site Evaluation:</strong> We assess your property, including soil conditions, drainage, and local building requirements.</li>
+        <li><strong>Design & Planning:</strong> We create a foundation design that meets structural requirements and local building codes.</li>
+        <li><strong>Permit Assistance:</strong> We help secure necessary permits and ensure compliance with Deptford and Gloucester County regulations.</li>
+        <li><strong>Excavation:</strong> Professional excavation to proper depth, accounting for frost line and soil conditions.</li>
+        <li><strong>Formwork & Reinforcement:</strong> Installation of forms and reinforcement (rebar) as specified in the design.</li>
+        <li><strong>Concrete Pouring:</strong> Placement of high-quality concrete mix appropriate for pole barn foundation requirements.</li>
+        <li><strong>Finishing:</strong> Proper finishing and curing to ensure maximum strength and durability.</li>
+        <li><strong>Inspection:</strong> Final inspection to ensure code compliance and quality standards.</li>
+      </ol>
+
+      <h3>Pole Barn Foundation Costs</h3>
+      <p>Pole barn foundation costs vary based on several factors:</p>
+      <ul>
+        <li>Size of the pole barn (square footage)</li>
+        <li>Foundation type (footings, slab, or combination)</li>
+        <li>Soil conditions and excavation requirements</li>
+        <li>Local building code requirements</li>
+        <li>Reinforcement needs</li>
+        <li>Site accessibility</li>
+      </ul>
+      <p>Typical costs range from $4-$8 per square foot for pole barn foundations. We provide free, detailed estimates for all projects. Contact us today for an accurate quote for your pole barn foundation project.</p>
+
+      <h3>Areas We Serve</h3>
+      <p>We provide pole barn foundation installation services throughout {SITE_CONFIG.serviceAreas.join(', ')} and surrounding Gloucester County communities. Whether you're building a new pole barn in Deptford or need foundation repairs in West Deptford, we're here to help.</p>
+
+      <h3>Why Pole Barn Foundations Matter</h3>
+      <p>A properly installed pole barn foundation is critical for:</p>
+      <ul>
+        <li><strong>Structural Integrity:</strong> Ensures your pole barn can withstand weather, loads, and time.</li>
+        <li><strong>Code Compliance:</strong> Meets local building codes and requirements for post-frame construction.</li>
+        <li><strong>Durability:</strong> Prevents settling, cracking, and other foundation issues that can compromise your building.</li>
+        <li><strong>Property Value:</strong> A well-built foundation protects your investment and maintains property value.</li>
+      </ul>
+
+      <h3>Contact Us for Your Pole Barn Foundation Project</h3>
+      <p>Ready to start your pole barn foundation project? Contact Deptford Concrete Contractors today for a free, no-obligation estimate. We'll assess your needs, provide expert recommendations, and deliver a foundation that supports your pole barn for years to come.</p>
+    </div>
+  </section>
+
+  <section id="contact-form" class="contact-section">
+    <div class="container">
+      <ContactForm 
+        title="Get Your Free Pole Barn Foundation Estimate"
+        service="pole-barn-foundations"
+      />
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container">
+      <h2>Pole Barn Foundation FAQs</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>How much does a pole barn foundation cost?</h3>
+          <p>Pole barn foundation costs typically range from $4-$8 per square foot, depending on size, soil conditions, and local requirements. We provide free estimates for accurate pricing.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How long does pole barn foundation installation take?</h3>
+          <p>Most pole barn foundation projects are completed within 1-3 days, depending on size and complexity. We'll provide a detailed timeline during your free estimate.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do you handle permits for pole barn foundations?</h3>
+          <p>Yes, we assist with all permit applications and ensure compliance with local building codes for pole barn construction in Deptford and surrounding areas.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What type of foundation is best for a pole barn?</h3>
+          <p>The best foundation type depends on your specific needs, soil conditions, and local codes. We'll recommend the optimal solution during your free estimate.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do pole barn foundations need reinforcement?</h3>
+          <p>Reinforcement requirements depend on the size of your pole barn and local building codes. We'll determine the appropriate reinforcement during the design phase.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+  }
+  
+  .hero-cta {
+    margin-top: 2rem;
+  }
+  
+  .cta-primary {
+    display: inline-block;
+    background: #ff6b35;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  
+  .cta-primary:hover {
+    background: #e55a2b;
+  }
+  
+  .content-section {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .content-section h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content-section h3 {
+    font-size: 1.5rem;
+    color: #ff6b35;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .content-section ul,
+  .content-section ol {
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content-section li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .faq-section {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .faq-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .faq-item {
+    background: #f8f9fa;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+  }
+  
+  .faq-item h3 {
+    color: #ff6b35;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+</style>
+
