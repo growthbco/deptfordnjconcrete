@@ -96,7 +96,7 @@ function generateSitemap() {
     <loc>${fullUrl}</loc>
     <lastmod>${now}</lastmod>
     <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
+    <priority>${priority.toFixed(1)}</priority>
   </url>
 `;
   });
