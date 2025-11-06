@@ -8,10 +8,12 @@ interface Props {
   description?: string;
   image?: string;
   schema?: any;
+  canonical?: string;
 }
 
-const { title, description = SITE_CONFIG.description, image, schema } = Astro.props;
+const { title, description = SITE_CONFIG.description, image, schema, canonical } = Astro.props;
 const fullTitle = `${title} | ${SITE_CONFIG.name}`;
+const canonicalUrl = canonical || `${SITE_CONFIG.url}${Astro.url.pathname}`;
 ---
 
 <!doctype html>
@@ -24,8 +26,12 @@ const fullTitle = `${title} | ${SITE_CONFIG.name}`;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     {image && <meta property="og:image" content={image} />}
