@@ -6,13 +6,15 @@
     "dev": "astro dev",
     "build": "astro build && node scripts/generate-sitemap.js",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "convert-images": "node scripts/convert-to-webp.js"
   },
   "dependencies": {
     "astro": "^5.15.3"
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.6.0",
-    "glob": "^11.0.3"
+    "glob": "^11.0.3",
+    "sharp": "^0.34.4"
   }
 }
