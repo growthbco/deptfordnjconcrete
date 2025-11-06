@@ -2,6 +2,25 @@
   command = "npm run build"
   publish = "dist"
 
+# Redirect www to apex domain for SEO
+[[redirects]]
+  from = "https://www.deptfordnjconcrete.com/*"
+  to = "https://deptfordnjconcrete.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.deptfordnjconcrete.com/*"
+  to = "https://deptfordnjconcrete.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://deptfordnjconcrete.com/*"
+  to = "https://deptfordnjconcrete.com/:splat"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
