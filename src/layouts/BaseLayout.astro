@@ -42,6 +42,8 @@ const canonicalUrl = canonical || `${SITE_CONFIG.url}${Astro.url.pathname}`;
     <!-- Preconnect to external domains for faster loading -->
     <link rel="preconnect" href="https://links.roadsidelaunch.com" />
     <link rel="dns-prefetch" href="https://links.roadsidelaunch.com" />
+    <link rel="preconnect" href="https://widgets.leadconnectorhq.com" />
+    <link rel="dns-prefetch" href="https://widgets.leadconnectorhq.com" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -71,6 +73,13 @@ const canonicalUrl = canonical || `${SITE_CONFIG.url}${Astro.url.pathname}`;
       <slot />
     </main>
     <Footer />
+    
+    <!-- Chat Widget -->
+    <script 
+      src="https://widgets.leadconnectorhq.com/loader.js"  
+      data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" 
+      data-widget-id="690cafefd1e01c567bac4079"
+    ></script>
   </body>
 </html>
 
