@@ -369,7 +369,14 @@ export function generateServiceSchema(serviceSlug: string, customDescription?: s
         name: SITE_CONFIG.name,
         url: SITE_CONFIG.url,
         telephone: SITE_CONFIG.phone,
-        email: SITE_CONFIG.email
+        email: SITE_CONFIG.email,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: SITE_CONFIG.address.addressLocality,
+          addressRegion: SITE_CONFIG.address.addressRegion,
+          postalCode: SITE_CONFIG.address.postalCode,
+          addressCountry: SITE_CONFIG.address.addressCountry
+        }
       },
       areaServed: [
         {
@@ -400,17 +407,52 @@ export function generateServiceSchema(serviceSlug: string, customDescription?: s
     serviceType: serviceData.serviceType,
     name: serviceData.name,
     description: customDescription || serviceData.description,
-    provider: {
-      '@type': 'HomeAndConstructionBusiness',
-      additionalType: 'https://schema.org/ConcreteContractor',
-      name: SITE_CONFIG.name,
-      url: SITE_CONFIG.url,
-      telephone: SITE_CONFIG.phone,
-      email: SITE_CONFIG.email,
-      priceRange: '$$'
-    },
+      provider: {
+        '@type': 'HomeAndConstructionBusiness',
+        additionalType: 'https://schema.org/ConcreteContractor',
+        name: SITE_CONFIG.name,
+        url: SITE_CONFIG.url,
+        telephone: SITE_CONFIG.phone,
+        email: SITE_CONFIG.email,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: SITE_CONFIG.address.addressLocality,
+          addressRegion: SITE_CONFIG.address.addressRegion,
+          postalCode: SITE_CONFIG.address.postalCode,
+          addressCountry: SITE_CONFIG.address.addressCountry
+        },
+        priceRange: '$$'
+      },
     areaServed: serviceData.areaServed,
     offers: serviceData.offers
+  };
+}
+
+/**
+ * Generate consistent location schema with NAP (Name, Address, Phone)
+ */
+export function generateLocationSchema(locationName: string, locationSlug: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HomeAndConstructionBusiness',
+    additionalType: 'https://schema.org/ConcreteContractor',
+    name: `${SITE_CONFIG.name} - ${locationName}`,
+    areaServed: {
+      '@type': 'City',
+      name: locationName,
+      addressRegion: 'NJ',
+      addressCountry: 'US'
+    },
+    url: `${SITE_CONFIG.url}/locations/${locationSlug}`,
+    telephone: SITE_CONFIG.phone,
+    email: SITE_CONFIG.email,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: SITE_CONFIG.address.addressLocality,
+      addressRegion: SITE_CONFIG.address.addressRegion,
+      postalCode: SITE_CONFIG.address.postalCode,
+      addressCountry: SITE_CONFIG.address.addressCountry
+    }
   };
 }
 
@@ -418,6 +460,24 @@ export function generateServiceSchema(serviceSlug: string, customDescription?: s
  * Generate HomeAndConstructionBusiness schema with detailed service catalog
  */
 export function generateHomeAndConstructionBusinessSchema() {
+  // Build address object - only include if we have address info
+  const address = SITE_CONFIG.address.streetAddress 
+    ? {
+        '@type': 'PostalAddress',
+        streetAddress: SITE_CONFIG.address.streetAddress,
+        addressLocality: SITE_CONFIG.address.addressLocality,
+        addressRegion: SITE_CONFIG.address.addressRegion,
+        postalCode: SITE_CONFIG.address.postalCode,
+        addressCountry: SITE_CONFIG.address.addressCountry
+      }
+    : {
+        '@type': 'PostalAddress',
+        addressLocality: SITE_CONFIG.address.addressLocality,
+        addressRegion: SITE_CONFIG.address.addressRegion,
+        postalCode: SITE_CONFIG.address.postalCode,
+        addressCountry: SITE_CONFIG.address.addressCountry
+      };
+
   return {
     '@context': 'https://schema.org',
     '@type': 'HomeAndConstructionBusiness',
@@ -427,6 +487,7 @@ export function generateHomeAndConstructionBusinessSchema() {
     url: SITE_CONFIG.url,
     telephone: SITE_CONFIG.phone,
     email: SITE_CONFIG.email,
+    address: address,
     priceRange: '$$',
     areaServed: [
       {

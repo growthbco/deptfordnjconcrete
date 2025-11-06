@@ -5,6 +5,14 @@ export const SITE_CONFIG = {
   url: "https://deptfordnjconcrete.com",
   phone: "856-934-4906",
   email: "deptfordnjconcrete@gmail.com",
+  // Address for NAP consistency (service area - Deptford, NJ)
+  address: {
+    streetAddress: "", // No physical address - service area business
+    addressLocality: "Deptford",
+    addressRegion: "NJ",
+    postalCode: "08096",
+    addressCountry: "US"
+  },
   serviceAreas: [
     "Deptford",
     "West Deptford",

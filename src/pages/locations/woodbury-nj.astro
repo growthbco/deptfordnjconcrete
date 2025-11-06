@@ -4,26 +4,13 @@ import ContactForm from '../../components/ContactForm.astro';
 import { SITE_CONFIG } from '../../config';
 import servicesData from '../../content/services.json';
 import locationDetails from '../../content/location-details.json';
+import { generateLocationSchema } from '../../utils/schema';
 
 const location = { name: 'Woodbury', fullName: 'Woodbury, New Jersey', slug: 'woodbury-nj' };
 const primaryServices = servicesData.filter(s => s.primary);
 const details = locationDetails['woodbury-nj'];
 
-const localSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'HomeAndConstructionBusiness',
-  additionalType: 'https://schema.org/ConcreteContractor',
-  name: `${SITE_CONFIG.name} - ${location.name}`,
-  areaServed: {
-    '@type': 'City',
-    name: location.name,
-    addressRegion: 'NJ',
-    addressCountry: 'US'
-  },
-  url: `${SITE_CONFIG.url}/locations/${location.slug}`,
-  telephone: SITE_CONFIG.phone,
-  email: SITE_CONFIG.email
-};
+const localSchema = generateLocationSchema(location.name, location.slug);
 ---
 
 <BaseLayout 

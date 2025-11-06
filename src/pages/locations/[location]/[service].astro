@@ -4,6 +4,7 @@ import ContactForm from '../../../components/ContactForm.astro';
 import { SITE_CONFIG } from '../../../config';
 import locationsData from '../../../content/locations.json';
 import servicesData from '../../../content/services.json';
+import { generateLocationSchema } from '../../../utils/schema';
 
 export async function getStaticPaths() {
   const locations = locationsData;
@@ -29,18 +30,11 @@ const pageTitle = `${service.name} in ${location.name}, NJ | ${SITE_CONFIG.name}
 const pageDescription = `Professional ${service.name.toLowerCase()} services in ${location.fullName}. Expert installation and free estimates. Serving ${location.name} and surrounding areas.`;
 
 const localServiceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  ...generateLocationSchema(location.name, location.slug),
   name: `${SITE_CONFIG.name} - ${service.name} in ${location.name}`,
   description: `${service.name} services in ${location.fullName}`,
-  areaServed: {
-    '@type': 'City',
-    name: location.name,
-    addressRegion: 'NJ'
-  },
   serviceType: service.name,
-  ...(SITE_CONFIG.phone && { telephone: SITE_CONFIG.phone }),
-  ...(SITE_CONFIG.email && { email: SITE_CONFIG.email })
+  url: `${SITE_CONFIG.url}/locations/${location.slug}/${service.slug}`
 };
 
 const breadcrumbSchema = {
