@@ -226,23 +226,26 @@ const faqSchema = {
         </div>
       </div>
 
-      <h3>Stamped Concrete Services</h3>
-      <div class="content-with-image">
-        <div class="content-text">
-          <p>We also specialize in beautiful stamped concrete installation for patios, driveways, and walkways. Stamped concrete provides an elegant, cost-effective alternative to natural stone or pavers, with a wide variety of patterns and colors to match your style. Our stamped concrete work enhances curb appeal and adds value to your property.</p>
-
-          <p>Our stamped concrete services include:</p>
-          <ul>
-            <li>Stamped concrete patios and outdoor living spaces</li>
-            <li>Decorative concrete driveways</li>
-            <li>Patterned concrete walkways</li>
-            <li>Pool deck stamped concrete</li>
-            <li>Custom patterns and colors</li>
-            <li>Professional sealing and maintenance</li>
-          </ul>
+      <div class="stamped-concrete-section">
+        <div class="stamped-concrete-header">
+          <h3>Stamped Concrete Services</h3>
         </div>
-        <div class="content-image">
-          <img src="/images/projects/IMG_7653.jpeg" alt="Beautiful stamped concrete driveway installation in Deptford, NJ" loading="lazy" />
+        <div class="stamped-concrete-content">
+          <div class="stamped-text">
+            <p>We also specialize in beautiful stamped concrete installation for patios, driveways, and walkways. Stamped concrete provides an elegant, cost-effective alternative to natural stone or pavers, with a wide variety of patterns and colors to match your style. Our stamped concrete work enhances curb appeal and adds value to your property.</p>
+            <p>Our stamped concrete services include:</p>
+            <ul>
+              <li>Stamped concrete patios and outdoor living spaces</li>
+              <li>Decorative concrete driveways</li>
+              <li>Patterned concrete walkways</li>
+              <li>Pool deck stamped concrete</li>
+              <li>Custom patterns and colors</li>
+              <li>Professional sealing and maintenance</li>
+            </ul>
+          </div>
+          <div class="stamped-image">
+            <img src="/images/projects/IMG_7653.jpeg" alt="Beautiful stamped concrete driveway installation in Deptford, NJ" loading="lazy" />
+          </div>
         </div>
       </div>
 
@@ -625,9 +628,9 @@ const faqSchema = {
   .content-with-image {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: 2rem;
     align-items: center;
-    margin: 2rem 0;
+    margin: 1.5rem 0;
   }
   
   .content-with-image.reverse {
@@ -652,6 +655,53 @@ const faqSchema = {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     display: block;
+  }
+  
+  .stamped-concrete-section {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  .stamped-concrete-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .stamped-concrete-header h3 {
+    margin-bottom: 0;
+  }
+  
+  .stamped-concrete-content {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  
+  .stamped-text {
+    padding-right: 1rem;
+  }
+  
+  .stamped-text p {
+    margin-bottom: 1rem;
+  }
+  
+  .stamped-text ul {
+    margin-top: 0.5rem;
+  }
+  
+  .stamped-image {
+    position: relative;
+  }
+  
+  .stamped-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: block;
+    object-fit: cover;
   }
   
   @media (max-width: 768px) {
@@ -754,6 +804,20 @@ const faqSchema = {
     
     .content-image img {
       border-radius: 4px;
+    }
+    
+    .stamped-concrete-section {
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+    }
+    
+    .stamped-concrete-content {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .stamped-text {
+      padding-right: 0;
     }
     
     .faq-item {
