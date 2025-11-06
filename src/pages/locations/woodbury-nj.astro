@@ -3,59 +3,234 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import { SITE_CONFIG } from '../../config';
 import servicesData from '../../content/services.json';
+import locationDetails from '../../content/location-details.json';
 
 const location = { name: 'Woodbury', fullName: 'Woodbury, New Jersey', slug: 'woodbury-nj' };
 const primaryServices = servicesData.filter(s => s.primary);
+const details = locationDetails['woodbury-nj'];
+
 const localSchema = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': 'HomeAndConstructionBusiness',
+  additionalType: 'https://schema.org/ConcreteContractor',
   name: `${SITE_CONFIG.name} - ${location.name}`,
-  areaServed: { '@type': 'City', name: location.name, addressRegion: 'NJ' }
+  areaServed: {
+    '@type': 'City',
+    name: location.name,
+    addressRegion: 'NJ',
+    addressCountry: 'US'
+  },
+  url: `${SITE_CONFIG.url}/locations/${location.slug}`,
+  telephone: SITE_CONFIG.phone,
+  email: SITE_CONFIG.email
 };
 ---
 
-<BaseLayout title={`Pole Barn Foundation & Concrete Contractors in ${location.name}, NJ`} description={`Professional pole barn foundation specialists serving ${location.name}, New Jersey. Free estimates.`} schema={localSchema}>
-  <section class="hero"><div class="container"><h1>Pole Barn Foundation & Concrete Services in {location.name}, New Jersey</h1><p class="hero-subtitle">Expert pole barn foundation installation and comprehensive concrete services in {location.fullName}. Free estimates on all projects.</p><a href="#contact-form" class="cta-primary">Get Free Estimate in {location.name}</a></div></section>
-  <section class="content-section"><div class="container"><h2>Concrete Services in {location.name}, NJ</h2><p>Deptford Concrete Contractors is your trusted source for pole barn foundation installation and comprehensive concrete services in {location.name}, New Jersey. Our primary specialty is pole barn foundations, and we have extensive experience installing concrete foundations for post-frame buildings throughout {location.name} and surrounding Gloucester County communities.</p><div class="location-services-section"><h3>Our Primary Services in {location.name}</h3><p>We offer specialized {location.name} services for our primary specialties:</p><ul class="location-services-list">{primaryServices.map(service => (<li><a href={`/locations/${location.slug}/${service.slug}`}>{service.name} in {location.name}</a></li>))}</ul></div><h3>Pole Barn Foundations in {location.name}</h3><p>Pole barn foundations are our primary focus. If you're building a pole barn in {location.name}, we provide expert foundation installation that meets all structural requirements and local building codes.</p><ul><li>Concrete footing installation for post-frame buildings</li><li>Slab-on-grade foundations for pole barns</li><li>Foundation design consultation</li><li>Permit assistance for {location.name} projects</li><li>Site preparation and excavation</li><li>Reinforcement and structural integrity</li></ul><h3>Large Commercial Concrete Slabs in {location.name}</h3><p>We also specialize in large commercial and industrial concrete slab installation for businesses in {location.name}.</p><h3>Additional Concrete Services in {location.name}</h3><ul><li><a href="/services/driveways">Concrete Driveways</a></li><li><a href="/services/patios">Custom Patios</a></li><li><a href="/services/walkways">Walkways & Pathways</a></li><li><a href="/services/retaining-walls">Retaining Walls</a></li><li><a href="/services/basement-flooring">Basement Flooring</a></li></ul><p>Contact us today for a free estimate on your pole barn foundation or concrete project in {location.name}, New Jersey.</p></div></section>
-  <section id="contact-form" class="contact-section"><div class="container"><ContactForm title={`Get Your Free Estimate in ${location.name}, NJ`} location={location.name} service="pole-barn-foundations" /></div></section>
+<BaseLayout 
+  title={`Concrete Contractors ${location.name}, NJ | Pole Barn Foundations & More`}
+  description={`Professional concrete contractors serving ${location.name}, New Jersey. Specializing in pole barn foundations, driveways, patios, and commercial slabs. Free estimates.`}
+  schema={localSchema}
+>
+  <section class="hero">
+    <div class="container">
+      <h1>Concrete Contractors {location.name}, New Jersey</h1>
+      <p class="hero-subtitle">Expert concrete contractors specializing in pole barn foundations, commercial slabs, residential driveways, and comprehensive concrete services in {location.fullName}. Free estimates on all projects.</p>
+      <a href="#contact-form" class="cta-primary">Get Free Estimate in {location.name}</a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>Professional Concrete Contractors Serving {location.name}, New Jersey</h2>
+      <p>Deptford Concrete Contractors is your trusted local concrete contractor serving {location.name}, New Jersey, the county seat of Gloucester County. As experienced concrete contractors in {location.name}, we specialize in pole barn foundation installation—our primary expertise—while providing comprehensive concrete services for residential and commercial properties throughout this historic community.</p>
+
+      <p>{location.name} is Gloucester County's seat, combining historic architecture with modern development needs. This unique blend creates diverse concrete contracting requirements, from careful concrete work preserving historic character to new construction projects. As {location.name} concrete contractors, we understand the balance between maintaining historic integrity and meeting modern structural requirements.</p>
+
+      <h3>Understanding {location.name}'s Geography and Development</h3>
+      <p>{location.name} features a historic downtown district along Broad Street, surrounded by residential neighborhoods and newer developments. The city is strategically located with major roadways including {details.majorRoads.join(', ')} providing excellent connectivity. As Gloucester County's seat, {location.name} hosts government buildings, the courthouse, and commercial districts that create ongoing demand for professional concrete contractors.</p>
+
+      <p>Major landmarks in {location.name} include {details.landmarks.join(', ')}. These historic and community centers create ongoing demand for concrete services ranging from foundation work for new construction to repair and restoration of existing concrete. As {location.name} concrete contractors, we're familiar with the city's development patterns and can coordinate projects around historic preservation requirements when applicable.</p>
+
+      <h3>Traffic Patterns and Project Coordination in {location.name}</h3>
+      <p>{details.trafficPatterns} As experienced concrete contractors working throughout {location.name}, we carefully plan project schedules to minimize disruption. The historic downtown area requires special consideration for pedestrian traffic and events. Broad Street's commercial corridor demands careful coordination with business owners.</p>
+
+      <p>Our familiarity with {location.name}'s traffic patterns allows us to efficiently schedule concrete deliveries, coordinate equipment access, and complete projects with minimal disruption. Whether we're installing a pole barn foundation in a residential area or working on a commercial project downtown, we plan every detail to ensure smooth project execution while respecting the community's historic character.</p>
+
+      <h3>Weather Considerations for Concrete Work in {location.name}</h3>
+      <p>{details.weatherImpacts} As professional concrete contractors in {location.name}, we understand these weather patterns and plan projects accordingly. Historic properties may require additional protective measures during concrete work to preserve surrounding structures.</p>
+
+      <p>Freeze-thaw cycles are particularly important for {location.name} concrete contractors to consider. Proper concrete mix design, adequate curing time, and appropriate sealing protect against the expansion and contraction caused by temperature fluctuations. Our experience with {location.name}'s climate means we know when to schedule projects and how to protect fresh concrete during installation, especially when working near historic structures.</p>
+
+      <h3>Soil Conditions and Foundation Requirements in {location.name}</h3>
+      <p>{details.soilConditions} Before beginning any pole barn foundation or concrete slab project in {location.name}, we conduct thorough site assessments to understand soil composition, drainage patterns, and load-bearing capacity. Historic properties may have older infrastructure requiring special consideration.</p>
+
+      <p>Different areas of {location.name} may have varying soil conditions, from areas with older infrastructure to newer developments with more predictable conditions. As {location.name} concrete contractors, we adapt our approach based on specific site conditions and historical context, ensuring every foundation and slab meets structural requirements, local building codes, and when applicable, historic preservation guidelines.</p>
+
+      <h3>Pole Barn Foundation Contractors in {location.name}</h3>
+      <p>Pole barn foundations are our primary specialty, and we're the go-to concrete contractors for post-frame building projects throughout {location.name}. While {location.name} is primarily residential and commercial, agricultural and storage pole barns are common in surrounding areas. If you're planning a pole barn in or near {location.name}, we provide expert foundation installation that meets all structural requirements and local building codes.</p>
+
+      <p>Our pole barn foundation services in {location.name} include comprehensive planning, design, and installation:</p>
+      <ul>
+        <li><strong>Site Assessment:</strong> We evaluate your {location.name} area property's soil conditions, drainage, and access requirements</li>
+        <li><strong>Foundation Design:</strong> Custom foundation design meeting {location.name} building codes and structural requirements</li>
+        <li><strong>Concrete Footing Installation:</strong> Professional installation of concrete footings for post-frame buildings</li>
+        <li><strong>Slab-on-Grade Foundations:</strong> Complete slab foundations for pole barns requiring smooth interior floors</li>
+        <li><strong>Permit Assistance:</strong> We handle all permit applications with {location.name}, ensuring code compliance</li>
+        <li><strong>Site Preparation:</strong> Professional excavation and site preparation tailored to {location.name}'s specific conditions</li>
+        <li><strong>Reinforcement:</strong> Proper rebar installation and concrete mix design for long-term durability</li>
+        <li><strong>Quality Inspection:</strong> Final inspection to ensure code compliance and structural integrity</li>
+      </ul>
+
+      <div class="location-services-section">
+        <h3>Our Primary Services in {location.name}</h3>
+        <p>We offer specialized {location.name} concrete contracting services for our primary specialties. Click below to learn more about each service in {location.name}:</p>
+        <ul class="location-services-list">
+          {primaryServices.map(service => (
+            <li><a href={`/locations/${location.slug}/${service.slug}`}>{service.name} in {location.name}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <h3>Commercial Concrete Contractors in {location.name}</h3>
+      <p>We're experienced commercial concrete contractors handling projects for businesses throughout {location.name}. As Gloucester County's seat, {location.name} hosts government buildings, courthouse facilities, and commercial districts that require professional concrete services. Our commercial concrete contracting expertise includes:</p>
+      <ul>
+        <li><strong>Large Commercial Slabs:</strong> Industrial and commercial concrete slabs for businesses in {location.name}</li>
+        <li><strong>Parking Lot Installation:</strong> Complete parking lot installation and repair for {location.name} businesses</li>
+        <li><strong>Commercial Building Foundations:</strong> Structural foundations meeting commercial building requirements</li>
+        <li><strong>Concrete Repair:</strong> Commercial concrete repair and resurfacing to extend facility lifespan</li>
+        <li><strong>Historic District Considerations:</strong> Careful concrete work preserving historic character when applicable</li>
+      </ul>
+      <p><a href="/services/concrete-slabs" class="service-link">Learn more about our commercial concrete services →</a></p>
+
+      <h3>Residential Concrete Contractors in {location.name}</h3>
+      <p>Our residential concrete contracting services help {location.name} homeowners enhance their properties with durable, beautiful concrete installations. {location.name} neighborhoods range from historic residential areas to newer developments, each with unique concrete needs. Our residential services include:</p>
+      <ul>
+        <li><strong>Concrete Driveways:</strong> Professional driveway installation and repair enhancing curb appeal and property value. <a href="/services/driveways" class="service-link">Learn more →</a></li>
+        <li><strong>Concrete Patios:</strong> Custom patio design for outdoor living spaces. <a href="/services/patios" class="service-link">Learn more →</a></li>
+        <li><strong>Stamped Concrete:</strong> Decorative concrete installations. <a href="/services/stamped-concrete" class="service-link">Learn more →</a></li>
+        <li><strong>Walkways & Pathways:</strong> Durable concrete walkways. <a href="/services/walkways" class="service-link">Learn more →</a></li>
+        <li><strong>Retaining Walls:</strong> Functional concrete retaining walls. <a href="/services/retaining-walls" class="service-link">Learn more →</a></li>
+        <li><strong>Basement Flooring:</strong> Professional basement floor installation. <a href="/services/basement-flooring" class="service-link">Learn more →</a></li>
+      </ul>
+
+      <h3>{location.name} Building Codes and Permits</h3>
+      <p>As {location.name} concrete contractors, we're well-versed in {location.name} building codes and permit requirements. As Gloucester County's seat, {location.name} may have specific requirements for certain projects. Many concrete projects require permits, especially for new construction, pole barn foundations, and structural work. We assist with all permit applications and ensure compliance with {location.name} and Gloucester County regulations.</p>
+
+      <h3>Why Choose Deptford Concrete Contractors for Your {location.name} Project?</h3>
+      <p>When you need concrete contractors in {location.name}, choose a company with specialized pole barn foundation expertise and comprehensive concrete knowledge. Our advantages include:</p>
+      <ul>
+        <li><strong>Local Expertise:</strong> Deep knowledge of {location.name} geography, soil conditions, traffic patterns, and building codes</li>
+        <li><strong>Historic Awareness:</strong> Understanding of historic district requirements when applicable</li>
+        <li><strong>Pole Barn Foundation Specialists:</strong> Our primary specialty ensures expert installation</li>
+        <li><strong>Comprehensive Services:</strong> From driveways to commercial slabs, we handle all your concrete needs</li>
+        <li><strong>Weather Awareness:</strong> Understanding of {location.name}'s climate patterns</li>
+        <li><strong>Traffic Coordination:</strong> Careful project scheduling around downtown and residential areas</li>
+        <li><strong>Free Estimates:</strong> No-obligation quotes on all projects</li>
+      </ul>
+
+      <h3>Neighborhood Considerations in {location.name}</h3>
+      <p>{details.neighborhoods} As {location.name} concrete contractors, we understand that different neighborhoods may have varying requirements. Historic downtown projects require coordination with preservation guidelines when applicable. Residential projects in established neighborhoods require careful coordination with neighbors.</p>
+
+      <h3>Contact {location.name} Concrete Contractors Today</h3>
+      <p>Ready to start your concrete project in {location.name}, New Jersey? Contact Deptford Concrete Contractors today for your free estimate on concrete work in {location.name}.</p>
+    </div>
+  </section>
+
+  <section id="contact-form" class="contact-section">
+    <div class="container">
+      <ContactForm 
+        title={`Get Your Free Estimate in ${location.name}, NJ`}
+        location={location.name}
+        service="pole-barn-foundations"
+      />
+    </div>
+  </section>
 </BaseLayout>
+
 <style>
-  .hero { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 3rem 0; text-align: center; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-  .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-  .hero-subtitle { font-size: 1.25rem; color: #ccc; max-width: 800px; margin: 0 auto 2rem; }
-  .cta-primary { display: inline-block; background: #ff6b35; color: white; padding: 1rem 2rem; border-radius: 4px; text-decoration: none; font-weight: 600; }
-  .content-section { padding: 4rem 0; background: white; }
-  .content-section h2 { font-size: 2rem; color: #1a1a1a; margin-bottom: 1.5rem; }
-  .content-section h3 { font-size: 1.5rem; color: #ff6b35; margin-top: 2rem; margin-bottom: 1rem; }
-  .content-section ul { margin-left: 2rem; margin-bottom: 1.5rem; }
-  .contact-section { padding: 4rem 0; background: #f8f9fa; }
-  
-  @media (max-width: 768px) {
-    .hero { padding: 2rem 0; }
-    .hero h1 { font-size: 1.5rem; margin-bottom: 0.75rem; line-height: 1.3; }
-    .hero-subtitle { font-size: 0.95rem; margin-bottom: 1.25rem; }
-    .cta-primary { width: 100%; text-align: center; padding: 0.875rem 1.5rem; font-size: 0.95rem; }
-    .container { padding: 0 1rem; }
-    .content-section { padding: 2.5rem 0; }
-    .content-section h2 { font-size: 1.5rem; margin-bottom: 1.25rem; }
-    .content-section h3 { font-size: 1.25rem; margin-top: 1.5rem; }
-    .content-section ul { margin-left: 1.5rem; }
-    .content-section li { margin-bottom: 0.5rem; font-size: 0.95rem; }
-    .contact-section { padding: 2.5rem 0; }
+  .hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
   }
   
-  @media (max-width: 480px) {
-    .hero { padding: 1.5rem 0; }
-    .hero h1 { font-size: 1.25rem; }
-    .hero-subtitle { font-size: 0.875rem; }
-    .cta-primary { padding: 0.75rem 1.25rem; font-size: 0.875rem; }
-    .container { padding: 0 0.75rem; }
-    .content-section { padding: 2rem 0; }
-    .content-section h2 { font-size: 1.35rem; }
-    .content-section h3 { font-size: 1.15rem; margin-top: 1.25rem; }
-    .content-section ul { margin-left: 1.25rem; }
-    .contact-section { padding: 2rem 0; }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+  }
+  
+  .cta-primary {
+    display: inline-block;
+    background: #ff6b35;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  
+  .cta-primary:hover {
+    background: #e55a2b;
+  }
+  
+  .content-section {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .content-section h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content-section h3 {
+    font-size: 1.5rem;
+    color: #ff6b35;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .content-section ul {
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+  
+  .content-section li {
+    margin-bottom: 0.75rem;
+  }
+  
+  .service-link {
+    color: #ff6b35;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  
+  .service-link:hover {
+    color: #e55a2b;
+    text-decoration: underline;
+  }
+  
+  .contact-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
   }
   
   .location-services-section {
@@ -98,6 +273,50 @@ const localSchema = {
   }
   
   @media (max-width: 768px) {
+    .hero {
+      padding: 2rem 0;
+    }
+    
+    .hero h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    
+    .hero-subtitle {
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+    
+    .cta-primary {
+      width: 100%;
+      text-align: center;
+      padding: 0.875rem 1.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .container {
+      padding: 0 1rem;
+    }
+    
+    .content-section {
+      padding: 2.5rem 0;
+    }
+    
+    .content-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    
+    .content-section h3 {
+      font-size: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    
+    .content-section ul {
+      margin-left: 1.5rem;
+    }
+    
     .location-services-section {
       padding: 1.5rem;
     }
@@ -105,6 +324,49 @@ const localSchema = {
     .location-services-list {
       grid-template-columns: 1fr;
     }
+    
+    .contact-section {
+      padding: 2.5rem 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero {
+      padding: 1.5rem 0;
+    }
+    
+    .hero h1 {
+      font-size: 1.25rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 0.875rem;
+    }
+    
+    .cta-primary {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.875rem;
+    }
+    
+    .container {
+      padding: 0 0.75rem;
+    }
+    
+    .content-section {
+      padding: 2rem 0;
+    }
+    
+    .content-section h2 {
+      font-size: 1.35rem;
+    }
+    
+    .content-section h3 {
+      font-size: 1.15rem;
+      margin-top: 1.25rem;
+    }
+    
+    .content-section ul {
+      margin-left: 1.25rem;
+    }
   }
 </style>
-
