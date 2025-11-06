@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/generate-sitemap.js",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -12,6 +12,7 @@
     "astro": "^5.15.3"
   },
   "devDependencies": {
-    "@astrojs/sitemap": "^3.6.0"
+    "@astrojs/sitemap": "^3.6.0",
+    "glob": "^11.0.3"
   }
 }
