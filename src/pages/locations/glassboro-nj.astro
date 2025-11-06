@@ -2,8 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import { SITE_CONFIG } from '../../config';
+import servicesData from '../../content/services.json';
 
-const location = { name: 'Glassboro', fullName: 'Glassboro, New Jersey' };
+const location = { name: 'Glassboro', fullName: 'Glassboro, New Jersey', slug: 'glassboro-nj' };
+const primaryServices = servicesData.filter(s => s.primary);
 const localSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
@@ -14,7 +16,7 @@ const localSchema = {
 
 <BaseLayout title={`Pole Barn Foundation & Concrete Contractors in ${location.name}, NJ`} description={`Professional pole barn foundation specialists serving ${location.name}, New Jersey. Free estimates.`} schema={localSchema}>
   <section class="hero"><div class="container"><h1>Pole Barn Foundation & Concrete Services in {location.name}, New Jersey</h1><p class="hero-subtitle">Expert pole barn foundation installation and comprehensive concrete services in {location.fullName}. Free estimates on all projects.</p><a href="#contact-form" class="cta-primary">Get Free Estimate in {location.name}</a></div></section>
-  <section class="content-section"><div class="container"><h2>Concrete Services in {location.name}, NJ</h2><p>Deptford Concrete Contractors is your trusted source for pole barn foundation installation and comprehensive concrete services in {location.name}, New Jersey. Our primary specialty is pole barn foundations, and we have extensive experience installing concrete foundations for post-frame buildings throughout {location.name} and surrounding Gloucester County communities.</p><h3>Pole Barn Foundations in {location.name}</h3><p>Pole barn foundations are our primary focus. If you're building a pole barn in {location.name}, we provide expert foundation installation that meets all structural requirements and local building codes.</p><ul><li>Concrete footing installation for post-frame buildings</li><li>Slab-on-grade foundations for pole barns</li><li>Foundation design consultation</li><li>Permit assistance for {location.name} projects</li><li>Site preparation and excavation</li><li>Reinforcement and structural integrity</li></ul><h3>Large Commercial Concrete Slabs in {location.name}</h3><p>We also specialize in large commercial and industrial concrete slab installation for businesses in {location.name}.</p><h3>Additional Concrete Services in {location.name}</h3><ul><li><a href="/services/driveways">Concrete Driveways</a></li><li><a href="/services/patios">Custom Patios</a></li><li><a href="/services/walkways">Walkways & Pathways</a></li><li><a href="/services/retaining-walls">Retaining Walls</a></li><li><a href="/services/basement-flooring">Basement Flooring</a></li></ul><p>Contact us today for a free estimate on your pole barn foundation or concrete project in {location.name}, New Jersey.</p></div></section>
+  <section class="content-section"><div class="container"><h2>Concrete Services in {location.name}, NJ</h2><p>Deptford Concrete Contractors is your trusted source for pole barn foundation installation and comprehensive concrete services in {location.name}, New Jersey. Our primary specialty is pole barn foundations, and we have extensive experience installing concrete foundations for post-frame buildings throughout {location.name} and surrounding Gloucester County communities.</p><div class="location-services-section"><h3>Our Primary Services in {location.name}</h3><p>We offer specialized {location.name} services for our primary specialties:</p><ul class="location-services-list">{primaryServices.map(service => (<li><a href={`/locations/${location.slug}/${service.slug}`}>{service.name} in {location.name}</a></li>))}</ul></div><h3>Pole Barn Foundations in {location.name}</h3><p>Pole barn foundations are our primary focus. If you're building a pole barn in {location.name}, we provide expert foundation installation that meets all structural requirements and local building codes.</p><ul><li>Concrete footing installation for post-frame buildings</li><li>Slab-on-grade foundations for pole barns</li><li>Foundation design consultation</li><li>Permit assistance for {location.name} projects</li><li>Site preparation and excavation</li><li>Reinforcement and structural integrity</li></ul><h3>Large Commercial Concrete Slabs in {location.name}</h3><p>We also specialize in large commercial and industrial concrete slab installation for businesses in {location.name}.</p><h3>Additional Concrete Services in {location.name}</h3><ul><li><a href="/services/driveways">Concrete Driveways</a></li><li><a href="/services/patios">Custom Patios</a></li><li><a href="/services/walkways">Walkways & Pathways</a></li><li><a href="/services/retaining-walls">Retaining Walls</a></li><li><a href="/services/basement-flooring">Basement Flooring</a></li></ul><p>Contact us today for a free estimate on your pole barn foundation or concrete project in {location.name}, New Jersey.</p></div></section>
   <section id="contact-form" class="contact-section"><div class="container"><ContactForm title={`Get Your Free Estimate in ${location.name}, NJ`} location={location.name} service="pole-barn-foundations" /></div></section>
 </BaseLayout>
 <style>
@@ -54,6 +56,55 @@ const localSchema = {
     .content-section h3 { font-size: 1.15rem; margin-top: 1.25rem; }
     .content-section ul { margin-left: 1.25rem; }
     .contact-section { padding: 2rem 0; }
+  }
+  
+  .location-services-section {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+  }
+  
+  .location-services-list {
+    list-style: none;
+    margin-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .location-services-list li {
+    margin-bottom: 0;
+  }
+  
+  .location-services-list a {
+    display: block;
+    padding: 1rem;
+    background: white;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #1a1a1a;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+  }
+  
+  .location-services-list a:hover {
+    border-color: #ff6b35;
+    color: #ff6b35;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  @media (max-width: 768px) {
+    .location-services-section {
+      padding: 1.5rem;
+    }
+    
+    .location-services-list {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 
