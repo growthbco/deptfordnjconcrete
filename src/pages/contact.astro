@@ -131,9 +131,68 @@ import { SITE_CONFIG } from '../config';
   }
   
   @media (max-width: 768px) {
+    .hero {
+      padding: 2rem 0;
+    }
+    
+    .hero h1 {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+    
+    .contact-section {
+      padding: 2.5rem 0;
+    }
+    
     .contact-content {
       grid-template-columns: 1fr;
       gap: 2rem;
+    }
+    
+    .contact-info h2 {
+      font-size: 1.5rem;
+    }
+    
+    .contact-info > p {
+      font-size: 1rem;
+    }
+    
+    .contact-item h3 {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero {
+      padding: 1.5rem 0;
+    }
+    
+    .hero h1 {
+      font-size: 1.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 0.9rem;
+    }
+    
+    .contact-section {
+      padding: 2rem 0;
+    }
+    
+    .contact-content {
+      gap: 1.5rem;
+    }
+    
+    .contact-info h2 {
+      font-size: 1.35rem;
+    }
+    
+    .contact-info > p {
+      font-size: 0.95rem;
     }
   }
 </style>
