@@ -351,7 +351,7 @@ const faqSchema = {
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d784438.8551085566!2d-76.33406682187498!3d39.82461320000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6d14c862e5d4d%3A0xf464f46461fc4ce2!2sDeptford%20NJ%20Concrete!5e0!3m2!1sen!2sus!4v1762401808748!5m2!1sen!2sus" 
               width="100%" 
-              height="450" 
+              height="600" 
               style="border:0;" 
               allowfullscreen="" 
               loading="lazy" 
@@ -822,16 +822,20 @@ const faqSchema = {
   .contact-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: 2rem;
     align-items: start;
   }
 
   .contact-form-container {
-    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .map-container {
-    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .map-container h3 {
@@ -846,9 +850,15 @@ const faqSchema = {
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
 
+  .map-wrapper {
+    flex: 1;
+    min-height: 600px;
+  }
+
   .map-wrapper iframe {
     width: 100%;
-    height: 450px;
+    height: 100%;
+    min-height: 600px;
     border: none;
     display: block;
   }
