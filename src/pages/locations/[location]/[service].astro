@@ -42,6 +42,37 @@ const localServiceSchema = {
   ...(SITE_CONFIG.phone && { telephone: SITE_CONFIG.phone }),
   ...(SITE_CONFIG.email && { email: SITE_CONFIG.email })
 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: SITE_CONFIG.url
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Service Areas',
+      item: `${SITE_CONFIG.url}/locations`
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: location.name,
+      item: `${SITE_CONFIG.url}/locations/${location.slug}`
+    },
+    {
+      '@type': 'ListItem',
+      position: 4,
+      name: service.name,
+      item: `${SITE_CONFIG.url}/locations/${location.slug}/${service.slug}`
+    }
+  ]
+};
 ---
 
 <BaseLayout 
@@ -49,6 +80,7 @@ const localServiceSchema = {
   description={pageDescription}
   schema={localServiceSchema}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <section class="hero">
     <div class="container">
       <h1>{service.name} in {location.name}, New Jersey</h1>

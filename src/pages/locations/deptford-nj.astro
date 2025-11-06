@@ -3,12 +3,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import SchemaMarkup from '../../components/SchemaMarkup.astro';
 import { SITE_CONFIG } from '../../config';
+import servicesData from '../../content/services.json';
 
 const location = {
   name: 'Deptford',
   fullName: 'Deptford, New Jersey',
-  state: 'New Jersey'
+  state: 'New Jersey',
+  slug: 'deptford-nj'
 };
+
+const primaryServices = servicesData.filter(s => s.primary);
 
 const localSchema = {
   '@context': 'https://schema.org',
@@ -53,6 +57,16 @@ const localSchema = {
 
       <h3>Large Commercial Concrete Slabs in {location.name}</h3>
       <p>We also specialize in large commercial and industrial concrete slab installation for businesses in {location.name}. From warehouse floors to manufacturing facility foundations, we handle projects of all sizes.</p>
+
+      <div class="location-services-section">
+        <h3>Our Primary Services in {location.name}</h3>
+        <p>We offer specialized {location.name} services for our primary specialties:</p>
+        <ul class="location-services-list">
+          {primaryServices.map(service => (
+            <li><a href={`/locations/${location.slug}/${service.slug}`}>{service.name} in {location.name}</a></li>
+          ))}
+        </ul>
+      </div>
 
       <h3>Additional Concrete Services in {location.name}</h3>
       <p>In addition to pole barn foundations and large slabs, we provide comprehensive concrete services for {location.name} residents and businesses:</p>
@@ -247,6 +261,55 @@ const localSchema = {
     
     .contact-section {
       padding: 2rem 0;
+    }
+  }
+  
+  .location-services-section {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+  }
+  
+  .location-services-list {
+    list-style: none;
+    margin-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .location-services-list li {
+    margin-bottom: 0;
+  }
+  
+  .location-services-list a {
+    display: block;
+    padding: 1rem;
+    background: white;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #1a1a1a;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+  }
+  
+  .location-services-list a:hover {
+    border-color: #ff6b35;
+    color: #ff6b35;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  @media (max-width: 768px) {
+    .location-services-section {
+      padding: 1.5rem;
+    }
+    
+    .location-services-list {
+      grid-template-columns: 1fr;
     }
   }
 </style>
