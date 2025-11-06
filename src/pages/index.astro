@@ -823,7 +823,7 @@ const faqSchema = {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
-    align-items: start;
+    align-items: center;
   }
 
   .contact-form-container {
@@ -837,6 +837,7 @@ const faqSchema = {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 
   .map-container h3 {
@@ -854,6 +855,13 @@ const faqSchema = {
     background: white;
     position: relative;
     height: 600px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+  }
+
+  .map-wrapper:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.15);
   }
 
   .map-wrapper iframe {

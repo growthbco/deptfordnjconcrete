@@ -60,6 +60,12 @@ const { service = '', location = '', title = 'Get Your Free Estimate' } = Astro.
     background: white;
     position: relative;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .form-wrapper:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
   }
   
   .form-wrapper iframe {
@@ -68,6 +74,23 @@ const { service = '', location = '', title = 'Get Your Free Estimate' } = Astro.
     border: none;
     display: block;
     -webkit-overflow-scrolling: touch;
+  }
+
+  /* Animation for form submission success */
+  .form-wrapper.submitted {
+    animation: formSuccess 0.6s ease-out;
+  }
+
+  @keyframes formSuccess {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.02);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
   
   @media (max-width: 768px) {
