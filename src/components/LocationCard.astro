@@ -55,5 +55,45 @@ const { location } = Astro.props;
   .location-link:hover {
     color: #e55a2b;
   }
+  
+  @media (max-width: 768px) {
+    .location-card {
+      padding: 1.25rem;
+    }
+    
+    .location-card h3 {
+      font-size: 1.1rem;
+    }
+    
+    .location-state {
+      font-size: 0.9rem;
+    }
+    
+    .location-link {
+      font-size: 0.95rem;
+      display: inline-block;
+      padding: 0.5rem 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .location-card {
+      padding: 1rem;
+      border-radius: 4px;
+    }
+    
+    .location-card h3 {
+      font-size: 1rem;
+    }
+    
+    .location-state {
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .location-link {
+      font-size: 0.9rem;
+    }
+  }
 </style>
 
