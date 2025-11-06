@@ -1,0 +1,317 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import { SITE_CONFIG } from '../../../config';
+import locationsData from '../../../content/locations.json';
+import servicesData from '../../../content/services.json';
+
+export async function getStaticPaths() {
+  const locations = locationsData;
+  const primaryServices = servicesData.filter(s => s.primary);
+  
+  return locations.flatMap(location => 
+    primaryServices.map(service => ({
+      params: { 
+        location: location.slug,
+        service: service.slug
+      },
+      props: {
+        location,
+        service
+      }
+    }))
+  );
+}
+
+const { location, service } = Astro.props;
+
+const pageTitle = `${service.name} in ${location.name}, NJ | ${SITE_CONFIG.name}`;
+const pageDescription = `Professional ${service.name.toLowerCase()} services in ${location.fullName}. Expert installation and free estimates. Serving ${location.name} and surrounding areas.`;
+
+const localServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: `${SITE_CONFIG.name} - ${service.name} in ${location.name}`,
+  description: `${service.name} services in ${location.fullName}`,
+  areaServed: {
+    '@type': 'City',
+    name: location.name,
+    addressRegion: 'NJ'
+  },
+  serviceType: service.name,
+  ...(SITE_CONFIG.phone && { telephone: SITE_CONFIG.phone }),
+  ...(SITE_CONFIG.email && { email: SITE_CONFIG.email })
+};
+---
+
+<BaseLayout 
+  title={pageTitle}
+  description={pageDescription}
+  schema={localServiceSchema}
+>
+  <section class="hero">
+    <div class="container">
+      <h1>{service.name} in {location.name}, New Jersey</h1>
+      <p class="hero-subtitle">Expert {service.name.toLowerCase()} installation and services in {location.fullName}. Free estimates on all {service.name.toLowerCase()} projects.</p>
+      <a href="#contact-form" class="cta-primary">Get Free {service.name} Estimate in {location.name}</a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>{service.name} Services in {location.name}, NJ</h2>
+      
+      {service.id === 'pole-barn-foundations' && (
+        <>
+          <p>Deptford Concrete Contractors specializes in professional pole barn foundation installation in {location.name}, New Jersey. Our primary expertise is pole barn foundations, and we have extensive experience installing concrete foundations for post-frame buildings throughout {location.name} and surrounding Gloucester County communities.</p>
+          
+          <h3>Pole Barn Foundation Installation in {location.name}</h3>
+          <p>Pole barn foundations are our primary focus. If you're building a pole barn in {location.name}, we provide expert foundation installation that meets all structural requirements and local building codes. Our team understands the unique requirements of post-frame building construction, including proper footing depth, concrete strength specifications, and local building code compliance.</p>
+          
+          <p>Our pole barn foundation services in {location.name} include:</p>
+          <ul>
+            <li>Concrete footing installation for post-frame buildings</li>
+            <li>Slab-on-grade foundations for pole barns</li>
+            <li>Foundation design consultation for {location.name} projects</li>
+            <li>Permit assistance and code compliance</li>
+            <li>Site preparation and excavation</li>
+            <li>Reinforcement and structural integrity</li>
+          </ul>
+          
+          <h3>Why Choose Us for Pole Barn Foundations in {location.name}?</h3>
+          <p>When you need a pole barn foundation in {location.name}, choose a contractor with specialized pole barn foundation expertise. We understand local building requirements, soil conditions, and the unique needs of {location.name} property owners. Our foundation installations are built to last and meet all structural requirements.</p>
+        </>
+      )}
+      
+      {service.id === 'concrete-slabs' && (
+        <>
+          <p>Deptford Concrete Contractors specializes in large commercial and industrial concrete slab installation in {location.name}, New Jersey. We excel at large-scale concrete slab projects for commercial and industrial applications, handling projects of all sizes with precision and efficiency.</p>
+          
+          <h3>Commercial Concrete Slab Installation in {location.name}</h3>
+          <p>We provide expert concrete slab installation for businesses in {location.name}. From warehouse floors to manufacturing facility foundations, we handle projects of all sizes with precision and efficiency.</p>
+          
+          <p>Our commercial concrete slab services in {location.name} include:</p>
+          <ul>
+            <li>Industrial floor slabs</li>
+            <li>Warehouse concrete foundations</li>
+            <li>Commercial building slabs</li>
+            <li>Heavy-duty concrete installations</li>
+            <li>Reinforced concrete for high-load applications</li>
+            <li>Site preparation and excavation</li>
+          </ul>
+          
+          <h3>Why Choose Us for Concrete Slabs in {location.name}?</h3>
+          <p>Our experience with large-scale concrete projects in {location.name} makes us the ideal choice for your commercial or industrial slab needs. We understand local requirements and deliver projects that meet all structural and code specifications.</p>
+        </>
+      )}
+      
+      {service.id === 'stamped-concrete' && (
+        <>
+          <p>Deptford Concrete Contractors specializes in beautiful stamped concrete installation in {location.name}, New Jersey. Stamped concrete provides an elegant, cost-effective alternative to natural stone or pavers, with a wide variety of patterns and colors to match your style.</p>
+          
+          <h3>Stamped Concrete Installation in {location.name}</h3>
+          <p>Our stamped concrete work in {location.name} enhances curb appeal and adds value to your property. We offer a wide range of patterns, textures, and colors to create beautiful, durable surfaces for your outdoor spaces.</p>
+          
+          <p>Our stamped concrete services in {location.name} include:</p>
+          <ul>
+            <li>Stamped concrete patios and outdoor living spaces</li>
+            <li>Decorative concrete driveways</li>
+            <li>Patterned concrete walkways</li>
+            <li>Pool deck stamped concrete</li>
+            <li>Custom patterns and colors</li>
+            <li>Professional sealing and maintenance</li>
+          </ul>
+          
+          <h3>Why Choose Us for Stamped Concrete in {location.name}?</h3>
+          <p>Our expertise in stamped concrete installation in {location.name} ensures beautiful, long-lasting results that enhance your property's value and appearance. We work with you to choose the perfect pattern and color for your project.</p>
+        </>
+      )}
+      
+      <h3>Contact Us for {service.name} in {location.name}</h3>
+      <p>Ready to start your {service.name.toLowerCase()} project in {location.name}? Contact Deptford Concrete Contractors today for a free, no-obligation estimate. We'll assess your needs and provide expert recommendations.</p>
+    </div>
+  </section>
+
+  <section id="contact-form" class="contact-section">
+    <div class="container">
+      <ContactForm 
+        title={`Get Your Free ${service.name} Estimate in ${location.name}, NJ`}
+        location={location.name}
+        service={service.id}
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+  }
+  
+  .cta-primary {
+    display: inline-block;
+    background: #ff6b35;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  
+  .cta-primary:hover {
+    background: #e55a2b;
+  }
+  
+  .content-section {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .content-section h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content-section h3 {
+    font-size: 1.5rem;
+    color: #ff6b35;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .content-section ul {
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content-section li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  @media (max-width: 768px) {
+    .hero {
+      padding: 2rem 0;
+    }
+    
+    .hero h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    
+    .hero-subtitle {
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+    
+    .cta-primary {
+      width: 100%;
+      text-align: center;
+      padding: 0.875rem 1.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .container {
+      padding: 0 1rem;
+    }
+    
+    .content-section {
+      padding: 2.5rem 0;
+    }
+    
+    .content-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    
+    .content-section h3 {
+      font-size: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    
+    .content-section ul {
+      margin-left: 1.5rem;
+    }
+    
+    .content-section li {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .contact-section {
+      padding: 2.5rem 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero {
+      padding: 1.5rem 0;
+    }
+    
+    .hero h1 {
+      font-size: 1.25rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 0.875rem;
+    }
+    
+    .cta-primary {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.875rem;
+    }
+    
+    .container {
+      padding: 0 0.75rem;
+    }
+    
+    .content-section {
+      padding: 2rem 0;
+    }
+    
+    .content-section h2 {
+      font-size: 1.35rem;
+    }
+    
+    .content-section h3 {
+      font-size: 1.15rem;
+      margin-top: 1.25rem;
+    }
+    
+    .content-section ul {
+      margin-left: 1.25rem;
+    }
+    
+    .contact-section {
+      padding: 2rem 0;
+    }
+  }
+</style>
