@@ -24,7 +24,7 @@ const otherServices = allServices.filter(s => !s.primary);
           {primaryServices.map(service => (
             <li>
               <a href={`/services/${service.slug}`} class="service-link">
-                {service.name} in Deptford, NJ
+                {service.name}
               </a>
               <span class="service-description"> - {service.description}</span>
             </li>
@@ -40,7 +40,7 @@ const otherServices = allServices.filter(s => !s.primary);
           {otherServices.map(service => (
             <li>
               <a href={`/services/${service.slug}`} class="service-link">
-                {service.name} in Deptford, NJ
+                {service.name}
               </a>
               <span class="service-description"> - {service.description}</span>
             </li>

@@ -3,22 +3,110 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import { SITE_CONFIG } from '../../config';
 import servicesData from '../../content/services.json';
+import locationDetails from '../../content/location-details.json';
+import { generateLocationSchema } from '../../utils/schema';
 
-const location = { name: 'Glassboro', fullName: 'Glassboro, New Jersey', slug: 'glassboro-nj' };
-const primaryServices = servicesData.filter(s => s.primary);
-const localSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: `${SITE_CONFIG.name} - ${location.name}`,
-  areaServed: { '@type': 'City', name: location.name, addressRegion: 'NJ' }
+const location = {
+  name: 'Glassboro',
+  fullName: 'Glassboro, New Jersey',
+  state: 'New Jersey',
+  slug: 'glassboro-nj'
 };
+
+const primaryServices = servicesData.filter(s => s.primary);
+const details = locationDetails['glassboro-nj'];
+
+const localSchema = generateLocationSchema(location.name, location.slug);
 ---
 
-<BaseLayout title={`Pole Barn Foundation & Concrete Contractors in ${location.name}, NJ`} description={`Professional pole barn foundation specialists serving ${location.name}, New Jersey. Free estimates.`} schema={localSchema}>
-  <section class="hero"><div class="container"><h1>Pole Barn Foundation & Concrete Services in {location.name}, New Jersey</h1><p class="hero-subtitle">Expert pole barn foundation installation and comprehensive concrete services in {location.fullName}. Free estimates on all projects.</p><a href="#contact-form" class="cta-primary">Get Free Estimate in {location.name}</a></div></section>
-  <section class="content-section"><div class="container"><h2>Concrete Services in {location.name}, NJ</h2><p>Deptford Concrete Contractors is your trusted source for pole barn foundation installation and comprehensive concrete services in {location.name}, New Jersey. Our primary specialty is pole barn foundations, and we have extensive experience installing concrete foundations for post-frame buildings throughout {location.name} and surrounding Gloucester County communities.</p><div class="location-services-section"><h3>Our Primary Services in {location.name}</h3><p>We offer specialized {location.name} services for our primary specialties:</p><ul class="location-services-list">{primaryServices.map(service => (<li><a href={`/locations/${location.slug}/${service.slug}`}>{service.name} in {location.name}</a></li>))}</ul></div><h3>Pole Barn Foundations in {location.name}</h3><p>Pole barn foundations are our primary focus. If you're building a pole barn in {location.name}, we provide expert foundation installation that meets all structural requirements and local building codes.</p><ul><li>Concrete footing installation for post-frame buildings</li><li>Slab-on-grade foundations for pole barns</li><li>Foundation design consultation</li><li>Permit assistance for {location.name} projects</li><li>Site preparation and excavation</li><li>Reinforcement and structural integrity</li></ul><h3>Large Commercial Concrete Slabs in {location.name}</h3><p>We also specialize in large commercial and industrial concrete slab installation for businesses in {location.name}.</p><h3>Additional Concrete Services in {location.name}</h3><ul><li><a href="/services/driveways">Concrete Driveways</a></li><li><a href="/services/patios">Custom Patios</a></li><li><a href="/services/walkways">Walkways & Pathways</a></li><li><a href="/services/retaining-walls">Retaining Walls</a></li><li><a href="/services/basement-flooring">Basement Flooring</a></li></ul><p>Contact us today for a free estimate on your pole barn foundation or concrete project in {location.name}, New Jersey.</p></div></section>
-  <section id="contact-form" class="contact-section"><div class="container"><ContactForm title={`Get Your Free Estimate in ${location.name}, NJ`} location={location.name} service="pole-barn-foundations" /></div></section>
+<BaseLayout 
+  title={`Concrete Contractors ${location.name}, NJ | Pole Barn Foundations & More`}
+  description={`Expert concrete contractors serving ${location.name}, New Jersey. Specializing in pole barn foundations, driveways, patios, and commercial slabs. Free estimates on all projects.`}
+  schema={localSchema}
+>
+  <section class="hero">
+    <div class="container">
+      <h1>Concrete Contractors {location.name}, New Jersey</h1>
+      <p class="hero-subtitle">Expert concrete contractors specializing in pole barn foundations, commercial slabs, residential driveways, and comprehensive concrete services in {location.fullName}. Free estimates on all projects.</p>
+      <a href="#contact-form" class="cta-primary">Get Free Estimate in {location.name}</a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>Professional Concrete Contractors Serving {location.name}, New Jersey</h2>
+      
+      <h3>Serving {location.name} Since 2019</h3>
+      <p>Deptford Concrete Contractors has been proudly serving homeowners and businesses throughout {location.name} and the surrounding Gloucester County area since 2019. Our team specializes in durable, high-quality concrete installations built to handle New Jersey's seasonal weather—from freezing winters to humid summers. Whether it's a fresh driveway, decorative patio, pole barn foundation, or full-scale commercial slab, we deliver craftsmanship that lasts.</p>
+
+      <p>As experienced concrete contractors in {location.name}, we specialize in pole barn foundation installation—our primary expertise—while providing comprehensive concrete services for residential and commercial properties throughout this vibrant Gloucester County community. {location.name} is home to Rowan University, creating unique concrete contracting needs for both student housing and permanent residences.</p>
+
+      <div class="why-choose-box">
+        <h3>Why {location.name} Homeowners Choose Deptford Concrete Contractors</h3>
+        <ul>
+          <li><strong>Locally Owned and Operated:</strong> Based in Gloucester County, we understand {location.name}'s unique needs and community character</li>
+          <li><strong>Decades of Combined Experience:</strong> Our team has extensive experience with New Jersey soil and weather conditions, ensuring your concrete withstands local climate challenges</li>
+          <li><strong>Fast, Reliable Service:</strong> Honest pricing and clear communication from initial estimate through project completion</li>
+          <li><strong>Specialized Expertise:</strong> Skilled in stamped, decorative, and structural concrete work, with primary focus on pole barn foundations</li>
+          <li><strong>Fully Licensed and Insured:</strong> Professional coverage for residential and commercial projects throughout {location.name}</li>
+          <li><strong>Pole Barn Foundation Specialists:</strong> Our primary specialty ensures expert installation for post-frame buildings</li>
+        </ul>
+      </div>
+
+      <h3>Understanding {location.name}'s Geography and Development</h3>
+      <p>{location.name} is a growing community that combines university areas, residential neighborhoods, and commercial zones. The presence of Rowan University creates significant demand for both residential and commercial concrete projects. Major routes serving {location.name} include Route 322, Delsea Drive, and Rowan Boulevard, providing excellent accessibility for contractors and residents alike.</p>
+
+      <p>Local landmarks in {location.name} include Rowan University, Glassboro High School, Rowan Boulevard, and the historic Hollybush Mansion. The area experiences {details.trafficPatterns} This traffic pattern requires careful scheduling for concrete deliveries and project work to avoid peak times.</p>
+
+      <h3>Concrete Services in {location.name}</h3>
+      <p>We provide comprehensive concrete services throughout {location.name}, including:</p>
+      <ul>
+        <li><strong>Pole Barn Foundations:</strong> Our primary specialty - expert foundation installation for post-frame buildings in {location.name}</li>
+        <li><strong>Large Commercial Slabs:</strong> Commercial and industrial concrete slab installation for businesses in {location.name}</li>
+        <li><strong>Residential Driveways:</strong> Durable concrete driveways designed for New Jersey's climate</li>
+        <li><strong>Decorative Patios:</strong> Custom concrete patios for outdoor living spaces</li>
+        <li><strong>Stamped Concrete:</strong> Beautiful decorative patterns for patios, driveways, and walkways</li>
+        <li><strong>Walkways and Pathways:</strong> Professional walkway installation connecting different areas of your property</li>
+        <li><strong>Retaining Walls:</strong> Erosion control and landscaping solutions</li>
+        <li><strong>Basement Flooring:</strong> Interior concrete floor installation and repair</li>
+      </ul>
+
+      <div class="location-services-section">
+        <h3>Our Primary Services in {location.name}</h3>
+        <p>We offer specialized {location.name} services for our primary specialties:</p>
+        <ul class="location-services-list">
+          {primaryServices.map(service => (
+            <li><a href={`/locations/${location.slug}/${service.slug}`}>{service.name} in {location.name}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <h3>Weather and Soil Considerations in {location.name}</h3>
+      <p>{details.weatherImpacts} We account for these conditions in every {location.name} project, ensuring durable concrete installations that withstand local climate challenges.</p>
+
+      <p>Soil conditions in {location.name} include {details.soilConditions} Our team conducts thorough site assessments for each {location.name} project to ensure proper foundation design and installation.</p>
+
+      <h3>Neighborhoods We Serve in {location.name}</h3>
+      <p>{details.neighborhoods} We work with homeowners, business owners, and property managers throughout {location.name} to deliver quality concrete solutions.</p>
+
+      <h3>Local Features of {location.name}</h3>
+      <p>{details.localFeatures} This creates diverse concrete contracting opportunities, from residential driveways and patios to commercial slabs and pole barn foundations.</p>
+
+      <p>Contact us today for a free estimate on your pole barn foundation or concrete project in {location.name}, New Jersey.</p>
+    </div>
+  </section>
+
+  <section id="contact-form" class="contact-section">
+    <div class="container">
+      <ContactForm 
+        title={`Get Your Free Estimate in ${location.name}, NJ`}
+        location={location.name}
+        service="pole-barn-foundations"
+      />
+    </div>
+  </section>
 </BaseLayout>
+
 <style>
   .hero { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 3rem 0; text-align: center; }
   .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
@@ -30,6 +118,13 @@ const localSchema = {
   .content-section h3 { font-size: 1.5rem; color: #ff6b35; margin-top: 2rem; margin-bottom: 1rem; }
   .content-section ul { margin-left: 2rem; margin-bottom: 1.5rem; }
   .contact-section { padding: 4rem 0; background: #f8f9fa; }
+  .why-choose-box { background: #fff5f0; padding: 2rem; border-radius: 8px; margin: 2rem 0; border-left: 4px solid #ff6b35; }
+  .why-choose-box h3 { color: #ff6b35; margin-top: 0; }
+  .location-services-section { background: #f8f9fa; padding: 2rem; border-radius: 8px; margin: 2rem 0; }
+  .location-services-list { list-style: none; margin-left: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem; }
+  .location-services-list li { margin-bottom: 0; }
+  .location-services-list a { display: block; padding: 1rem; background: white; border-radius: 4px; text-decoration: none; color: #1a1a1a; font-weight: 600; transition: all 0.3s; border: 2px solid transparent; }
+  .location-services-list a:hover { border-color: #ff6b35; color: #ff6b35; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
   
   @media (max-width: 768px) {
     .hero { padding: 2rem 0; }
@@ -57,54 +152,4 @@ const localSchema = {
     .content-section ul { margin-left: 1.25rem; }
     .contact-section { padding: 2rem 0; }
   }
-  
-  .location-services-section {
-    background: #f8f9fa;
-    padding: 2rem;
-    border-radius: 8px;
-    margin: 2rem 0;
-  }
-  
-  .location-services-list {
-    list-style: none;
-    margin-left: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-  
-  .location-services-list li {
-    margin-bottom: 0;
-  }
-  
-  .location-services-list a {
-    display: block;
-    padding: 1rem;
-    background: white;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #1a1a1a;
-    font-weight: 600;
-    transition: all 0.3s;
-    border: 2px solid transparent;
-  }
-  
-  .location-services-list a:hover {
-    border-color: #ff6b35;
-    color: #ff6b35;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  
-  @media (max-width: 768px) {
-    .location-services-section {
-      padding: 1.5rem;
-    }
-    
-    .location-services-list {
-      grid-template-columns: 1fr;
-    }
-  }
 </style>
-
