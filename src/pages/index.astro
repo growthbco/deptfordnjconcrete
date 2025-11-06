@@ -7,34 +7,13 @@ import SchemaMarkup from '../components/SchemaMarkup.astro';
 import { SITE_CONFIG } from '../config';
 import servicesData from '../content/services.json';
 import locationsData from '../content/locations.json';
+import { generateHomeAndConstructionBusinessSchema } from '../utils/schema';
 
 const primaryServices = servicesData.filter(s => s.primary);
 const otherServices = servicesData.filter(s => !s.primary);
 const allServices = [...primaryServices, ...otherServices];
 
-const localBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: SITE_CONFIG.name,
-  description: SITE_CONFIG.description,
-  areaServed: SITE_CONFIG.serviceAreas.map(city => ({
-    '@type': 'City',
-    name: city,
-    addressRegion: 'NJ'
-  })),
-  serviceType: [
-    'Pole Barn Foundation Installation',
-    'Concrete Slab Installation',
-    'Stamped Concrete Installation',
-    'Commercial Concrete',
-    'Industrial Concrete',
-    'Driveway Installation',
-    'Patio Installation'
-  ],
-  priceRange: '$$',
-  ...(SITE_CONFIG.phone && { telephone: SITE_CONFIG.phone }),
-  ...(SITE_CONFIG.email && { email: SITE_CONFIG.email })
-};
+const localBusinessSchema = generateHomeAndConstructionBusinessSchema();
 
 const faqSchema = {
   '@context': 'https://schema.org',

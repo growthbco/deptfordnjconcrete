@@ -1,20 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_CONFIG } from '../config';
+import { generateHomeAndConstructionBusinessSchema } from '../utils/schema';
 
-const aboutSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: SITE_CONFIG.name,
-  description: SITE_CONFIG.description,
-  areaServed: SITE_CONFIG.serviceAreas.map(city => ({
-    '@type': 'City',
-    name: city,
-    addressRegion: 'NJ'
-  })),
-  ...(SITE_CONFIG.phone && { telephone: SITE_CONFIG.phone }),
-  ...(SITE_CONFIG.email && { email: SITE_CONFIG.email })
-};
+const aboutSchema = generateHomeAndConstructionBusinessSchema();
 ---
 
 <BaseLayout 
