@@ -242,6 +242,8 @@ import { SITE_CONFIG } from '../config';
   <!-- Lightbox Modal -->
   <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
     <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <button class="lightbox-nav lightbox-prev" aria-label="Previous image">‹</button>
+    <button class="lightbox-nav lightbox-next" aria-label="Next image">›</button>
     <div class="lightbox-content">
       <img id="lightbox-image" src="" alt="" />
       <div class="lightbox-caption" id="lightbox-caption"></div>
@@ -250,7 +252,7 @@ import { SITE_CONFIG } from '../config';
 </BaseLayout>
 
 <script>
-  // Lightbox functionality
+  // Lightbox functionality with navigation
   (function() {
     'use strict';
     
@@ -258,14 +260,69 @@ import { SITE_CONFIG } from '../config';
     const lightboxImage = document.getElementById('lightbox-image');
     const lightboxCaption = document.getElementById('lightbox-caption');
     const closeBtn = document.querySelector('.lightbox-close');
+    const prevBtn = document.querySelector('.lightbox-prev');
+    const nextBtn = document.querySelector('.lightbox-next');
     const galleryItems = document.querySelectorAll('.gallery-item');
     
     if (!lightbox || !lightboxImage) return;
     
-    function openLightbox(img, alt, caption) {
-      lightboxImage.src = img.src;
-      lightboxImage.alt = alt || '';
-      lightboxCaption.textContent = caption || alt || '';
+    // Build array of all gallery images with their data
+    const galleryImages = [];
+    galleryItems.forEach((item, index) => {
+      const img = item.querySelector('img');
+      if (img) {
+        const caption = item.querySelector('.gallery-overlay p')?.textContent || img.alt;
+        const needsRotation = img.classList.contains('rotate-ccw');
+        galleryImages.push({
+          src: img.src,
+          alt: img.alt,
+          caption: caption,
+          needsRotation: needsRotation,
+          index: index
+        });
+      }
+    });
+    
+    let currentIndex = 0;
+    
+    function updateLightboxImage(index) {
+      if (index < 0 || index >= galleryImages.length) return;
+      
+      currentIndex = index;
+      const imageData = galleryImages[currentIndex];
+      
+      lightboxImage.src = imageData.src;
+      lightboxImage.alt = imageData.alt;
+      lightboxCaption.textContent = imageData.caption;
+      
+      // Apply rotation if needed
+      if (imageData.needsRotation) {
+        lightboxImage.classList.add('rotate-ccw');
+      } else {
+        lightboxImage.classList.remove('rotate-ccw');
+      }
+      
+      // Update button visibility
+      if (prevBtn) {
+        if (currentIndex === 0) {
+          prevBtn.style.display = 'none';
+        } else {
+          prevBtn.style.display = 'flex';
+        }
+      }
+      if (nextBtn) {
+        if (currentIndex === galleryImages.length - 1) {
+          nextBtn.style.display = 'none';
+        } else {
+          nextBtn.style.display = 'flex';
+        }
+      }
+    }
+    
+    function openLightbox(index) {
+      if (index < 0 || index >= galleryImages.length) return;
+      
+      updateLightboxImage(index);
       lightbox.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -275,19 +332,45 @@ import { SITE_CONFIG } from '../config';
       document.body.style.overflow = '';
     }
     
+    function showNext() {
+      if (currentIndex < galleryImages.length - 1) {
+        updateLightboxImage(currentIndex + 1);
+      }
+    }
+    
+    function showPrev() {
+      if (currentIndex > 0) {
+        updateLightboxImage(currentIndex - 1);
+      }
+    }
+    
     // Open lightbox on gallery item click
-    galleryItems.forEach(item => {
+    galleryItems.forEach((item, index) => {
       const img = item.querySelector('img');
-      const caption = item.querySelector('.gallery-overlay p')?.textContent || img.alt;
       
       if (img) {
         item.style.cursor = 'pointer';
         item.addEventListener('click', (e) => {
           e.preventDefault();
-          openLightbox(img, img.alt, caption);
+          openLightbox(index);
         }, { passive: true });
       }
     });
+    
+    // Navigation buttons
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showNext();
+      }, { passive: true });
+    }
+    
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showPrev();
+      }, { passive: true });
+    }
     
     // Close lightbox
     if (closeBtn) {
@@ -301,10 +384,16 @@ import { SITE_CONFIG } from '../config';
       }
     }, { passive: true });
     
-    // Close on ESC key
+    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      if (!lightbox.classList.contains('active')) return;
+      
+      if (e.key === 'Escape') {
         closeLightbox();
+      } else if (e.key === 'ArrowRight') {
+        showNext();
+      } else if (e.key === 'ArrowLeft') {
+        showPrev();
       }
     }, { passive: true });
   })();
@@ -615,6 +704,45 @@ import { SITE_CONFIG } from '../config';
     transform: scale(1.1);
   }
 
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    font-size: 3rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10001;
+    line-height: 1;
+    padding: 0;
+    min-width: 60px;
+    min-height: 60px;
+    font-weight: 300;
+    user-select: none;
+  }
+
+  .lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .lightbox-prev {
+    left: 2rem;
+  }
+
+  .lightbox-next {
+    right: 2rem;
+  }
+
   .lightbox-content {
     position: relative;
     max-width: 90vw;
@@ -631,6 +759,11 @@ import { SITE_CONFIG } from '../config';
     object-fit: contain;
     border-radius: 8px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+  }
+
+  .lightbox-content img.rotate-ccw {
+    transform: rotate(-90deg);
   }
 
   .lightbox-caption {
@@ -667,6 +800,22 @@ import { SITE_CONFIG } from '../config';
       font-size: 1rem;
       margin-top: 1rem;
       padding: 0 1rem;
+    }
+
+    .lightbox-nav {
+      width: 50px;
+      height: 50px;
+      font-size: 2.5rem;
+      min-width: 50px;
+      min-height: 50px;
+    }
+
+    .lightbox-prev {
+      left: 1rem;
+    }
+
+    .lightbox-next {
+      right: 1rem;
     }
   }
 </style>
