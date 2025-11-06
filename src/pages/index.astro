@@ -70,10 +70,21 @@ const faqSchema = {
 >
   <SchemaMarkup type="FAQPage" data={faqSchema} />
   
+  <!-- Preload hero image for faster LCP -->
+  <link rel="preload" as="image" href="/images/polebarns/IMG_9021.webp" fetchpriority="high" />
+  
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-background">
-      <img src="/images/polebarns/IMG_9021.webp" alt="Pole barn foundation installation in Deptford, New Jersey" class="hero-image" width="1920" height="1080" />
+      <img 
+        src="/images/polebarns/IMG_9021.webp" 
+        alt="Pole barn foundation installation in Deptford, New Jersey" 
+        class="hero-image" 
+        width="1920" 
+        height="1080"
+        fetchpriority="high"
+        decoding="async"
+      />
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-container">
@@ -419,6 +430,10 @@ const faqSchema = {
     display: block;
   }
   
+  .hero-background {
+    aspect-ratio: 16 / 9;
+  }
+  
   .hero-overlay {
     position: absolute;
     top: 0;
@@ -467,6 +482,10 @@ const faqSchema = {
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .cta-primary {

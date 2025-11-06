@@ -14,8 +14,8 @@ a{color:#ff6b35}
 h1,h2,h3,h4,h5,h6{line-height:1.2;margin-bottom:1rem}
 p{margin-bottom:1rem}
 img{max-width:100%;height:auto;display:block}
-button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-a{-webkit-tap-highlight-color:rgba(255,107,53,.2)}
+button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;min-height:44px;min-width:44px}
+a{-webkit-tap-highlight-color:rgba(255,107,53,.2);min-height:44px;display:inline-flex;align-items:center}
 
 /* Header - Always visible above fold */
 .header{background:#1a1a1a;color:#fff;padding:.75rem 0;position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,.1)}
@@ -28,7 +28,7 @@ a{-webkit-tap-highlight-color:rgba(255,107,53,.2)}
 .nav-menu{display:flex;list-style:none;gap:1.5rem;margin:0;padding:0;flex:1;justify-content:center}
 .nav-menu a{color:#fff;text-decoration:none;font-weight:500;transition:color .3s;padding:.5rem 0;display:block;font-size:.95rem}
 .nav-menu a:hover{color:#ff6b35}
-.cta-button{background:#ff6b35;color:#fff;padding:.625rem 1.25rem;border-radius:4px;text-decoration:none;font-weight:600;transition:background .3s;white-space:nowrap;font-size:.95rem;flex-shrink:0;display:block}
+.cta-button{background:#ff6b35;color:#fff;padding:.875rem 1.5rem;border-radius:4px;text-decoration:none;font-weight:600;transition:background .3s;white-space:nowrap;font-size:.95rem;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px}
 .cta-button:hover{background:#e55a2b}
 
 /* Hero Section - Above fold on homepage */
@@ -40,7 +40,7 @@ a{-webkit-tap-highlight-color:rgba(255,107,53,.2)}
 .hero h1{font-size:1.5rem;margin-bottom:1rem;line-height:1.3;padding:0 .5rem}
 .hero-subtitle{font-size:.95rem;margin-bottom:1.5rem;padding:0 .5rem;color:#ccc}
 .hero-cta{display:flex;flex-direction:column;gap:.75rem;padding:0 .5rem}
-.cta-primary,.cta-secondary{padding:.875rem 1.5rem;font-size:.95rem;width:100%;text-align:center;border-radius:4px;text-decoration:none;font-weight:600;transition:all .3s}
+.cta-primary,.cta-secondary{padding:.875rem 1.5rem;font-size:.95rem;width:100%;text-align:center;border-radius:4px;text-decoration:none;font-weight:600;transition:all .3s;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
 .cta-primary{background:#ff6b35;color:#fff}
 .cta-primary:hover{background:#e55a2b}
 .cta-secondary{background:transparent;color:#fff;border:2px solid #fff}

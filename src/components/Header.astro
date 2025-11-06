@@ -35,31 +35,47 @@ const logoPath = undefined; // Change to '/images/logo.png' when you have a logo
   </nav>
 </header>
 
-<script>
-  // Mobile menu toggle
-  document.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.querySelector('.mobile-menu-toggle');
-    const menu = document.querySelector('.nav-menu');
+<script is:inline>
+  // Mobile menu toggle - optimized for INP
+  (function() {
+    'use strict';
+    let menuInitialized = false;
     
-    if (toggle && menu) {
-      toggle.addEventListener('click', () => {
-        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', !isExpanded);
-        menu.classList.toggle('active');
-        toggle.classList.toggle('active');
-      });
+    function initMenu() {
+      if (menuInitialized) return;
+      menuInitialized = true;
       
-      // Close menu when clicking on a link
-      const menuLinks = menu.querySelectorAll('a');
-      menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          menu.classList.remove('active');
-          toggle.classList.remove('active');
-          toggle.setAttribute('aria-expanded', 'false');
-        });
-      });
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const menu = document.querySelector('.nav-menu');
+      
+      if (toggle && menu) {
+        // Use passive event listeners for better performance
+        toggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', !isExpanded);
+          menu.classList.toggle('active');
+          toggle.classList.toggle('active');
+        }, { passive: false });
+        
+        // Close menu when clicking on a link - use event delegation
+        menu.addEventListener('click', function(e) {
+          if (e.target.tagName === 'A') {
+            menu.classList.remove('active');
+            toggle.classList.remove('active');
+            toggle.setAttribute('aria-expanded', 'false');
+          }
+        }, { passive: true });
+      }
     }
-  });
+    
+    // Initialize immediately if DOM is ready, otherwise wait
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMenu, { once: true });
+    } else {
+      initMenu();
+    }
+  })();
 </script>
 
 <style>
@@ -107,8 +123,12 @@ const logoPath = undefined; // Change to '/images/logo.png' when you have a logo
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.75rem;
     z-index: 1001;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
   }
   
   .mobile-menu-toggle span {
@@ -150,7 +170,7 @@ const logoPath = undefined; // Change to '/images/logo.png' when you have a logo
   .cta-button {
     background: #ff6b35;
     color: white;
-    padding: 0.625rem 1.25rem;
+    padding: 0.875rem 1.5rem;
     border-radius: 4px;
     text-decoration: none;
     font-weight: 600;
@@ -158,7 +178,11 @@ const logoPath = undefined; // Change to '/images/logo.png' when you have a logo
     white-space: nowrap;
     font-size: 0.95rem;
     flex-shrink: 0;
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    min-width: 44px;
   }
   
   .cta-button:hover {
@@ -217,6 +241,9 @@ const logoPath = undefined; // Change to '/images/logo.png' when you have a logo
       padding: 1rem 1.5rem;
       font-size: 1rem;
       display: block;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
     }
     
     .cta-menu-item {
