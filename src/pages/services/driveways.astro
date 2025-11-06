@@ -2,11 +2,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import { SITE_CONFIG } from '../../config';
+import { generateServiceSchema } from '../../utils/schema';
+
+const serviceSchema = generateServiceSchema('driveways', 'Professional concrete driveway installation and repair services in Deptford, NJ. Residential and commercial driveways with free estimates.');
 ---
 
 <BaseLayout 
   title="Concrete Driveway Installation & Repair in Deptford, NJ"
   description="Professional concrete driveway installation and repair services in Deptford, NJ. Residential and commercial driveways with free estimates."
+  schema={serviceSchema}
 >
   <section class="hero">
     <div class="container">

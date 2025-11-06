@@ -2,11 +2,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import { SITE_CONFIG } from '../../config';
+import { generateServiceSchema } from '../../utils/schema';
+
+const serviceSchema = generateServiceSchema('retaining-walls', 'Professional concrete retaining wall construction in Deptford, NJ. Erosion control and landscaping solutions with free estimates.');
 ---
 
 <BaseLayout 
   title="Concrete Retaining Wall Installation in Deptford, NJ"
   description="Professional concrete retaining wall construction in Deptford, NJ. Erosion control and landscaping solutions with free estimates."
+  schema={serviceSchema}
 >
   <section class="hero">
     <div class="container">

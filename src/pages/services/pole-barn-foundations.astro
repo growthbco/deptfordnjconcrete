@@ -3,22 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import SchemaMarkup from '../../components/SchemaMarkup.astro';
 import { SITE_CONFIG } from '../../config';
+import { generateServiceSchema } from '../../utils/schema';
 
-const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  serviceType: 'Pole Barn Foundation Installation',
-  provider: {
-    '@type': 'LocalBusiness',
-    name: SITE_CONFIG.name
-  },
-  areaServed: SITE_CONFIG.serviceAreas.map(city => ({
-    '@type': 'City',
-    name: city,
-    addressRegion: 'NJ'
-  })),
-  description: 'Professional pole barn foundation installation and repair services in Deptford, NJ and surrounding areas.'
-};
+const serviceSchema = generateServiceSchema('pole-barn-foundations', 'Professional pole barn foundation installation and repair services in Deptford, NJ and surrounding areas. Expert post-frame building foundations with free estimates.');
 
 const faqSchema = {
   '@context': 'https://schema.org',

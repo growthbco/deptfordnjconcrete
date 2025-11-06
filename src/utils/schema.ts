@@ -338,6 +338,83 @@ export const SERVICE_CATALOG = [
 ];
 
 /**
+ * Service mapping for individual service pages
+ */
+const SERVICE_MAP: Record<string, any> = {
+  'pole-barn-foundations': SERVICE_CATALOG.find(s => s.serviceType === 'Pole Barn Foundation Installation'),
+  'concrete-slabs': SERVICE_CATALOG.find(s => s.serviceType === 'Concrete Slab Installation'),
+  'driveways': SERVICE_CATALOG.find(s => s.serviceType === 'Concrete Driveway Installation'),
+  'patios': SERVICE_CATALOG.find(s => s.serviceType === 'Concrete Patio Installation'),
+  'stamped-concrete': SERVICE_CATALOG.find(s => s.serviceType === 'Stamped Concrete Installation'),
+};
+
+/**
+ * Generate Service schema for individual service pages
+ * References the main HomeAndConstructionBusiness organization
+ */
+export function generateServiceSchema(serviceSlug: string, customDescription?: string) {
+  const serviceData = SERVICE_MAP[serviceSlug];
+  
+  if (!serviceData) {
+    // Fallback for services not in catalog
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      serviceType: 'Concrete Service',
+      name: 'Concrete Service',
+      description: customDescription || 'Professional concrete services in Deptford, NJ and surrounding areas.',
+      provider: {
+        '@type': 'HomeAndConstructionBusiness',
+        additionalType: 'https://schema.org/ConcreteContractor',
+        name: SITE_CONFIG.name,
+        url: SITE_CONFIG.url,
+        telephone: SITE_CONFIG.phone,
+        email: SITE_CONFIG.email
+      },
+      areaServed: [
+        {
+          '@type': 'City',
+          name: 'Deptford',
+          addressRegion: 'NJ',
+          addressCountry: 'US'
+        },
+        {
+          '@type': 'City',
+          name: 'Gloucester County',
+          addressRegion: 'NJ',
+          addressCountry: 'US'
+        },
+        {
+          '@type': 'State',
+          name: 'New Jersey',
+          addressRegion: 'NJ',
+          addressCountry: 'US'
+        }
+      ]
+    };
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: serviceData.serviceType,
+    name: serviceData.name,
+    description: customDescription || serviceData.description,
+    provider: {
+      '@type': 'HomeAndConstructionBusiness',
+      additionalType: 'https://schema.org/ConcreteContractor',
+      name: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
+      telephone: SITE_CONFIG.phone,
+      email: SITE_CONFIG.email,
+      priceRange: '$$'
+    },
+    areaServed: serviceData.areaServed,
+    offers: serviceData.offers
+  };
+}
+
+/**
  * Generate HomeAndConstructionBusiness schema with detailed service catalog
  */
 export function generateHomeAndConstructionBusinessSchema() {

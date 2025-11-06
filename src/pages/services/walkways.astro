@@ -2,11 +2,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import { SITE_CONFIG } from '../../config';
+import { generateServiceSchema } from '../../utils/schema';
+
+const serviceSchema = generateServiceSchema('walkways', 'Professional concrete walkway and pathway installation in Deptford, NJ. Durable walkways with free estimates.');
 ---
 
 <BaseLayout 
   title="Concrete Walkway Installation in Deptford, NJ"
   description="Professional concrete walkway and pathway installation in Deptford, NJ. Durable walkways with free estimates."
+  schema={serviceSchema}
 >
   <section class="hero">
     <div class="container">

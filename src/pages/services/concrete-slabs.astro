@@ -3,21 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import SchemaMarkup from '../../components/SchemaMarkup.astro';
 import { SITE_CONFIG } from '../../config';
+import { generateServiceSchema } from '../../utils/schema';
 
-const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  serviceType: 'Large Concrete Slab Installation',
-  provider: {
-    '@type': 'LocalBusiness',
-    name: SITE_CONFIG.name
-  },
-  areaServed: SITE_CONFIG.serviceAreas.map(city => ({
-    '@type': 'City',
-    name: city,
-    addressRegion: 'NJ'
-  }))
-};
+const serviceSchema = generateServiceSchema('concrete-slabs', 'Large commercial and industrial concrete slab installation in Deptford, NJ. Professional slab contractors for warehouses, manufacturing facilities, and commercial buildings. Free estimates.');
 ---
 
 <BaseLayout 

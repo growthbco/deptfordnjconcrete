@@ -3,21 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import SchemaMarkup from '../../components/SchemaMarkup.astro';
 import { SITE_CONFIG } from '../../config';
+import { generateServiceSchema } from '../../utils/schema';
 
-const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  serviceType: 'Stamped Concrete Installation',
-  provider: {
-    '@type': 'LocalBusiness',
-    name: SITE_CONFIG.name
-  },
-  areaServed: SITE_CONFIG.serviceAreas.map(city => ({
-    '@type': 'City',
-    name: city,
-    addressRegion: 'NJ'
-  }))
-};
+const serviceSchema = generateServiceSchema('stamped-concrete', 'Decorative stamped concrete installation for patios, driveways, pool decks, and walkways in Deptford, NJ. Beautiful patterns and textures at a fraction of natural stone cost. Free estimates.');
 
 // Project images - using JPEG files for better web compatibility
 const projectImages = [
