@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
 import { generateServiceSchema } from '../../utils/schema';
 
@@ -34,10 +36,32 @@ const serviceSchema = generateServiceSchema('driveways', 'Professional concrete 
         <li>Driveway expansion</li>
       </ul>
 
+      <h3>Driveway Installation & Repair</h3>
+      <p>Our professional driveway services include complete installation, repair, resurfacing, and replacement. We use high-quality concrete mixes designed for New Jersey's climate, ensuring your driveway withstands freeze-thaw cycles and heavy use.</p>
+
+      <h3>Driveway Styles & Options</h3>
+      <ul>
+        <li><strong>Standard Concrete Driveways:</strong> Durable, smooth finish perfect for most homes</li>
+        <li><strong>Stamped Concrete Driveways:</strong> Decorative patterns and textures - <a href="/services/stamped-concrete">Learn more about stamped concrete →</a></li>
+        <li><strong>Colored Concrete:</strong> Custom colors to match your home's aesthetic</li>
+        <li><strong>Reinforced Driveways:</strong> Extra durability with rebar reinforcement</li>
+      </ul>
+
+      <h3>Related Services</h3>
+      <p>Many homeowners pair driveway installation with other concrete services:</p>
+      <ul>
+        <li><a href="/services/walkways">Walkway Installation</a> - Connect your driveway to your front door</li>
+        <li><a href="/services/patios">Patio Installation</a> - Create outdoor living spaces</li>
+        <li><a href="/services/concrete-slabs">Concrete Slab Services</a> - For parking pads or additional concrete surfaces</li>
+      </ul>
+
       <h3>Areas We Serve</h3>
-      <p>We serve {SITE_CONFIG.serviceAreas.join(', ')} and surrounding areas.</p>
+      <p>We provide driveway installation and repair services throughout <a href="/locations/deptford-nj">Deptford</a>, <a href="/locations/west-deptford-nj">West Deptford</a>, <a href="/locations/woodbury-nj">Woodbury</a>, <a href="/locations/glassboro-nj">Glassboro</a>, and <a href="/locations">all surrounding Gloucester County communities</a>.</p>
     </div>
   </section>
+
+  <RelatedServices currentService="driveways" />
+  <ServiceAreasLink serviceName="Driveways" />
 
   <section id="contact-form" class="contact-section">
     <div class="container">

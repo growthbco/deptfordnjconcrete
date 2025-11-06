@@ -1,0 +1,172 @@
+---
+import servicesData from '../content/services.json';
+
+interface Props {
+  currentService: string;
+  title?: string;
+}
+
+const { currentService, title = "Related Services" } = Astro.props;
+const allServices = servicesData.filter(s => s.slug !== currentService);
+const primaryServices = allServices.filter(s => s.primary);
+const otherServices = allServices.filter(s => !s.primary);
+---
+
+<section class="related-services-section">
+  <div class="container">
+    <h2>{title}</h2>
+    <p class="section-intro">We also provide these related concrete services throughout our service area:</p>
+    
+    {primaryServices.length > 0 && (
+      <div class="related-services-primary">
+        <h3>Primary Services</h3>
+        <ul class="related-services-list">
+          {primaryServices.map(service => (
+            <li>
+              <a href={`/services/${service.slug}`} class="service-link">
+                {service.name} in Deptford, NJ
+              </a>
+              <span class="service-description"> - {service.description}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+    
+    {otherServices.length > 0 && (
+      <div class="related-services-other">
+        <h3>Additional Services</h3>
+        <ul class="related-services-list">
+          {otherServices.map(service => (
+            <li>
+              <a href={`/services/${service.slug}`} class="service-link">
+                {service.name} in Deptford, NJ
+              </a>
+              <span class="service-description"> - {service.description}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+    
+    <p class="view-all">
+      <a href="/services" class="view-all-link">View All Concrete Services →</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .related-services-section {
+    padding: 3rem 0;
+    background: #f8f9fa;
+    margin: 2rem 0;
+  }
+
+  .related-services-section h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .related-services-section h3 {
+    font-size: 1.5rem;
+    color: #ff6b35;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-intro {
+    text-align: center;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+  }
+
+  .related-services-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .related-services-list li {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 8px;
+    border-left: 3px solid #ff6b35;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .related-services-list li:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  .service-link {
+    color: #ff6b35;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+  }
+
+  .service-link:hover {
+    color: #e55a2b;
+    text-decoration: underline;
+  }
+
+  .service-description {
+    color: #666;
+    font-size: 0.95rem;
+    display: block;
+    margin-top: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .view-all {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .view-all-link {
+    color: #ff6b35;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+  }
+
+  .view-all-link:hover {
+    color: #e55a2b;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .related-services-section {
+      padding: 2rem 0;
+    }
+
+    .related-services-section h2 {
+      font-size: 1.75rem;
+    }
+
+    .related-services-section h3 {
+      font-size: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .related-services-list {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .related-services-list li {
+      padding: 1rem;
+    }
+  }
+</style>
+

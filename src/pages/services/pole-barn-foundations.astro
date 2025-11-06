@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
 import { generateServiceSchema } from '../../utils/schema';
 
@@ -174,7 +176,7 @@ const faqSchema = {
       <p>Typical costs range from $4-$8 per square foot for pole barn foundations. We provide free, detailed estimates for all projects. Contact us today for an accurate quote for your pole barn foundation project.</p>
 
       <h3>Areas We Serve</h3>
-      <p>We provide pole barn foundation installation services throughout {SITE_CONFIG.serviceAreas.join(', ')} and surrounding Gloucester County communities. Whether you're building a new pole barn in Deptford or need foundation repairs in West Deptford, we're here to help.</p>
+      <p>We provide pole barn foundation installation services throughout {SITE_CONFIG.serviceAreas.join(', ')} and surrounding Gloucester County communities. Whether you're building a new pole barn in <a href="/locations/deptford-nj">Deptford</a> or need foundation repairs in <a href="/locations/west-deptford-nj">West Deptford</a>, we're here to help. We also serve <a href="/locations/woodbury-nj">Woodbury</a>, <a href="/locations/glassboro-nj">Glassboro</a>, <a href="/locations/sewell-nj">Sewell</a>, and <a href="/locations">all surrounding communities</a>.</p>
 
       <h3>Why Pole Barn Foundations Matter</h3>
       <p>A properly installed pole barn foundation is critical for:</p>
@@ -187,8 +189,21 @@ const faqSchema = {
 
       <h3>Contact Us for Your Pole Barn Foundation Project</h3>
       <p>Ready to start your pole barn foundation project? Contact Deptford Concrete Contractors today for a free, no-obligation estimate. We'll assess your needs, provide expert recommendations, and deliver a foundation that supports your pole barn for years to come.</p>
+
+      <div class="related-content">
+        <h3>Related Services</h3>
+        <p>If you're building a pole barn, you may also need:</p>
+        <ul>
+          <li><a href="/services/concrete-slabs">Concrete Slab Installation</a> - For pole barn floors requiring smooth interior surfaces</li>
+          <li><a href="/services/driveways">Driveway Installation</a> - Access driveways for your pole barn property</li>
+          <li><a href="/services/patios">Patio Installation</a> - Outdoor spaces adjacent to your pole barn</li>
+        </ul>
+      </div>
     </div>
   </section>
+
+  <RelatedServices currentService="pole-barn-foundations" />
+  <ServiceAreasLink serviceName="Pole Barn Foundations" />
 
   <section id="contact-form" class="contact-section">
     <div class="container">

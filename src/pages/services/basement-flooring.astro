@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
 import { generateServiceSchema } from '../../utils/schema';
 
@@ -34,10 +36,20 @@ const serviceSchema = generateServiceSchema('basement-flooring', 'Professional b
         <li>Basement floor refinishing</li>
       </ul>
 
+      <h3>Related Services</h3>
+      <p>Basement flooring often pairs with other concrete services:</p>
+      <ul>
+        <li><a href="/services/concrete-slabs">Concrete Slabs</a> - Similar slab installation expertise</li>
+        <li><a href="/services/driveways">Driveway Installation</a> - Complete your property's concrete surfaces</li>
+      </ul>
+
       <h3>Areas We Serve</h3>
-      <p>We serve {SITE_CONFIG.serviceAreas.join(', ')} and surrounding areas.</p>
+      <p>We provide basement flooring services throughout <a href="/locations/deptford-nj">Deptford</a>, <a href="/locations/west-deptford-nj">West Deptford</a>, <a href="/locations/woodbury-nj">Woodbury</a>, <a href="/locations/glassboro-nj">Glassboro</a>, and <a href="/locations">all surrounding Gloucester County communities</a>.</p>
     </div>
   </section>
+
+  <RelatedServices currentService="basement-flooring" />
+  <ServiceAreasLink serviceName="Basement Flooring" />
 
   <section id="contact-form" class="contact-section">
     <div class="container">

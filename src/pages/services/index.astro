@@ -43,6 +43,31 @@ const allServices = [...primaryServices, ...otherServices];
       </div>
     </div>
   </section>
+
+  <section class="locations-link-section">
+    <div class="container">
+      <h2>Services in Your Area</h2>
+      <p class="section-intro">We provide all these concrete services throughout Gloucester County. Find services in your area:</p>
+      <div class="locations-grid">
+        <a href="/locations/deptford-nj" class="location-link-card">
+          <h3>Deptford, NJ</h3>
+          <p>View all services in Deptford →</p>
+        </a>
+        <a href="/locations/west-deptford-nj" class="location-link-card">
+          <h3>West Deptford, NJ</h3>
+          <p>View all services in West Deptford →</p>
+        </a>
+        <a href="/locations/woodbury-nj" class="location-link-card">
+          <h3>Woodbury, NJ</h3>
+          <p>View all services in Woodbury →</p>
+        </a>
+        <a href="/locations" class="location-link-card view-all">
+          <h3>All Service Areas</h3>
+          <p>View all locations we serve →</p>
+        </a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
@@ -96,6 +121,70 @@ const allServices = [...primaryServices, ...otherServices];
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+  }
+
+  .locations-link-section {
+    padding: 4rem 0;
+    background: white;
+  }
+
+  .locations-link-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .location-link-card {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #1a1a1a;
+    border-top: 3px solid #ff6b35;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: block;
+  }
+
+  .location-link-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+
+  .location-link-card h3 {
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+  }
+
+  .location-link-card p {
+    color: #ff6b35;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .location-link-card.view-all {
+    background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
+    color: white;
+  }
+
+  .location-link-card.view-all h3 {
+    color: white;
+  }
+
+  .location-link-card.view-all p {
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .locations-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 

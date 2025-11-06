@@ -30,9 +30,22 @@ import locationsData from '../../content/locations.json';
   <section class="content-section">
     <div class="container">
       <h2>Our Service Area</h2>
-      <p>Deptford Concrete Contractors specializes in pole barn foundation installation and large-scale concrete projects throughout Gloucester County, New Jersey. Whether you need a pole barn foundation in Deptford, a large commercial slab in West Deptford, or concrete services in Woodbury, Glassboro, or any of our other service areas, we're here to help.</p>
+      <p>Deptford Concrete Contractors specializes in pole barn foundation installation and large-scale concrete projects throughout Gloucester County, New Jersey. Whether you need a <a href="/services/pole-barn-foundations">pole barn foundation in Deptford</a>, a <a href="/services/concrete-slabs">large commercial slab in West Deptford</a>, or <a href="/services">concrete services in Woodbury, Glassboro</a>, or any of our other service areas, we're here to help.</p>
       
-      <p>Our primary focus is pole barn foundations, but we also provide comprehensive concrete services including driveways, patios, walkways, retaining walls, and basement flooring throughout our service area.</p>
+      <p>Our primary focus is <a href="/services/pole-barn-foundations">pole barn foundations</a>, but we also provide comprehensive concrete services including <a href="/services/driveways">driveways</a>, <a href="/services/patios">patios</a>, <a href="/services/walkways">walkways</a>, <a href="/services/retaining-walls">retaining walls</a>, and <a href="/services/basement-flooring">basement flooring</a> throughout our service area.</p>
+
+      <h3>Our Services</h3>
+      <p>We provide a full range of concrete services in all our service areas:</p>
+      <ul class="services-list">
+        <li><a href="/services/pole-barn-foundations">Pole Barn Foundations</a> - Our primary specialty</li>
+        <li><a href="/services/concrete-slabs">Concrete Slabs</a> - Large commercial and industrial slabs</li>
+        <li><a href="/services/driveways">Driveways</a> - Residential and commercial driveways</li>
+        <li><a href="/services/patios">Patios</a> - Custom concrete patios</li>
+        <li><a href="/services/stamped-concrete">Stamped Concrete</a> - Decorative concrete surfaces</li>
+        <li><a href="/services/walkways">Walkways</a> - Pathways and sidewalks</li>
+        <li><a href="/services/retaining-walls">Retaining Walls</a> - Erosion control walls</li>
+        <li><a href="/services/basement-flooring">Basement Flooring</a> - Interior concrete floors</li>
+      </ul>
       
       <p>Contact us today for a free estimate on your concrete project in any of these communities.</p>
     </div>
@@ -92,6 +105,50 @@ import locationsData from '../../content/locations.json';
   .content-section h2 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
+  }
+
+  .content-section h3 {
+    font-size: 1.5rem;
+    color: #ff6b35;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .content-section a {
+    color: #ff6b35;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+
+  .content-section a:hover {
+    color: #e55a2b;
+    text-decoration: underline;
+  }
+
+  .services-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .services-list li {
+    padding: 0.75rem;
+    background: white;
+    border-left: 3px solid #ff6b35;
+    border-radius: 4px;
+  }
+
+  .services-list a {
+    color: #1a1a1a;
+    font-weight: 600;
+  }
+
+  .services-list a:hover {
+    color: #ff6b35;
   }
   
   @media (max-width: 768px) {

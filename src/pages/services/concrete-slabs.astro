@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
 import { generateServiceSchema } from '../../utils/schema';
 
@@ -46,12 +48,23 @@ const serviceSchema = generateServiceSchema('concrete-slabs', 'Large commercial 
         <li>Proper curing for maximum strength</li>
       </ol>
 
+      <h3>Related Services</h3>
+      <p>Our concrete slab expertise extends to related services:</p>
+      <ul>
+        <li><a href="/services/pole-barn-foundations">Pole Barn Foundations</a> - Foundation slabs for post-frame buildings</li>
+        <li><a href="/services/driveways">Driveway Installation</a> - Residential and commercial driveways</li>
+        <li><a href="/services/basement-flooring">Basement Flooring</a> - Interior concrete floors</li>
+      </ul>
+
       <h3>Areas We Serve</h3>
-      <p>We provide large concrete slab installation services throughout {SITE_CONFIG.serviceAreas.join(', ')} and surrounding areas.</p>
+      <p>We provide large concrete slab installation services throughout <a href="/locations/deptford-nj">Deptford</a>, <a href="/locations/west-deptford-nj">West Deptford</a>, <a href="/locations/woodbury-nj">Woodbury</a>, <a href="/locations/glassboro-nj">Glassboro</a>, and <a href="/locations">all surrounding Gloucester County communities</a>.</p>
 
       <p>Contact us today for a free estimate on your commercial or industrial concrete slab project.</p>
     </div>
   </section>
+
+  <RelatedServices currentService="concrete-slabs" />
+  <ServiceAreasLink serviceName="Concrete Slabs" />
 
   <section id="contact-form" class="contact-section">
     <div class="container">

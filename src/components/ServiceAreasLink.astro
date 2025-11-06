@@ -1,0 +1,235 @@
+---
+import locationsData from '../content/locations.json';
+
+interface Props {
+  currentLocation?: string;
+  serviceName?: string;
+  title?: string;
+}
+
+const { currentLocation, serviceName, title = "Service Areas" } = Astro.props;
+const allLocations = currentLocation 
+  ? locationsData.filter(l => l.slug !== currentLocation)
+  : locationsData;
+const primaryLocations = allLocations.slice(0, 6); // Top 6 locations
+const otherLocations = allLocations.slice(6);
+---
+
+<section class="service-areas-section">
+  <div class="container">
+    <h2>{title}</h2>
+    <p class="section-intro">
+      {serviceName 
+        ? `We provide ${serviceName.toLowerCase()} services throughout Gloucester County and surrounding New Jersey communities.`
+        : "We provide professional concrete services throughout Gloucester County and surrounding New Jersey communities."
+      }
+    </p>
+    
+    <div class="locations-grid">
+      {primaryLocations.map(location => (
+        <div class="location-item">
+          <h3>
+            {serviceName 
+              ? <a href={`/locations/${location.slug}/${serviceName.toLowerCase().replace(/\s+/g, '-')}`} class="location-service-link">
+                  {serviceName} in {location.name}, NJ
+                </a>
+              : <a href={`/locations/${location.slug}`} class="location-link">
+                  {location.name}, New Jersey
+                </a>
+            }
+          </h3>
+          <p class="location-link-alt">
+            {serviceName 
+              ? <a href={`/locations/${location.slug}`}>View all services in {location.name} →</a>
+              : <a href={`/locations/${location.slug}`}>View {location.name} services →</a>
+            }
+          </p>
+        </div>
+      ))}
+    </div>
+
+    {otherLocations.length > 0 && (
+      <div class="other-locations">
+        <h3>Additional Service Areas</h3>
+        <ul class="locations-list">
+          {otherLocations.map(location => (
+            <li>
+              {serviceName 
+                ? <a href={`/locations/${location.slug}`}>{location.name}, NJ</a>
+                : <a href={`/locations/${location.slug}`}>{location.name}, NJ</a>
+              }
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+    
+    <p class="view-all">
+      <a href="/locations" class="view-all-link">View All Service Areas →</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .service-areas-section {
+    padding: 3rem 0;
+    background: white;
+    margin: 2rem 0;
+  }
+
+  .service-areas-section h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .service-areas-section h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .section-intro {
+    text-align: center;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+  }
+
+  .locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .location-item {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-top: 3px solid #ff6b35;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .location-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .location-link,
+  .location-service-link {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+
+  .location-link:hover,
+  .location-service-link:hover {
+    color: #ff6b35;
+  }
+
+  .location-link-alt {
+    margin: 0;
+  }
+
+  .location-link-alt a {
+    color: #ff6b35;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+  }
+
+  .location-link-alt a:hover {
+    color: #e55a2b;
+    text-decoration: underline;
+  }
+
+  .other-locations {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .other-locations h3 {
+    font-size: 1.5rem;
+    color: #ff6b35;
+    margin-bottom: 1rem;
+  }
+
+  .locations-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .locations-list li {
+    margin: 0;
+  }
+
+  .locations-list a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s;
+    display: block;
+    padding: 0.5rem;
+    border-radius: 4px;
+  }
+
+  .locations-list a:hover {
+    color: #ff6b35;
+    background: #f8f9fa;
+  }
+
+  .view-all {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .view-all-link {
+    color: #ff6b35;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+  }
+
+  .view-all-link:hover {
+    color: #e55a2b;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .service-areas-section {
+      padding: 2rem 0;
+    }
+
+    .service-areas-section h2 {
+      font-size: 1.75rem;
+    }
+
+    .locations-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .location-item {
+      padding: 1.25rem;
+    }
+
+    .locations-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .locations-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+

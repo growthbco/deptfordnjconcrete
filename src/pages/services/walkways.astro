@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
 import { generateServiceSchema } from '../../utils/schema';
 
@@ -34,10 +36,21 @@ const serviceSchema = generateServiceSchema('walkways', 'Professional concrete w
         <li>Walkway repairs</li>
       </ul>
 
+      <h3>Related Services</h3>
+      <p>Walkways work perfectly with other outdoor concrete features:</p>
+      <ul>
+        <li><a href="/services/driveways">Driveway Installation</a> - Connect walkways to driveways</li>
+        <li><a href="/services/patios">Patio Installation</a> - Pathways to outdoor living spaces</li>
+        <li><a href="/services/stamped-concrete">Stamped Concrete</a> - Decorative walkway patterns</li>
+      </ul>
+
       <h3>Areas We Serve</h3>
-      <p>We serve {SITE_CONFIG.serviceAreas.join(', ')} and surrounding areas.</p>
+      <p>We provide walkway installation services throughout <a href="/locations/deptford-nj">Deptford</a>, <a href="/locations/west-deptford-nj">West Deptford</a>, <a href="/locations/woodbury-nj">Woodbury</a>, <a href="/locations/glassboro-nj">Glassboro</a>, and <a href="/locations">all surrounding Gloucester County communities</a>.</p>
     </div>
   </section>
+
+  <RelatedServices currentService="walkways" />
+  <ServiceAreasLink serviceName="Walkways" />
 
   <section id="contact-form" class="contact-section">
     <div class="container">
