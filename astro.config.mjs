@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://deptfordconcretecontractors.com', // Update with actual domain
+  site: 'https://deptfordnjconcrete.com',
   integrations: [
     sitemap({
       changefreq: 'weekly',
