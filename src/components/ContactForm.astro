@@ -11,6 +11,8 @@ const { service = '', location = '', title = 'Get Your Free Estimate', variant =
 const bgClass = variant === 'hero' ? 'bg-primary/95 backdrop-blur-sm' : 'bg-white';
 const titleClass = variant === 'hero' ? 'text-white' : 'text-gray-900';
 const subtitleClass = variant === 'hero' ? 'text-white/80' : 'text-gray-600';
+const inputBg = variant === 'hero' ? 'bg-white/10 border-white/20 text-white placeholder:text-white/50' : 'bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400';
+const labelClass = variant === 'hero' ? 'text-white/90' : 'text-gray-700';
 ---
 
 <div class={`contact-form-container rounded-lg shadow-2xl overflow-hidden ${bgClass} ${variant === 'hero' ? 'border border-white/10' : ''}`}>
@@ -18,29 +20,122 @@ const subtitleClass = variant === 'hero' ? 'text-white/80' : 'text-gray-600';
     <h3 class={`text-2xl font-bold mb-2 font-display uppercase text-center ${titleClass}`}>{title}</h3>
     <p class={`text-sm mb-6 text-center ${subtitleClass}`}>Every estimate is free. Fill out the form below to schedule your estimate!</p>
 
-    <div class="form-wrapper">
-      <iframe
-        src="https://links.roadsidelaunch.com/widget/form/1MX0NL9lyqXyaPJhq945"
-        style="width:100%;height:100%;border:none;border-radius:8px"
-        id="inline-1MX0NL9lyqXyaPJhq945"
-        data-layout="{'id':'INLINE'}"
-        data-trigger-type="alwaysShow"
-        data-trigger-value=""
-        data-activation-type="alwaysActivated"
-        data-activation-value=""
-        data-deactivation-type="neverDeactivate"
-        data-deactivation-value=""
-        data-form-name="Form 2"
-        data-height="750"
-        data-layout-iframe-id="inline-1MX0NL9lyqXyaPJhq945"
-        data-form-id="1MX0NL9lyqXyaPJhq945"
-        title="Contact Form"
-        loading="lazy"
-        width="100%"
-        height="750"
-        class="rounded-lg"
-      ></iframe>
-    </div>
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="space-y-4"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="service" value={service} />
+      <input type="hidden" name="location" value={location} />
+
+      <!-- Honeypot field for spam prevention -->
+      <p class="hidden">
+        <label>Don't fill this out: <input name="bot-field" /></label>
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for="firstName" class={`block text-sm font-medium mb-1 ${labelClass}`}>First Name *</label>
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            required
+            class={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-primary focus:border-transparent transition ${inputBg}`}
+            placeholder="John"
+          />
+        </div>
+        <div>
+          <label for="lastName" class={`block text-sm font-medium mb-1 ${labelClass}`}>Last Name *</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            required
+            class={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-primary focus:border-transparent transition ${inputBg}`}
+            placeholder="Smith"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label for="email" class={`block text-sm font-medium mb-1 ${labelClass}`}>Email *</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-primary focus:border-transparent transition ${inputBg}`}
+          placeholder="john@example.com"
+        />
+      </div>
+
+      <div>
+        <label for="phone" class={`block text-sm font-medium mb-1 ${labelClass}`}>Phone *</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          required
+          class={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-primary focus:border-transparent transition ${inputBg}`}
+          placeholder="(856) 555-1234"
+        />
+      </div>
+
+      <div>
+        <label for="address" class={`block text-sm font-medium mb-1 ${labelClass}`}>Project Address</label>
+        <input
+          type="text"
+          id="address"
+          name="address"
+          class={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-primary focus:border-transparent transition ${inputBg}`}
+          placeholder="123 Main St, Deptford, NJ"
+        />
+      </div>
+
+      <div>
+        <label for="projectType" class={`block text-sm font-medium mb-1 ${labelClass}`}>Project Type *</label>
+        <select
+          id="projectType"
+          name="projectType"
+          required
+          class={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-primary focus:border-transparent transition ${variant === 'hero' ? 'bg-white/10 border-white/20 text-white' : 'bg-gray-50 border-gray-200 text-gray-900'}`}
+        >
+          <option value="" class="text-gray-900">Select a service...</option>
+          <option value="Pole Barn Foundation" class="text-gray-900">Pole Barn Foundation</option>
+          <option value="Concrete Slab" class="text-gray-900">Concrete Slab</option>
+          <option value="Driveway" class="text-gray-900">Driveway</option>
+          <option value="Patio" class="text-gray-900">Patio</option>
+          <option value="Stamped Concrete" class="text-gray-900">Stamped Concrete</option>
+          <option value="Walkway" class="text-gray-900">Walkway</option>
+          <option value="Retaining Wall" class="text-gray-900">Retaining Wall</option>
+          <option value="Basement Flooring" class="text-gray-900">Basement Flooring</option>
+          <option value="Other" class="text-gray-900">Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="message" class={`block text-sm font-medium mb-1 ${labelClass}`}>Project Details</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          class={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-primary focus:border-transparent transition resize-none ${inputBg}`}
+          placeholder="Tell us about your project - dimensions, timeline, special requirements..."
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-lg"
+      >
+        <i class="fa-solid fa-paper-plane"></i>
+        Request Free Estimate
+      </button>
+    </form>
 
     <p class={`text-xs mt-4 text-center leading-tight ${variant === 'hero' ? 'text-white/60' : 'text-gray-400'}`}>
       Your information is kept private and secure. We'll respond within 24-48 hours.
@@ -69,36 +164,4 @@ const subtitleClass = variant === 'hero' ? 'text-white/80' : 'text-gray-600';
       </div>
     )}
   </div>
-
-  <script src="https://links.roadsidelaunch.com/js/form_embed.js" defer></script>
 </div>
-
-<style>
-  .form-wrapper {
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-    background: white;
-    position: relative;
-  }
-
-  .form-wrapper iframe {
-    width: 100%;
-    height: 750px;
-    border: none;
-    display: block;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  @media (max-width: 768px) {
-    .form-wrapper iframe {
-      height: 700px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .form-wrapper iframe {
-      height: 650px;
-    }
-  }
-</style>
