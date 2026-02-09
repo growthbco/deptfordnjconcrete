@@ -1,0 +1,102 @@
+{
+  "deptford-nj": {
+    "landmarks": ["Deptford Mall", "Route 41", "Clements Bridge Road", "Deptford Township Municipal Building", "Deptford High School", "Deptford Crossing Shopping Center"],
+    "majorRoads": ["Route 41", "Clements Bridge Road", "Delsea Drive", "Route 47", "Almonesson Road"],
+    "trafficPatterns": "High commercial traffic along Route 41 and Clements Bridge Road with retail centers and shopping malls. Residential areas throughout the township require careful scheduling to avoid peak commute times.",
+    "weatherImpacts": "Deptford experiences humid subtropical climate with hot summers and cold winters. Freeze-thaw cycles require proper concrete mix design and installation timing. Heavy rainfall in spring and summer can delay projects.",
+    "soilConditions": "Mixed soil conditions including clay and sandy loam. Proper site preparation and foundation design critical for pole barn foundations.",
+    "neighborhoods": "Residential neighborhoods throughout Deptford Township, commercial corridors along Route 41, and agricultural areas in northern sections.",
+    "localFeatures": "Deptford is home to major retail centers including Deptford Mall, making it a hub for commercial development. The township blends residential communities with commercial corridors."
+  },
+  "west-deptford-nj": {
+    "landmarks": ["West Deptford High School", "Red Bank Battlefield", "Route 45", "RiverWinds Community Center", "West Deptford Township Municipal Building"],
+    "majorRoads": ["Route 45", "Crown Point Road", "Grove Road", "Route 295 access", "Bridgeport Road"],
+    "trafficPatterns": "Moderate traffic with residential areas and some commercial development. Access to Route 295 makes it convenient for contractors serving wider region.",
+    "weatherImpacts": "Similar to Deptford with freeze-thaw cycles. Proximity to Delaware River can create unique microclimates. Winter concrete work requires special consideration.",
+    "soilConditions": "Varied soil including river-bottom areas near Delaware River. Some areas have higher clay content requiring proper drainage.",
+    "neighborhoods": "Mix of established residential neighborhoods, newer developments, and some agricultural properties ideal for pole barn construction.",
+    "localFeatures": "West Deptford offers a mix of residential and rural areas with access to historical sites like Red Bank Battlefield. Growing residential development creates demand for concrete services."
+  },
+  "woodbury-nj": {
+    "landmarks": ["Woodbury Historic District", "Woodbury High School", "Route 45", "Broad Street", "Gloucester County Courthouse", "Woodbury Country Club"],
+    "majorRoads": ["Broad Street", "Route 45", "Delaware Street", "Evergreen Avenue", "Cooper Street"],
+    "trafficPatterns": "Historic downtown area with pedestrian traffic. Broad Street is main commercial corridor. Residential areas require careful scheduling for concrete deliveries.",
+    "weatherImpacts": "Standard New Jersey climate with consideration for historic district requirements. Freeze-thaw cycles impact all concrete work.",
+    "soilConditions": "Mixed conditions with some areas having older infrastructure. Historic properties may require special foundation considerations.",
+    "neighborhoods": "Historic downtown, residential neighborhoods, and newer developments. Mix of single-family homes and some commercial properties.",
+    "localFeatures": "Woodbury is Gloucester County seat with historic architecture. Projects often require coordination with historic preservation when applicable."
+  },
+  "glassboro-nj": {
+    "landmarks": ["Rowan University", "Glassboro High School", "Route 322", "Rowan Boulevard", "Hollybush Mansion"],
+    "majorRoads": ["Route 322", "Delsea Drive", "Rowan Boulevard", "Glassboro-Cross Keys Road"],
+    "trafficPatterns": "Heavy student traffic near Rowan University. Route 322 is major commercial corridor. Residential areas mixed with student housing.",
+    "weatherImpacts": "Standard regional climate. University-related projects often have specific timing requirements. Summer work preferred for student areas.",
+    "soilConditions": "Generally good drainage with some areas near campus having higher development density requiring careful planning.",
+    "neighborhoods": "University area, residential neighborhoods, and commercial zones along Route 322. Mix of student housing and permanent residences.",
+    "localFeatures": "Glassboro is home to Rowan University, creating demand for both residential and commercial concrete projects. Growing community with new development."
+  },
+  "sewell-nj": {
+    "landmarks": ["Washington Township High School", "Route 42", "Sewell area of Washington Township"],
+    "majorRoads": ["Route 42", "Greentree Road", "Hurffville-Cross Keys Road"],
+    "trafficPatterns": "Moderate residential traffic. Access to major highways makes area convenient. Growing residential development.",
+    "weatherImpacts": "Standard Gloucester County climate patterns. Growing residential areas require timely concrete work during construction seasons.",
+    "soilConditions": "Mixed conditions typical of Washington Township area. New developments require proper site preparation.",
+    "neighborhoods": "Primarily residential with newer developments. Family-oriented community with growing housing stock.",
+    "localFeatures": "Sewell is part of Washington Township with growing residential development. Popular area for new construction and home improvements."
+  },
+  "pitman-nj": {
+    "landmarks": ["Pitman High School", "Broadway", "Pitman Grove Historic District", "Alcyon Lake Park"],
+    "majorRoads": ["Broadway", "Lambert Avenue", "Holly Avenue", "Route 47"],
+    "trafficPatterns": "Small town atmosphere with moderate traffic. Broadway is main commercial street. Residential areas throughout.",
+    "weatherImpacts": "Standard regional climate. Proximity to Alcyon Lake can create unique conditions. Community-focused projects require careful scheduling.",
+    "soilConditions": "Generally good conditions. Some areas near lake may have different drainage requirements.",
+    "neighborhoods": "Historic residential neighborhoods, downtown commercial area, and newer developments. Strong community character.",
+    "localFeatures": "Pitman maintains small-town character with historic district. Community-oriented with mix of residential and commercial needs."
+  },
+  "washington-township-nj": {
+    "landmarks": ["Washington Township High School", "Route 42", "Hurffville-Cross Keys Road", "Washington Township Municipal Complex"],
+    "majorRoads": ["Route 42", "Hurffville-Cross Keys Road", "Greentree Road", "Egg Harbor Road"],
+    "trafficPatterns": "Growing township with expanding residential and commercial development. Major road networks support business growth.",
+    "weatherImpacts": "Standard Gloucester County patterns. Large township with varied microclimates. Growing development requires year-round concrete work.",
+    "soilConditions": "Varied conditions across large township. New developments require proper site assessment and preparation.",
+    "neighborhoods": "Mix of established neighborhoods, newer developments, and commercial areas. Rapid growth in residential construction.",
+    "localFeatures": "Washington Township is one of largest municipalities in Gloucester County with significant growth. High demand for concrete services."
+  },
+  "turnersville-nj": {
+    "landmarks": ["Route 42", "Turnersville area of Washington Township", "Shopping centers along Route 42"],
+    "majorRoads": ["Route 42", "Black Horse Pike", "Greentree Road"],
+    "trafficPatterns": "Commercial corridor along Route 42 with retail traffic. Residential areas surrounding commercial district.",
+    "weatherImpacts": "Standard regional climate. Commercial projects often have tight deadlines requiring careful weather planning.",
+    "soilConditions": "Mixed conditions. Commercial areas may have different requirements than residential sections.",
+    "neighborhoods": "Commercial district along Route 42 with surrounding residential neighborhoods. Mix of retail and housing.",
+    "localFeatures": "Turnersville is commercial hub within Washington Township with retail centers and surrounding residential development."
+  },
+  "blackwood-nj": {
+    "landmarks": ["Camden County College", "Blackwood area of Gloucester Township", "Route 42"],
+    "majorRoads": ["Route 42", "Black Horse Pike", "Church Road"],
+    "trafficPatterns": "Moderate traffic with college presence. Mix of residential and commercial areas. Access to major highways.",
+    "weatherImpacts": "Standard regional patterns. College-related projects may have specific timing. Residential areas require careful scheduling.",
+    "soilConditions": "Mixed conditions typical of Gloucester Township area. College campus may have specific requirements.",
+    "neighborhoods": "Residential neighborhoods, college area, and commercial zones. Family-oriented community with educational institutions.",
+    "localFeatures": "Blackwood is part of Gloucester Township with Camden County College presence. Mix of residential and institutional needs."
+  },
+  "wenonah-nj": {
+    "landmarks": ["Wenonah Lake", "Wenonah High School", "Main Street", "Wenonah Historic District"],
+    "majorRoads": ["Main Street", "Mantua Avenue", "Route 45"],
+    "trafficPatterns": "Small residential borough with minimal traffic. Quaint community atmosphere. Careful scheduling preserves community character.",
+    "weatherImpacts": "Standard regional climate. Proximity to Wenonah Lake creates unique conditions. Historic district considerations.",
+    "soilConditions": "Generally good conditions. Lake proximity may require special drainage considerations.",
+    "neighborhoods": "Historic residential borough with strong community character. Primarily single-family homes with some commercial.",
+    "localFeatures": "Wenonah is small historic borough with lake and strong community identity. Residential focus with preservation considerations."
+  },
+  "mantua-nj": {
+    "landmarks": ["Mantua Township Municipal Building", "Route 45", "Mantua Creek", "Mantua Township School District"],
+    "majorRoads": ["Route 45", "Mantua Boulevard", "Tuckahoe Road"],
+    "trafficPatterns": "Rural and residential mix with moderate traffic. Agricultural areas require consideration for farm equipment access.",
+    "weatherImpacts": "Standard regional patterns. Agricultural areas may have seasonal timing preferences. Rural locations require careful planning.",
+    "soilConditions": "Mixed conditions with some agricultural areas. Creek proximity may affect some properties.",
+    "neighborhoods": "Mix of residential neighborhoods, agricultural properties, and rural areas. Growing residential development.",
+    "localFeatures": "Mantua Township offers mix of residential and agricultural areas. Rural character with growing residential development."
+  }
+}
+

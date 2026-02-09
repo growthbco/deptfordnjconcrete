@@ -1,0 +1,386 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_CONFIG } from '../config';
+---
+
+<BaseLayout
+  title="Project Gallery | Stamped Concrete & Pole Barn Foundations"
+  description="View our gallery of stamped concrete, pole barn foundation, and concrete projects throughout Deptford, NJ and surrounding areas."
+>
+  <!-- Hero Section -->
+  <section class="bg-dark py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-gray-400 font-medium uppercase tracking-wider text-sm">Our Work</span>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-2 uppercase font-display">
+        Project Gallery
+      </h1>
+      <p class="text-gray-300 text-lg mt-4 max-w-2xl mx-auto">
+        View our completed stamped concrete, pole barn foundation, and concrete projects throughout Deptford and surrounding areas.
+      </p>
+    </div>
+  </section>
+
+  <!-- Stamped Concrete Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+          <i class="fa-solid fa-palette text-primary text-xl"></i>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 font-display uppercase">Stamped Concrete Projects</h2>
+          <p class="text-gray-600">Beautiful decorative concrete installations throughout South Jersey</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_7649.webp" alt="Stamped concrete patio installation in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Stamped Concrete Patio</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_7653.webp" alt="Decorative stamped concrete driveway in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Stamped Concrete Driveway</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_7654.webp" alt="Patterned concrete installation in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Decorative Patterned Concrete</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_7655.webp" alt="Stamped concrete walkway in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Stamped Concrete Walkway</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_7656.webp" alt="Beautiful stamped concrete project in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Stamped Concrete Project</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_7657.webp" alt="Professional stamped concrete installation in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Professional Installation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pole Barn Foundations Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+          <i class="fa-solid fa-warehouse text-primary text-xl"></i>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 font-display uppercase">Pole Barn Foundations</h2>
+          <p class="text-gray-600">Expert pole barn foundation installations throughout Deptford and surrounding areas</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/polebarns/IMG_6471.webp" alt="Pole barn foundation project in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Pole Barn Foundation</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/polebarns/IMG_6472.webp" alt="Professional pole barn foundation installation" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Foundation Installation</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/polebarns/IMG_6480.webp" alt="Pole barn foundation in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Professional Work</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/polebarns/IMG_9021.webp" alt="Pole barn foundation project" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Quality Workmanship</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Concrete Projects Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+          <i class="fa-solid fa-trowel-bricks text-primary text-xl"></i>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 font-display uppercase">Concrete Projects</h2>
+          <p class="text-gray-600">Commercial and residential concrete work throughout Deptford, NJ</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_0973.webp" alt="Concrete project in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Concrete Installation</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_0974.webp" alt="Professional concrete work" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Professional Service</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_2635.webp" alt="Concrete contractor work" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Quality Concrete</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_2711.webp" alt="Concrete project installation" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Expert Installation</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_3401.webp" alt="Concrete work in Deptford" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Concrete Work</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_3402.webp" alt="Professional concrete project" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Professional Project</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_3403.webp" alt="Concrete installation" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Quality Installation</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_3404.webp" alt="Concrete contractor services" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Expert Service</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_3907.webp" alt="Concrete project" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Concrete Project</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_3910.webp" alt="Professional concrete work" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Professional Work</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_5164.webp" alt="Professional concrete" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Professional Concrete</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_9889.webp" alt="Concrete work in Deptford" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Concrete Work</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Note -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-gray-100">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-info-circle text-primary text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 font-display uppercase mb-4">Our Services</h3>
+            <p class="text-gray-600 mb-6">We specialize in pole barn foundation installation, large commercial concrete projects, and beautiful stamped concrete work. Our gallery showcases completed projects including:</p>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600">
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-primary"></i>
+                Pole barn foundation installations
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-primary"></i>
+                Large commercial concrete slabs
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-primary"></i>
+                Stamped concrete patios and driveways
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-primary"></i>
+                Decorative concrete patterns
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-primary"></i>
+                Industrial concrete floors
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-primary"></i>
+                Residential driveways and patios
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-4 mt-8">
+          <a href="/services/stamped-concrete" class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-bold hover:bg-primary-dark transition">
+            Stamped Concrete <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="/services/pole-barn-foundations" class="inline-flex items-center gap-2 bg-gray-100 text-gray-900 px-6 py-3 rounded font-bold hover:bg-gray-200 transition">
+            Pole Barn Foundations <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4 font-display uppercase">Ready to Start Your Project?</h2>
+      <p class="text-white/80 mb-8">Contact us today for your free estimate on your next concrete project.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded font-bold hover:bg-gray-100 transition">
+          Get Free Estimate <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        {SITE_CONFIG.phone && (
+          <a href={`tel:${SITE_CONFIG.phone}`} class="inline-flex items-center justify-center gap-2 bg-transparent text-white px-8 py-4 rounded font-bold border-2 border-white hover:bg-white hover:text-gray-900 transition">
+            <i class="fa-solid fa-phone"></i> {SITE_CONFIG.phone}
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 bg-black/95 z-[10000] hidden items-center justify-center" role="dialog" aria-modal="true" aria-label="Image lightbox">
+    <button class="absolute top-4 right-4 w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white text-2xl transition" id="lightbox-close" aria-label="Close lightbox">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <button class="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white text-3xl transition" id="lightbox-prev" aria-label="Previous image">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button class="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white text-3xl transition" id="lightbox-next" aria-label="Next image">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+    <div class="max-w-[90vw] max-h-[85vh] flex flex-col items-center">
+      <img id="lightbox-image" src="" alt="" class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl" />
+      <p id="lightbox-caption" class="text-white text-center mt-4 text-lg font-display"></p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .gallery-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+  }
+
+  .gallery-overlay p {
+    @apply text-white text-sm;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-overlay {
+      @apply opacity-100 bg-gradient-to-t from-black/60 to-transparent;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    'use strict';
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    if (!lightbox || !lightboxImage) return;
+
+    const galleryImages = [];
+    galleryItems.forEach((item, index) => {
+      const img = item.querySelector('img');
+      if (img) {
+        const caption = item.querySelector('.gallery-overlay p')?.textContent || img.alt;
+        galleryImages.push({
+          src: img.src,
+          alt: img.alt,
+          caption: caption,
+          index: index
+        });
+      }
+    });
+
+    let currentIndex = 0;
+
+    function updateLightboxImage(index) {
+      if (index < 0 || index >= galleryImages.length) return;
+      currentIndex = index;
+      const imageData = galleryImages[currentIndex];
+      lightboxImage.src = imageData.src;
+      lightboxImage.alt = imageData.alt;
+      lightboxCaption.textContent = imageData.caption;
+
+      prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
+      nextBtn.style.display = currentIndex === galleryImages.length - 1 ? 'none' : 'flex';
+    }
+
+    function openLightbox(index) {
+      updateLightboxImage(index);
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', () => openLightbox(index));
+    });
+
+    closeBtn?.addEventListener('click', closeLightbox);
+    prevBtn?.addEventListener('click', () => updateLightboxImage(currentIndex - 1));
+    nextBtn?.addEventListener('click', () => updateLightboxImage(currentIndex + 1));
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('flex')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight' && currentIndex < galleryImages.length - 1) updateLightboxImage(currentIndex + 1);
+      if (e.key === 'ArrowLeft' && currentIndex > 0) updateLightboxImage(currentIndex - 1);
+    });
+  })();
+</script>

@@ -1,0 +1,851 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+import { SITE_CONFIG } from '../config';
+import servicesData from '../content/services.json';
+import locationsData from '../content/locations.json';
+import { generateHomeAndConstructionBusinessSchema } from '../utils/schema';
+
+const primaryServices = servicesData.filter(s => s.primary);
+const otherServices = servicesData.filter(s => !s.primary);
+const allServices = [...primaryServices, ...otherServices];
+
+const businessSchema = generateHomeAndConstructionBusinessSchema();
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What services do concrete contractors in Deptford, NJ provide?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Deptford Concrete Contractors provides comprehensive concrete services including pole barn foundations, commercial and residential concrete slabs, driveways, patios, stamped concrete, walkways, retaining walls, basement flooring, and concrete repair. Our primary specialty is pole barn foundation installation, but we handle all types of concrete projects throughout Deptford and surrounding Gloucester County areas.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How much do concrete contractors charge in Deptford, New Jersey?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Concrete contractor pricing varies by project type. Pole barn foundations start at $5 per square foot, driveways start at $2,500, patios start at $1,800, stamped concrete averages $12 per square foot, and concrete slabs start at $6 per square foot. We provide free, detailed estimates on all projects with no obligation.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you need a permit for concrete work in Deptford, NJ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, many concrete projects in Deptford require permits, especially for new construction, pole barn foundations, and structural work. We assist with all permit applications and ensure compliance with Deptford Township and Gloucester County building codes. Contact us for guidance on your specific project requirements.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What areas do you serve as concrete contractors?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We serve Deptford, West Deptford, Woodbury, Glassboro, Sewell, Pitman, Washington Township, Turnersville, Blackwood, Wenonah, Mantua, and surrounding Gloucester County communities in New Jersey. We\'re experienced concrete contractors familiar with local building codes and requirements throughout the region.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does concrete installation take?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Project timelines vary by scope. Pole barn foundations typically take 1-3 days, driveways take 1-2 days, patios take 1-2 days, and large commercial slabs can take 3-7 days depending on size. We provide detailed timelines during your free estimate and work efficiently to complete projects on schedule.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Do concrete contractors offer free estimates in Deptford?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, Deptford Concrete Contractors offers free, no-obligation estimates on all concrete projects. We\'ll assess your property, discuss your needs, and provide a detailed written estimate with pricing and timeline. Contact us today to schedule your free estimate.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What makes Deptford Concrete Contractors different from other concrete contractors?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We specialize in pole barn foundations, giving us deep expertise in post-frame building construction. We also provide comprehensive concrete services for residential and commercial projects. Our local knowledge of Deptford and Gloucester County building codes, combined with quality materials and professional service, sets us apart from general contractors.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Can concrete contractors repair existing concrete?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, we provide comprehensive concrete repair services including crack repair, resurfacing, leveling, and restoration. We can repair damaged driveways, patios, sidewalks, and slabs to extend their lifespan. Repair projects start at $500, and we provide free estimates on all repair work.'
+      }
+    }
+  ]
+};
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Concrete Contractors in Deptford, NJ',
+  description: 'Professional concrete contractors serving Deptford, NJ and surrounding areas. Expert services for pole barn foundations, driveways, patios, slabs, and all concrete needs.',
+  mainEntity: businessSchema,
+  about: {
+    '@type': 'HomeAndConstructionBusiness',
+    name: SITE_CONFIG.name
+  }
+};
+---
+
+<BaseLayout 
+  title="Professional Concrete Contractors in Deptford, NJ | Free Estimates"
+  description="Expert concrete contractors serving Deptford, NJ and surrounding areas. Specializing in pole barn foundations, driveways, patios, stamped concrete, and commercial slabs. Free estimates on all projects."
+  schema={webPageSchema}
+>
+  <SchemaMarkup type="FAQPage" data={faqSchema} />
+  <section class="hero">
+    <div class="container">
+      <h1>Concrete Contractors Deptford New Jersey</h1>
+      <p class="hero-subtitle">Expert concrete contractors specializing in pole barn foundations, commercial slabs, residential driveways, patios, and comprehensive concrete services. Serving Deptford, West Deptford, Woodbury, and surrounding Gloucester County communities.</p>
+      <div class="hero-cta">
+        <a href="#contact-form" class="cta-primary">Get Free Estimate</a>
+        <a href="tel:856-934-4906" class="cta-secondary">Call Now: 856-934-4906</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro-section">
+    <div class="container">
+      <h2>Expert Concrete Contractors Serving Deptford, NJ and Surrounding Areas</h2>
+      <p>Deptford Concrete Contractors is your trusted partner for all concrete contracting needs in Deptford, New Jersey and throughout Gloucester County. With years of experience and a commitment to quality craftsmanship, we specialize in both commercial and residential concrete projects, from large-scale pole barn foundations to beautiful decorative stamped concrete installations.</p>
+      
+      <p>Our primary focus is pole barn foundation installation, making us the go-to concrete contractors for post-frame building projects throughout the region. However, our expertise extends far beyond foundations—we're your complete concrete contractors for driveways, patios, walkways, retaining walls, commercial slabs, and more.</p>
+
+      <p>As professional concrete contractors serving Deptford and surrounding Gloucester County communities, we understand the unique challenges of concrete work in New Jersey's climate and soil conditions. Our team brings specialized knowledge of local building codes, permit requirements, and best practices for concrete installation in this region.</p>
+
+      <div class="highlight-box">
+        <h3>Why Choose Deptford Concrete Contractors?</h3>
+        <ul>
+          <li><strong>Pole Barn Foundation Specialists:</strong> Our primary specialty ensures expert installation for post-frame buildings throughout Deptford and surrounding areas</li>
+          <li><strong>Comprehensive Services:</strong> From driveways to commercial slabs, we handle all your concrete contracting needs</li>
+          <li><strong>Free Estimates:</strong> No-obligation quotes on all projects with transparent pricing</li>
+          <li><strong>Local Expertise:</strong> Deep knowledge of Deptford Township and Gloucester County building codes and requirements</li>
+          <li><strong>Quality Materials:</strong> We use only premium concrete mixes and proven installation methods</li>
+          <li><strong>Professional Service:</strong> Licensed, insured, and committed to customer satisfaction</li>
+          <li><strong>Timely Completion:</strong> We work efficiently to complete projects on schedule without compromising quality</li>
+          <li><strong>Permit Assistance:</strong> We handle all permit applications and ensure code compliance</li>
+        </ul>
+      </div>
+
+      <h3>The Importance of Hiring Professional Concrete Contractors in Deptford</h3>
+      <p>Concrete work requires precision, expertise, and knowledge of local building codes. Attempting DIY concrete projects or hiring inexperienced contractors can lead to costly mistakes, structural issues, and code violations. Professional concrete contractors in Deptford, NJ bring:</p>
+      <ul>
+        <li><strong>Structural Knowledge:</strong> Understanding load requirements, reinforcement needs, and proper foundation design</li>
+        <li><strong>Code Compliance:</strong> Familiarity with Deptford Township and Gloucester County building codes</li>
+        <li><strong>Quality Materials:</strong> Access to premium concrete mixes and proper curing techniques</li>
+        <li><strong>Proper Equipment:</strong> Professional-grade tools for excavation, leveling, and finishing</li>
+        <li><strong>Warranty Protection:</strong> Professional installation with guarantees on workmanship</li>
+        <li><strong>Time Savings:</strong> Efficient project completion without learning curves</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="services-section primary">
+    <div class="container">
+      <h2>Our Primary Concrete Services</h2>
+      <p class="section-intro">As specialized concrete contractors, we focus on pole barn foundations and large commercial projects. Our expertise in these areas sets us apart from general contractors.</p>
+      
+      <div class="services-grid">
+        {primaryServices.map(service => (
+          <ServiceCard service={service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <div class="container">
+      <h2>Comprehensive Concrete Contracting Services</h2>
+      <p class="section-intro">Beyond our specialties, we provide complete concrete contracting services for residential and commercial properties throughout our service area.</p>
+      
+      <div class="services-grid">
+        {otherServices.map(service => (
+          <ServiceCard service={service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <h2>Complete Concrete Contractor Services in Deptford, NJ</h2>
+      
+      <h3>Pole Barn Foundation Contractors</h3>
+      <p>As pole barn foundation specialists, we're the premier concrete contractors for post-frame building projects in Deptford and surrounding areas. Our expertise includes:</p>
+      <ul>
+        <li>Concrete footing installation for pole barns</li>
+        <li>Slab-on-grade foundations for post-frame buildings</li>
+        <li>Foundation design and consultation</li>
+        <li>Permit assistance and code compliance</li>
+        <li>Site preparation and excavation</li>
+        <li>Reinforcement and structural integrity</li>
+      </ul>
+      <p><a href="/services/pole-barn-foundations" class="service-link">Learn more about our pole barn foundation services →</a></p>
+
+      <h3>Commercial Concrete Contractors in Deptford, NJ</h3>
+      <p>We're experienced commercial concrete contractors handling large-scale projects for businesses throughout Gloucester County. Our commercial concrete contracting services are essential for businesses requiring durable, heavy-duty concrete installations that can withstand industrial use and heavy loads. As commercial concrete contractors, we specialize in:</p>
+      <ul>
+        <li>Large commercial and industrial concrete slabs for warehouses and manufacturing facilities</li>
+        <li>Warehouse and manufacturing facility floors designed for forklift traffic and heavy equipment</li>
+        <li>Commercial building foundations meeting structural requirements for multi-story buildings</li>
+        <li>Parking lot installation and repair for retail centers and commercial properties</li>
+        <li>Heavy-duty concrete installations with proper reinforcement for industrial applications</li>
+        <li>Reinforced concrete for high-load applications requiring structural engineering</li>
+        <li>Concrete curbs and gutters for commercial parking lots and landscaping</li>
+        <li>Commercial concrete repair and resurfacing to extend facility lifespan</li>
+      </ul>
+      <p>Commercial concrete contractors must understand the unique requirements of business facilities. We work with property managers, business owners, and general contractors to deliver concrete solutions that meet commercial building codes and withstand years of heavy use. Our experience as commercial concrete contractors in Deptford and throughout Gloucester County means we're familiar with local commercial building requirements and can handle projects from small business foundations to large warehouse floors.</p>
+      <p><a href="/services/concrete-slabs" class="service-link">Learn more about our commercial concrete services →</a></p>
+
+      <h3>Residential Concrete Contractors in Deptford, New Jersey</h3>
+      <p>Our residential concrete contracting services help homeowners enhance their properties with durable, beautiful concrete installations. As residential concrete contractors in Deptford, we understand that homeowners want concrete work that combines functionality with aesthetic appeal while increasing property value. Our residential concrete contracting expertise includes:</p>
+      <ul>
+        <li><strong>Concrete Driveways:</strong> Professional installation and repair of residential driveways that enhance curb appeal and property value. We handle driveway replacement, expansion, and decorative options including stamped concrete driveways. <a href="/services/driveways" class="service-link">Learn more about our driveway services →</a></li>
+        <li><strong>Concrete Patios:</strong> Custom patio design and installation for outdoor living spaces. We create functional patios perfect for entertaining, dining, and relaxation. Our patio designs consider drainage, grading, and integration with your home's architecture. <a href="/services/patios" class="service-link">Learn more about our patio services →</a></li>
+        <li><strong>Stamped Concrete:</strong> Decorative concrete that mimics natural stone, brick, or wood at a fraction of the cost. As experienced concrete contractors specializing in stamped concrete, we offer numerous patterns and colors to match your home's style. <a href="/services/stamped-concrete" class="service-link">Learn more about our stamped concrete services →</a></li>
+        <li><strong>Walkways & Pathways:</strong> Durable concrete walkways connecting different areas of your property. We design walkways that enhance landscape design while providing safe, accessible pathways. <a href="/services/walkways" class="service-link">Learn more about our walkway services →</a></li>
+        <li><strong>Retaining Walls:</strong> Functional and attractive concrete retaining walls for erosion control and landscaping. Our retaining walls are engineered for stability and can be finished with decorative options. <a href="/services/retaining-walls" class="service-link">Learn more about our retaining wall services →</a></li>
+        <li><strong>Basement Flooring:</strong> Professional basement floor installation and repair. We transform unfinished basements with durable concrete floors suitable for various uses. <a href="/services/basement-flooring" class="service-link">Learn more about our basement flooring services →</a></li>
+        <li><strong>Concrete Repair:</strong> Comprehensive repair services to extend the life of existing concrete. We fix cracks, resurface damaged areas, and level uneven concrete to restore functionality and appearance.</li>
+      </ul>
+      <p>Residential concrete contractors must balance aesthetic preferences with structural requirements. We work closely with homeowners to understand their vision while ensuring proper installation techniques that meet building codes and withstand New Jersey's climate. Our residential concrete work enhances property value while providing years of reliable service.</p>
+
+      <h3>Stamped Concrete Contractors in Deptford, NJ</h3>
+      <p>As decorative concrete contractors, we specialize in beautiful stamped concrete installations that combine aesthetics with durability. Stamped concrete is an excellent alternative to natural stone, pavers, or brick, offering the same visual appeal at a fraction of the cost. Our expertise as stamped concrete contractors includes:</p>
+      <ul>
+        <li>Stamped concrete patios and outdoor living spaces with various patterns including slate, cobblestone, and brick</li>
+        <li>Decorative concrete driveways that enhance curb appeal while maintaining durability</li>
+        <li>Patterned concrete walkways that complement your landscape design</li>
+        <li>Pool deck stamped concrete with slip-resistant finishes for safety</li>
+        <li>Custom patterns and colors to match your home's aesthetic</li>
+        <li>Professional sealing and maintenance to protect your investment</li>
+      </ul>
+      <p>Stamped concrete contractors must understand both the technical aspects of concrete installation and the artistic elements of pattern application. We work with homeowners and businesses to create stunning stamped concrete installations that provide years of beauty and durability. Our process includes proper base preparation, concrete placement, pattern stamping, coloring, and sealing to ensure long-lasting results.</p>
+      <p><a href="/services/stamped-concrete" class="service-link">Learn more about our stamped concrete services →</a></p>
+
+      <h3>Concrete Repair Services by Professional Contractors</h3>
+      <p>As experienced concrete contractors, we understand that existing concrete requires maintenance and repair over time. Our concrete repair services help extend the life of your concrete installations:</p>
+      <ul>
+        <li><strong>Crack Repair:</strong> Professional repair of hairline cracks, structural cracks, and settlement cracks</li>
+        <li><strong>Resurfacing:</strong> Complete resurfacing of worn or damaged concrete surfaces</li>
+        <li><strong>Leveling:</strong> Mudjacking and slab leveling to fix uneven concrete</li>
+        <li><strong>Restoration:</strong> Comprehensive restoration of damaged driveways, patios, and walkways</li>
+        <li><strong>Sealing:</strong> Protective sealing to prevent future damage and extend concrete life</li>
+      </ul>
+      <p>Professional concrete contractors understand that timely repair is more cost-effective than replacement. We assess damage, identify root causes, and provide solutions that address both symptoms and underlying issues.</p>
+    </div>
+  </section>
+
+  <section class="areas-section">
+    <div class="container">
+      <h2>Areas We Serve as Concrete Contractors</h2>
+      <p class="section-intro">We provide comprehensive concrete contracting services throughout Gloucester County and surrounding New Jersey communities. Our expertise as concrete contractors extends to all these areas:</p>
+      
+      <div class="areas-grid">
+        {locationsData.map(location => (
+          <div class="area-item">
+            <h3>Concrete Contractors {location.name}, NJ</h3>
+            <p class="location-state">{location.fullName}</p>
+            <p>Professional concrete contractors serving {location.name} with pole barn foundations, driveways, patios, and all concrete services.</p>
+            <a href={`/locations/${location.slug}`} class="location-link">View {location.name} Services →</a>
+          </div>
+        ))}
+      </div>
+
+      <div class="location-detail">
+        <h3>Concrete Contractors in Deptford, New Jersey</h3>
+        <p>Deptford, New Jersey is our primary service area, and we're deeply familiar with Deptford Township building codes and requirements. As concrete contractors serving Deptford, we handle projects throughout the township, from residential driveways in established neighborhoods to large commercial slabs for businesses along Route 41 and Clements Bridge Road. Our local knowledge of Deptford's soil conditions, drainage requirements, and permit processes ensures smooth project completion.</p>
+        <p><a href="/locations/deptford-nj" class="service-link">Learn more about our concrete services in Deptford, NJ →</a></p>
+
+        <h3>Concrete Contractors in West Deptford, NJ</h3>
+        <p>West Deptford residents trust us for all their concrete contracting needs. We're experienced concrete contractors familiar with West Deptford Township regulations and requirements. Whether you need a pole barn foundation for agricultural use, a new driveway for your home, or a commercial concrete slab for your business, we provide professional service throughout West Deptford.</p>
+        <p><a href="/locations/west-deptford-nj" class="service-link">Learn more about our concrete services in West Deptford, NJ →</a></p>
+
+        <h3>Concrete Contractors in Woodbury, New Jersey</h3>
+        <p>Woodbury businesses and homeowners rely on our expertise as concrete contractors. We handle projects throughout Woodbury, from historic downtown properties requiring careful concrete work to new construction projects. Our knowledge of Woodbury's building codes and requirements ensures compliance and quality results.</p>
+        <p><a href="/locations/woodbury-nj" class="service-link">Learn more about our concrete services in Woodbury, NJ →</a></p>
+
+        <h3>Concrete Contractors Throughout Gloucester County</h3>
+        <p>Beyond Deptford, West Deptford, and Woodbury, we serve Glassboro, Sewell, Pitman, Washington Township, Turnersville, Blackwood, Wenonah, Mantua, and surrounding Gloucester County communities. As concrete contractors familiar with the entire region, we understand the varying requirements across different municipalities while maintaining consistent quality standards.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-choose-section">
+    <div class="container">
+      <h2>Why Choose Deptford Concrete Contractors?</h2>
+      
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <h3>Specialized Expertise</h3>
+          <p>Our primary focus on pole barn foundations means we have deep expertise in post-frame building construction, while our comprehensive services cover all your concrete needs.</p>
+        </div>
+        
+        <div class="benefit-item">
+          <h3>Quality Materials & Methods</h3>
+          <p>We use premium concrete mixes and proven installation techniques to ensure your project stands the test of time.</p>
+        </div>
+        
+        <div class="benefit-item">
+          <h3>Local Knowledge</h3>
+          <p>Years of experience in Deptford and Gloucester County means we understand local building codes, soil conditions, and climate considerations.</p>
+        </div>
+        
+        <div class="benefit-item">
+          <h3>Complete Service</h3>
+          <p>From initial consultation to final inspection, we handle every aspect of your concrete project, including permits and code compliance.</p>
+        </div>
+        
+        <div class="benefit-item">
+          <h3>Competitive Pricing</h3>
+          <p>We provide transparent, competitive pricing with free estimates on all projects—no hidden fees or surprises.</p>
+        </div>
+        
+        <div class="benefit-item">
+          <h3>Customer Satisfaction</h3>
+          <p>Our commitment to quality workmanship and customer service ensures your complete satisfaction with every project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="container">
+      <h2>Our Concrete Contracting Process</h2>
+      <p>As professional concrete contractors, we follow a proven process to ensure successful project completion:</p>
+      
+      <ol class="process-list">
+        <li>
+          <strong>Initial Consultation:</strong> We discuss your project needs, assess your property, and provide expert recommendations.
+        </li>
+        <li>
+          <strong>Free Estimate:</strong> We provide detailed, written estimates with no obligation, so you know exactly what to expect.
+        </li>
+        <li>
+          <strong>Design & Planning:</strong> We create a project plan that meets your needs, local codes, and structural requirements.
+        </li>
+        <li>
+          <strong>Permit Assistance:</strong> We handle permit applications and ensure all work meets local building codes.
+        </li>
+        <li>
+          <strong>Professional Installation:</strong> Our experienced team executes the project with precision and attention to detail.
+        </li>
+        <li>
+          <strong>Quality Inspection:</strong> We conduct thorough inspections to ensure code compliance and quality standards.
+        </li>
+        <li>
+          <strong>Final Walkthrough:</strong> We walk you through the completed project and address any questions or concerns.
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contact-form" class="contact-section">
+    <div class="container">
+      <ContactForm title="Get Your Free Concrete Contracting Estimate" location="Deptford, NJ" service="concrete-contractors" />
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions About Concrete Contractors in Deptford, NJ</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>What services do concrete contractors in Deptford, NJ provide?</h3>
+          <p>Deptford Concrete Contractors provides comprehensive concrete services including pole barn foundations, commercial and residential concrete slabs, driveways, patios, stamped concrete, walkways, retaining walls, basement flooring, and concrete repair. Our primary specialty is pole barn foundation installation, but we handle all types of concrete projects throughout Deptford and surrounding Gloucester County areas.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How much do concrete contractors charge in Deptford, New Jersey?</h3>
+          <p>Concrete contractor pricing varies by project type. Pole barn foundations start at $5 per square foot, driveways start at $2,500, patios start at $1,800, stamped concrete averages $12 per square foot, and concrete slabs start at $6 per square foot. We provide free, detailed estimates on all projects with no obligation.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do you need a permit for concrete work in Deptford, NJ?</h3>
+          <p>Yes, many concrete projects in Deptford require permits, especially for new construction, pole barn foundations, and structural work. We assist with all permit applications and ensure compliance with Deptford Township and Gloucester County building codes. Contact us for guidance on your specific project requirements.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What areas do you serve as concrete contractors?</h3>
+          <p>We serve Deptford, West Deptford, Woodbury, Glassboro, Sewell, Pitman, Washington Township, Turnersville, Blackwood, Wenonah, Mantua, and surrounding Gloucester County communities in New Jersey. We're experienced concrete contractors familiar with local building codes and requirements throughout the region.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How long does concrete installation take?</h3>
+          <p>Project timelines vary by scope. Pole barn foundations typically take 1-3 days, driveways take 1-2 days, patios take 1-2 days, and large commercial slabs can take 3-7 days depending on size. We provide detailed timelines during your free estimate and work efficiently to complete projects on schedule.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do concrete contractors offer free estimates in Deptford?</h3>
+          <p>Yes, Deptford Concrete Contractors offers free, no-obligation estimates on all concrete projects. We'll assess your property, discuss your needs, and provide a detailed written estimate with pricing and timeline. Contact us today to schedule your free estimate.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What makes Deptford Concrete Contractors different from other concrete contractors?</h3>
+          <p>We specialize in pole barn foundations, giving us deep expertise in post-frame building construction. We also provide comprehensive concrete services for residential and commercial projects. Our local knowledge of Deptford and Gloucester County building codes, combined with quality materials and professional service, sets us apart from general contractors.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can concrete contractors repair existing concrete?</h3>
+          <p>Yes, we provide comprehensive concrete repair services including crack repair, resurfacing, leveling, and restoration. We can repair damaged driveways, patios, sidewalks, and slabs to extend their lifespan. Repair projects start at $500, and we provide free estimates on all repair work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to Start Your Concrete Project?</h2>
+      <p>Whether you need a pole barn foundation, a new driveway, a decorative patio, or a large commercial slab, Deptford Concrete Contractors has the expertise and experience to deliver exceptional results. As professional concrete contractors serving Deptford, New Jersey and surrounding areas, we're committed to quality workmanship and customer satisfaction. Contact us today for your free estimate.</p>
+      <div class="cta-buttons">
+        <a href="#contact-form" class="cta-primary">Get Free Estimate</a>
+        <a href="tel:856-934-4906" class="cta-secondary">Call 856-934-4906</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.95;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-primary {
+    display: inline-block;
+    background: #ff6b35;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .cta-primary:hover {
+    background: #e55a2b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+  }
+
+  .cta-secondary {
+    display: inline-block;
+    background: transparent;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid white;
+    transition: all 0.3s;
+  }
+
+  .cta-secondary:hover {
+    background: white;
+    color: #1a1a1a;
+  }
+
+  .intro-section,
+  .content-section,
+  .why-choose-section,
+  .process-section {
+    padding: 4rem 2rem;
+  }
+
+  .intro-section {
+    background: #f8f9fa;
+  }
+
+  .highlight-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .highlight-box h3 {
+    color: #ff6b35;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .highlight-box ul {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .highlight-box li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .services-section {
+    padding: 4rem 2rem;
+  }
+
+  .services-section.primary {
+    background: #fff5f0;
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+    text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .content-section h2 {
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-section h3 {
+    color: #ff6b35;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .content-section ul {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .service-link {
+    color: #ff6b35;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+
+  .service-link:hover {
+    color: #e55a2b;
+    text-decoration: underline;
+  }
+
+  .areas-section {
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+  }
+
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 2rem auto 0;
+  }
+
+  .area-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .area-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+
+  .area-item h3 {
+    margin-top: 0;
+    color: #1a1a1a;
+    font-size: 1.25rem;
+  }
+
+  .location-state {
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .location-link {
+    color: #ff6b35;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+
+  .location-link:hover {
+    color: #e55a2b;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .benefit-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .benefit-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+
+  .benefit-item h3 {
+    color: #ff6b35;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .process-list {
+    max-width: 800px;
+    margin: 2rem auto 0;
+    padding-left: 0;
+    list-style: none;
+    counter-reset: step-counter;
+  }
+
+  .process-list li {
+    counter-increment: step-counter;
+    position: relative;
+    padding-left: 3rem;
+    padding-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    border-left: 2px solid #ff6b35;
+  }
+
+  .process-list li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: -1rem;
+    top: 0;
+    background: #ff6b35;
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+
+  .process-list li:last-child {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .process-list li:last-child::before {
+    left: 0;
+  }
+
+  .cta-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .cta-section p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 3rem 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .intro-section,
+    .content-section,
+    .services-section,
+    .areas-section,
+    .why-choose-section,
+    .process-section {
+      padding: 3rem 1.5rem;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .areas-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .highlight-box {
+      padding: 1.5rem;
+    }
+
+    .hero-cta,
+    .cta-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .cta-primary,
+    .cta-secondary {
+      text-align: center;
+    }
+  }
+
+  .faq-section {
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+  }
+
+  .faq-list {
+    max-width: 900px;
+    margin: 2rem auto 0;
+  }
+
+  .faq-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .faq-item h3 {
+    color: #ff6b35;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .faq-item p {
+    margin: 0;
+    line-height: 1.8;
+    color: #333;
+  }
+
+  .location-detail {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .location-detail h3 {
+    color: #ff6b35;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .location-detail h3:first-child {
+    margin-top: 0;
+  }
+
+  .location-detail p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 {
+      font-size: 1.75rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+
+    .intro-section,
+    .content-section,
+    .services-section,
+    .areas-section,
+    .why-choose-section,
+    .process-section,
+    .faq-section {
+      padding: 2rem 1rem;
+    }
+
+    .process-list li {
+      padding-left: 2.5rem;
+    }
+
+    .faq-item {
+      padding: 1.5rem;
+    }
+
+    .location-detail {
+      padding: 1.5rem;
+    }
+  }
+</style>
+

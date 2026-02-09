@@ -1,0 +1,251 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
+import { SITE_CONFIG } from '../../config';
+import { generateServiceSchema } from '../../utils/schema';
+
+const serviceSchema = generateServiceSchema('crack-repair', 'Professional concrete crack repair services in Deptford, NJ. Fix cracks in driveways, foundations, patios, and slabs. Prevent further damage with expert repair.');
+
+const galleryImages = [
+  { src: '/images/projects/IMG_3403.webp', alt: 'Concrete crack repair in Deptford, NJ', label: 'Crack Repair' },
+  { src: '/images/projects/IMG_3404.webp', alt: 'Foundation crack repair project', label: 'Foundation Repair' },
+  { src: '/images/projects/IMG_3907.webp', alt: 'Driveway crack repair work', label: 'Driveway Repair' },
+  { src: '/images/projects/IMG_3910.webp', alt: 'Professional crack repair', label: 'Professional Repair' },
+  { src: '/images/projects/IMG_5164.webp', alt: 'Concrete sealing service', label: 'Crack Sealing' },
+  { src: '/images/projects/IMG_5165.webp', alt: 'Epoxy crack injection', label: 'Epoxy Injection' }
+];
+
+const faqs = [
+  { q: 'How much does concrete crack repair cost?', a: 'Crack repair costs vary based on crack type and repair method. Simple sealing starts around $200-$500, while structural repairs may cost $500-$2,000 or more. We provide free estimates for accurate pricing.' },
+  { q: 'Can all cracks be repaired?', a: 'Most cracks can be repaired, though the method depends on crack type and severity. We\'ll assess your cracks during the free inspection and recommend the best repair approach.' },
+  { q: 'Will repaired cracks come back?', a: 'Properly repaired cracks using appropriate methods typically don\'t return. However, if the underlying cause isn\'t addressed, new cracks may form. We identify and address root causes.' },
+  { q: 'How long does crack repair take?', a: 'Most crack repairs are completed within a few hours to one day, depending on the number and type of cracks. We\'ll provide a timeline during your free estimate.' },
+  { q: 'Should I repair cracks myself or hire a professional?', a: 'While small cracks can sometimes be sealed DIY, professional repair ensures proper technique, appropriate materials, and addresses root causes. Professional repair provides better long-term results.' }
+];
+---
+
+<BaseLayout
+  title="Concrete Crack Repair Services in Deptford, NJ | Foundation & Driveway Crack Repair"
+  description="Expert concrete crack repair contractors in Deptford, NJ. Professional crack repair for driveways, foundations, patios, and slabs. Prevent further damage with quality repairs."
+  schema={serviceSchema}
+>
+  <!-- Hero Section -->
+  <section class="bg-dark py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="section-subheading text-primary mb-4">Repair Services</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        Concrete Crack Repair Services
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Professional concrete crack repair for driveways, foundations, patios, and more. Fix cracks before they become bigger problems.
+      </p>
+      <a href="#contact-form" class="btn-primary text-lg">
+        Get Free Crack Repair Estimate
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Our Work</p>
+        <h2 class="section-heading mb-6">Our Crack Repair Projects</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          See our quality crack repair work throughout Deptford and surrounding areas.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {galleryImages.map(image => (
+          <div class="group relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+            <img src={image.src} alt={image.alt} loading="lazy" class="w-full h-full object-cover" width="800" height="600" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <p class="text-white font-semibold">{image.label}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-8">
+        Professional Concrete Crack Repair Services
+      </h2>
+      <p class="text-lg text-gray-600 mb-8">
+        Cracks in concrete are more than just cosmetic issues - they can lead to serious problems if left unrepaired. We provide professional concrete crack repair services that fix cracks properly and prevent further damage. Our repair techniques address the root cause of cracking, not just the symptoms.
+      </p>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Types of Cracks We Repair</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { icon: 'fa-minus', title: 'Hairline Cracks', desc: 'Small surface cracks that can be sealed to prevent water infiltration' },
+          { icon: 'fa-road-crack', title: 'Structural Cracks', desc: 'Larger cracks requiring epoxy injection or structural repair' },
+          { icon: 'fa-house-crack', title: 'Foundation Cracks', desc: 'Cracks in foundation walls and footings requiring specialized repair' },
+          { icon: 'fa-road', title: 'Driveway Cracks', desc: 'Cracks from settling, freeze-thaw, or heavy loads' },
+          { icon: 'fa-border-all', title: 'Patio & Slab Cracks', desc: 'Cracks in patios and outdoor surfaces' },
+          { icon: 'fa-arrows-left-right', title: 'Expansion Cracks', desc: 'Cracks at expansion joints that need sealing' }
+        ].map(type => (
+          <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class={`fa-solid ${type.icon} text-primary`}></i>
+            </div>
+            <div>
+              <h4 class="font-bold">{type.title}</h4>
+              <p class="text-gray-600 text-sm">{type.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Crack Repair Methods We Use</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { title: 'Crack Sealing', desc: 'Application of sealants to prevent water infiltration', link: null },
+          { title: 'Epoxy Injection', desc: 'Structural repair using epoxy injection for active cracks', link: null },
+          { title: 'Polyurethane Injection', desc: 'Flexible repair for moving cracks', link: null },
+          { title: 'Routing and Sealing', desc: 'Widening cracks and filling with sealant', link: null },
+          { title: 'Stitching', desc: 'Using metal staples to stabilize cracks', link: null },
+          { title: 'Concrete Patching', desc: 'Filling cracks with concrete patching material', link: null }
+        ].map(method => (
+          <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-primary">
+            <h4 class="font-bold mb-1">{method.title}</h4>
+            <p class="text-gray-600 text-sm">{method.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">What's Included in Our Crack Repair Service</h3>
+      <div class="bg-orange-50 border-l-4 border-primary rounded-lg p-6 mb-8">
+        <ul class="space-y-2">
+          {[
+            'Free Inspection - We assess your cracks to determine the best repair method',
+            'Crack Analysis - Evaluation of crack type, cause, and severity',
+            'Repair Plan - Customized repair plan using appropriate techniques',
+            'Professional Repair - Expert repair using proven methods and materials',
+            'Preventive Measures - Recommendations to prevent future cracking',
+            'Warranty - Workmanship warranty on all crack repairs'
+          ].map(item => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Our Crack Repair Process</h3>
+      <div class="space-y-4 mb-8">
+        {[
+          { num: '1', title: 'Inspection', desc: 'We inspect cracks to determine type and cause' },
+          { num: '2', title: 'Assessment', desc: 'Evaluation of repair options based on crack characteristics' },
+          { num: '3', title: 'Preparation', desc: 'Cleaning and preparation of crack area' },
+          { num: '4', title: 'Repair', desc: 'Application of appropriate repair method' },
+          { num: '5', title: 'Finishing', desc: 'Finishing to match surrounding concrete' },
+          { num: '6', title: 'Sealing', desc: 'Application of sealers when appropriate' },
+          { num: '7', title: 'Final Inspection', desc: 'Quality check to ensure repair is complete' }
+        ].map(step => (
+          <div class="flex items-start gap-4 bg-gray-50 rounded-lg p-4">
+            <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">{step.num}</div>
+            <div>
+              <h4 class="font-bold text-lg">{step.title}</h4>
+              <p class="text-gray-600">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Why Cracks Should Be Repaired</h3>
+      <div class="bg-gray-50 rounded-lg p-6 mb-8">
+        <p class="text-gray-600 mb-4">Unrepaired cracks can lead to:</p>
+        <ul class="space-y-2">
+          {[
+            'Water infiltration causing further damage',
+            'Freeze-thaw damage in winter months',
+            'Crack expansion and worsening',
+            'Structural issues in foundations',
+            'Safety hazards from trip risks',
+            'Reduced property value'
+          ].map(issue => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-triangle-exclamation text-primary mt-1"></i>
+              <span>{issue}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="text-gray-600 mt-4 font-semibold">Early repair is more cost-effective than waiting until damage worsens.</p>
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Related Services</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { title: 'Concrete Repair', desc: 'Comprehensive repair services', link: '/services/concrete-repair' },
+          { title: 'Concrete Overlays', desc: 'Resurfacing after crack repair', link: '/services/concrete-overlays' },
+          { title: 'Driveway Repair', desc: 'Driveway-specific crack repair', link: '/services/driveways' },
+          { title: 'Basement Floor Repair', desc: 'Interior floor crack repair', link: '/services/basement-flooring' }
+        ].map(service => (
+          <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-primary">
+            <h4 class="font-bold mb-1">{service.title}</h4>
+            <p class="text-gray-600 text-sm">{service.desc}</p>
+            <a href={service.link} class="text-primary text-sm font-semibold hover:underline">Learn more →</a>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Areas We Serve</h3>
+      <p class="text-gray-600 mb-6">
+        We provide crack repair services throughout <a href="/locations/deptford-nj" class="text-primary font-semibold hover:underline">Deptford</a>, <a href="/locations/west-deptford-nj" class="text-primary font-semibold hover:underline">West Deptford</a>, <a href="/locations/woodbury-nj" class="text-primary font-semibold hover:underline">Woodbury</a>, <a href="/locations/glassboro-nj" class="text-primary font-semibold hover:underline">Glassboro</a>, and <a href="/locations" class="text-primary font-semibold hover:underline">all surrounding Gloucester County communities</a>.
+      </p>
+    </div>
+  </section>
+
+  <RelatedServices currentService="crack-repair" />
+  <ServiceAreasLink serviceName="Crack Repair" />
+
+  <!-- Contact Form Section -->
+  <section id="contact-form" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ContactForm title="Get Your Free Crack Repair Estimate" service="crack-repair" />
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Common Questions</p>
+        <h2 class="section-heading">Crack Repair FAQs</h2>
+      </div>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+            <h3 class="font-bold text-lg text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-600">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Have Cracks That Need Repair?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Contact us today for a free inspection and estimate. Don't let small cracks become big problems.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact-form" class="btn-secondary">Get Your Free Estimate <i class="fa-solid fa-arrow-right"></i></a>
+        {SITE_CONFIG.phone && <a href={`tel:${SITE_CONFIG.phone}`} class="btn-outline"><i class="fa-solid fa-phone"></i> {SITE_CONFIG.phone}</a>}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

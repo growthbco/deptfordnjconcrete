@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_CONFIG } from '../config';
+import { generateHomeAndConstructionBusinessSchema } from '../utils/schema';
+
+const aboutSchema = generateHomeAndConstructionBusinessSchema();
+---
+
+<BaseLayout
+  title="About Us | Deptford Concrete Contractors"
+  description="Learn about Deptford Concrete Contractors - your trusted pole barn foundation specialists and concrete contractors in Deptford, NJ."
+  schema={aboutSchema}
+>
+  <!-- Hero Section -->
+  <section class="relative bg-dark py-20 md:py-28">
+    <div class="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="section-subheading text-primary mb-4">Who We Are</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        About Deptford Concrete
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        Pole barn foundation specialists and professional concrete contractors serving Deptford and surrounding New Jersey communities.
+      </p>
+    </div>
+  </section>
+
+  <!-- Introduction Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="section-subheading text-primary mb-4">Our Specialty</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-6">
+            Your Trusted Pole Barn Foundation Experts
+          </h2>
+          <p class="text-lg text-gray-600 mb-6">
+            Deptford Concrete Contractors is a leading concrete contractor specializing in pole barn foundation installation and large-scale commercial concrete projects throughout Deptford, New Jersey, and surrounding Gloucester County communities.
+          </p>
+          <p class="text-gray-600 mb-6">
+            Pole barn foundations are our primary focus. We have extensive experience installing concrete foundations for post-frame buildings, agricultural structures, storage facilities, and commercial pole barns. Our team understands the unique requirements of pole barn construction and ensures every foundation meets structural requirements and local building codes.
+          </p>
+          <a href="/services/pole-barn-foundations" class="btn-primary">
+            Learn About Pole Barn Foundations
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-4">
+            <div class="bg-primary rounded-2xl p-8 text-white text-center">
+              <div class="text-4xl font-bold font-display mb-2">100+</div>
+              <div class="text-white/80">Projects Completed</div>
+            </div>
+            <div class="bg-gray-100 rounded-2xl p-8 text-center">
+              <div class="text-4xl font-bold font-display text-primary mb-2">5.0</div>
+              <div class="text-gray-600">Star Rating</div>
+            </div>
+          </div>
+          <div class="space-y-4 pt-8">
+            <div class="bg-gray-100 rounded-2xl p-8 text-center">
+              <div class="text-4xl font-bold font-display text-primary mb-2">11+</div>
+              <div class="text-gray-600">Areas Served</div>
+            </div>
+            <div class="bg-dark rounded-2xl p-8 text-white text-center">
+              <div class="text-4xl font-bold font-display mb-2">24hr</div>
+              <div class="text-white/80">Response Time</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Overview Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">What We Do</p>
+        <h2 class="section-heading mb-6">Comprehensive Concrete Services</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          While pole barn foundations are our specialty, we also provide comprehensive concrete services for residential and commercial projects.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl p-6 shadow-lg border-l-4 border-primary">
+          <i class="fa-solid fa-warehouse text-primary text-2xl mb-4"></i>
+          <h3 class="font-bold text-lg mb-2 font-display uppercase">Pole Barn Foundations</h3>
+          <p class="text-gray-600">Our primary specialty - expert installation for post-frame buildings</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-lg border-l-4 border-primary">
+          <i class="fa-solid fa-layer-group text-primary text-2xl mb-4"></i>
+          <h3 class="font-bold text-lg mb-2 font-display uppercase">Commercial Slabs</h3>
+          <p class="text-gray-600">Large commercial and industrial concrete slabs</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-lg border-l-4 border-primary">
+          <i class="fa-solid fa-road text-primary text-2xl mb-4"></i>
+          <h3 class="font-bold text-lg mb-2 font-display uppercase">Driveways</h3>
+          <p class="text-gray-600">Residential and commercial driveways</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-lg border-l-4 border-primary">
+          <i class="fa-solid fa-umbrella-beach text-primary text-2xl mb-4"></i>
+          <h3 class="font-bold text-lg mb-2 font-display uppercase">Custom Patios</h3>
+          <p class="text-gray-600">Beautiful outdoor living spaces</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-lg border-l-4 border-primary">
+          <i class="fa-solid fa-shoe-prints text-primary text-2xl mb-4"></i>
+          <h3 class="font-bold text-lg mb-2 font-display uppercase">Walkways</h3>
+          <p class="text-gray-600">Concrete walkways and pathways</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-lg border-l-4 border-primary">
+          <i class="fa-solid fa-mountain text-primary text-2xl mb-4"></i>
+          <h3 class="font-bold text-lg mb-2 font-display uppercase">Retaining Walls</h3>
+          <p class="text-gray-600">Durable erosion control solutions</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="/services" class="btn-primary">
+          View All Services
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Our Promise</p>
+        <h2 class="section-heading mb-6">Why Choose Us?</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-medal text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-3 font-display uppercase">Specialized Expertise</h3>
+          <p class="text-gray-600">Pole barn foundations are our primary specialty. We know the unique requirements inside and out.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-map-location-dot text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-3 font-display uppercase">Local Knowledge</h3>
+          <p class="text-gray-600">We understand local building codes and requirements specific to Gloucester County.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-award text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-3 font-display uppercase">Quality Workmanship</h3>
+          <p class="text-gray-600">Every project is completed to the highest standards with premium materials.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-hand-holding-dollar text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-3 font-display uppercase">Free Estimates</h3>
+          <p class="text-gray-600">No-obligation estimates on all projects. Honest, upfront pricing with no surprises.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-comments text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-3 font-display uppercase">Clear Communication</h3>
+          <p class="text-gray-600">Professional service with clear communication. We respond within 24-48 hours.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-shield-check text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-3 font-display uppercase">Licensed & Insured</h3>
+          <p class="text-gray-600">Fully licensed and insured for your peace of mind on every project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="section-subheading text-primary mb-4">Where We Work</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-6">
+            Areas We Serve
+          </h2>
+          <p class="text-lg text-gray-600 mb-6">
+            We proudly serve {SITE_CONFIG.serviceAreas.join(', ')} and surrounding Gloucester County communities. Whether you need a pole barn foundation in Deptford or concrete services in West Deptford, Woodbury, or any of our other service areas, we're here to help.
+          </p>
+          <a href="/locations" class="btn-primary">
+            View All Service Areas
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          {SITE_CONFIG.serviceAreas.slice(0, 6).map((area) => (
+            <div class="bg-white rounded-lg p-4 shadow-lg border-t-4 border-primary text-center">
+              <i class="fa-solid fa-location-dot text-primary mb-2"></i>
+              <p class="font-bold font-display uppercase">{area}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Contact Us Today
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Ready to start your pole barn foundation or concrete project? Contact Deptford Concrete Contractors today for your free estimate.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="btn-secondary">
+          Get Your Free Estimate
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        {SITE_CONFIG.phone && (
+          <a href={`tel:${SITE_CONFIG.phone}`} class="btn-outline">
+            <i class="fa-solid fa-phone"></i>
+            {SITE_CONFIG.phone}
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

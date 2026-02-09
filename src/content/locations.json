@@ -1,0 +1,91 @@
+[
+  {
+    "id": "deptford",
+    "name": "Deptford",
+    "slug": "deptford-nj",
+    "state": "New Jersey",
+    "abbreviation": "NJ",
+    "fullName": "Deptford, New Jersey"
+  },
+  {
+    "id": "west-deptford",
+    "name": "West Deptford",
+    "slug": "west-deptford-nj",
+    "state": "New Jersey",
+    "abbreviation": "NJ",
+    "fullName": "West Deptford, New Jersey"
+  },
+  {
+    "id": "woodbury",
+    "name": "Woodbury",
+    "slug": "woodbury-nj",
+    "state": "New Jersey",
+    "abbreviation": "NJ",
+    "fullName": "Woodbury, New Jersey"
+  },
+  {
+    "id": "glassboro",
+    "name": "Glassboro",
+    "slug": "glassboro-nj",
+    "state": "New Jersey",
+    "abbreviation": "NJ",
+    "fullName": "Glassboro, New Jersey"
+  },
+  {
+    "id": "sewell",
+    "name": "Sewell",
+    "slug": "sewell-nj",
+    "state": "New Jersey",
+    "abbreviation": "NJ",
+    "fullName": "Sewell, New Jersey"
+  },
+  {
+    "id": "pitman",
+    "name": "Pitman",
+    "slug": "pitman-nj",
+    "state": "New Jersey",
+    "abbreviation": "NJ",
+    "fullName": "Pitman, New Jersey"
+  },
+  {
+    "id": "washington-township",
+    "name": "Washington Township",
+    "slug": "washington-township-nj",
+    "state": "New Jersey",
+    "abbreviation": "NJ",
+    "fullName": "Washington Township, New Jersey"
+  },
+  {
+    "id": "turnersville",
+    "name": "Turnersville",
+    "slug": "turnersville-nj",
+    "state": "New Jersey",
+    "abbreviation": "NJ",
+    "fullName": "Turnersville, New Jersey"
+  },
+  {
+    "id": "blackwood",
+    "name": "Blackwood",
+    "slug": "blackwood-nj",
+    "state": "New Jersey",
+    "abbreviation": "NJ",
+    "fullName": "Blackwood, New Jersey"
+  },
+  {
+    "id": "wenonah",
+    "name": "Wenonah",
+    "slug": "wenonah-nj",
+    "state": "New Jersey",
+    "abbreviation": "NJ",
+    "fullName": "Wenonah, New Jersey"
+  },
+  {
+    "id": "mantua",
+    "name": "Mantua",
+    "slug": "mantua-nj",
+    "state": "New Jersey",
+    "abbreviation": "NJ",
+    "fullName": "Mantua, New Jersey"
+  }
+]
+

@@ -1,0 +1,31 @@
+---
+interface Props {
+  location: {
+    id: string;
+    name: string;
+    slug: string;
+    fullName: string;
+  };
+}
+
+const { location } = Astro.props;
+---
+
+<a href={`/locations/${location.slug}`} class="group block card p-6 text-center hover:-translate-y-2 border-t-4 border-primary">
+  <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary transition-colors">
+    <i class="fa-solid fa-location-dot text-primary text-xl group-hover:text-white transition-colors"></i>
+  </div>
+
+  <h3 class="text-lg font-bold text-gray-900 font-display uppercase mb-1 group-hover:text-primary transition-colors">
+    {location.name}
+  </h3>
+
+  <p class="text-gray-500 text-sm mb-4">
+    {location.fullName}
+  </p>
+
+  <span class="inline-flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
+    View Services
+    <i class="fa-solid fa-arrow-right text-xs"></i>
+  </span>
+</a>

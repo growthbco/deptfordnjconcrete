@@ -1,0 +1,76 @@
+---
+import locationsData from '../content/locations.json';
+
+interface Props {
+  currentLocation?: string;
+  serviceName?: string;
+  title?: string;
+}
+
+const { currentLocation, serviceName, title = "Service Areas" } = Astro.props;
+const allLocations = currentLocation
+  ? locationsData.filter(l => l.slug !== currentLocation)
+  : locationsData;
+const primaryLocations = allLocations.slice(0, 6);
+const otherLocations = allLocations.slice(6);
+---
+
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <p class="section-subheading text-primary mb-4">Where We Work</p>
+      <h2 class="section-heading mb-6">{title}</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        {serviceName
+          ? `We provide ${serviceName.toLowerCase()} services throughout Gloucester County and surrounding New Jersey communities.`
+          : "We provide professional concrete services throughout Gloucester County and surrounding New Jersey communities."
+        }
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+      {primaryLocations.map(location => (
+        <a href={`/locations/${location.slug}`} class="group card p-6 hover:-translate-y-2 border-t-4 border-primary">
+          <div class="flex items-center gap-4 mb-3">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary transition-colors">
+              <i class="fa-solid fa-location-dot text-primary group-hover:text-white transition-colors"></i>
+            </div>
+            <h3 class="font-bold text-lg font-display uppercase group-hover:text-primary transition-colors">
+              {location.name}, NJ
+            </h3>
+          </div>
+          {serviceName && (
+            <p class="text-gray-600 text-sm mb-2">
+              {serviceName} services available
+            </p>
+          )}
+          <span class="text-primary text-sm font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">
+            View Services
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </span>
+        </a>
+      ))}
+    </div>
+
+    {otherLocations.length > 0 && (
+      <div class="border-t border-gray-200 pt-8">
+        <h3 class="text-xl font-bold text-primary font-display uppercase mb-6">Additional Service Areas</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {otherLocations.map(location => (
+            <a href={`/locations/${location.slug}`} class="group flex items-center gap-2 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+              <i class="fa-solid fa-location-dot text-gray-400 group-hover:text-primary transition-colors text-sm"></i>
+              <span class="text-gray-600 group-hover:text-primary transition-colors font-medium">{location.name}, NJ</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div class="text-center mt-10">
+      <a href="/locations" class="btn-primary">
+        View All Service Areas
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>

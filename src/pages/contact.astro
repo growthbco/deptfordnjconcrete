@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { SITE_CONFIG } from '../config';
+---
+
+<BaseLayout
+  title="Contact Us | Get Your Free Concrete Estimate"
+  description="Contact Deptford Concrete Contractors for your free estimate on pole barn foundations and all concrete services. Serving Deptford, NJ and surrounding areas."
+>
+  <!-- Hero Section -->
+  <section class="bg-dark py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="section-subheading text-primary mb-4">Get In Touch</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        Contact Us
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        Get your free estimate on pole barn foundations and all concrete services. We're here to help with your project.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <!-- Contact Info -->
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-6">
+            Let's Start Your Project
+          </h2>
+          <p class="text-lg text-gray-600 mb-8">
+            Ready to start your pole barn foundation or concrete project? Contact us today for a free, no-obligation estimate. We typically respond to estimate requests within 24-48 hours.
+          </p>
+
+          <!-- Contact Cards -->
+          <div class="space-y-4 mb-10">
+            {SITE_CONFIG.phone && (
+              <a href={`tel:${SITE_CONFIG.phone}`} class="group flex items-center gap-4 p-5 bg-gray-50 rounded-xl hover:bg-primary/5 transition-colors">
+                <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary transition-colors">
+                  <i class="fa-solid fa-phone text-xl text-primary group-hover:text-white transition-colors"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-500 font-medium">Phone</p>
+                  <p class="text-lg font-bold text-gray-900">{SITE_CONFIG.phone}</p>
+                </div>
+              </a>
+            )}
+
+            {SITE_CONFIG.email && (
+              <a href={`mailto:${SITE_CONFIG.email}`} class="group flex items-center gap-4 p-5 bg-gray-50 rounded-xl hover:bg-primary/5 transition-colors">
+                <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary transition-colors">
+                  <i class="fa-solid fa-envelope text-xl text-primary group-hover:text-white transition-colors"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-500 font-medium">Email</p>
+                  <p class="text-lg font-bold text-gray-900">{SITE_CONFIG.email}</p>
+                </div>
+              </a>
+            )}
+
+            <div class="flex items-center gap-4 p-5 bg-gray-50 rounded-xl">
+              <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-location-dot text-xl text-primary"></i>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500 font-medium">Service Areas</p>
+                <p class="text-gray-900">{SITE_CONFIG.serviceAreas.slice(0, 3).join(', ')} and more</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4 p-5 bg-gray-50 rounded-xl">
+              <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-clock text-xl text-primary"></i>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500 font-medium">Response Time</p>
+                <p class="text-gray-900">Within 24-48 hours</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="flex flex-wrap gap-6 pt-6 border-t border-gray-200">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-shield-check text-primary text-xl"></i>
+              <span class="text-gray-700 font-medium">Licensed & Insured</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-star text-accent text-xl"></i>
+              <span class="text-gray-700 font-medium">5-Star Rated</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-handshake text-primary text-xl"></i>
+              <span class="text-gray-700 font-medium">Free Estimates</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div>
+          <ContactForm title="Request Your Free Estimate" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Our Location</p>
+        <h2 class="section-heading">Find Us On The Map</h2>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden shadow-2xl">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d784438.8551085566!2d-76.33406682187498!3d39.82461320000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6d14c862e5d4d%3A0xf464f46461fc4ce2!2sDeptford%20NJ%20Concrete!5e0!3m2!1sen!2sus!4v1762401808748!5m2!1sen!2sus"
+          width="100%"
+          height="500"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Deptford Concrete Contractors Location"
+          class="w-full"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Where We Work</p>
+        <h2 class="section-heading mb-6">Our Service Areas</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          We provide professional concrete services throughout Gloucester County and surrounding New Jersey communities.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {SITE_CONFIG.serviceAreas.map((area) => (
+          <div class="bg-gray-50 rounded-lg p-4 text-center hover:bg-primary/5 transition-colors">
+            <i class="fa-solid fa-location-dot text-primary mb-2"></i>
+            <p class="font-medium text-gray-900">{area}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="/locations" class="btn-primary">
+          View All Locations
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Ready to Get Started?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Call us today for a free estimate on your concrete project. No obligation, just honest pricing.
+      </p>
+      {SITE_CONFIG.phone && (
+        <a href={`tel:${SITE_CONFIG.phone}`} class="btn-secondary text-lg">
+          <i class="fa-solid fa-phone"></i>
+          {SITE_CONFIG.phone}
+        </a>
+      )}
+    </div>
+  </section>
+</BaseLayout>

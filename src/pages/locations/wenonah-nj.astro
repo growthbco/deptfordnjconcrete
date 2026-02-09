@@ -1,0 +1,308 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import { SITE_CONFIG } from '../../config';
+import servicesData from '../../content/services.json';
+import locationDetails from '../../content/location-details.json';
+import { generateLocationSchema } from '../../utils/schema';
+
+const location = {
+  name: 'Wenonah',
+  fullName: 'Wenonah, New Jersey',
+  state: 'New Jersey',
+  slug: 'wenonah-nj'
+};
+
+const primaryServices = servicesData.filter(s => s.primary);
+const details = locationDetails['wenonah-nj'];
+
+const localSchema = generateLocationSchema(location.name, location.slug);
+
+const iconMap: Record<string, string> = {
+  'pole-barn-foundations': 'fa-warehouse',
+  'concrete-slabs': 'fa-layer-group',
+  'driveways': 'fa-road',
+  'patios': 'fa-umbrella-beach',
+  'stamped-concrete': 'fa-stamp',
+  'walkways': 'fa-shoe-prints',
+  'retaining-walls': 'fa-mountain',
+  'basement-flooring': 'fa-house-flood-water'
+};
+---
+
+<BaseLayout
+  title={`Concrete Contractors ${location.name}, NJ | Pole Barn Foundations & More`}
+  description={`Professional concrete contractors serving ${location.name}, New Jersey. Small historic borough with strong community identity and lake. Specializing in pole barn foundations, driveways, patios, and commercial slabs. Free estimates.`}
+  schema={localSchema}
+>
+  <!-- Hero Section -->
+  <section class="bg-dark py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="section-subheading text-primary mb-4">Local Concrete Experts</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        Concrete Contractors {location.name}, New Jersey
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Expert concrete contractors specializing in pole barn foundations, commercial slabs, residential driveways, and comprehensive concrete services in {location.fullName}. Serving this charming historic borough with quality craftsmanship.
+      </p>
+      <a href="#contact-form" class="btn-primary text-lg">
+        Get Free Estimate in {location.name}
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Introduction Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-8">
+        Professional Concrete Contractors Serving {location.name}, New Jersey
+      </h2>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Serving {location.name} Since 2019</h3>
+      <p class="text-gray-600 mb-6">
+        Deptford Concrete Contractors has been proudly serving homeowners and businesses throughout {location.name} and the surrounding Gloucester County area since 2019. Our team specializes in durable, high-quality concrete installations built to handle New Jersey's seasonal weather—from freezing winters to humid summers. Whether it's a fresh driveway, decorative patio, pole barn foundation, or full-scale commercial slab, we deliver craftsmanship that lasts.
+      </p>
+
+      <p class="text-gray-600 mb-8">
+        As experienced concrete contractors in {location.name}, we specialize in pole barn foundation installation—our primary expertise—while providing comprehensive concrete services for residential and commercial properties throughout this historic Gloucester County borough. {location.name} is a small, charming borough with beautiful Wenonah Lake and a strong community identity, creating unique concrete contracting needs that respect the borough's character and preservation considerations.
+      </p>
+
+      <!-- Why Choose Us Box -->
+      <div class="bg-orange-50 border-l-4 border-primary rounded-lg p-6 mb-8">
+        <h3 class="text-xl font-bold text-primary font-display uppercase mb-4">Why {location.name} Homeowners Choose Deptford Concrete Contractors</h3>
+        <ul class="space-y-3">
+          {[
+            { title: 'Locally Owned and Operated', desc: `Based in Gloucester County, we understand ${location.name}'s unique historic character and community` },
+            { title: 'Decades of Combined Experience', desc: "Our team has extensive experience with New Jersey soil and weather conditions" },
+            { title: 'Responsive, Reliable Service', desc: 'We respond to estimate requests within 24-48 hours with honest pricing' },
+            { title: 'Specialized Expertise', desc: 'Skilled in stamped, decorative, and structural concrete work' },
+            { title: 'Fully Licensed and Insured', desc: `Professional coverage for residential and commercial projects throughout ${location.name}` },
+            { title: 'Pole Barn Foundation Specialists', desc: 'Our primary specialty ensures expert installation for post-frame buildings' }
+          ].map(item => (
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+              <span><strong>{item.title}:</strong> {item.desc}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Understanding {location.name}'s Geography and Development</h3>
+      <p class="text-gray-600 mb-6">
+        {location.name} is a small, historic residential borough known for its strong community character, beautiful Wenonah Lake, and the Wenonah Historic District. The borough features primarily single-family homes with some commercial properties along Main Street. This quaint atmosphere creates concrete contracting needs that often require sensitivity to the borough's historic character while delivering modern, durable installations.
+      </p>
+
+      <p class="text-gray-600 mb-8">
+        Major landmarks in {location.name} include {details.landmarks.join(', ')}. The borough's small-town atmosphere and historic properties create demand for concrete services that complement existing architecture and neighborhood character. As {location.name} concrete contractors, we understand the importance of working respectfully within this tight-knit community.
+      </p>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Traffic Patterns and Project Coordination in {location.name}</h3>
+      <p class="text-gray-600 mb-6">
+        {details.trafficPatterns} As experienced concrete contractors working throughout {location.name}, we carefully plan project schedules to preserve the borough's quaint atmosphere. We coordinate with homeowners to minimize disruption to the neighborhood and work efficiently to complete projects on time.
+      </p>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Weather Considerations for Concrete Work in {location.name}</h3>
+      <p class="text-gray-600 mb-6">
+        {details.weatherImpacts} As professional concrete contractors in {location.name}, we understand these weather patterns and plan projects accordingly. The proximity to Wenonah Lake can create unique conditions, and we account for this when scheduling and installing concrete.
+      </p>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Soil Conditions and Foundation Requirements in {location.name}</h3>
+      <p class="text-gray-600 mb-8">
+        {details.soilConditions} Before beginning any pole barn foundation or concrete slab project in {location.name}, we conduct thorough site assessments to understand soil composition, drainage patterns, and load-bearing capacity. Properties near Wenonah Lake may have specific drainage requirements that we address in our designs.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pole Barn Foundations Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="section-subheading text-primary mb-4">Our Specialty</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-6">
+            Pole Barn Foundation Contractors in {location.name}
+          </h2>
+          <p class="text-gray-600 mb-6">
+            Pole barn foundations are our primary specialty, and we serve property owners throughout {location.name} and surrounding areas. While {location.name}'s residential character limits large pole barn construction within the borough, properties on the outskirts and in nearby areas provide opportunities for pole barn projects. We provide expert foundation installation that meets all structural requirements and local building codes.
+          </p>
+
+          <div class="space-y-3 mb-8">
+            {[
+              'Site Assessment - We evaluate your property\'s soil conditions, drainage, and access requirements',
+              'Foundation Design - Custom design meeting local building codes',
+              'Concrete Footing Installation - Professional installation accounting for local soil conditions',
+              'Slab-on-Grade Foundations - Complete slab foundations for pole barns',
+              'Permit Assistance - We handle all permit applications with Wenonah Borough',
+              'Reinforcement - Proper rebar installation and concrete mix design'
+            ].map(item => (
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-check text-primary mt-1"></i>
+                <span class="text-gray-600">{item}</span>
+              </div>
+            ))}
+          </div>
+
+          <a href="/services/pole-barn-foundations" class="btn-primary">
+            Learn More About Pole Barn Foundations
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-xl">
+          <h3 class="text-2xl font-bold font-display uppercase mb-6 text-center">Our Primary Services in {location.name}</h3>
+          <div class="grid sm:grid-cols-2 gap-4">
+            {primaryServices.map(service => (
+              <a href={`/locations/${location.slug}/${service.slug}`} class="group flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-primary/5 transition-colors border-l-4 border-primary">
+                <i class={`fa-solid ${iconMap[service.slug] || 'fa-cube'} text-primary`}></i>
+                <span class="font-semibold group-hover:text-primary transition-colors">{service.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commercial & Residential Services -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-4 mb-4">Commercial Concrete Contractors in {location.name}</h3>
+      <p class="text-gray-600 mb-6">
+        We're experienced concrete contractors handling commercial projects for businesses in {location.name}. While {location.name} is primarily residential, the commercial properties along Main Street and local businesses benefit from our professional concrete services.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { title: 'Commercial Slabs', desc: 'Slabs for local businesses and shops' },
+          { title: 'Sidewalk Installation', desc: 'Commercial sidewalk installation and repair' },
+          { title: 'Storefront Concrete', desc: 'Concrete work for Main Street businesses' },
+          { title: 'Concrete Repair', desc: 'Commercial concrete repair and resurfacing' }
+        ].map(item => (
+          <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-primary">
+            <h4 class="font-bold mb-1">{item.title}</h4>
+            <p class="text-gray-600 text-sm">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Residential Concrete Contractors in {location.name}</h3>
+      <p class="text-gray-600 mb-6">
+        Our residential concrete contracting services help {location.name} homeowners enhance their properties with durable, beautiful concrete installations. {location.name}'s historic neighborhoods and established homes have unique concrete needs, from driveway replacements to decorative patios that complement the borough's character.
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        {[
+          { title: 'Driveways', link: '/services/driveways', icon: 'fa-road' },
+          { title: 'Patios', link: '/services/patios', icon: 'fa-umbrella-beach' },
+          { title: 'Stamped Concrete', link: '/services/stamped-concrete', icon: 'fa-stamp' },
+          { title: 'Walkways', link: '/services/walkways', icon: 'fa-shoe-prints' },
+          { title: 'Retaining Walls', link: '/services/retaining-walls', icon: 'fa-mountain' },
+          { title: 'Basement Flooring', link: '/services/basement-flooring', icon: 'fa-house-flood-water' }
+        ].map(item => (
+          <a href={item.link} class="group flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-primary/5 transition-colors">
+            <i class={`fa-solid ${item.icon} text-primary`}></i>
+            <span class="font-semibold group-hover:text-primary transition-colors">{item.title}</span>
+            <i class="fa-solid fa-arrow-right text-primary text-sm ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+          </a>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Wenonah Borough Building Codes and Permits</h3>
+      <p class="text-gray-600 mb-6">
+        As {location.name} concrete contractors, we're well-versed in Wenonah Borough building codes and permit requirements. Projects in or near the Wenonah Historic District may have additional considerations. We assist with all permit applications and ensure compliance with local regulations while respecting the borough's historic character.
+      </p>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Common Concrete Issues in South Jersey</h3>
+      <p class="text-gray-600 mb-4">
+        New Jersey's freeze-thaw cycles, humidity, and occasional flooding can cause concrete cracking, surface spalling, and water drainage problems. At Deptford Concrete Contractors, we use proper grading, expansion joints, and durable concrete mixes to help protect your surfaces year-round.
+      </p>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { title: 'Freeze-Thaw Cycles', desc: 'Proper mix design and sealing protect against expansion' },
+          { title: 'High Humidity', desc: 'Moisture-resistant concrete formulations' },
+          { title: 'Heavy Rainfall', desc: 'Proper grading and drainage to prevent water damage' },
+          { title: 'Temperature Extremes', desc: 'Installation timing optimized for New Jersey climate' }
+        ].map(item => (
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-shield-check text-primary mt-1"></i>
+            <div>
+              <span class="font-bold">{item.title}:</span>
+              <span class="text-gray-600"> {item.desc}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Major Routes We Serve</h3>
+      <p class="text-gray-600 mb-4">As {location.name} concrete contractors, we serve properties along major routes including:</p>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          'Main Street',
+          'Mantua Avenue',
+          'Route 45',
+          'South Marion Avenue',
+          'North Clinton Avenue',
+          'West Maple Avenue'
+        ].map(route => (
+          <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+            <i class="fa-solid fa-road text-primary"></i>
+            <span>{route}</span>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">{location.name} & Nearby Areas We Serve</h3>
+      <p class="text-gray-600 mb-4">While {location.name} is our primary service area, we also serve surrounding communities including:</p>
+      <div class="flex flex-wrap gap-2 mb-8">
+        {['Mantua', 'Deptford', 'Woodbury', 'West Deptford', 'Pitman', 'Glassboro', 'Sewell', 'Washington Township', 'Turnersville', 'Blackwood', 'Mullica Hill', 'Swedesboro'].map(area => (
+          <span class="px-3 py-1 bg-gray-100 rounded-full text-sm font-medium">{area}</span>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Contact {location.name} Concrete Contractors Today</h3>
+      <p class="text-gray-600 mb-4">
+        Ready to start your concrete project in {location.name}, New Jersey? Whether you need a pole barn foundation, a new driveway, a commercial slab, or any other concrete service, Deptford Concrete Contractors has the expertise and local knowledge to deliver exceptional results.
+      </p>
+      <p class="text-gray-600">
+        <strong>Looking for a free quote?</strong> Call <a href="tel:856-934-4906" class="text-primary font-semibold hover:underline">856-934-4906</a> or fill out our contact form to schedule your estimate today.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section id="contact-form" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ContactForm
+        title={`Get Your Free Estimate in ${location.name}, NJ`}
+        location={location.name}
+        service="pole-barn-foundations"
+      />
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Ready to Start Your {location.name} Project?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Contact us today for a free estimate. No obligation, just honest pricing and expert advice.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact-form" class="btn-secondary">
+          Get Your Free Estimate
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        {SITE_CONFIG.phone && (
+          <a href={`tel:${SITE_CONFIG.phone}`} class="btn-outline">
+            <i class="fa-solid fa-phone"></i>
+            {SITE_CONFIG.phone}
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

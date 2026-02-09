@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LocationCard from '../../components/LocationCard.astro';
+import { SITE_CONFIG } from '../../config';
+import locationsData from '../../content/locations.json';
+---
+
+<BaseLayout
+  title="Service Areas | Concrete Contractors Serving Deptford, NJ & Surrounding Areas"
+  description="We provide pole barn foundation and concrete services throughout Deptford, West Deptford, Woodbury, Glassboro, and surrounding New Jersey communities."
+>
+  <!-- Hero Section -->
+  <section class="bg-dark py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="section-subheading text-primary mb-4">Where We Work</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        Areas We Serve
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        Professional pole barn foundation and concrete services throughout Gloucester County and surrounding New Jersey communities.
+      </p>
+    </div>
+  </section>
+
+  <!-- Locations Grid Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Local Service</p>
+        <h2 class="section-heading mb-6">Our Service Areas</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          We proudly serve the following communities with expert pole barn foundation installation and comprehensive concrete services.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {locationsData.map(location => (
+          <LocationCard location={location} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services in Your Area Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <p class="section-subheading text-primary mb-4">Full Service Coverage</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-6">
+            Our Service Area
+          </h2>
+          <p class="text-lg text-gray-600 mb-6">
+            Deptford Concrete Contractors specializes in pole barn foundation installation and large-scale concrete projects throughout Gloucester County, New Jersey.
+          </p>
+          <p class="text-gray-600 mb-6">
+            Whether you need a <a href="/services/pole-barn-foundations" class="text-primary font-semibold hover:underline">pole barn foundation in Deptford</a>, a <a href="/services/concrete-slabs" class="text-primary font-semibold hover:underline">large commercial slab in West Deptford</a>, or <a href="/services" class="text-primary font-semibold hover:underline">concrete services in Woodbury, Glassboro</a>, or any of our other service areas, we're here to help.
+          </p>
+          <p class="text-gray-600 mb-8">
+            Our primary focus is <a href="/services/pole-barn-foundations" class="text-primary font-semibold hover:underline">pole barn foundations</a>, but we also provide comprehensive concrete services including <a href="/services/driveways" class="text-primary font-semibold hover:underline">driveways</a>, <a href="/services/patios" class="text-primary font-semibold hover:underline">patios</a>, <a href="/services/walkways" class="text-primary font-semibold hover:underline">walkways</a>, <a href="/services/retaining-walls" class="text-primary font-semibold hover:underline">retaining walls</a>, and <a href="/services/basement-flooring" class="text-primary font-semibold hover:underline">basement flooring</a> throughout our service area.
+          </p>
+
+          <a href="/contact" class="btn-primary">
+            Get Your Free Estimate
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div>
+          <h3 class="text-2xl font-bold font-display uppercase mb-6">Our Services</h3>
+          <p class="text-gray-600 mb-6">We provide a full range of concrete services in all our service areas:</p>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <a href="/services/pole-barn-foundations" class="bg-white rounded-lg p-4 shadow-lg border-l-4 border-primary hover:shadow-xl transition-shadow group">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-warehouse text-primary"></i>
+                <div>
+                  <p class="font-bold group-hover:text-primary transition-colors">Pole Barn Foundations</p>
+                  <p class="text-xs text-gray-500">Our primary specialty</p>
+                </div>
+              </div>
+            </a>
+
+            <a href="/services/concrete-slabs" class="bg-white rounded-lg p-4 shadow-lg border-l-4 border-primary hover:shadow-xl transition-shadow group">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-layer-group text-primary"></i>
+                <div>
+                  <p class="font-bold group-hover:text-primary transition-colors">Concrete Slabs</p>
+                  <p class="text-xs text-gray-500">Commercial & industrial</p>
+                </div>
+              </div>
+            </a>
+
+            <a href="/services/driveways" class="bg-white rounded-lg p-4 shadow-lg border-l-4 border-primary hover:shadow-xl transition-shadow group">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-road text-primary"></i>
+                <div>
+                  <p class="font-bold group-hover:text-primary transition-colors">Driveways</p>
+                  <p class="text-xs text-gray-500">Residential & commercial</p>
+                </div>
+              </div>
+            </a>
+
+            <a href="/services/patios" class="bg-white rounded-lg p-4 shadow-lg border-l-4 border-primary hover:shadow-xl transition-shadow group">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-umbrella-beach text-primary"></i>
+                <div>
+                  <p class="font-bold group-hover:text-primary transition-colors">Patios</p>
+                  <p class="text-xs text-gray-500">Custom outdoor spaces</p>
+                </div>
+              </div>
+            </a>
+
+            <a href="/services/stamped-concrete" class="bg-white rounded-lg p-4 shadow-lg border-l-4 border-primary hover:shadow-xl transition-shadow group">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-stamp text-primary"></i>
+                <div>
+                  <p class="font-bold group-hover:text-primary transition-colors">Stamped Concrete</p>
+                  <p class="text-xs text-gray-500">Decorative surfaces</p>
+                </div>
+              </div>
+            </a>
+
+            <a href="/services/walkways" class="bg-white rounded-lg p-4 shadow-lg border-l-4 border-primary hover:shadow-xl transition-shadow group">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-shoe-prints text-primary"></i>
+                <div>
+                  <p class="font-bold group-hover:text-primary transition-colors">Walkways</p>
+                  <p class="text-xs text-gray-500">Paths & sidewalks</p>
+                </div>
+              </div>
+            </a>
+
+            <a href="/services/retaining-walls" class="bg-white rounded-lg p-4 shadow-lg border-l-4 border-primary hover:shadow-xl transition-shadow group">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-mountain text-primary"></i>
+                <div>
+                  <p class="font-bold group-hover:text-primary transition-colors">Retaining Walls</p>
+                  <p class="text-xs text-gray-500">Erosion control</p>
+                </div>
+              </div>
+            </a>
+
+            <a href="/services/basement-flooring" class="bg-white rounded-lg p-4 shadow-lg border-l-4 border-primary hover:shadow-xl transition-shadow group">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-house-flood-water text-primary"></i>
+                <div>
+                  <p class="font-bold group-hover:text-primary transition-colors">Basement Flooring</p>
+                  <p class="text-xs text-gray-500">Interior concrete</p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="mt-6 text-center">
+            <a href="/services" class="text-primary font-semibold hover:underline inline-flex items-center gap-2">
+              View All Services
+              <i class="fa-solid fa-arrow-right text-sm"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Find Us</p>
+        <h2 class="section-heading">Our Coverage Area</h2>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden shadow-2xl">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d784438.8551085566!2d-76.33406682187498!3d39.82461320000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6d14c862e5d4d%3A0xf464f46461fc4ce2!2sDeptford%20NJ%20Concrete!5e0!3m2!1sen!2sus!4v1762401808748!5m2!1sen!2sus"
+          width="100%"
+          height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Deptford Concrete Contractors Service Area"
+          class="w-full"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Contact Us Today
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Ready to start your concrete project? Contact us today for a free estimate in any of these communities.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="btn-secondary">
+          Get Your Free Estimate
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        {SITE_CONFIG.phone && (
+          <a href={`tel:${SITE_CONFIG.phone}`} class="btn-outline">
+            <i class="fa-solid fa-phone"></i>
+            {SITE_CONFIG.phone}
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

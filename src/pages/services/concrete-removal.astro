@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
+import { SITE_CONFIG } from '../../config';
+import { generateServiceSchema } from '../../utils/schema';
+
+const serviceSchema = generateServiceSchema('concrete-removal', 'Professional concrete removal and demolition services in Deptford, NJ. Safe and efficient concrete removal for driveways, patios, slabs, and foundations.');
+
+const faqs = [
+  { q: 'How much does concrete removal cost?', a: 'Concrete removal costs vary based on thickness, size, and accessibility. Typical costs range from $2-$6 per square foot, including removal and disposal. We provide free estimates for accurate pricing.' },
+  { q: 'Do you dispose of the removed concrete?', a: 'Yes, our removal service includes proper disposal of all concrete debris. We handle disposal at approved facilities, so you don\'t have to worry about it.' },
+  { q: 'How long does concrete removal take?', a: 'Most removal projects are completed within 1-2 days, depending on size and complexity. We\'ll provide a timeline during your free estimate.' },
+  { q: 'Can you remove concrete and install new concrete?', a: 'Yes! We can handle both removal and new installation. This is often more efficient and cost-effective than hiring separate contractors.' },
+  { q: 'Do I need a permit for concrete removal?', a: 'Permit requirements vary by municipality and project scope. We\'ll check local requirements and assist with permits if needed.' }
+];
+---
+
+<BaseLayout
+  title="Concrete Removal & Demolition Services in Deptford, NJ"
+  description="Expert concrete removal contractors in Deptford, NJ. Safe concrete demolition and removal for driveways, patios, foundations, and slabs. Proper disposal included."
+  schema={serviceSchema}
+>
+  <!-- Hero Section -->
+  <section class="bg-dark py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="section-subheading text-primary mb-4">Removal Services</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        Concrete Removal & Demolition
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Professional concrete removal and demolition services. Safe, efficient removal of old concrete with proper disposal. Make way for new installations.
+      </p>
+      <a href="#contact-form" class="btn-primary text-lg">
+        Get Free Removal Estimate
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-8">
+        Professional Concrete Removal Services
+      </h2>
+      <p class="text-lg text-gray-600 mb-8">
+        When you need to remove old, damaged, or unwanted concrete, professional removal is essential. We provide safe, efficient concrete removal and demolition services that prepare your site for new installations. Our removal services include proper disposal, making the process hassle-free for you.
+      </p>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Types of Concrete Removal We Provide</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { icon: 'fa-road', title: 'Driveway Removal', desc: 'Complete removal of old driveways before new installation' },
+          { icon: 'fa-border-all', title: 'Patio Removal', desc: 'Removal of existing patios for replacement or redesign' },
+          { icon: 'fa-person-walking', title: 'Sidewalk Removal', desc: 'Removal of damaged or unwanted sidewalks' },
+          { icon: 'fa-house-crack', title: 'Foundation Removal', desc: 'Demolition of old foundations and footings' },
+          { icon: 'fa-layer-group', title: 'Slab Removal', desc: 'Removal of concrete slabs for replacement or new construction' },
+          { icon: 'fa-water-ladder', title: 'Pool Deck Removal', desc: 'Removal of old pool decks before new installation' }
+        ].map(type => (
+          <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class={`fa-solid ${type.icon} text-primary`}></i>
+            </div>
+            <div>
+              <h4 class="font-bold">{type.title}</h4>
+              <p class="text-gray-600 text-sm">{type.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">What's Included in Our Removal Service</h3>
+      <div class="bg-orange-50 border-l-4 border-primary rounded-lg p-6 mb-8">
+        <ul class="space-y-2">
+          {[
+            'Free Site Assessment - We assess your concrete removal needs and provide a detailed estimate',
+            'Safe Demolition - Professional demolition using appropriate equipment and techniques',
+            'Debris Removal - Complete removal of all concrete debris from your property',
+            'Proper Disposal - Environmentally responsible disposal of removed concrete',
+            'Site Preparation - Site preparation for new concrete installation if needed',
+            'Cleanup - Thorough cleanup of the work area',
+            'Permit Assistance - Help with permits if required for removal work'
+          ].map(item => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Our Concrete Removal Process</h3>
+      <div class="space-y-4 mb-8">
+        {[
+          { num: '1', title: 'Site Assessment', desc: 'We evaluate your concrete removal needs and site conditions' },
+          { num: '2', title: 'Planning', desc: 'Development of removal plan considering safety and efficiency' },
+          { num: '3', title: 'Permit Check', desc: 'Verification of permit requirements if needed' },
+          { num: '4', title: 'Demolition', desc: 'Safe demolition using appropriate equipment' },
+          { num: '5', title: 'Debris Removal', desc: 'Collection and removal of all concrete debris' },
+          { num: '6', title: 'Disposal', desc: 'Proper disposal at approved facilities' },
+          { num: '7', title: 'Site Cleanup', desc: 'Thorough cleanup of the work area' },
+          { num: '8', title: 'Site Preparation', desc: 'Preparation for new installation if applicable' }
+        ].map(step => (
+          <div class="flex items-start gap-4 bg-gray-50 rounded-lg p-4">
+            <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">{step.num}</div>
+            <div>
+              <h4 class="font-bold text-lg">{step.title}</h4>
+              <p class="text-gray-600">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">When Concrete Removal is Needed</h3>
+      <div class="bg-gray-50 rounded-lg p-6 mb-8">
+        <p class="text-gray-600 mb-4">Concrete removal is necessary when:</p>
+        <ul class="space-y-2">
+          {[
+            'Replacing old, damaged concrete with new installation',
+            'Removing concrete that\'s beyond repair',
+            'Preparing site for new construction or renovation',
+            'Removing unwanted concrete features',
+            'Addressing drainage or grading issues',
+            'Making way for landscaping or other improvements'
+          ].map(reason => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check text-primary mt-1"></i>
+              <span>{reason}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">After Removal - New Installations</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { title: 'New Driveway', desc: 'After driveway removal', link: '/services/driveways' },
+          { title: 'New Patio', desc: 'After patio removal', link: '/services/patios' },
+          { title: 'New Slab', desc: 'After slab removal', link: '/services/concrete-slabs' },
+          { title: 'New Pool Deck', desc: 'After pool deck removal', link: '/services/pool-decks' }
+        ].map(service => (
+          <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-primary">
+            <h4 class="font-bold mb-1">{service.title}</h4>
+            <p class="text-gray-600 text-sm">{service.desc}</p>
+            <a href={service.link} class="text-primary text-sm font-semibold hover:underline">Learn more →</a>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Areas We Serve</h3>
+      <p class="text-gray-600 mb-6">
+        We provide concrete removal services throughout <a href="/locations/deptford-nj" class="text-primary font-semibold hover:underline">Deptford</a>, <a href="/locations/west-deptford-nj" class="text-primary font-semibold hover:underline">West Deptford</a>, <a href="/locations/woodbury-nj" class="text-primary font-semibold hover:underline">Woodbury</a>, <a href="/locations/glassboro-nj" class="text-primary font-semibold hover:underline">Glassboro</a>, and <a href="/locations" class="text-primary font-semibold hover:underline">all surrounding Gloucester County communities</a>.
+      </p>
+    </div>
+  </section>
+
+  <RelatedServices currentService="concrete-removal" />
+  <ServiceAreasLink serviceName="Concrete Removal" />
+
+  <!-- Contact Form Section -->
+  <section id="contact-form" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ContactForm title="Get Your Free Concrete Removal Estimate" service="concrete-removal" />
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Common Questions</p>
+        <h2 class="section-heading">Concrete Removal FAQs</h2>
+      </div>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+            <h3 class="font-bold text-lg text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-600">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Need Concrete Removed?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Contact us today for a free estimate. We handle removal and can install new concrete too.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact-form" class="btn-secondary">Get Your Free Estimate <i class="fa-solid fa-arrow-right"></i></a>
+        {SITE_CONFIG.phone && <a href={`tel:${SITE_CONFIG.phone}`} class="btn-outline"><i class="fa-solid fa-phone"></i> {SITE_CONFIG.phone}</a>}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

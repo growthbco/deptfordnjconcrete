@@ -1,0 +1,91 @@
+---
+import servicesData from '../content/services.json';
+
+interface Props {
+  currentService: string;
+  title?: string;
+}
+
+const { currentService, title = "Related Services" } = Astro.props;
+const allServices = servicesData.filter(s => s.slug !== currentService);
+const primaryServices = allServices.filter(s => s.primary);
+const otherServices = allServices.filter(s => !s.primary);
+
+const iconMap: Record<string, string> = {
+  'pole-barn-foundations': 'fa-warehouse',
+  'concrete-slabs': 'fa-layer-group',
+  'driveways': 'fa-road',
+  'patios': 'fa-umbrella-beach',
+  'stamped-concrete': 'fa-stamp',
+  'walkways': 'fa-shoe-prints',
+  'retaining-walls': 'fa-mountain',
+  'basement-flooring': 'fa-house-flood-water',
+  'pool-decks': 'fa-water-ladder',
+  'garage-floors': 'fa-car',
+  'concrete-stairs': 'fa-stairs',
+  'concrete-repair': 'fa-screwdriver-wrench',
+  'decorative-concrete': 'fa-palette',
+  'commercial-concrete': 'fa-building',
+  'foundation-repair': 'fa-house-crack',
+  'sidewalks': 'fa-person-walking',
+  'indoor-concrete': 'fa-house',
+  'stained-concrete': 'fa-fill-drip',
+  'concrete-overlays': 'fa-layer-group',
+  'crack-repair': 'fa-bandage',
+  'concrete-removal': 'fa-trash'
+};
+---
+
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <p class="section-subheading text-primary mb-4">More Services</p>
+      <h2 class="section-heading mb-6">{title}</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        We also provide these related concrete services throughout our service area.
+      </p>
+    </div>
+
+    {primaryServices.length > 0 && (
+      <div class="mb-12">
+        <h3 class="text-xl font-bold text-primary font-display uppercase mb-6">Primary Services</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {primaryServices.map(service => (
+            <a href={`/services/${service.slug}`} class="group bg-white rounded-xl p-6 shadow-lg border-l-4 border-primary hover:shadow-xl hover:-translate-y-1 transition-all">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors">
+                  <i class={`fa-solid ${iconMap[service.slug] || 'fa-cube'} text-primary text-xl group-hover:text-white transition-colors`}></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">{service.name}</h4>
+                  <p class="text-gray-600 text-sm line-clamp-2">{service.description}</p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {otherServices.length > 0 && (
+      <div>
+        <h3 class="text-xl font-bold text-primary font-display uppercase mb-6">Additional Services</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {otherServices.map(service => (
+            <a href={`/services/${service.slug}`} class="group flex items-center gap-3 bg-white rounded-lg p-4 shadow hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-gray-200 hover:border-primary">
+              <i class={`fa-solid ${iconMap[service.slug] || 'fa-cube'} text-gray-400 group-hover:text-primary transition-colors`}></i>
+              <span class="font-semibold group-hover:text-primary transition-colors">{service.name}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div class="text-center mt-10">
+      <a href="/services" class="btn-primary">
+        View All Concrete Services
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
