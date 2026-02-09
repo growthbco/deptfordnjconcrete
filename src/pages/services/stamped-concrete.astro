@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
-import SchemaMarkup from '../../components/SchemaMarkup.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
 import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
@@ -9,386 +8,246 @@ import { generateServiceSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('stamped-concrete', 'Decorative stamped concrete installation for patios, driveways, pool decks, and walkways in Deptford, NJ. Beautiful patterns and textures at a fraction of natural stone cost. Free estimates.');
 
-// Project images - using JPEG files for better web compatibility
-const projectImages = [
-  '/images/projects/IMG_7649.webp',
-  '/images/projects/IMG_7653.webp',
-  '/images/projects/IMG_7654.webp',
-  '/images/projects/IMG_7655.webp',
-  '/images/projects/IMG_7656.webp',
-  '/images/projects/IMG_7657.webp'
+const galleryImages = [
+  { src: '/images/projects/IMG_7649.webp', alt: 'Stamped concrete patio in Deptford, NJ', label: 'Stamped Patio' },
+  { src: '/images/projects/IMG_7653.webp', alt: 'Decorative stamped concrete project', label: 'Decorative Pattern' },
+  { src: '/images/projects/IMG_7654.webp', alt: 'Stamped concrete walkway', label: 'Stamped Walkway' },
+  { src: '/images/projects/IMG_7655.webp', alt: 'Professional stamped concrete', label: 'Professional Work' },
+  { src: '/images/projects/IMG_7656.webp', alt: 'Stamped concrete installation', label: 'Quality Installation' },
+  { src: '/images/projects/IMG_7657.webp', alt: 'Stamped concrete project', label: 'Expert Craftsmanship' }
+];
+
+const faqs = [
+  { q: 'How long does stamped concrete last?', a: 'Properly installed and maintained stamped concrete can last 25-30 years or more. Regular resealing every 2-3 years helps maintain its appearance and durability.' },
+  { q: 'How much does stamped concrete cost compared to natural stone?', a: 'Stamped concrete typically costs significantly less than natural stone or pavers while providing a similar appearance. The exact savings depend on the pattern and area size.' },
+  { q: 'Can stamped concrete be repaired if it cracks?', a: 'Yes, minor cracks in stamped concrete can often be repaired to match the existing pattern. We\'ll assess any damage during maintenance and recommend the best repair approach.' },
+  { q: 'How often does stamped concrete need to be resealed?', a: 'Stamped concrete should be resealed every 2-3 years to maintain its appearance and protect against wear, weather, and staining. We provide maintenance guidance after installation.' },
+  { q: 'Is stamped concrete slippery when wet?', a: 'Properly sealed stamped concrete can be slippery when wet, but we can apply non-slip additives or use textured patterns for areas like pool decks where safety is a concern.' }
 ];
 ---
 
-<BaseLayout 
+<BaseLayout
   title="Stamped Concrete Installation in Deptford, NJ | Decorative Concrete Patterns"
   description="Professional stamped concrete installation for patios, driveways, and walkways in Deptford, NJ. Beautiful decorative patterns with free estimates."
   schema={serviceSchema}
 >
-  <section class="hero">
-    <div class="container">
-      <h1>Stamped Concrete Installation in Deptford, New Jersey</h1>
-      <p class="hero-subtitle">Professional decorative stamped concrete for patios, driveways, and walkways. Transform your outdoor spaces with beautiful patterns and textures.</p>
-      <a href="#contact-form" class="cta-primary">Get Free Stamped Concrete Estimate</a>
+  <!-- Hero Section -->
+  <section class="bg-dark py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="section-subheading text-primary mb-4">Decorative Concrete</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        Stamped Concrete Installation
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Professional decorative stamped concrete for patios, driveways, and walkways. Transform your outdoor spaces with beautiful patterns and textures.
+      </p>
+      <a href="#contact-form" class="btn-primary text-lg">
+        Get Free Stamped Concrete Estimate
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
     </div>
   </section>
 
-  <section class="gallery-preview">
-    <div class="container">
-      <h2>Our Stamped Concrete Projects</h2>
-      <div class="image-grid">
-        {projectImages.map((image, index) => (
-          <div class="image-item">
-            <img src={image} alt={`Stamped concrete project ${index + 1} in Deptford, NJ`} loading="lazy" />
+  <!-- Gallery Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Our Work</p>
+        <h2 class="section-heading mb-6">Our Stamped Concrete Projects</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          See our beautiful stamped concrete installations throughout Deptford and surrounding areas.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {galleryImages.map(image => (
+          <div class="group relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+            <img src={image.src} alt={image.alt} loading="lazy" class="w-full h-full object-cover" width="800" height="600" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <p class="text-white font-semibold">{image.label}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="content-section">
-    <div class="container">
-      <h2>What is Stamped Concrete?</h2>
-      <p>Stamped concrete is a decorative concrete technique that creates beautiful patterns and textures, mimicking the look of natural stone, brick, tile, or wood. This cost-effective solution transforms ordinary concrete into stunning surfaces that enhance the beauty and value of your property.</p>
+  <!-- Content Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-8">
+        What is Stamped Concrete?
+      </h2>
+      <p class="text-lg text-gray-600 mb-8">
+        Stamped concrete is a decorative concrete technique that creates beautiful patterns and textures, mimicking the look of natural stone, brick, tile, or wood. This cost-effective solution transforms ordinary concrete into stunning surfaces that enhance the beauty and value of your property.
+      </p>
 
-      <h3>Stamped Concrete Applications</h3>
-      <p>We install stamped concrete for a variety of outdoor applications throughout Deptford and surrounding New Jersey communities:</p>
-      <ul>
-        <li><strong>Stamped Concrete Patios:</strong> Create beautiful outdoor living spaces with decorative patterns</li>
-        <li><strong>Stamped Concrete Driveways:</strong> Enhance curb appeal with elegant driveway designs</li>
-        <li><strong>Stamped Concrete Walkways:</strong> Add visual interest to pathways and sidewalks</li>
-        <li><strong>Pool Decks:</strong> Slip-resistant stamped concrete for pool areas</li>
-        <li><strong>Outdoor Kitchens:</strong> Durable stamped concrete for outdoor cooking areas</li>
-        <li><strong>Commercial Spaces:</strong> Decorative concrete for businesses and commercial properties</li>
-      </ul>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Stamped Concrete Applications</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { title: 'Stamped Patios', desc: 'Beautiful outdoor living spaces with decorative patterns', link: '/services/patios' },
+          { title: 'Stamped Driveways', desc: 'Enhanced curb appeal with elegant driveway designs', link: '/services/driveways' },
+          { title: 'Stamped Walkways', desc: 'Visual interest for pathways and sidewalks', link: '/services/walkways' },
+          { title: 'Pool Decks', desc: 'Slip-resistant stamped concrete for pool areas', link: '/services/pool-decks' },
+          { title: 'Outdoor Kitchens', desc: 'Durable stamped concrete for cooking areas', link: null },
+          { title: 'Commercial Spaces', desc: 'Decorative concrete for businesses', link: null }
+        ].map(app => (
+          <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-primary">
+            <h4 class="font-bold mb-1">{app.title}</h4>
+            <p class="text-gray-600 text-sm">{app.desc}</p>
+            {app.link && <a href={app.link} class="text-primary text-sm font-semibold hover:underline">Learn more →</a>}
+          </div>
+        ))}
+      </div>
 
-      <h3>Popular Stamped Concrete Patterns</h3>
-      <p>Choose from a wide variety of patterns and textures to match your style:</p>
-      <ul>
-        <li>Ashlar Slate - Classic stone appearance</li>
-        <li>Herringbone - Elegant brick pattern</li>
-        <li>Wood Plank - Warm wood grain texture</li>
-        <li>Cobblestone - Old-world charm</li>
-        <li>Flagstone - Natural stone look</li>
-        <li>Random Stone - Varied natural appearance</li>
-        <li>And many more custom patterns</li>
-      </ul>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Popular Stamped Concrete Patterns</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
+        {[
+          'Ashlar Slate',
+          'Herringbone',
+          'Wood Plank',
+          'Cobblestone',
+          'Flagstone',
+          'Random Stone'
+        ].map(pattern => (
+          <div class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+            <i class="fa-solid fa-palette text-primary"></i>
+            <span class="font-medium">{pattern}</span>
+          </div>
+        ))}
+      </div>
 
-      <h3>Benefits of Stamped Concrete</h3>
-      <ul>
-        <li><strong>Cost-Effective:</strong> More affordable than natural stone or pavers</li>
-        <li><strong>Durable:</strong> Long-lasting and low-maintenance</li>
-        <li><strong>Versatile:</strong> Wide variety of patterns and colors</li>
-        <li><strong>Customizable:</strong> Can match your home's style and color scheme</li>
-        <li><strong>Slip-Resistant:</strong> Safe for pool decks and walkways</li>
-        <li><strong>Value-Adding:</strong> Increases property value and curb appeal</li>
-      </ul>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Benefits of Stamped Concrete</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { icon: 'fa-dollar-sign', title: 'Cost-Effective', desc: 'More affordable than natural stone or pavers' },
+          { icon: 'fa-shield-halved', title: 'Durable', desc: 'Long-lasting and low-maintenance' },
+          { icon: 'fa-palette', title: 'Versatile', desc: 'Wide variety of patterns and colors' },
+          { icon: 'fa-wand-magic-sparkles', title: 'Customizable', desc: 'Match your home\'s style and color scheme' },
+          { icon: 'fa-person-walking', title: 'Slip-Resistant', desc: 'Safe for pool decks and walkways' },
+          { icon: 'fa-chart-line', title: 'Value-Adding', desc: 'Increases property value and curb appeal' }
+        ].map(benefit => (
+          <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class={`fa-solid ${benefit.icon} text-primary`}></i>
+            </div>
+            <div>
+              <h4 class="font-bold">{benefit.title}</h4>
+              <p class="text-gray-600 text-sm">{benefit.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
 
-      <h3>What's Included in Our Stamped Concrete Service</h3>
-      <p>When you choose Deptford Concrete Contractors for your stamped concrete project, you receive comprehensive service:</p>
-      <ul>
-        <li><strong>Free Design Consultation:</strong> We help you choose the perfect pattern, color, and design to match your style</li>
-        <li><strong>Custom Design:</strong> Stamped concrete design tailored to your property and aesthetic preferences</li>
-        <li><strong>Site Preparation:</strong> Proper excavation, grading, and base preparation to ensure your stamped concrete lasts</li>
-        <li><strong>Quality Materials:</strong> High-grade concrete mixes and color additives designed for decorative applications</li>
-        <li><strong>Professional Installation:</strong> Expert installation by experienced concrete professionals skilled in stamping techniques</li>
-        <li><strong>Pattern Application:</strong> Precise stamping to create your chosen pattern and texture</li>
-        <li><strong>Coloring Services:</strong> Integral color mixing or surface treatments to achieve your desired appearance</li>
-        <li><strong>Sealing:</strong> Professional sealant application to protect your stamped concrete and enhance its appearance</li>
-        <li><strong>Expansion Joints:</strong> Properly placed expansion joints to prevent cracking from temperature changes</li>
-        <li><strong>Cleanup:</strong> Complete site cleanup after installation</li>
-        <li><strong>Maintenance Guidance:</strong> Advice on proper care, cleaning, and resealing to maintain your stamped concrete's beauty</li>
-      </ul>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">What's Included in Our Service</h3>
+      <div class="bg-orange-50 border-l-4 border-primary rounded-lg p-6 mb-8">
+        <ul class="space-y-2">
+          {[
+            'Free Design Consultation - We help you choose the perfect pattern and color',
+            'Custom Design - Stamped concrete tailored to your property and preferences',
+            'Site Preparation - Proper excavation, grading, and base preparation',
+            'Quality Materials - High-grade concrete mixes and color additives',
+            'Professional Installation - Expert installation with skilled stamping techniques',
+            'Pattern Application - Precise stamping to create your chosen pattern',
+            'Coloring Services - Integral color mixing or surface treatments',
+            'Professional Sealing - Sealant application to protect and enhance appearance',
+            'Expansion Joints - Properly placed to prevent cracking',
+            'Cleanup - Complete site cleanup after installation'
+          ].map(item => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-      <h3>Our Stamped Concrete Installation Process</h3>
-      <p>We follow a detailed process to ensure your stamped concrete is installed correctly and beautifully:</p>
-      <ol>
-        <li><strong>Design Consultation:</strong> We discuss your vision, show pattern options, and help you choose the perfect design</li>
-        <li><strong>Site Evaluation:</strong> We assess your property, drainage patterns, and local requirements</li>
-        <li><strong>Permit Assistance:</strong> We help secure necessary permits if required by your municipality</li>
-        <li><strong>Site Preparation:</strong> Professional excavation and proper base material installation for stability</li>
-        <li><strong>Formwork:</strong> Installation of forms to create your stamped concrete's shape and boundaries</li>
-        <li><strong>Concrete Pouring:</strong> Placement of high-quality concrete mix with color additives if using integral color</li>
-        <li><strong>Stamping:</strong> Precise application of stamping tools to create your chosen pattern and texture</li>
-        <li><strong>Coloring (if surface treatment):</strong> Application of color hardeners or release agents for desired appearance</li>
-        <li><strong>Finishing:</strong> Proper finishing and texturing to complete the stamped appearance</li>
-        <li><strong>Curing:</strong> Proper curing time to ensure maximum strength and durability</li>
-        <li><strong>Sealing:</strong> Professional sealant application to protect and enhance your stamped concrete</li>
-        <li><strong>Final Inspection:</strong> Quality check to ensure your stamped concrete meets all standards</li>
-      </ol>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Our Installation Process</h3>
+      <div class="space-y-4 mb-8">
+        {[
+          { num: '1', title: 'Design Consultation', desc: 'We discuss your vision and show pattern options' },
+          { num: '2', title: 'Site Evaluation', desc: 'We assess your property and drainage patterns' },
+          { num: '3', title: 'Site Preparation', desc: 'Professional excavation and base installation' },
+          { num: '4', title: 'Concrete Pouring', desc: 'Placement of concrete with color additives' },
+          { num: '5', title: 'Stamping', desc: 'Precise application of stamping tools for your pattern' },
+          { num: '6', title: 'Finishing & Sealing', desc: 'Proper curing and professional sealant application' }
+        ].map(step => (
+          <div class="flex items-start gap-4 bg-gray-50 rounded-lg p-4">
+            <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">{step.num}</div>
+            <div>
+              <h4 class="font-bold text-lg">{step.title}</h4>
+              <p class="text-gray-600">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
 
-      <h3>Common Issues Stamped Concrete Solves</h3>
-      <p>Stamped concrete addresses many common outdoor surface needs:</p>
-      <ul>
-        <li><strong>High Cost of Natural Stone:</strong> Stamped concrete provides the look of natural stone at a fraction of the cost</li>
-        <li><strong>Maintenance Challenges:</strong> Stamped concrete is easier to maintain than pavers or natural stone</li>
-        <li><strong>Limited Design Options:</strong> Wide variety of patterns and colors allows for custom designs</li>
-        <li><strong>Low Curb Appeal:</strong> Beautiful stamped concrete significantly enhances property appearance and value</li>
-        <li><strong>Durability Concerns:</strong> Stamped concrete is highly durable and withstands New Jersey's climate</li>
-        <li><strong>Installation Complexity:</strong> Professional installation ensures proper pattern application and sealing</li>
-      </ul>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Maintenance Tips</h3>
+      <div class="bg-gray-50 rounded-lg p-6 mb-8">
+        <ul class="space-y-3">
+          {[
+            'Regular cleaning with mild detergent and water',
+            'Resealing every 2-3 years to maintain appearance',
+            'Avoid harsh chemicals or de-icers that can damage sealant',
+            'Protect from heavy impact or dragging heavy objects',
+            'Prompt repair of any minor cracks to prevent water damage'
+          ].map(tip => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-lightbulb text-primary mt-1"></i>
+              <span>{tip}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-      <h3>What Happens When You Call</h3>
-      <p>Getting your stamped concrete installed is straightforward with our streamlined process:</p>
-      <ol>
-        <li><strong>Initial Contact (24-48 Hour Response):</strong> When you reach out via phone or our contact form, we'll respond within 24-48 hours to schedule your free estimate</li>
-        <li><strong>Free On-Site Estimate:</strong> We visit your property to assess your space, discuss pattern options, and provide a detailed written estimate</li>
-        <li><strong>Project Planning:</strong> Once you approve the estimate, we handle all planning including permits (if needed), material ordering, and scheduling</li>
-        <li><strong>Professional Installation:</strong> Our experienced team completes your stamped concrete installation efficiently and professionally</li>
-      </ol>
-
-      <h3>Our Customer Service Promise</h3>
-      <p>At Deptford Concrete Contractors, we believe in complete transparency and honest communication:</p>
-      <ul>
-        <li><strong>No Hidden Fees:</strong> Your written estimate includes all costs - materials, labor, stamping, coloring, sealing, and cleanup - no surprises</li>
-        <li><strong>Clear Communication:</strong> We keep you informed at every step, from initial estimate through project completion</li>
-        <li><strong>Realistic Timelines:</strong> We provide honest timelines based on project scope and weather conditions - typically 1-2 days for most stamped concrete projects</li>
-        <li><strong>Quality Guarantee:</strong> We stand behind our work and ensure your stamped concrete meets all quality and code standards</li>
-        <li><strong>Responsive Service:</strong> We respond to questions and concerns promptly, typically within 24-48 hours</li>
-        <li><strong>Licensed & Insured:</strong> Full professional coverage protects you and your property throughout the project</li>
-      </ul>
-
-      <h3>Stamped Concrete Investment Factors</h3>
-      <p>Understanding what affects your stamped concrete investment helps you make informed decisions:</p>
-      <ul>
-        <li><strong>Size and Complexity:</strong> Larger areas or complex designs require more materials and labor</li>
-        <li><strong>Pattern Choice:</strong> Some patterns are more complex and may require additional time</li>
-        <li><strong>Color Options:</strong> Integral color mixing or multiple colors can affect cost</li>
-        <li><strong>Site Preparation:</strong> Challenging terrain or extensive excavation affects cost</li>
-        <li><strong>Sealing Requirements:</strong> Professional sealing is essential and included in all estimates</li>
-        <li><strong>Accessibility:</strong> Difficult access may require special equipment or additional time</li>
-      </ul>
-      <p>We provide free, detailed estimates that break down all costs so you understand exactly what you're investing in. There are no hidden fees or surprise charges - what we quote is what you pay.</p>
-
-      <h3>Maintenance Tips</h3>
-      <p>Stamped concrete is low-maintenance but benefits from occasional care:</p>
-      <ul>
-        <li>Regular cleaning with mild detergent and water</li>
-        <li>Resealing every 2-3 years to maintain appearance and protection</li>
-        <li>Avoiding harsh chemicals or de-icers that can damage the sealant</li>
-        <li>Protecting from heavy impact or dragging heavy objects</li>
-        <li>Prompt repair of any minor cracks to prevent water damage</li>
-      </ul>
-
-      <h3>Related Services</h3>
-      <p>Stamped concrete is perfect for various outdoor applications:</p>
-      <ul>
-        <li><a href="/services/patios">Patio Installation</a> - Stamped concrete patios</li>
-        <li><a href="/services/driveways">Driveway Installation</a> - Stamped concrete driveways</li>
-        <li><a href="/services/walkways">Walkway Installation</a> - Decorative pathways</li>
-      </ul>
-
-      <h3>Areas We Serve</h3>
-      <p>We provide stamped concrete installation services throughout <a href="/locations/deptford-nj">Deptford</a>, <a href="/locations/west-deptford-nj">West Deptford</a>, <a href="/locations/woodbury-nj">Woodbury</a>, <a href="/locations/glassboro-nj">Glassboro</a>, and <a href="/locations">all surrounding Gloucester County communities</a>.</p>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Areas We Serve</h3>
+      <p class="text-gray-600 mb-6">
+        We provide stamped concrete installation services throughout <a href="/locations/deptford-nj" class="text-primary font-semibold hover:underline">Deptford</a>, <a href="/locations/west-deptford-nj" class="text-primary font-semibold hover:underline">West Deptford</a>, <a href="/locations/woodbury-nj" class="text-primary font-semibold hover:underline">Woodbury</a>, <a href="/locations/glassboro-nj" class="text-primary font-semibold hover:underline">Glassboro</a>, and <a href="/locations" class="text-primary font-semibold hover:underline">all surrounding Gloucester County communities</a>.
+      </p>
     </div>
   </section>
 
   <RelatedServices currentService="stamped-concrete" />
   <ServiceAreasLink serviceName="Stamped Concrete" />
 
-  <section id="contact-form" class="contact-section">
-    <div class="container">
-      <ContactForm 
-        title="Get Your Free Stamped Concrete Estimate"
-        service="stamped-concrete"
-      />
+  <!-- Contact Form Section -->
+  <section id="contact-form" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ContactForm title="Get Your Free Stamped Concrete Estimate" service="stamped-concrete" />
     </div>
   </section>
 
-  <section class="faq-section">
-    <div class="container">
-      <h2>Stamped Concrete FAQs</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <h3>How long does stamped concrete last?</h3>
-          <p>Properly installed and maintained stamped concrete can last 25-30 years or more. Regular resealing every 2-3 years helps maintain its appearance and durability.</p>
-        </div>
-        <div class="faq-item">
-          <h3>How much does stamped concrete cost compared to natural stone?</h3>
-          <p>Stamped concrete typically costs significantly less than natural stone or pavers while providing a similar appearance. The exact savings depend on the pattern and area size.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Can stamped concrete be repaired if it cracks?</h3>
-          <p>Yes, minor cracks in stamped concrete can often be repaired to match the existing pattern. We'll assess any damage during maintenance and recommend the best repair approach.</p>
-        </div>
-        <div class="faq-item">
-          <h3>How often does stamped concrete need to be resealed?</h3>
-          <p>Stamped concrete should be resealed every 2-3 years to maintain its appearance and protect against wear, weather, and staining. We provide maintenance guidance after installation.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Is stamped concrete slippery when wet?</h3>
-          <p>Properly sealed stamped concrete can be slippery when wet, but we can apply non-slip additives or use textured patterns for areas like pool decks where safety is a concern.</p>
-        </div>
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Common Questions</p>
+        <h2 class="section-heading">Stamped Concrete FAQs</h2>
+      </div>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+            <h3 class="font-bold text-lg text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-600">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Ready for Beautiful Stamped Concrete?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Contact us today for a free estimate. No obligation, just honest pricing.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact-form" class="btn-secondary">Get Your Free Estimate <i class="fa-solid fa-arrow-right"></i></a>
+        {SITE_CONFIG.phone && <a href={`tel:${SITE_CONFIG.phone}`} class="btn-outline"><i class="fa-solid fa-phone"></i> {SITE_CONFIG.phone}</a>}
       </div>
     </div>
   </section>
 </BaseLayout>
-
-<style>
-  .hero {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    color: white;
-    padding: 3rem 0;
-    text-align: center;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.25rem;
-    color: #ccc;
-    max-width: 800px;
-    margin: 0 auto 2rem;
-  }
-  
-  .cta-primary {
-    display: inline-block;
-    background: #ff6b35;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background 0.3s;
-  }
-  
-  .cta-primary:hover {
-    background: #e55a2b;
-  }
-  
-  .gallery-preview {
-    padding: 4rem 0;
-    background: #f8f9fa;
-  }
-  
-  .gallery-preview h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 3rem;
-    color: #1a1a1a;
-  }
-  
-  .image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-  }
-  
-  .image-item {
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .image-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-  }
-  
-  .image-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-  }
-  
-  .content-section {
-    padding: 4rem 0;
-    background: white;
-  }
-  
-  .content-section h2 {
-    font-size: 2rem;
-    color: #1a1a1a;
-    margin-bottom: 1.5rem;
-  }
-  
-  .content-section h3 {
-    font-size: 1.5rem;
-    color: #ff6b35;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .content-section ul,
-  .content-section ol {
-    margin-left: 2rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .content-section li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .contact-section {
-    padding: 4rem 0;
-    background: #f8f9fa;
-  }
-
-  .faq-section {
-    padding: 4rem 0;
-    background: white;
-  }
-
-  .faq-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 3rem;
-    color: #1a1a1a;
-  }
-
-  .faq-list {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .faq-item {
-    background: #f8f9fa;
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-
-  .faq-item h3 {
-    color: #ff6b35;
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-  }
-
-  .faq-item p {
-    margin: 0;
-    color: #666;
-    line-height: 1.6;
-  }
-
-  @media (max-width: 768px) {
-    .faq-section {
-      padding: 2.5rem 0;
-    }
-
-    .faq-section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .faq-item {
-      padding: 1.5rem;
-    }
-
-    .faq-item h3 {
-      font-size: 1.1rem;
-    }
-  }
-</style>
-

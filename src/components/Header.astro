@@ -1,281 +1,155 @@
 ---
 import { SITE_CONFIG } from '../config';
-import Logo from './Logo.astro';
+import servicesData from '../content/services.json';
+import locationsData from '../content/locations.json';
 
-// Logo path - add your logo image to public/images/logo.png or update this path
-// Set to undefined or empty string to use text logo
-const logoPath = undefined; // Change to '/images/logo.png' when you have a logo
+interface Props {
+  transparent?: boolean;
+}
+
+const { transparent = false } = Astro.props;
+const primaryServices = servicesData.filter((s: any) => s.primary);
 ---
 
-<header class="header">
-  <nav class="nav-container">
-    <div class="nav-brand">
-      <Logo logo={logoPath} />
-    </div>
-    <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <ul class="nav-menu">
-      <li><a href="/">Home</a></li>
-      <li><a href="/services">Services</a></li>
-      <li><a href="/locations">Service Areas</a></li>
-      <li><a href="/gallery">Gallery</a></li>
-      <li><a href="/contact">Contact</a></li>
+<header id="header" class={`${transparent ? 'absolute top-0 left-0 w-full z-50 bg-gradient-to-b from-black/80 to-transparent pt-4 pb-8' : 'sticky top-0 z-50 bg-dark shadow-lg'}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 group">
+      <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl border-2 border-white shadow-lg">
+        <i class="fa-solid fa-trowel-bricks"></i>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-white font-display font-bold text-xl leading-none tracking-wide">DEPTFORD</span>
+        <span class="text-accent text-xs font-bold tracking-widest uppercase">CONCRETE</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-8">
+      <div class="relative group">
+        <a href="/services" class="text-white hover:text-accent font-medium text-sm flex items-center gap-1 py-4">
+          Services <i class="fa-solid fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+        </a>
+        <div class="absolute top-full left-0 bg-white rounded-lg shadow-xl py-2 min-w-[220px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          {primaryServices.map((service: any) => (
+            <a href={`/services/${service.slug}`} class="block px-4 py-2 text-gray-700 hover:bg-primary/10 hover:text-primary text-sm">
+              {service.name}
+            </a>
+          ))}
+          <hr class="my-2 border-gray-100" />
+          <a href="/services" class="block px-4 py-2 text-primary font-medium text-sm">
+            View All Services <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
+          </a>
+        </div>
+      </div>
+      <div class="relative group">
+        <a href="/locations" class="text-white hover:text-accent font-medium text-sm flex items-center gap-1 py-4">
+          Locations <i class="fa-solid fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+        </a>
+        <div class="absolute top-full left-0 bg-white rounded-lg shadow-xl py-2 min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          {locationsData.slice(0, 6).map((location: any) => (
+            <a href={`/locations/${location.slug}`} class="block px-4 py-2 text-gray-700 hover:bg-primary/10 hover:text-primary text-sm">
+              {location.name}, NJ
+            </a>
+          ))}
+          <hr class="my-2 border-gray-100" />
+          <a href="/locations" class="block px-4 py-2 text-primary font-medium text-sm">
+            All Service Areas <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
+          </a>
+        </div>
+      </div>
+      <a href="/gallery" class="text-white hover:text-accent font-medium text-sm">Gallery</a>
+      <a href="/about" class="text-white hover:text-accent font-medium text-sm">About</a>
+      <a href="/contact" class="text-white hover:text-accent font-medium text-sm">Contact</a>
+    </nav>
+
+    <!-- CTA Buttons -->
+    <div class="flex items-center gap-3">
       {SITE_CONFIG.phone && (
-        <li class="cta-menu-item">
-          <a href={`tel:${SITE_CONFIG.phone}`} class="cta-button mobile-cta">Call Now</a>
-        </li>
+        <a href={`tel:${SITE_CONFIG.phone}`} class="hidden md:flex items-center gap-2 bg-white text-gray-900 px-4 py-2 rounded font-bold text-sm hover:bg-gray-100 transition shadow-lg">
+          <i class="fa-solid fa-phone text-primary"></i> {SITE_CONFIG.phone}
+        </a>
       )}
-    </ul>
-    {SITE_CONFIG.phone && (
-      <a href={`tel:${SITE_CONFIG.phone}`} class="cta-button desktop-cta">Call Now</a>
-    )}
-  </nav>
+      <a href="/contact" class="hidden sm:flex bg-primary text-white px-5 py-2 rounded font-bold text-sm hover:bg-primary-dark transition shadow-lg border border-transparent hover:border-white/20 items-center gap-2">
+        Free Estimate <i class="fa-solid fa-arrow-right"></i>
+      </a>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-menu-toggle" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 text-white" aria-label="Toggle menu" aria-expanded="false">
+        <span class="w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+        <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+        <span class="w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-dark z-40 transform translate-x-full transition-transform duration-300 pt-20">
+    <nav class="flex flex-col p-6 gap-1">
+      <a href="/" class="text-white text-lg font-medium py-3 border-b border-white/10 hover:text-accent transition">Home</a>
+      <a href="/services" class="text-white text-lg font-medium py-3 border-b border-white/10 hover:text-accent transition">Services</a>
+      <a href="/locations" class="text-white text-lg font-medium py-3 border-b border-white/10 hover:text-accent transition">Locations</a>
+      <a href="/gallery" class="text-white text-lg font-medium py-3 border-b border-white/10 hover:text-accent transition">Gallery</a>
+      <a href="/about" class="text-white text-lg font-medium py-3 border-b border-white/10 hover:text-accent transition">About</a>
+      <a href="/contact" class="text-white text-lg font-medium py-3 border-b border-white/10 hover:text-accent transition">Contact</a>
+
+      <div class="mt-6 space-y-3">
+        {SITE_CONFIG.phone && (
+          <a href={`tel:${SITE_CONFIG.phone}`} class="flex items-center justify-center gap-2 bg-white text-gray-900 px-6 py-3 rounded font-bold hover:bg-gray-100 transition w-full">
+            <i class="fa-solid fa-phone text-primary"></i> {SITE_CONFIG.phone}
+          </a>
+        )}
+        <a href="/contact" class="flex items-center justify-center gap-2 bg-primary text-white px-6 py-3 rounded font-bold hover:bg-primary-dark transition w-full">
+          Get Free Estimate <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </nav>
+  </div>
 </header>
 
 <script is:inline>
-  // Mobile menu toggle - optimized for INP
   (function() {
     'use strict';
-    let menuInitialized = false;
-    
-    function initMenu() {
-      if (menuInitialized) return;
-      menuInitialized = true;
-      
-      const toggle = document.querySelector('.mobile-menu-toggle');
-      const menu = document.querySelector('.nav-menu');
-      
-      if (toggle && menu) {
-        // Use passive event listeners for better performance
-        toggle.addEventListener('click', function(e) {
-          e.preventDefault();
-          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-          toggle.setAttribute('aria-expanded', !isExpanded);
-          menu.classList.toggle('active');
-          toggle.classList.toggle('active');
-        }, { passive: false });
-        
-        // Close menu when clicking on a link - use event delegation
-        menu.addEventListener('click', function(e) {
-          if (e.target.tagName === 'A') {
-            menu.classList.remove('active');
-            toggle.classList.remove('active');
-            toggle.setAttribute('aria-expanded', 'false');
-          }
-        }, { passive: true });
-      }
-    }
-    
-    // Initialize immediately if DOM is ready, otherwise wait
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initMenu, { once: true });
-    } else {
-      initMenu();
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+
+    if (toggle && menu) {
+      toggle.addEventListener('click', function() {
+        const isOpen = menu.classList.contains('translate-x-0');
+        if (isOpen) {
+          menu.classList.remove('translate-x-0');
+          menu.classList.add('translate-x-full');
+          toggle.classList.remove('active');
+          document.body.style.overflow = '';
+        } else {
+          menu.classList.remove('translate-x-full');
+          menu.classList.add('translate-x-0');
+          toggle.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+
+      // Close menu when clicking a link
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menu.classList.remove('translate-x-0');
+          menu.classList.add('translate-x-full');
+          toggle.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
     }
   })();
 </script>
 
 <style>
-  .header {
-    background: #1a1a1a;
-    color: white;
-    padding: 0.75rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  #mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(6px);
   }
-  
-  .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    position: relative;
+  #mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
   }
-  
-  .nav-brand {
-    flex-shrink: 0;
-  }
-  
-  .logo {
-    margin: 0;
-    font-size: 1.25rem;
-    font-weight: 700;
-  }
-  
-  .logo-link {
-    text-decoration: none;
-    color: white;
-    display: block;
-  }
-  
-  .mobile-menu-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 4px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0.75rem;
-    z-index: 1001;
-    min-width: 44px;
-    min-height: 44px;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .mobile-menu-toggle span {
-    width: 24px;
-    height: 2px;
-    background: white;
-    transition: all 0.3s;
-    border-radius: 2px;
-  }
-  
-  .nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
-    flex: 1;
-    justify-content: center;
-  }
-  
-  .nav-menu a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-    padding: 0.5rem 0;
-    display: block;
-    font-size: 0.95rem;
-  }
-  
-  .nav-menu a:hover {
-    color: #ff6b35;
-  }
-  
-  .cta-menu-item {
-    display: none;
-  }
-  
-  .cta-button {
-    background: #ff6b35;
-    color: white;
-    padding: 0.875rem 1.5rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background 0.3s;
-    white-space: nowrap;
-    font-size: 0.95rem;
-    flex-shrink: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    min-width: 44px;
-  }
-  
-  .cta-button:hover {
-    background: #e55a2b;
-  }
-  
-  @media (max-width: 768px) {
-    .header {
-      padding: 0.5rem 0;
-    }
-    
-    .nav-container {
-      padding: 0 1rem;
-      gap: 1rem;
-    }
-    
-    .logo {
-      font-size: 1.1rem;
-    }
-    
-    .mobile-menu-toggle {
-      display: flex;
-    }
-    
-    .nav-menu {
-      position: fixed;
-      top: 60px;
-      left: 0;
-      right: 0;
-      background: #1a1a1a;
-      flex-direction: column;
-      gap: 0;
-      padding: 0;
-      text-align: left;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      z-index: 999;
-    }
-    
-    .nav-menu.active {
-      max-height: 500px;
-      padding: 0;
-    }
-    
-    .nav-menu li {
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    .nav-menu li:first-child {
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    .nav-menu a {
-      padding: 1rem 1.5rem;
-      font-size: 1rem;
-      display: block;
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-    }
-    
-    .cta-menu-item {
-      display: block;
-      background: rgba(255, 107, 53, 0.1);
-      border-top: 2px solid #ff6b35;
-      margin-top: 0.5rem;
-    }
-    
-    .cta-menu-item .cta-button {
-      background: #ff6b35;
-      text-align: center;
-      margin: 0.5rem 1.5rem;
-      padding: 1rem;
-      border-radius: 4px;
-      display: block;
-      width: calc(100% - 3rem);
-    }
-    
-    .nav-container > .cta-button {
-      display: none;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .nav-container {
-      padding: 0 0.75rem;
-    }
-    
-    .logo {
-      font-size: 1rem;
-    }
+  #mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-6px);
   }
 </style>
-

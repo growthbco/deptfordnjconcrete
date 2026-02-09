@@ -6,64 +6,49 @@ interface Props {
     slug: string;
     description: string;
     primary?: boolean;
+    icon?: string;
   };
 }
 
 const { service } = Astro.props;
+
+const iconMap: Record<string, string> = {
+  'pole-barn-foundations': 'fa-warehouse',
+  'concrete-slabs': 'fa-layer-group',
+  'driveways': 'fa-road',
+  'patios': 'fa-umbrella-beach',
+  'stamped-concrete': 'fa-stamp',
+  'walkways': 'fa-shoe-prints',
+  'retaining-walls': 'fa-mountain',
+  'basement-flooring': 'fa-house-flood-water',
+  'pool-decks': 'fa-water-ladder',
+  'garage-floors': 'fa-car',
+  'concrete-stairs': 'fa-stairs',
+  'concrete-repair': 'fa-screwdriver-wrench',
+  'decorative-concrete': 'fa-palette',
+  'commercial-concrete': 'fa-building',
+  'foundation-repair': 'fa-house-crack',
+  'sidewalks': 'fa-person-walking'
+};
+
+const icon = service.icon || iconMap[service.slug] || 'fa-cube';
 ---
 
-<div class={`service-card ${service.primary ? 'primary' : ''}`}>
-  <h3>{service.name}</h3>
-  <p>{service.description}</p>
-  <a href={`/services/${service.slug}`} class="service-link">
-    Learn More →
-  </a>
-</div>
+<a href={`/services/${service.slug}`} class={`group block card p-6 hover:-translate-y-2 ${service.primary ? 'ring-2 ring-primary bg-gradient-to-br from-white to-orange-50' : ''}`}>
+  <div class={`w-14 h-14 rounded-lg flex items-center justify-center mb-4 ${service.primary ? 'bg-primary text-white' : 'bg-gray-100 text-primary group-hover:bg-primary group-hover:text-white'} transition-all duration-300`}>
+    <i class={`fa-solid ${icon} text-2xl`}></i>
+  </div>
 
-<style>
-  .service-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  }
-  
-  .service-card.primary {
-    border: 2px solid #ff6b35;
-    background: linear-gradient(135deg, #fff 0%, #fff5f0 100%);
-  }
-  
-  .service-card h3 {
-    margin-top: 0;
-    color: #1a1a1a;
-    font-size: 1.5rem;
-  }
-  
-  .service-card.primary h3 {
-    color: #ff6b35;
-  }
-  
-  .service-card p {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-  }
-  
-  .service-link {
-    color: #ff6b35;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-  }
-  
-  .service-link:hover {
-    color: #e55a2b;
-  }
-</style>
+  <h3 class={`text-xl font-bold mb-3 font-display uppercase ${service.primary ? 'text-primary' : 'text-gray-900 group-hover:text-primary'} transition-colors`}>
+    {service.name}
+  </h3>
 
+  <p class="text-gray-600 mb-4 line-clamp-3">
+    {service.description}
+  </p>
+
+  <span class="inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all">
+    Learn More
+    <i class="fa-solid fa-arrow-right text-sm"></i>
+  </span>
+</a>

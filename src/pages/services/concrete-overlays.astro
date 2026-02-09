@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
+import { SITE_CONFIG } from '../../config';
+import { generateServiceSchema } from '../../utils/schema';
+
+const serviceSchema = generateServiceSchema('concrete-overlays', 'Concrete overlay installation and resurfacing in Deptford, NJ. Restore worn concrete surfaces with professional overlay systems. Cost-effective alternative to replacement.');
+
+const galleryImages = [
+  { src: '/images/projects/IMG_3403.webp', alt: 'Concrete overlay installation in Deptford, NJ', label: 'Overlay Installation' },
+  { src: '/images/projects/IMG_3404.webp', alt: 'Concrete resurfacing project', label: 'Resurfacing Work' },
+  { src: '/images/projects/IMG_3907.webp', alt: 'Restored concrete surface', label: 'Surface Restoration' },
+  { src: '/images/projects/IMG_3910.webp', alt: 'Professional overlay work', label: 'Professional Overlay' },
+  { src: '/images/projects/IMG_5164.webp', alt: 'Concrete restoration service', label: 'Restoration Service' },
+  { src: '/images/projects/IMG_5165.webp', alt: 'Resurfaced concrete floor', label: 'Resurfaced Floor' }
+];
+
+const faqs = [
+  { q: 'How much does a concrete overlay cost?', a: 'Concrete overlay costs typically range from $3-$7 per square foot, depending on overlay type and finishing options. This is significantly less than replacement, which can cost $8-$15 per square foot.' },
+  { q: 'How long do concrete overlays last?', a: 'With proper installation and maintenance, concrete overlays can last 10-15 years or more. The lifespan depends on overlay type, traffic, and maintenance.' },
+  { q: 'Can overlays be applied to any concrete surface?', a: 'Overlays work best on structurally sound concrete. Severely damaged or unstable concrete may need repair first or replacement instead. We\'ll assess your concrete during the free inspection.' },
+  { q: 'How long does overlay installation take?', a: 'Most overlay projects are completed within 1-2 days, depending on size and complexity. This is much faster than replacement, which can take 3-5 days.' },
+  { q: 'Can I add decorative features to overlays?', a: 'Yes! Overlays can be finished with stamps, stains, textures, and colors to match your design preferences. We offer various decorative options.' }
+];
+---
+
+<BaseLayout
+  title="Concrete Overlays & Resurfacing in Deptford, NJ | Concrete Restoration"
+  description="Professional concrete overlay installation and resurfacing in Deptford, NJ. Restore worn driveways, patios, and floors with durable overlay systems. Cost-effective alternative to replacement."
+  schema={serviceSchema}
+>
+  <!-- Hero Section -->
+  <section class="bg-dark py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="section-subheading text-primary mb-4">Resurfacing Services</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        Concrete Overlays & Resurfacing
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Professional concrete overlay installation to restore and resurface worn concrete. Cost-effective alternative to replacement that gives your concrete a new lease on life.
+      </p>
+      <a href="#contact-form" class="btn-primary text-lg">
+        Get Free Overlay Estimate
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Our Work</p>
+        <h2 class="section-heading mb-6">Our Concrete Overlay Projects</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          See our quality concrete resurfacing work throughout Deptford and surrounding areas.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {galleryImages.map(image => (
+          <div class="group relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+            <img src={image.src} alt={image.alt} loading="lazy" class="w-full h-full object-cover" width="800" height="600" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <p class="text-white font-semibold">{image.label}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-8">
+        Concrete Overlay & Resurfacing Services
+      </h2>
+      <p class="text-lg text-gray-600 mb-8">
+        Concrete overlays are a cost-effective way to restore worn, damaged, or outdated concrete surfaces without the expense and disruption of complete replacement. We install professional concrete overlay systems that give your concrete a fresh, new appearance and extended lifespan.
+      </p>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Benefits of Concrete Overlays</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { icon: 'fa-dollar-sign', title: 'Cost-Effective', desc: 'Typically 50-70% less expensive than complete replacement' },
+          { icon: 'fa-clock', title: 'Faster Installation', desc: 'Overlay projects are completed much faster than replacement' },
+          { icon: 'fa-house', title: 'Less Disruption', desc: 'Minimal disruption to your property and daily activities' },
+          { icon: 'fa-palette', title: 'Design Options', desc: 'Choose from smooth, textured, stamped, or stained finishes' },
+          { icon: 'fa-shield-halved', title: 'Durability', desc: 'High-quality overlay systems provide years of reliable service' },
+          { icon: 'fa-leaf', title: 'Eco-Friendly', desc: 'Reuses existing concrete, reducing waste' }
+        ].map(benefit => (
+          <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class={`fa-solid ${benefit.icon} text-primary`}></i>
+            </div>
+            <div>
+              <h4 class="font-bold">{benefit.title}</h4>
+              <p class="text-gray-600 text-sm">{benefit.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Types of Concrete Overlays We Install</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { title: 'Microtopping Overlays', desc: 'Ultra-thin overlays (1/8" to 1/4") for smooth, modern finishes', link: null },
+          { title: 'Standard Overlays', desc: '1/4" to 1/2" overlays for general resurfacing applications', link: null },
+          { title: 'Textured Overlays', desc: 'Overlays with texture for slip resistance and visual interest', link: null },
+          { title: 'Stamped Overlays', desc: 'Decorative patterns matching stamped concrete appearance', link: '/services/stamped-concrete' },
+          { title: 'Stained Overlays', desc: 'Overlays with stained concrete colors and effects', link: '/services/stained-concrete' },
+          { title: 'Polymer Overlays', desc: 'High-performance overlays with enhanced durability', link: null }
+        ].map(type => (
+          <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-primary">
+            <h4 class="font-bold mb-1">{type.title}</h4>
+            <p class="text-gray-600 text-sm">{type.desc}</p>
+            {type.link && <a href={type.link} class="text-primary text-sm font-semibold hover:underline">Learn more →</a>}
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">What's Included in Our Overlay Service</h3>
+      <div class="bg-orange-50 border-l-4 border-primary rounded-lg p-6 mb-8">
+        <ul class="space-y-2">
+          {[
+            'Free Inspection - Assessment of your existing concrete to determine if overlay is appropriate',
+            'Surface Preparation - Proper cleaning, repair of major damage, and surface preparation',
+            'Overlay Selection - Recommendation of the best overlay type for your needs',
+            'Professional Installation - Expert overlay installation by experienced professionals',
+            'Finishing Options - Smooth, textured, stamped, or stained finishes based on your preference',
+            'Sealing - Professional sealing to protect and enhance your overlay',
+            'Cleanup - Complete cleanup after installation',
+            'Maintenance Guidance - Advice on proper care to extend overlay lifespan'
+          ].map(item => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Our Overlay Installation Process</h3>
+      <div class="space-y-4 mb-8">
+        {[
+          { num: '1', title: 'Inspection', desc: 'We assess your existing concrete to determine if overlay is the right solution' },
+          { num: '2', title: 'Surface Preparation', desc: 'Cleaning, repair of major damage, and proper surface preparation' },
+          { num: '3', title: 'Primer Application', desc: 'Application of bonding primer to ensure overlay adhesion' },
+          { num: '4', title: 'Overlay Installation', desc: 'Application of overlay material using professional techniques' },
+          { num: '5', title: 'Finishing', desc: 'Finishing to achieve desired texture and appearance' },
+          { num: '6', title: 'Decorative Options', desc: 'Application of stamps, stains, or textures if selected' },
+          { num: '7', title: 'Sealing', desc: 'Professional sealing to protect your investment' },
+          { num: '8', title: 'Final Inspection', desc: 'Quality check to ensure overlay meets standards' }
+        ].map(step => (
+          <div class="flex items-start gap-4 bg-gray-50 rounded-lg p-4">
+            <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">{step.num}</div>
+            <div>
+              <h4 class="font-bold text-lg">{step.title}</h4>
+              <p class="text-gray-600">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">When Overlays Are the Right Choice</h3>
+      <div class="bg-gray-50 rounded-lg p-6 mb-8">
+        <p class="text-gray-600 mb-4">Concrete overlays are ideal when:</p>
+        <ul class="space-y-2">
+          {[
+            'Your concrete is structurally sound but cosmetically damaged',
+            'You want to update the appearance without full replacement',
+            'Cost is a primary consideration',
+            'You need a faster solution than replacement',
+            'You want to add decorative features like stamps or stains',
+            'Minimal disruption is important'
+          ].map(reason => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check text-primary mt-1"></i>
+              <span>{reason}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Areas We Serve</h3>
+      <p class="text-gray-600 mb-6">
+        We provide concrete overlay services throughout <a href="/locations/deptford-nj" class="text-primary font-semibold hover:underline">Deptford</a>, <a href="/locations/west-deptford-nj" class="text-primary font-semibold hover:underline">West Deptford</a>, <a href="/locations/woodbury-nj" class="text-primary font-semibold hover:underline">Woodbury</a>, <a href="/locations/glassboro-nj" class="text-primary font-semibold hover:underline">Glassboro</a>, and <a href="/locations" class="text-primary font-semibold hover:underline">all surrounding Gloucester County communities</a>.
+      </p>
+    </div>
+  </section>
+
+  <RelatedServices currentService="concrete-overlays" />
+  <ServiceAreasLink serviceName="Concrete Overlays" />
+
+  <!-- Contact Form Section -->
+  <section id="contact-form" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ContactForm title="Get Your Free Concrete Overlay Estimate" service="concrete-overlays" />
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Common Questions</p>
+        <h2 class="section-heading">Concrete Overlay FAQs</h2>
+      </div>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+            <h3 class="font-bold text-lg text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-600">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Ready to Restore Your Concrete?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Contact us today for a free inspection and estimate. No obligation, just honest advice.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact-form" class="btn-secondary">Get Your Free Estimate <i class="fa-solid fa-arrow-right"></i></a>
+        {SITE_CONFIG.phone && <a href={`tel:${SITE_CONFIG.phone}`} class="btn-outline"><i class="fa-solid fa-phone"></i> {SITE_CONFIG.phone}</a>}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

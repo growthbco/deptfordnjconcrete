@@ -1,17 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
-import ServiceCard from '../components/ServiceCard.astro';
-import LocationCard from '../components/LocationCard.astro';
-import SchemaMarkup from '../components/SchemaMarkup.astro';
 import { SITE_CONFIG } from '../config';
 import servicesData from '../content/services.json';
 import locationsData from '../content/locations.json';
 import { generateHomeAndConstructionBusinessSchema } from '../utils/schema';
 
-const primaryServices = servicesData.filter(s => s.primary);
-const otherServices = servicesData.filter(s => !s.primary);
-const allServices = [...primaryServices, ...otherServices];
+const primaryServices = servicesData.filter((s: any) => s.primary);
+const otherServices = servicesData.filter((s: any) => !s.primary);
 
 const localBusinessSchema = generateHomeAndConstructionBusinessSchema();
 
@@ -63,1057 +59,369 @@ const faqSchema = {
 };
 ---
 
-<BaseLayout 
+<BaseLayout
   title="Pole Barn Foundation, Stamped Concrete & Large Slab Contractors in Deptford, NJ"
   description="Professional pole barn foundation specialists, stamped concrete experts, and commercial concrete contractors serving Deptford, NJ. Free estimates on all concrete projects."
   schema={localBusinessSchema}
+  transparentHeader={true}
 >
-  <SchemaMarkup type="FAQPage" data={faqSchema} />
-  
-  <!-- Preload hero image for faster LCP -->
-  <link rel="preload" as="image" href="/images/polebarns/IMG_9021.webp" fetchpriority="high" />
-  
   <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-background">
-      <img 
-        src="/images/polebarns/IMG_9021.webp" 
-        alt="Pole barn foundation installation in Deptford, New Jersey" 
-        class="hero-image" 
-        width="1920" 
-        height="1080"
+  <section class="relative min-h-[800px] w-full bg-gray-900 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="/images/polebarns/IMG_9021.webp"
+        class="w-full h-full object-cover opacity-60"
+        alt="Pole barn foundation installation in Deptford, New Jersey"
         fetchpriority="high"
-        decoding="async"
       />
-      <div class="hero-overlay"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
     </div>
-    <div class="hero-container">
-      <h1>Pole Barn Foundation Specialists & Commercial Concrete Contractors in Deptford, New Jersey</h1>
-      <p class="hero-subtitle">Expert pole barn foundation installation and large-scale concrete projects. Serving Deptford and surrounding areas with professional, reliable service.</p>
-      <div class="hero-cta">
-        <a href="#contact-form" class="cta-primary">Get Free Pole Barn Foundation Estimate</a>
-        {SITE_CONFIG.phone && <a href={`tel:${SITE_CONFIG.phone}`} class="cta-secondary">Call Now</a>}
-      </div>
-    </div>
-  </section>
 
-  <!-- Featured Projects Gallery -->
-  <section class="featured-gallery">
-    <div class="container">
-      <h2>Our Recent Projects</h2>
-      <p class="section-intro">See our quality work in action - from pole barn foundations to beautiful stamped concrete installations.</p>
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="/images/polebarns/IMG_6480.webp" alt="Pole barn foundation installation in Deptford, NJ" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Pole Barn Foundation</p>
+    <div class="relative z-10 max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center py-32">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 w-full items-center">
+
+        <!-- Hero Content -->
+        <div class="lg:col-span-7">
+          <p class="text-accent font-bold tracking-wide mb-2 uppercase text-sm">
+            <i class="fa-solid fa-star mr-1"></i> 5-Star Concrete Contractors in South Jersey
+          </p>
+          <h1 class="text-4xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 uppercase leading-tight font-display">
+            Your Trusted Local <br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-400">Concrete Contractor</span>
+          </h1>
+          <p class="text-gray-200 text-lg mb-8 max-w-xl font-light">
+            Deptford Concrete Contractors: Your trusted partner for pole barn foundations, commercial slabs, and beautiful stamped concrete in Gloucester County. Quality craftsmanship since 2019.
+          </p>
+
+          <div class="space-y-3 mb-10">
+            <div class="flex items-center gap-3 text-white">
+              <i class="fa-solid fa-circle-check text-accent"></i>
+              <span class="font-medium">Pole Barn Foundation Specialists</span>
+            </div>
+            <div class="flex items-center gap-3 text-white">
+              <i class="fa-solid fa-circle-check text-accent"></i>
+              <span class="font-medium">Locally Owned & Operated</span>
+            </div>
+            <div class="flex items-center gap-3 text-white">
+              <i class="fa-solid fa-circle-check text-accent"></i>
+              <span class="font-medium">Fast and Reliable Installs</span>
+            </div>
+            <div class="flex items-center gap-3 text-white">
+              <i class="fa-solid fa-circle-check text-accent"></i>
+              <span class="font-medium">Free Estimates Within 24-48 Hours</span>
+            </div>
           </div>
+
+          {SITE_CONFIG.phone && (
+            <a href={`tel:${SITE_CONFIG.phone}`} class="inline-flex items-center gap-3 bg-white text-gray-900 px-6 py-3 rounded font-bold hover:bg-gray-100 transition shadow-lg">
+              <i class="fa-solid fa-phone text-primary"></i> {SITE_CONFIG.phone}
+            </a>
+          )}
         </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_7649.webp" alt="Stamped concrete patio installation in Deptford, NJ" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Stamped Concrete Patio</p>
-          </div>
+
+        <!-- Hero Form -->
+        <div class="lg:col-span-5">
+          <ContactForm title="Get Your Free Estimate" variant="hero" />
         </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_7653.webp" alt="Decorative stamped concrete driveway in Deptford, NJ" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Stamped Concrete Driveway</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_3401.webp" alt="Commercial concrete project in Deptford, NJ" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Commercial Concrete</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_3907.webp" alt="Professional concrete installation" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Professional Installation</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_5164.webp" alt="Concrete contractor work in Deptford, NJ" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Quality Workmanship</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_7656.webp" alt="Beautiful concrete project in Deptford, NJ" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Stamped Concrete Project</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_9889.webp" alt="Concrete work in Deptford" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Concrete Project</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/polebarns/IMG_6472.webp" alt="Pole barn foundation work" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Foundation Work</p>
-          </div>
-        </div>
-      </div>
-      <div class="gallery-cta">
-        <a href="/gallery" class="cta-link">View Full Gallery →</a>
       </div>
     </div>
   </section>
 
-  <!-- Primary Services Section -->
-  <section class="services-section primary">
-    <div class="container">
-      <h2>Our Primary Services</h2>
-      <p class="section-intro">We specialize in pole barn foundations and large commercial concrete projects. Our expertise ensures your project is built to last.</p>
-      <div class="services-grid">
-        {primaryServices.map(service => (
-          <ServiceCard service={service} />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="about-section">
-    <div class="container">
-      <h2>Serving Deptford Since 2019</h2>
-      
-      <p>Deptford Concrete Contractors has been proudly serving homeowners and businesses throughout Deptford and the surrounding Gloucester County area since 2019. Our team specializes in durable, high-quality concrete installations built to handle New Jersey's seasonal weather—from freezing winters to humid summers. Whether it's a fresh driveway, decorative patio, pole barn foundation, or full-scale commercial slab, we deliver craftsmanship that lasts.</p>
-
-      <p>When you need a pole barn foundation installed in Deptford, New Jersey, you need a contractor with specialized expertise and proven experience. Deptford Concrete Contractors is the trusted choice for pole barn foundation installation and large-scale concrete projects throughout Deptford, West Deptford, Woodbury, and surrounding Gloucester County communities.</p>
-
-      <div class="why-choose-box">
-        <h3>Why Deptford Homeowners Choose Deptford Concrete Contractors</h3>
-        <ul>
-          <li><strong>Locally Owned and Operated:</strong> Based in Gloucester County, we understand Deptford's unique needs and community character</li>
-          <li><strong>Decades of Combined Experience:</strong> Our team has extensive experience with New Jersey soil and weather conditions, ensuring your concrete withstands local climate challenges</li>
-          <li><strong>Responsive, Reliable Service:</strong> We respond to estimate requests within 24-48 hours. Honest pricing and clear communication from initial estimate through project completion</li>
-          <li><strong>Specialized Expertise:</strong> Skilled in stamped, decorative, and structural concrete work, with primary focus on pole barn foundations</li>
-          <li><strong>Fully Licensed and Insured:</strong> Professional coverage for residential and commercial projects throughout our service area</li>
-          <li><strong>Pole Barn Foundation Specialists:</strong> Our primary specialty ensures expert installation for post-frame buildings</li>
-        </ul>
+  <!-- Services Section -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-gray-500 font-medium uppercase tracking-wider text-sm">Our Services</span>
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-2 uppercase font-display max-w-2xl mx-auto">
+          Professional Concrete <br /> Services You Can Trust
+        </h2>
       </div>
 
-      <h3>Pole Barn Foundation Expertise</h3>
-      <p>Pole barn foundations are our primary specialty. We understand the unique requirements of post-frame building construction, including proper footing depth, concrete strength specifications, and local building code compliance. Whether you're building a new agricultural pole barn, a commercial storage facility, or a residential workshop, we provide the solid foundation your structure needs.</p>
-
-      <p>Our pole barn foundation services include:</p>
-      <ul>
-        <li>Concrete footing installation for post-frame buildings</li>
-        <li>Slab-on-grade foundations for pole barns</li>
-        <li>Foundation design consultation</li>
-        <li>Permit assistance and code compliance</li>
-        <li>Site preparation and excavation</li>
-        <li>Reinforcement and structural integrity</li>
-      </ul>
-
-      <h3>Large Commercial Concrete Slabs</h3>
-      <div class="content-with-image reverse">
-        <div class="content-text">
-          <p>Beyond pole barn foundations, we excel at large-scale concrete slab projects for commercial and industrial applications. From warehouse floors to manufacturing facility foundations, we handle projects of all sizes with precision and efficiency.</p>
-
-          <p>Our commercial concrete slab services include:</p>
-          <ul>
-            <li>Industrial floor slabs</li>
-            <li>Warehouse concrete foundations</li>
-            <li>Commercial building slabs</li>
-            <li>Heavy-duty concrete installations</li>
-            <li>Reinforced concrete for high-load applications</li>
-          </ul>
-        </div>
-        <div class="content-image">
-          <img src="/images/projects/IMG_7656.webp" alt="Large commercial concrete slab installation in Deptford, NJ" loading="lazy" width="800" height="600" />
-        </div>
-      </div>
-
-      <div class="stamped-concrete-section">
-        <div class="stamped-concrete-header">
-          <h3>Stamped Concrete Services</h3>
-        </div>
-        <div class="stamped-concrete-content">
-          <div class="stamped-text">
-            <p>We also specialize in beautiful stamped concrete installation for patios, driveways, and walkways. Stamped concrete provides an elegant, cost-effective alternative to natural stone or pavers, with a wide variety of patterns and colors to match your style. Our stamped concrete work enhances curb appeal and adds value to your property.</p>
-            <p>Our stamped concrete services include:</p>
-            <ul>
-              <li>Stamped concrete patios and outdoor living spaces</li>
-              <li>Decorative concrete driveways</li>
-              <li>Patterned concrete walkways</li>
-              <li>Pool deck stamped concrete</li>
-              <li>Custom patterns and colors</li>
-              <li>Professional sealing and maintenance</li>
-            </ul>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Service 1: Pole Barn Foundations -->
+        <div class="group relative bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
+          <div class="h-64 overflow-hidden relative">
+            <img src="/images/polebarns/IMG_6480.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Pole Barn Foundation" />
+            <div class="absolute top-4 left-4 w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary text-xl shadow-md">
+              <i class="fa-solid fa-warehouse"></i>
+            </div>
           </div>
-          <div class="stamped-image">
-            <img src="/images/projects/IMG_7653.webp" alt="Beautiful stamped concrete driveway installation in Deptford, NJ" loading="lazy" width="800" height="600" />
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-3 font-display uppercase">Pole Barn Foundations</h3>
+            <p class="text-gray-600 mb-6">Our specialty! Expert foundation installation for pole barns and post-frame buildings throughout South Jersey.</p>
+            <a href="/services/pole-barn-foundations" class="block w-full bg-primary text-white text-center py-3 rounded font-bold hover:bg-primary-dark transition uppercase text-sm">
+              Learn More <i class="fa-solid fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 2: Commercial Slabs -->
+        <div class="group relative bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
+          <div class="h-64 overflow-hidden relative">
+            <img src="/images/projects/IMG_3907.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Commercial Concrete Slab" />
+            <div class="absolute top-4 left-4 w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary text-xl shadow-md">
+              <i class="fa-solid fa-building"></i>
+            </div>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-3 font-display uppercase">Commercial Slabs</h3>
+            <p class="text-gray-600 mb-6">Large-scale concrete solutions for warehouses, manufacturing, and commercial properties.</p>
+            <a href="/services/concrete-slabs" class="block w-full bg-primary text-white text-center py-3 rounded font-bold hover:bg-primary-dark transition uppercase text-sm">
+              Learn More <i class="fa-solid fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 3: Stamped Concrete -->
+        <div class="group relative bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
+          <div class="h-64 overflow-hidden relative">
+            <img src="/images/projects/IMG_7653.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Stamped Concrete" />
+            <div class="absolute top-4 left-4 w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary text-xl shadow-md">
+              <i class="fa-solid fa-palette"></i>
+            </div>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-3 font-display uppercase">Stamped Concrete</h3>
+            <p class="text-gray-600 mb-6">Beautiful decorative patterns for patios, driveways, and walkways that enhance curb appeal.</p>
+            <a href="/services/stamped-concrete" class="block w-full bg-primary text-white text-center py-3 rounded font-bold hover:bg-primary-dark transition uppercase text-sm">
+              Learn More <i class="fa-solid fa-arrow-right ml-2"></i>
+            </a>
           </div>
         </div>
       </div>
 
-      <h3>Complete Concrete Services</h3>
-      <p>While <a href="/services/pole-barn-foundations">pole barn foundations</a> and <a href="/services/concrete-slabs">large slabs</a> are our specialty, we also provide comprehensive concrete services for residential and commercial projects throughout our service area, including <a href="/services/driveways">driveways</a>, <a href="/services/patios">patios</a>, <a href="/services/stamped-concrete">stamped concrete</a>, <a href="/services/walkways">walkways</a>, <a href="/services/retaining-walls">retaining walls</a>, and <a href="/services/basement-flooring">basement flooring</a>. <a href="/services">View all our services →</a></p>
-
-      <h3>Service Area Details</h3>
-      
-      <h4>Major Routes We Serve</h4>
-      <p>As concrete contractors serving Deptford and surrounding areas, we serve properties along major transportation corridors including:</p>
-      <ul>
-        <li><strong>NJ Route 41 (Hurffville Road):</strong> Major commercial corridor running through Deptford with shopping centers and businesses</li>
-        <li><strong>Route 47 (Delsea Drive):</strong> Important north-south route connecting Deptford with surrounding communities</li>
-        <li><strong>Route 55:</strong> Major highway providing access to Deptford and surrounding areas</li>
-        <li><strong>County Route 534 and 544:</strong> Local routes serving Deptford neighborhoods</li>
-        <li><strong>Black Horse Pike:</strong> Significant commercial corridor in the region</li>
-        <li><strong>Clements Bridge Road:</strong> Key local route connecting Deptford with adjacent communities</li>
-        <li><strong>Near Deptford Mall, Almonesson, and Surrounding Business Corridors:</strong> We serve commercial properties throughout Deptford's business districts</li>
-      </ul>
-
-      <h4>Deptford & Nearby Areas We Serve</h4>
-      <p>While Deptford Township is our primary service area, we also serve surrounding communities including:</p>
-      <ul>
-        <li><a href="/locations/deptford-nj">Deptford Township</a> (all areas)</li>
-        <li><a href="/locations/west-deptford-nj">West Deptford</a></li>
-        <li><a href="/locations/woodbury-nj">Woodbury</a></li>
-        <li><a href="/locations/wenonah-nj">Wenonah</a></li>
-        <li><a href="/locations/sewell-nj">Sewell</a></li>
-        <li><a href="/locations/mantua-nj">Mantua</a></li>
-        <li>Bellmawr</li>
-        <li>Runnemede</li>
-        <li><a href="/locations/blackwood-nj">Blackwood</a></li>
-        <li><a href="/locations/pitman-nj">Pitman</a></li>
-        <li>Gloucester City</li>
-        <li><a href="/locations/washington-township-nj">Washington Township</a></li>
-        <li>Brooklawn</li>
-        <li>Mount Ephraim</li>
-        <li>Surrounding South Jersey communities in Gloucester County - <a href="/locations">View all service areas →</a></li>
-      </ul>
-
-      <h3>Common Concrete Issues in South Jersey</h3>
-      <p>New Jersey's freeze-thaw cycles, humidity, and occasional flooding can cause concrete cracking, surface spalling, and water drainage problems. At Deptford Concrete Contractors, we use proper grading, expansion joints, and durable concrete mixes to help protect your surfaces year-round. We specialize in repairs, resurfacing, and preventative solutions designed for local weather conditions.</p>
-
-      <p>As experienced concrete contractors, we understand the specific challenges of South Jersey's climate. Our concrete installations account for:</p>
-      <ul>
-        <li><strong>Freeze-Thaw Cycles:</strong> Proper mix design and sealing protect against expansion and contraction</li>
-        <li><strong>High Humidity:</strong> Moisture-resistant concrete formulations and proper curing</li>
-        <li><strong>Heavy Rainfall:</strong> Proper grading and drainage to prevent water damage</li>
-        <li><strong>Occasional Flooding:</strong> Elevated foundations and proper site preparation in flood-prone areas</li>
-        <li><strong>Temperature Extremes:</strong> Concrete mixes and installation timing optimized for New Jersey's climate</li>
-      </ul>
-
-      <h3>Local Projects & Partnerships</h3>
-      <p>We're proud to work with South Jersey homeowners, local builders, and property managers to create long-lasting concrete solutions. From residential driveways and stamped patios in Deptford neighborhoods to commercial flatwork and curbing for businesses along Route 41, Deptford Concrete Contractors is the trusted name for reliable workmanship across Gloucester County.</p>
-
-      <p>Our projects include pole barn foundations for agricultural and storage purposes, residential driveways enhancing property values, decorative stamped concrete patios for outdoor living, and commercial concrete slabs for businesses throughout the region. We work with homeowners, business owners, builders, and property managers to deliver concrete solutions that meet their specific needs.</p>
+      <!-- All Services Banner -->
+      <div class="mt-20 bg-gray-50 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-gray-200">
+        <div class="flex items-center gap-6">
+          <div class="hidden md:block">
+            <i class="fa-solid fa-medal text-6xl text-gray-300"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <i class="fa-solid fa-award text-accent text-2xl"></i>
+              <span class="font-bold text-gray-900 uppercase tracking-wide">Complete Concrete Solutions</span>
+            </div>
+            <p class="text-gray-600 max-w-2xl text-sm md:text-base leading-relaxed">
+              From driveways and patios to retaining walls and pool decks, we offer comprehensive concrete services. Every project is backed by our commitment to quality craftsmanship and customer satisfaction.
+            </p>
+          </div>
+        </div>
+        <a href="/services" class="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded font-bold transition whitespace-nowrap uppercase text-sm flex items-center gap-2">
+          Explore All <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- All Services Section -->
-  <section class="services-section">
-    <div class="container">
-      <h2>All Our Concrete Services</h2>
-      <div class="services-grid">
-        {allServices.map(service => (
-          <ServiceCard service={service} />
-        ))}
+  <!-- Featured Gallery -->
+  <section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-gray-500 font-medium uppercase tracking-wider text-sm">Our Work</span>
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-2 uppercase font-display">
+          Recent Projects
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <a href="/gallery" class="group relative aspect-square overflow-hidden rounded-lg">
+          <img src="/images/polebarns/IMG_6471.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Pole barn foundation" loading="lazy" />
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i class="fa-solid fa-expand text-white text-2xl"></i>
+          </div>
+        </a>
+        <a href="/gallery" class="group relative aspect-square overflow-hidden rounded-lg">
+          <img src="/images/projects/IMG_7649.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Stamped concrete patio" loading="lazy" />
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i class="fa-solid fa-expand text-white text-2xl"></i>
+          </div>
+        </a>
+        <a href="/gallery" class="group relative aspect-square overflow-hidden rounded-lg">
+          <img src="/images/projects/IMG_5164.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Commercial concrete" loading="lazy" />
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i class="fa-solid fa-expand text-white text-2xl"></i>
+          </div>
+        </a>
+        <a href="/gallery" class="group relative aspect-square overflow-hidden rounded-lg">
+          <img src="/images/projects/IMG_7656.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Decorative concrete" loading="lazy" />
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i class="fa-solid fa-expand text-white text-2xl"></i>
+          </div>
+        </a>
+        <a href="/gallery" class="group relative aspect-square overflow-hidden rounded-lg hidden md:block">
+          <img src="/images/polebarns/IMG_6472.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Foundation work" loading="lazy" />
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i class="fa-solid fa-expand text-white text-2xl"></i>
+          </div>
+        </a>
+        <a href="/gallery" class="group relative aspect-square overflow-hidden rounded-lg hidden md:block">
+          <img src="/images/projects/IMG_9889.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Concrete project" loading="lazy" />
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i class="fa-solid fa-expand text-white text-2xl"></i>
+          </div>
+        </a>
+        <a href="/gallery" class="group relative aspect-square overflow-hidden rounded-lg hidden lg:block">
+          <img src="/images/projects/IMG_3401.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Concrete installation" loading="lazy" />
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <i class="fa-solid fa-expand text-white text-2xl"></i>
+          </div>
+        </a>
+        <a href="/gallery" class="group relative aspect-square overflow-hidden rounded-lg hidden lg:flex bg-primary items-center justify-center">
+          <div class="text-center text-white p-6">
+            <i class="fa-solid fa-images text-4xl mb-3"></i>
+            <p class="font-display font-bold uppercase">View All Projects</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-24 bg-dark text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-gray-400 font-medium uppercase tracking-wider text-sm">Why Choose Us</span>
+        <h2 class="text-4xl md:text-5xl font-bold text-white mt-2 uppercase font-display">
+          The Deptford Difference
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="text-center p-8">
+          <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-medal text-primary text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 font-display uppercase">Pole Barn Specialists</h3>
+          <p class="text-gray-400">Our primary specialty is pole barn foundations. We understand the unique requirements of post-frame construction.</p>
+        </div>
+
+        <div class="text-center p-8">
+          <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-map-location-dot text-primary text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 font-display uppercase">Locally Owned</h3>
+          <p class="text-gray-400">Based in Gloucester County, we understand local soil conditions, weather patterns, and building codes.</p>
+        </div>
+
+        <div class="text-center p-8">
+          <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-clock text-primary text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 font-display uppercase">Fast Response</h3>
+          <p class="text-gray-400">We respond to estimate requests within 24-48 hours. Clear communication from start to finish.</p>
+        </div>
+
+        <div class="text-center p-8">
+          <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-shield-halved text-primary text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 font-display uppercase">Fully Licensed & Insured</h3>
+          <p class="text-gray-400">Professional coverage for all residential and commercial projects throughout our service area.</p>
+        </div>
+
+        <div class="text-center p-8">
+          <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-comments-dollar text-primary text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 font-display uppercase">Honest Pricing</h3>
+          <p class="text-gray-400">Transparent quotes with no hidden fees. Free estimates on all projects.</p>
+        </div>
+
+        <div class="text-center p-8">
+          <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-hammer text-primary text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 font-display uppercase">Quality Craftsmanship</h3>
+          <p class="text-gray-400">Built to last through New Jersey's freeze-thaw cycles, humidity, and seasonal weather changes.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Service Areas -->
-  <section class="locations-section">
-    <div class="container">
-      <h2>Areas We Serve</h2>
-      <p class="section-intro">We provide pole barn foundation and concrete services throughout Gloucester County and surrounding areas:</p>
-      <div class="locations-grid">
-        {locationsData.map(location => (
-          <LocationCard location={location} />
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-gray-500 font-medium uppercase tracking-wider text-sm">Service Areas</span>
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-2 uppercase font-display">
+          Serving Gloucester County
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {locationsData.map((location: any) => (
+          <a href={`/locations/${location.slug}`} class="group flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-primary hover:text-white transition-all duration-300">
+            <i class="fa-solid fa-location-dot text-primary group-hover:text-white"></i>
+            <span class="font-medium">{location.name}, NJ</span>
+          </a>
         ))}
       </div>
-      <p class="locations-cta"><a href="/locations">View all service areas →</a></p>
-    </div>
-  </section>
 
-  <!-- Contact Form Section -->
-  <section id="contact-form" class="contact-section">
-    <div class="container">
-      <div class="contact-wrapper">
-        <div class="contact-form-container">
-          <ContactForm 
-            title="Get Your Free Pole Barn Foundation Estimate"
-            service="pole-barn-foundations"
-          />
-        </div>
-        <div class="map-container">
-          <h3>Find Us</h3>
-          <div class="map-wrapper">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d784438.8551085566!2d-76.33406682187498!3d39.82461320000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6d14c862e5d4d%3A0xf464f46461fc4ce2!2sDeptford%20NJ%20Concrete!5e0!3m2!1sen!2sus!4v1762401808748!5m2!1sen!2sus" 
-              width="100%" 
-              height="600" 
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Deptford Concrete Contractors Location"
-            ></iframe>
-          </div>
-        </div>
+      <div class="text-center mt-10">
+        <a href="/locations" class="inline-flex items-center gap-2 text-primary font-bold hover:underline">
+          View All Service Areas <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- FAQ Section -->
-  <section class="faq-section">
-    <div class="container">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <h3>Do you specialize in pole barn foundations?</h3>
-          <p>Yes, pole barn foundations are our primary specialty. We have extensive experience installing concrete foundations for pole barns and post-frame buildings throughout Deptford, NJ and surrounding areas.</p>
+  <section class="py-24 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-gray-500 font-medium uppercase tracking-wider text-sm">FAQ</span>
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-2 uppercase font-display">
+          Common Questions
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <h3 class="text-lg font-bold text-gray-900 mb-2 font-display">Do you specialize in pole barn foundations?</h3>
+          <p class="text-gray-600">Yes, pole barn foundations are our primary specialty. We have extensive experience installing concrete foundations for pole barns and post-frame buildings throughout Deptford, NJ and surrounding areas.</p>
         </div>
-        <div class="faq-item">
-          <h3>How much does a pole barn foundation cost?</h3>
-          <p>Pole barn foundation costs vary based on size, soil conditions, and local requirements. We provide free estimates for all pole barn foundation projects. Contact us for a detailed quote.</p>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <h3 class="text-lg font-bold text-gray-900 mb-2 font-display">How much does a pole barn foundation cost?</h3>
+          <p class="text-gray-600">Pole barn foundation costs vary based on size, soil conditions, and local requirements. We provide free estimates for all pole barn foundation projects. Contact us for a detailed quote.</p>
         </div>
-        <div class="faq-item">
-          <h3>Do you install large commercial concrete slabs?</h3>
-          <p>Yes, we specialize in large commercial and industrial concrete slab installation. We handle projects of all sizes, from small business foundations to large warehouse floors.</p>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <h3 class="text-lg font-bold text-gray-900 mb-2 font-display">Do you install large commercial concrete slabs?</h3>
+          <p class="text-gray-600">Yes, we specialize in large commercial and industrial concrete slab installation. We handle projects of all sizes, from small business foundations to large warehouse floors.</p>
         </div>
-        <div class="faq-item">
-          <h3>What areas do you serve?</h3>
-          <p>We serve {SITE_CONFIG.serviceAreas.join(', ')} and surrounding areas in New Jersey.</p>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <h3 class="text-lg font-bold text-gray-900 mb-2 font-display">What areas do you serve?</h3>
+          <p class="text-gray-600">We serve {SITE_CONFIG.serviceAreas.join(', ')} and surrounding areas in New Jersey.</p>
         </div>
-        <div class="faq-item">
-          <h3>Do you offer free estimates?</h3>
-          <p>Yes, we offer free, no-obligation estimates for all concrete projects. Contact us today to schedule your free estimate.</p>
-        </div>
-        <div class="faq-item">
-          <h3>How long does pole barn foundation installation take?</h3>
-          <p>Installation time depends on the size and complexity of your pole barn foundation. Most projects are completed within 1-3 days. We'll provide a timeline during your free estimate.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Do you handle permits for pole barn foundations?</h3>
-          <p>Yes, we assist with permit applications and ensure all work meets local building codes and regulations for pole barn construction.</p>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <h3 class="text-lg font-bold text-gray-900 mb-2 font-display">Do you offer free estimates?</h3>
+          <p class="text-gray-600">Yes, we offer free, no-obligation estimates for all concrete projects. Contact us today to schedule your free estimate.</p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- CTA Section -->
+  <section class="py-24 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 font-display uppercase">Ready to Start Your Project?</h2>
+      <p class="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+        Get your free estimate today. We respond within 24-48 hours and provide honest, transparent pricing.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded font-bold hover:bg-gray-100 transition">
+          Get Free Estimate <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        {SITE_CONFIG.phone && (
+          <a href={`tel:${SITE_CONFIG.phone}`} class="inline-flex items-center justify-center gap-2 bg-transparent text-white px-8 py-4 rounded font-bold border-2 border-white hover:bg-white hover:text-gray-900 transition">
+            <i class="fa-solid fa-phone"></i> {SITE_CONFIG.phone}
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
 </BaseLayout>
-
-<style>
-  .hero {
-    position: relative;
-    color: white;
-    padding: 6rem 0;
-    text-align: center;
-    min-height: 500px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-  }
-  
-  .hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-  }
-  
-  .hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  
-  .hero-background {
-    aspect-ratio: 16 / 9;
-  }
-  
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(26, 26, 26, 0.85) 0%, rgba(45, 45, 45, 0.75) 100%);
-    z-index: 1;
-  }
-  
-  .hero-container {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    width: 100%;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    color: #ccc;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .cta-primary,
-  .cta-secondary {
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .cta-primary {
-    background: #ff6b35;
-    color: white;
-  }
-  
-  .cta-primary:hover {
-    background: #e55a2b;
-  }
-  
-  .cta-secondary {
-    background: transparent;
-    color: white;
-    border: 2px solid white;
-  }
-  
-  .cta-secondary:hover {
-    background: white;
-    color: #1a1a1a;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  
-  .services-section {
-    padding: 4rem 0;
-  }
-  
-  .services-section.primary {
-    background: #f8f9fa;
-  }
-  
-  .services-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #1a1a1a;
-  }
-  
-  .section-intro {
-    text-align: center;
-    font-size: 1.1rem;
-    color: #666;
-    max-width: 800px;
-    margin: 0 auto 3rem;
-  }
-  
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-  }
-  
-  .about-section {
-    padding: 4rem 0;
-    background: white;
-  }
-  
-  .about-section h2 {
-    font-size: 2rem;
-    color: #1a1a1a;
-    margin-bottom: 2rem;
-  }
-  
-  .about-section h3 {
-    font-size: 1.5rem;
-    color: #ff6b35;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .about-section ul {
-    margin-left: 2rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .about-section li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .locations-section {
-    padding: 4rem 0;
-    background: #f8f9fa;
-  }
-  
-  .locations-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .locations-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-  
-  .locations-cta {
-    text-align: center;
-    margin-top: 2rem;
-  }
-  
-  .contact-section {
-    padding: 5rem 0;
-    background: #fafafa;
-  }
-  
-  .faq-section {
-    padding: 4rem 0;
-    background: #f8f9fa;
-  }
-  
-  .faq-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 3rem;
-  }
-  
-  .faq-list {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .faq-item {
-    background: white;
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  
-  .faq-item h3 {
-    color: #ff6b35;
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-  }
-  
-  .featured-gallery {
-    padding: 4rem 0;
-    background: white;
-  }
-  
-  .featured-gallery h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #1a1a1a;
-  }
-  
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .gallery-item {
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    aspect-ratio: 4/3;
-  }
-  
-  .gallery-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-  }
-  
-  .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  
-  .gallery-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    padding: 1.5rem;
-    color: white;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  
-  .gallery-item:hover .gallery-overlay {
-    opacity: 1;
-  }
-  
-  .gallery-overlay p {
-    margin: 0;
-    font-weight: 600;
-  }
-  
-  .gallery-cta {
-    text-align: center;
-    margin-top: 2rem;
-  }
-  
-  .cta-link {
-    color: #ff6b35;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: color 0.3s;
-  }
-  
-  .cta-link:hover {
-    color: #e55a2b;
-    text-decoration: underline;
-  }
-  
-  .content-with-image {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: center;
-    margin: 1.5rem 0;
-  }
-  
-  .content-with-image.reverse {
-    direction: rtl;
-  }
-  
-  .content-with-image.reverse > * {
-    direction: ltr;
-  }
-  
-  .content-text {
-    flex: 1;
-  }
-  
-  .content-image {
-    flex: 1;
-  }
-  
-  .content-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    display: block;
-  }
-  
-  .stamped-concrete-section {
-    margin: 2rem 0;
-    padding: 2rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-  }
-  
-  .stamped-concrete-header {
-    margin-bottom: 1.5rem;
-  }
-  
-  .stamped-concrete-header h3 {
-    margin-bottom: 0;
-  }
-  
-  .stamped-concrete-content {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 2rem;
-    align-items: start;
-  }
-  
-  .stamped-text {
-    padding-right: 1rem;
-  }
-  
-  .stamped-text p {
-    margin-bottom: 1rem;
-  }
-  
-  .stamped-text ul {
-    margin-top: 0.5rem;
-  }
-  
-  .stamped-image {
-    position: relative;
-  }
-  
-  .stamped-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    display: block;
-    object-fit: cover;
-  }
-
-  .why-choose-box {
-    background: #fff5f0;
-    padding: 2rem;
-    border-radius: 8px;
-    margin: 2rem 0;
-    border-left: 4px solid #ff6b35;
-  }
-
-  .why-choose-box h3 {
-    color: #ff6b35;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-  }
-
-  .why-choose-box ul {
-    margin-left: 1.5rem;
-    margin-top: 1rem;
-  }
-
-  .why-choose-box li {
-    margin-bottom: 1rem;
-    line-height: 1.7;
-  }
-
-  .about-section h4 {
-    font-size: 1.25rem;
-    color: #1a1a1a;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-
-  .contact-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-  }
-
-  .contact-form-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .map-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .map-container h3 {
-    font-size: 1.75rem;
-    color: #1a1a1a;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-    text-align: left;
-  }
-
-  .map-wrapper {
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-    background: white;
-    position: relative;
-    height: 600px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
-  }
-
-  .map-wrapper:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(0,0,0,0.15);
-  }
-
-  .map-wrapper iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
-  }
-  
-  @media (max-width: 768px) {
-    .hero {
-      padding: 3rem 0;
-      min-height: 400px;
-    }
-    
-    .hero-container {
-      padding: 0 1rem;
-    }
-    
-    .hero h1 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      line-height: 1.3;
-      padding: 0 0.5rem;
-    }
-    
-    .hero-subtitle {
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-      padding: 0 0.5rem;
-    }
-    
-    .hero-cta {
-      flex-direction: column;
-      gap: 0.75rem;
-      padding: 0 0.5rem;
-    }
-    
-    .cta-primary,
-    .cta-secondary {
-      padding: 0.875rem 1.5rem;
-      font-size: 0.95rem;
-      width: 100%;
-      text-align: center;
-    }
-    
-    .container {
-      padding: 0 1rem;
-    }
-    
-    .services-section,
-    .about-section,
-    .locations-section,
-    .contact-section,
-    .faq-section,
-    .featured-gallery {
-      padding: 2.5rem 0;
-    }
-    
-    .services-section h2,
-    .about-section h2,
-    .locations-section h2,
-    .faq-section h2,
-    .featured-gallery h2 {
-      font-size: 1.75rem;
-      margin-bottom: 0.75rem;
-      padding: 0 0.5rem;
-    }
-    
-    .section-intro {
-      font-size: 1rem;
-      padding: 0 0.5rem;
-      margin-bottom: 2rem;
-    }
-    
-    .services-grid,
-    .locations-grid,
-    .gallery-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    
-    .about-section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      padding: 0;
-    }
-    
-    .about-section h3 {
-      font-size: 1.25rem;
-      margin-top: 1.5rem;
-    }
-    
-    .about-section ul {
-      margin-left: 1.5rem;
-    }
-    
-    .content-with-image {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      margin: 1.5rem 0;
-    }
-    
-    .content-with-image.reverse {
-      direction: ltr;
-    }
-    
-    .content-image img {
-      border-radius: 4px;
-    }
-    
-    .stamped-concrete-section {
-      margin: 1.5rem 0;
-      padding: 1.5rem;
-    }
-    
-    .stamped-concrete-content {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    
-    .stamped-text {
-      padding-right: 0;
-    }
-
-    .why-choose-box {
-      padding: 1.5rem;
-    }
-
-    .contact-wrapper {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .map-container h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .map-wrapper {
-      height: 400px;
-      border-radius: 8px;
-    }
-
-    .map-wrapper iframe {
-      height: 100%;
-    }
-    
-    .faq-item {
-      padding: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .faq-item h3 {
-      font-size: 1.1rem;
-    }
-    
-    .gallery-item {
-      aspect-ratio: 4/3;
-    }
-    
-    .gallery-overlay {
-      padding: 1rem;
-      opacity: 1;
-      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-    }
-    
-    .gallery-overlay p {
-      font-size: 0.9rem;
-    }
-    
-    .locations-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .hero {
-      padding: 2rem 0;
-      min-height: 350px;
-    }
-    
-    .hero-container {
-      padding: 0 0.75rem;
-    }
-    
-    .hero h1 {
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-    }
-    
-    .hero-subtitle {
-      font-size: 0.875rem;
-      margin-bottom: 1.25rem;
-    }
-    
-    .cta-primary,
-    .cta-secondary {
-      padding: 0.75rem 1.25rem;
-      font-size: 0.875rem;
-    }
-    
-    .container {
-      padding: 0 0.75rem;
-    }
-    
-    .services-section,
-    .about-section,
-    .locations-section,
-    .contact-section,
-    .faq-section,
-    .featured-gallery {
-      padding: 2rem 0;
-    }
-    
-    .services-section h2,
-    .about-section h2,
-    .locations-section h2,
-    .faq-section h2,
-    .featured-gallery h2 {
-      font-size: 1.5rem;
-    }
-    
-    .section-intro {
-      font-size: 0.95rem;
-    }
-    
-    .services-grid,
-    .locations-grid,
-    .gallery-grid {
-      gap: 1.25rem;
-    }
-    
-    .about-section h2 {
-      font-size: 1.35rem;
-    }
-    
-    .about-section h3 {
-      font-size: 1.15rem;
-    }
-    
-    .faq-item {
-      padding: 1.25rem;
-    }
-    
-    .faq-item h3 {
-      font-size: 1rem;
-    }
-    
-    .gallery-item {
-      border-radius: 4px;
-    }
-  }
-</style>

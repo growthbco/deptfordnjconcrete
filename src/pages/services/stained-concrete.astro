@@ -1,0 +1,235 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
+import { SITE_CONFIG } from '../../config';
+import { generateServiceSchema } from '../../utils/schema';
+
+const serviceSchema = generateServiceSchema('stained-concrete', 'Professional stained concrete installation and coloring in Deptford, NJ. Beautiful colored concrete floors for interior and exterior. Custom colors and patterns available.');
+
+const galleryImages = [
+  { src: '/images/projects/IMG_7649.webp', alt: 'Stained concrete installation in Deptford, NJ', label: 'Stained Concrete' },
+  { src: '/images/projects/IMG_7653.webp', alt: 'Colored concrete project', label: 'Colored Concrete' },
+  { src: '/images/projects/IMG_7654.webp', alt: 'Decorative stained concrete', label: 'Decorative Staining' },
+  { src: '/images/projects/IMG_7655.webp', alt: 'Professional staining work', label: 'Professional Staining' },
+  { src: '/images/projects/IMG_7656.webp', alt: 'Custom colored concrete', label: 'Custom Colors' },
+  { src: '/images/projects/IMG_7657.webp', alt: 'Stained concrete floor', label: 'Stained Floor' }
+];
+
+const faqs = [
+  { q: 'How much does stained concrete cost?', a: 'Stained concrete costs typically range from $8-$15 per square foot, depending on stain type, surface preparation needs, and sealing options. This includes staining and sealing. We provide free estimates for accurate pricing.' },
+  { q: 'Can existing concrete be stained?', a: 'Yes! Existing concrete can be stained if it\'s in good condition. We\'ll assess your concrete during the free estimate and recommend preparation steps if needed.' },
+  { q: 'How long does stained concrete last?', a: 'With proper installation and maintenance, stained concrete colors are permanent and won\'t fade. The sealer may need periodic reapplication to maintain protection and appearance.' },
+  { q: 'What colors are available for stained concrete?', a: 'Acid stains offer earthy tones (browns, tans, greens, blues), while water-based stains provide a wider color range. We can help you choose colors that match your design vision.' },
+  { q: 'Can stained concrete be combined with stamped patterns?', a: 'Yes! Stains work beautifully with stamped concrete patterns, creating unique decorative effects that combine texture and color.' }
+];
+---
+
+<BaseLayout
+  title="Stained Concrete Floors & Surfaces in Deptford, NJ | Colored Concrete"
+  description="Expert stained concrete contractors in Deptford, NJ. Professional concrete staining for floors, driveways, patios, and more. Custom colors and decorative effects. Free estimates."
+  schema={serviceSchema}
+>
+  <!-- Hero Section -->
+  <section class="bg-dark py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="section-subheading text-primary mb-4">Decorative Concrete</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        Stained Concrete Floors & Surfaces
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Professional stained concrete installation and coloring services. Transform ordinary concrete into beautiful, colorful surfaces with custom staining options.
+      </p>
+      <a href="#contact-form" class="btn-primary text-lg">
+        Get Free Stained Concrete Estimate
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Our Work</p>
+        <h2 class="section-heading mb-6">Our Stained Concrete Projects</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          See our beautiful stained concrete installations throughout Deptford and surrounding areas.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {galleryImages.map(image => (
+          <div class="group relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+            <img src={image.src} alt={image.alt} loading="lazy" class="w-full h-full object-cover" width="800" height="600" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <p class="text-white font-semibold">{image.label}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-8">
+        Professional Stained Concrete Services
+      </h2>
+      <p class="text-lg text-gray-600 mb-8">
+        Stained concrete transforms ordinary gray concrete into beautiful, colorful surfaces. We provide professional concrete staining services that add color, depth, and visual interest to your concrete floors, driveways, patios, and more. Stained concrete offers the durability of concrete with the beauty of custom colors.
+      </p>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Types of Concrete Staining</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { icon: 'fa-droplet', title: 'Acid Stains', desc: 'Rich, earthy tones with natural variegation and unique patterns' },
+          { icon: 'fa-water', title: 'Water-Based Stains', desc: 'Wider color range with more consistent coverage' },
+          { icon: 'fa-fill-drip', title: 'Dye Stains', desc: 'Vibrant, intense colors for bold design statements' },
+          { icon: 'fa-layer-group', title: 'Combined Techniques', desc: 'Mix stains with stamped patterns for unique designs' }
+        ].map(type => (
+          <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class={`fa-solid ${type.icon} text-primary`}></i>
+            </div>
+            <div>
+              <h4 class="font-bold">{type.title}</h4>
+              <p class="text-gray-600 text-sm">{type.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Stained Concrete Applications</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { title: 'Interior Floors', desc: 'Stained floors for basements, garages, and commercial spaces', link: '/services/indoor-concrete' },
+          { title: 'Driveways', desc: 'Stained concrete driveways that enhance curb appeal', link: '/services/driveways' },
+          { title: 'Patios', desc: 'Stained concrete patios for beautiful outdoor spaces', link: '/services/patios' },
+          { title: 'Pool Decks', desc: 'Stained pool decks with slip-resistant finishes', link: '/services/pool-decks' },
+          { title: 'Walkways', desc: 'Colored walkways that add visual interest', link: '/services/walkways' },
+          { title: 'Commercial Spaces', desc: 'Stained floors for retail, offices, and commercial buildings', link: null }
+        ].map(app => (
+          <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-primary">
+            <h4 class="font-bold mb-1">{app.title}</h4>
+            <p class="text-gray-600 text-sm">{app.desc}</p>
+            {app.link && <a href={app.link} class="text-primary text-sm font-semibold hover:underline">Learn more →</a>}
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Benefits of Stained Concrete</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { icon: 'fa-shield-halved', title: 'Durability', desc: 'Stains penetrate concrete, creating permanent color that won\'t peel' },
+          { icon: 'fa-broom', title: 'Low Maintenance', desc: 'Easy to clean and maintain compared to other flooring' },
+          { icon: 'fa-palette', title: 'Custom Colors', desc: 'Wide range of colors to match your design vision' },
+          { icon: 'fa-dollar-sign', title: 'Cost-Effective', desc: 'More affordable than many decorative flooring options' },
+          { icon: 'fa-fingerprint', title: 'Unique Patterns', desc: 'Natural variegation creates one-of-a-kind appearances' },
+          { icon: 'fa-arrows-rotate', title: 'Versatile', desc: 'Works on new or existing concrete' }
+        ].map(benefit => (
+          <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class={`fa-solid ${benefit.icon} text-primary`}></i>
+            </div>
+            <div>
+              <h4 class="font-bold">{benefit.title}</h4>
+              <p class="text-gray-600 text-sm">{benefit.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">What's Included in Our Service</h3>
+      <div class="bg-orange-50 border-l-4 border-primary rounded-lg p-6 mb-8">
+        <ul class="space-y-2">
+          {[
+            'Free Design Consultation - We help you choose colors and design options',
+            'Surface Preparation - Proper cleaning and preparation for staining',
+            'Stain Application - Professional application using proven techniques',
+            'Color Selection - Help choosing the right stain type and colors',
+            'Sealing - Professional sealing to protect and enhance stained surfaces',
+            'Maintenance Guidance - Advice on proper care to maintain color and appearance'
+          ].map(item => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Our Staining Process</h3>
+      <div class="space-y-4 mb-8">
+        {[
+          { num: '1', title: 'Design Consultation', desc: 'We discuss your vision and help select colors' },
+          { num: '2', title: 'Surface Preparation', desc: 'Cleaning and preparation of concrete surface' },
+          { num: '3', title: 'Stain Application', desc: 'Application of stains using professional techniques' },
+          { num: '4', title: 'Color Development', desc: 'Allow time for stains to react and develop color' },
+          { num: '5', title: 'Neutralization', desc: 'Neutralize acid stains if used' },
+          { num: '6', title: 'Sealing', desc: 'Application of sealers to protect and enhance color' },
+          { num: '7', title: 'Final Inspection', desc: 'Quality check to ensure desired appearance' }
+        ].map(step => (
+          <div class="flex items-start gap-4 bg-gray-50 rounded-lg p-4">
+            <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">{step.num}</div>
+            <div>
+              <h4 class="font-bold text-lg">{step.title}</h4>
+              <p class="text-gray-600">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Areas We Serve</h3>
+      <p class="text-gray-600 mb-6">
+        We provide stained concrete services throughout <a href="/locations/deptford-nj" class="text-primary font-semibold hover:underline">Deptford</a>, <a href="/locations/west-deptford-nj" class="text-primary font-semibold hover:underline">West Deptford</a>, <a href="/locations/woodbury-nj" class="text-primary font-semibold hover:underline">Woodbury</a>, <a href="/locations/glassboro-nj" class="text-primary font-semibold hover:underline">Glassboro</a>, and <a href="/locations" class="text-primary font-semibold hover:underline">all surrounding Gloucester County communities</a>.
+      </p>
+    </div>
+  </section>
+
+  <RelatedServices currentService="stained-concrete" />
+  <ServiceAreasLink serviceName="Stained Concrete" />
+
+  <!-- Contact Form Section -->
+  <section id="contact-form" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ContactForm title="Get Your Free Stained Concrete Estimate" service="stained-concrete" />
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Common Questions</p>
+        <h2 class="section-heading">Stained Concrete FAQs</h2>
+      </div>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+            <h3 class="font-bold text-lg text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-600">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Ready to Transform Your Concrete?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Contact us today for a free design consultation. See how stained concrete can enhance your property.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact-form" class="btn-secondary">Get Your Free Estimate <i class="fa-solid fa-arrow-right"></i></a>
+        {SITE_CONFIG.phone && <a href={`tel:${SITE_CONFIG.phone}`} class="btn-outline"><i class="fa-solid fa-phone"></i> {SITE_CONFIG.phone}</a>}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

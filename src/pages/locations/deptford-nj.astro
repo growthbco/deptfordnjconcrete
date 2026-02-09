@@ -18,450 +18,291 @@ const primaryServices = servicesData.filter(s => s.primary);
 const details = locationDetails['deptford-nj'];
 
 const localSchema = generateLocationSchema(location.name, location.slug);
+
+const iconMap: Record<string, string> = {
+  'pole-barn-foundations': 'fa-warehouse',
+  'concrete-slabs': 'fa-layer-group',
+  'driveways': 'fa-road',
+  'patios': 'fa-umbrella-beach',
+  'stamped-concrete': 'fa-stamp',
+  'walkways': 'fa-shoe-prints',
+  'retaining-walls': 'fa-mountain',
+  'basement-flooring': 'fa-house-flood-water'
+};
 ---
 
-<BaseLayout 
+<BaseLayout
   title={`Concrete Contractors ${location.name}, NJ | Pole Barn Foundations & More`}
   description={`Professional concrete contractors serving ${location.name}, New Jersey. Specializing in pole barn foundations, driveways, patios, and commercial slabs. Free estimates.`}
   schema={localSchema}
 >
-  <section class="hero">
-    <div class="container">
-      <h1>Concrete Contractors {location.name}, New Jersey</h1>
-      <p class="hero-subtitle">Expert concrete contractors specializing in pole barn foundations, commercial slabs, residential driveways, and comprehensive concrete services in {location.fullName}. Free estimates on all projects.</p>
-      <a href="#contact-form" class="cta-primary">Get Free Estimate in {location.name}</a>
+  <!-- Hero Section -->
+  <section class="bg-dark py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="section-subheading text-primary mb-4">Local Concrete Experts</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        Concrete Contractors {location.name}, New Jersey
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Expert concrete contractors specializing in pole barn foundations, commercial slabs, residential driveways, and comprehensive concrete services in {location.fullName}. Free estimates on all projects.
+      </p>
+      <a href="#contact-form" class="btn-primary text-lg">
+        Get Free Estimate in {location.name}
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
     </div>
   </section>
 
-  <section class="content-section">
-    <div class="container">
-      <h2>Professional Concrete Contractors Serving {location.name}, New Jersey</h2>
-      
-      <h3>Serving {location.name} Since 2019</h3>
-      <p>Deptford Concrete Contractors has been proudly serving homeowners and businesses throughout {location.name} and the surrounding Gloucester County area since 2019. Our team specializes in durable, high-quality concrete installations built to handle New Jersey's seasonal weather—from freezing winters to humid summers. Whether it's a fresh driveway, decorative patio, pole barn foundation, or full-scale commercial slab, we deliver craftsmanship that lasts.</p>
+  <!-- Introduction Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-8">
+        Professional Concrete Contractors Serving {location.name}, New Jersey
+      </h2>
 
-      <p>As experienced concrete contractors in {location.name}, we specialize in pole barn foundation installation—our primary expertise—while providing comprehensive concrete services for residential and commercial properties throughout this vibrant Gloucester County community. {location.name} is a thriving township that combines residential neighborhoods with major commercial corridors, creating diverse concrete contracting needs.</p>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Serving {location.name} Since 2019</h3>
+      <p class="text-gray-600 mb-6">
+        Deptford Concrete Contractors has been proudly serving homeowners and businesses throughout {location.name} and the surrounding Gloucester County area since 2019. Our team specializes in durable, high-quality concrete installations built to handle New Jersey's seasonal weather—from freezing winters to humid summers. Whether it's a fresh driveway, decorative patio, pole barn foundation, or full-scale commercial slab, we deliver craftsmanship that lasts.
+      </p>
 
-      <div class="why-choose-box">
-        <h3>Why {location.name} Homeowners Choose Deptford Concrete Contractors</h3>
-        <ul>
-          <li><strong>Locally Owned and Operated:</strong> Based in Gloucester County, we understand {location.name}'s unique needs and community character</li>
-          <li><strong>Decades of Combined Experience:</strong> Our team has extensive experience with New Jersey soil and weather conditions, ensuring your concrete withstands local climate challenges</li>
-          <li><strong>Responsive, Reliable Service:</strong> We respond to estimate requests within 24-48 hours. Honest pricing and clear communication from initial estimate through project completion</li>
-          <li><strong>Specialized Expertise:</strong> Skilled in stamped, decorative, and structural concrete work, with primary focus on pole barn foundations</li>
-          <li><strong>Fully Licensed and Insured:</strong> Professional coverage for residential and commercial projects throughout {location.name}</li>
-          <li><strong>Pole Barn Foundation Specialists:</strong> Our primary specialty ensures expert installation for post-frame buildings</li>
-        </ul>
-      </div>
+      <p class="text-gray-600 mb-8">
+        As experienced concrete contractors in {location.name}, we specialize in pole barn foundation installation—our primary expertise—while providing comprehensive concrete services for residential and commercial properties throughout this vibrant Gloucester County community. {location.name} is a thriving township that combines residential neighborhoods with major commercial corridors, creating diverse concrete contracting needs.
+      </p>
 
-      <h3>Understanding {location.name}'s Geography and Development</h3>
-      <p>{location.name} Township encompasses a diverse mix of residential neighborhoods, commercial districts, and some agricultural areas. The township is strategically located with excellent access via major roadways including Route 41, Clements Bridge Road, Delsea Drive, and Route 47. This accessibility makes {location.name} an ideal location for both residential and commercial development, driving demand for professional concrete contractors.</p>
-
-      <p>Major landmarks in {location.name} include {details.landmarks.join(', ')}. These commercial and community centers create ongoing demand for concrete services ranging from parking lot installation and repair to foundation work for new construction. As {location.name} concrete contractors, we're familiar with the township's development patterns and can coordinate projects around commercial traffic patterns and community events.</p>
-
-      <h3>Traffic Patterns and Project Coordination in {location.name}</h3>
-      <p>{details.trafficPatterns} As experienced concrete contractors working throughout {location.name}, we carefully plan project schedules to minimize disruption. For commercial projects along Route 41 and Clements Bridge Road, we coordinate with business owners to schedule concrete work during off-peak hours when possible. Residential projects require careful timing to avoid rush hour traffic on major thoroughfares like {details.majorRoads.join(', ')}.</p>
-
-      <p>Our familiarity with {location.name}'s traffic patterns allows us to efficiently schedule concrete deliveries, coordinate equipment access, and complete projects with minimal disruption to the community. Whether we're installing a pole barn foundation in a residential neighborhood or pouring a commercial slab near Deptford Mall, we plan every detail to ensure smooth project execution.</p>
-
-      <h3>Weather Considerations for Concrete Work in {location.name}</h3>
-      <p>{details.weatherImpacts} As professional concrete contractors in {location.name}, we understand these weather patterns and plan projects accordingly. During spring and summer months, we monitor forecasts closely and schedule work during optimal conditions. Winter projects require special concrete mix formulations and protective measures to ensure proper curing despite cold temperatures.</p>
-
-      <p>Freeze-thaw cycles are particularly important for {location.name} concrete contractors to consider. Proper concrete mix design, adequate curing time, and appropriate sealing protect against the expansion and contraction caused by temperature fluctuations. Our experience with {location.name}'s climate means we know when to schedule projects and how to protect fresh concrete during installation.</p>
-
-      <h3>Soil Conditions and Foundation Requirements in {location.name}</h3>
-      <p>{details.soilConditions} Before beginning any pole barn foundation or concrete slab project in {location.name}, we conduct thorough site assessments to understand soil composition, drainage patterns, and load-bearing capacity. This analysis is crucial for proper foundation design and ensures long-term stability.</p>
-
-      <p>Different areas of {location.name} may have varying soil conditions, from clay-heavy areas requiring proper drainage to sandy loam that provides excellent drainage but may need reinforcement. As {location.name} concrete contractors, we adapt our approach based on specific site conditions, ensuring every foundation and slab meets structural requirements and local building codes.</p>
-
-      <h3>Pole Barn Foundation Contractors in {location.name}</h3>
-      <p>Pole barn foundations are our primary specialty, and we're the go-to concrete contractors for post-frame building projects throughout {location.name}. If you're planning a pole barn in {location.name}—whether for agricultural use, storage, or commercial purposes—we provide expert foundation installation that meets all structural requirements and Deptford Township building codes.</p>
-
-      <p>Our pole barn foundation services in {location.name} include comprehensive planning, design, and installation:</p>
-      <ul>
-        <li><strong>Site Assessment:</strong> We evaluate your {location.name} property's soil conditions, drainage, and access requirements</li>
-        <li><strong>Foundation Design:</strong> Custom foundation design meeting Deptford Township building codes and structural requirements</li>
-        <li><strong>Concrete Footing Installation:</strong> Professional installation of concrete footings for post-frame buildings, accounting for {location.name}'s soil conditions</li>
-        <li><strong>Slab-on-Grade Foundations:</strong> Complete slab foundations for pole barns requiring smooth interior floors</li>
-        <li><strong>Permit Assistance:</strong> We handle all permit applications with Deptford Township, ensuring code compliance</li>
-        <li><strong>Site Preparation:</strong> Professional excavation and site preparation tailored to {location.name}'s specific conditions</li>
-        <li><strong>Reinforcement:</strong> Proper rebar installation and concrete mix design for long-term durability</li>
-        <li><strong>Quality Inspection:</strong> Final inspection to ensure code compliance and structural integrity</li>
-      </ul>
-
-      <p>As {location.name} pole barn foundation specialists, we understand the unique requirements of post-frame building construction. Whether you're building an agricultural pole barn, commercial storage facility, or residential workshop in {location.name}, we ensure your foundation provides the solid base your structure needs.</p>
-
-      <div class="location-services-section">
-        <h3>Our Primary Services in {location.name}</h3>
-        <p>We offer specialized {location.name} concrete contracting services for our primary specialties. Click below to learn more about each service in {location.name}:</p>
-        <ul class="location-services-list">
-          {primaryServices.map(service => (
-            <li><a href={`/locations/${location.slug}/${service.slug}`}>{service.name} in {location.name}</a></li>
+      <!-- Why Choose Us Box -->
+      <div class="bg-orange-50 border-l-4 border-primary rounded-lg p-6 mb-8">
+        <h3 class="text-xl font-bold text-primary font-display uppercase mb-4">Why {location.name} Homeowners Choose Deptford Concrete Contractors</h3>
+        <ul class="space-y-3">
+          {[
+            { title: 'Locally Owned and Operated', desc: `Based in Gloucester County, we understand ${location.name}'s unique needs and community character` },
+            { title: 'Decades of Combined Experience', desc: "Our team has extensive experience with New Jersey soil and weather conditions" },
+            { title: 'Responsive, Reliable Service', desc: 'We respond to estimate requests within 24-48 hours with honest pricing' },
+            { title: 'Specialized Expertise', desc: 'Skilled in stamped, decorative, and structural concrete work' },
+            { title: 'Fully Licensed and Insured', desc: `Professional coverage for residential and commercial projects throughout ${location.name}` },
+            { title: 'Pole Barn Foundation Specialists', desc: 'Our primary specialty ensures expert installation for post-frame buildings' }
+          ].map(item => (
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+              <span><strong>{item.title}:</strong> {item.desc}</span>
+            </li>
           ))}
         </ul>
       </div>
 
-      <h3>Commercial Concrete Contractors in {location.name}</h3>
-      <p>We're experienced commercial concrete contractors handling large-scale projects for businesses throughout {location.name}. The township's commercial corridors, including areas around Deptford Mall and Route 41, create ongoing demand for commercial concrete services. Our commercial concrete contracting expertise includes:</p>
-      <ul>
-        <li><strong>Large Commercial Slabs:</strong> Industrial and commercial concrete slabs for warehouses, manufacturing facilities, and retail centers in {location.name}</li>
-        <li><strong>Parking Lot Installation:</strong> Complete parking lot installation and repair for {location.name} businesses</li>
-        <li><strong>Commercial Building Foundations:</strong> Structural foundations meeting commercial building requirements</li>
-        <li><strong>Concrete Repair:</strong> Commercial concrete repair and resurfacing to extend facility lifespan</li>
-        <li><strong>Concrete Curbs:</strong> Parking lot curbing and landscape borders for commercial properties</li>
-      </ul>
-      <p>Commercial concrete contractors in {location.name} must understand the unique needs of business facilities. We work with property managers, business owners, and general contractors to deliver concrete solutions that meet commercial building codes and withstand years of heavy use. <a href="/services/concrete-slabs" class="service-link">Learn more about our commercial concrete services →</a></p>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Understanding {location.name}'s Geography and Development</h3>
+      <p class="text-gray-600 mb-6">
+        {location.name} Township encompasses a diverse mix of residential neighborhoods, commercial districts, and some agricultural areas. The township is strategically located with excellent access via major roadways including Route 41, Clements Bridge Road, Delsea Drive, and Route 47. This accessibility makes {location.name} an ideal location for both residential and commercial development, driving demand for professional concrete contractors.
+      </p>
 
-      <h3>Residential Concrete Contractors in {location.name}</h3>
-      <p>Our residential concrete contracting services help {location.name} homeowners enhance their properties with durable, beautiful concrete installations. {location.name} neighborhoods range from established residential areas to newer developments, each with unique concrete needs. Our residential services include:</p>
-      <ul>
-        <li><strong>Concrete Driveways:</strong> Professional driveway installation and repair enhancing curb appeal and property value in {location.name} neighborhoods. <a href="/services/driveways" class="service-link">Learn more about our driveway services →</a></li>
-        <li><strong>Concrete Patios:</strong> Custom patio design for outdoor living spaces perfect for {location.name} homeowners. <a href="/services/patios" class="service-link">Learn more about our patio services →</a></li>
-        <li><strong>Stamped Concrete:</strong> Decorative concrete installations providing beautiful, cost-effective alternatives to natural stone. <a href="/services/stamped-concrete" class="service-link">Learn more about our stamped concrete services →</a></li>
-        <li><strong>Walkways & Pathways:</strong> Durable concrete walkways connecting different areas of your property. <a href="/services/walkways" class="service-link">Learn more about our walkway services →</a></li>
-        <li><strong>Retaining Walls:</strong> Functional concrete retaining walls for erosion control and landscaping. <a href="/services/retaining-walls" class="service-link">Learn more about our retaining wall services →</a></li>
-        <li><strong>Basement Flooring:</strong> Professional basement floor installation and repair. <a href="/services/basement-flooring" class="service-link">Learn more about our basement flooring services →</a></li>
-        <li><strong>Concrete Repair:</strong> Comprehensive repair services to extend the life of existing concrete installations</li>
-      </ul>
+      <p class="text-gray-600 mb-8">
+        Major landmarks in {location.name} include {details.landmarks.join(', ')}. These commercial and community centers create ongoing demand for concrete services ranging from parking lot installation and repair to foundation work for new construction. As {location.name} concrete contractors, we're familiar with the township's development patterns and can coordinate projects around commercial traffic patterns and community events.
+      </p>
 
-      <h3>Deptford Township Building Codes and Permits</h3>
-      <p>As {location.name} concrete contractors, we're well-versed in Deptford Township building codes and permit requirements. Many concrete projects in {location.name} require permits, especially for new construction, pole barn foundations, and structural work. We assist with all permit applications and ensure compliance with Deptford Township and Gloucester County regulations.</p>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Traffic Patterns and Project Coordination in {location.name}</h3>
+      <p class="text-gray-600 mb-6">
+        {details.trafficPatterns} As experienced concrete contractors working throughout {location.name}, we carefully plan project schedules to minimize disruption. For commercial projects along Route 41 and Clements Bridge Road, we coordinate with business owners to schedule concrete work during off-peak hours when possible.
+      </p>
 
-      <p>Our familiarity with {location.name}'s permit processes means we can help you navigate requirements efficiently, avoiding delays and ensuring your project meets all code standards. Whether you're building a pole barn foundation, installing a new driveway, or constructing a commercial slab, we handle the permit paperwork and inspections.</p>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Weather Considerations for Concrete Work in {location.name}</h3>
+      <p class="text-gray-600 mb-6">
+        {details.weatherImpacts} As professional concrete contractors in {location.name}, we understand these weather patterns and plan projects accordingly. During spring and summer months, we monitor forecasts closely and schedule work during optimal conditions. Winter projects require special concrete mix formulations and protective measures to ensure proper curing despite cold temperatures.
+      </p>
 
-      <h3>Why Choose Deptford Concrete Contractors for Your {location.name} Project?</h3>
-      <p>When you need concrete contractors in {location.name}, choose a company with specialized pole barn foundation expertise and comprehensive concrete knowledge. Our advantages include:</p>
-      <ul>
-        <li><strong>Local Expertise:</strong> Deep knowledge of {location.name} geography, soil conditions, traffic patterns, and building codes</li>
-        <li><strong>Pole Barn Foundation Specialists:</strong> Our primary specialty ensures expert installation for post-frame buildings</li>
-        <li><strong>Comprehensive Services:</strong> From driveways to commercial slabs, we handle all your concrete needs</li>
-        <li><strong>Weather Awareness:</strong> Understanding of {location.name}'s climate patterns and proper concrete installation timing</li>
-        <li><strong>Traffic Coordination:</strong> Careful project scheduling around major traffic corridors and community events</li>
-        <li><strong>Permit Assistance:</strong> Expertise navigating Deptford Township permit processes</li>
-        <li><strong>Quality Materials:</strong> Premium concrete mixes appropriate for {location.name}'s conditions</li>
-        <li><strong>Free Estimates:</strong> No-obligation quotes on all projects with transparent pricing</li>
-      </ul>
-
-      <h3>Service Area Details</h3>
-      
-      <h4>Major Routes We Serve</h4>
-      <p>As {location.name} concrete contractors, we serve properties along major transportation corridors including:</p>
-      <ul>
-        <li><strong>NJ Route 41 (Hurffville Road):</strong> Major commercial corridor running through {location.name} with shopping centers and businesses</li>
-        <li><strong>Route 47 (Delsea Drive):</strong> Important north-south route connecting {location.name} with surrounding communities</li>
-        <li><strong>Route 55:</strong> Major highway providing access to {location.name} and surrounding areas</li>
-        <li><strong>County Route 534 and 544:</strong> Local routes serving {location.name} neighborhoods</li>
-        <li><strong>Black Horse Pike:</strong> Significant commercial corridor in the region</li>
-        <li><strong>Clements Bridge Road:</strong> Key local route connecting {location.name} with adjacent communities</li>
-        <li><strong>Near Deptford Mall, Almonesson, and Surrounding Business Corridors:</strong> We serve commercial properties throughout {location.name}'s business districts</li>
-      </ul>
-
-      <h4>{location.name} & Nearby Areas We Serve</h4>
-      <p>While {location.name} Township is our primary service area, we also serve surrounding communities including:</p>
-      <ul>
-        <li>Deptford Township (all areas)</li>
-        <li>West Deptford</li>
-        <li>Woodbury</li>
-        <li>Wenonah</li>
-        <li>Sewell</li>
-        <li>Mantua</li>
-        <li>Bellmawr</li>
-        <li>Runnemede</li>
-        <li>Blackwood</li>
-        <li>Pitman</li>
-        <li>Gloucester City</li>
-        <li>Washington Township</li>
-        <li>Brooklawn</li>
-        <li>Mount Ephraim</li>
-        <li>Surrounding South Jersey communities in Gloucester County</li>
-      </ul>
-
-      <h3>Common Concrete Issues in South Jersey</h3>
-      <p>New Jersey's freeze-thaw cycles, humidity, and occasional flooding can cause concrete cracking, surface spalling, and water drainage problems. At Deptford Concrete Contractors, we use proper grading, expansion joints, and durable concrete mixes to help protect your surfaces year-round. We specialize in repairs, resurfacing, and preventative solutions designed for local weather conditions.</p>
-
-      <p>As {location.name} concrete contractors, we understand the specific challenges of South Jersey's climate. Our concrete installations account for:</p>
-      <ul>
-        <li><strong>Freeze-Thaw Cycles:</strong> Proper mix design and sealing protect against expansion and contraction</li>
-        <li><strong>High Humidity:</strong> Moisture-resistant concrete formulations and proper curing</li>
-        <li><strong>Heavy Rainfall:</strong> Proper grading and drainage to prevent water damage</li>
-        <li><strong>Occasional Flooding:</strong> Elevated foundations and proper site preparation in flood-prone areas</li>
-        <li><strong>Temperature Extremes:</strong> Concrete mixes and installation timing optimized for New Jersey's climate</li>
-      </ul>
-
-      <h3>Local Projects & Partnerships</h3>
-      <p>We're proud to work with South Jersey homeowners, local builders, and property managers to create long-lasting concrete solutions. From residential driveways and stamped patios in {location.name} neighborhoods to commercial flatwork and curbing for businesses along Route 41, Deptford Concrete Contractors is the trusted name for reliable workmanship across Gloucester County.</p>
-
-      <p>Our {location.name} projects include pole barn foundations for agricultural and storage purposes, residential driveways enhancing property values, decorative stamped concrete patios for outdoor living, and commercial concrete slabs for businesses throughout the township. We work with homeowners, business owners, builders, and property managers to deliver concrete solutions that meet their specific needs.</p>
-
-      <h3>Contact {location.name} Concrete Contractors Today</h3>
-      <p>Ready to start your concrete project in {location.name}, New Jersey? Whether you need a pole barn foundation, a new driveway, a commercial slab, or any other concrete service, Deptford Concrete Contractors has the expertise and local knowledge to deliver exceptional results.</p>
-
-      <p><strong>Looking for a free quote?</strong> Call <a href="tel:856-934-4906">856-934-4906</a> or visit <a href="https://deptfordnjconcrete.com">deptfordnjconcrete.com</a> to schedule your estimate today.</p>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Soil Conditions and Foundation Requirements in {location.name}</h3>
+      <p class="text-gray-600 mb-8">
+        {details.soilConditions} Before beginning any pole barn foundation or concrete slab project in {location.name}, we conduct thorough site assessments to understand soil composition, drainage patterns, and load-bearing capacity. This analysis is crucial for proper foundation design and ensures long-term stability.
+      </p>
     </div>
   </section>
 
-  <section id="contact-form" class="contact-section">
-    <div class="container">
-      <ContactForm 
+  <!-- Pole Barn Foundations Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="section-subheading text-primary mb-4">Our Specialty</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-6">
+            Pole Barn Foundation Contractors in {location.name}
+          </h2>
+          <p class="text-gray-600 mb-6">
+            Pole barn foundations are our primary specialty, and we're the go-to concrete contractors for post-frame building projects throughout {location.name}. If you're planning a pole barn in {location.name}—whether for agricultural use, storage, or commercial purposes—we provide expert foundation installation that meets all structural requirements and Deptford Township building codes.
+          </p>
+
+          <div class="space-y-3 mb-8">
+            {[
+              'Site Assessment - We evaluate your property\'s soil conditions, drainage, and access requirements',
+              'Foundation Design - Custom design meeting Deptford Township building codes',
+              'Concrete Footing Installation - Professional installation accounting for local soil conditions',
+              'Slab-on-Grade Foundations - Complete slab foundations for pole barns',
+              'Permit Assistance - We handle all permit applications with Deptford Township',
+              'Reinforcement - Proper rebar installation and concrete mix design'
+            ].map(item => (
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-check text-primary mt-1"></i>
+                <span class="text-gray-600">{item}</span>
+              </div>
+            ))}
+          </div>
+
+          <a href="/services/pole-barn-foundations" class="btn-primary">
+            Learn More About Pole Barn Foundations
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-xl">
+          <h3 class="text-2xl font-bold font-display uppercase mb-6 text-center">Our Primary Services in {location.name}</h3>
+          <div class="grid sm:grid-cols-2 gap-4">
+            {primaryServices.map(service => (
+              <a href={`/locations/${location.slug}/${service.slug}`} class="group flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-primary/5 transition-colors border-l-4 border-primary">
+                <i class={`fa-solid ${iconMap[service.slug] || 'fa-cube'} text-primary`}></i>
+                <span class="font-semibold group-hover:text-primary transition-colors">{service.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commercial & Residential Services -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-4 mb-4">Commercial Concrete Contractors in {location.name}</h3>
+      <p class="text-gray-600 mb-6">
+        We're experienced commercial concrete contractors handling large-scale projects for businesses throughout {location.name}. The township's commercial corridors, including areas around Deptford Mall and Route 41, create ongoing demand for commercial concrete services.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { title: 'Large Commercial Slabs', desc: 'Industrial and commercial concrete slabs' },
+          { title: 'Parking Lot Installation', desc: 'Complete parking lot installation and repair' },
+          { title: 'Commercial Foundations', desc: 'Structural foundations for commercial buildings' },
+          { title: 'Concrete Repair', desc: 'Commercial concrete repair and resurfacing' }
+        ].map(item => (
+          <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-primary">
+            <h4 class="font-bold mb-1">{item.title}</h4>
+            <p class="text-gray-600 text-sm">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Residential Concrete Contractors in {location.name}</h3>
+      <p class="text-gray-600 mb-6">
+        Our residential concrete contracting services help {location.name} homeowners enhance their properties with durable, beautiful concrete installations. {location.name} neighborhoods range from established residential areas to newer developments, each with unique concrete needs.
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        {[
+          { title: 'Driveways', link: '/services/driveways', icon: 'fa-road' },
+          { title: 'Patios', link: '/services/patios', icon: 'fa-umbrella-beach' },
+          { title: 'Stamped Concrete', link: '/services/stamped-concrete', icon: 'fa-stamp' },
+          { title: 'Walkways', link: '/services/walkways', icon: 'fa-shoe-prints' },
+          { title: 'Retaining Walls', link: '/services/retaining-walls', icon: 'fa-mountain' },
+          { title: 'Basement Flooring', link: '/services/basement-flooring', icon: 'fa-house-flood-water' }
+        ].map(item => (
+          <a href={item.link} class="group flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-primary/5 transition-colors">
+            <i class={`fa-solid ${item.icon} text-primary`}></i>
+            <span class="font-semibold group-hover:text-primary transition-colors">{item.title}</span>
+            <i class="fa-solid fa-arrow-right text-primary text-sm ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+          </a>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Deptford Township Building Codes and Permits</h3>
+      <p class="text-gray-600 mb-6">
+        As {location.name} concrete contractors, we're well-versed in Deptford Township building codes and permit requirements. Many concrete projects in {location.name} require permits, especially for new construction, pole barn foundations, and structural work. We assist with all permit applications and ensure compliance with Deptford Township and Gloucester County regulations.
+      </p>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Common Concrete Issues in South Jersey</h3>
+      <p class="text-gray-600 mb-4">
+        New Jersey's freeze-thaw cycles, humidity, and occasional flooding can cause concrete cracking, surface spalling, and water drainage problems. At Deptford Concrete Contractors, we use proper grading, expansion joints, and durable concrete mixes to help protect your surfaces year-round.
+      </p>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { title: 'Freeze-Thaw Cycles', desc: 'Proper mix design and sealing protect against expansion' },
+          { title: 'High Humidity', desc: 'Moisture-resistant concrete formulations' },
+          { title: 'Heavy Rainfall', desc: 'Proper grading and drainage to prevent water damage' },
+          { title: 'Temperature Extremes', desc: 'Installation timing optimized for New Jersey climate' }
+        ].map(item => (
+          <div class="flex items-start gap-3">
+            <i class="fa-solid fa-shield-check text-primary mt-1"></i>
+            <div>
+              <span class="font-bold">{item.title}:</span>
+              <span class="text-gray-600"> {item.desc}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Major Routes We Serve</h3>
+      <p class="text-gray-600 mb-4">As {location.name} concrete contractors, we serve properties along major transportation corridors including:</p>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          'NJ Route 41 (Hurffville Road)',
+          'Route 47 (Delsea Drive)',
+          'Route 55',
+          'Black Horse Pike',
+          'Clements Bridge Road',
+          'Deptford Mall area'
+        ].map(route => (
+          <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+            <i class="fa-solid fa-road text-primary"></i>
+            <span>{route}</span>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">{location.name} & Nearby Areas We Serve</h3>
+      <p class="text-gray-600 mb-4">While {location.name} Township is our primary service area, we also serve surrounding communities including:</p>
+      <div class="flex flex-wrap gap-2 mb-8">
+        {['Deptford Township', 'West Deptford', 'Woodbury', 'Wenonah', 'Sewell', 'Mantua', 'Bellmawr', 'Runnemede', 'Blackwood', 'Pitman', 'Gloucester City', 'Washington Township'].map(area => (
+          <span class="px-3 py-1 bg-gray-100 rounded-full text-sm font-medium">{area}</span>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Contact {location.name} Concrete Contractors Today</h3>
+      <p class="text-gray-600 mb-4">
+        Ready to start your concrete project in {location.name}, New Jersey? Whether you need a pole barn foundation, a new driveway, a commercial slab, or any other concrete service, Deptford Concrete Contractors has the expertise and local knowledge to deliver exceptional results.
+      </p>
+      <p class="text-gray-600">
+        <strong>Looking for a free quote?</strong> Call <a href="tel:856-934-4906" class="text-primary font-semibold hover:underline">856-934-4906</a> or fill out our contact form to schedule your estimate today.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section id="contact-form" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ContactForm
         title={`Get Your Free Estimate in ${location.name}, NJ`}
         location={location.name}
         service="pole-barn-foundations"
       />
     </div>
   </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Ready to Start Your {location.name} Project?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Contact us today for a free estimate. No obligation, just honest pricing and expert advice.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact-form" class="btn-secondary">
+          Get Your Free Estimate
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        {SITE_CONFIG.phone && (
+          <a href={`tel:${SITE_CONFIG.phone}`} class="btn-outline">
+            <i class="fa-solid fa-phone"></i>
+            {SITE_CONFIG.phone}
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
 </BaseLayout>
-
-<style>
-  .hero {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    color: white;
-    padding: 3rem 0;
-    text-align: center;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.25rem;
-    color: #ccc;
-    max-width: 800px;
-    margin: 0 auto 2rem;
-  }
-  
-  .cta-primary {
-    display: inline-block;
-    background: #ff6b35;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background 0.3s;
-  }
-  
-  .cta-primary:hover {
-    background: #e55a2b;
-  }
-  
-  .content-section {
-    padding: 4rem 0;
-    background: white;
-  }
-  
-  .content-section h2 {
-    font-size: 2rem;
-    color: #1a1a1a;
-    margin-bottom: 1.5rem;
-  }
-  
-  .content-section h3 {
-    font-size: 1.5rem;
-    color: #ff6b35;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .content-section ul {
-    margin-left: 2rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .contact-section {
-    padding: 4rem 0;
-    background: #f8f9fa;
-  }
-  
-  @media (max-width: 768px) {
-    .hero {
-      padding: 2rem 0;
-    }
-    
-    .hero h1 {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-      line-height: 1.3;
-    }
-    
-    .hero-subtitle {
-      font-size: 0.95rem;
-      margin-bottom: 1.25rem;
-    }
-    
-    .cta-primary {
-      width: 100%;
-      text-align: center;
-      padding: 0.875rem 1.5rem;
-      font-size: 0.95rem;
-    }
-    
-    .container {
-      padding: 0 1rem;
-    }
-    
-    .content-section {
-      padding: 2.5rem 0;
-    }
-    
-    .content-section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1.25rem;
-    }
-    
-    .content-section h3 {
-      font-size: 1.25rem;
-      margin-top: 1.5rem;
-    }
-    
-    .content-section ul {
-      margin-left: 1.5rem;
-    }
-    
-    .content-section li {
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-    }
-    
-    .contact-section {
-      padding: 2.5rem 0;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .hero {
-      padding: 1.5rem 0;
-    }
-    
-    .hero h1 {
-      font-size: 1.25rem;
-    }
-    
-    .hero-subtitle {
-      font-size: 0.875rem;
-    }
-    
-    .cta-primary {
-      padding: 0.75rem 1.25rem;
-      font-size: 0.875rem;
-    }
-    
-    .container {
-      padding: 0 0.75rem;
-    }
-    
-    .content-section {
-      padding: 2rem 0;
-    }
-    
-    .content-section h2 {
-      font-size: 1.35rem;
-    }
-    
-    .content-section h3 {
-      font-size: 1.15rem;
-      margin-top: 1.25rem;
-    }
-    
-    .content-section ul {
-      margin-left: 1.25rem;
-    }
-    
-    .contact-section {
-      padding: 2rem 0;
-    }
-  }
-  
-  .location-services-section {
-    background: #f8f9fa;
-    padding: 2rem;
-    border-radius: 8px;
-    margin: 2rem 0;
-  }
-  
-  .location-services-list {
-    list-style: none;
-    margin-left: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-  
-  .location-services-list li {
-    margin-bottom: 0;
-  }
-  
-  .location-services-list a {
-    display: block;
-    padding: 1rem;
-    background: white;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #1a1a1a;
-    font-weight: 600;
-    transition: all 0.3s;
-    border: 2px solid transparent;
-  }
-  
-  .location-services-list a:hover {
-    border-color: #ff6b35;
-    color: #ff6b35;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-
-  .why-choose-box {
-    background: #fff5f0;
-    padding: 2rem;
-    border-radius: 8px;
-    margin: 2rem 0;
-    border-left: 4px solid #ff6b35;
-  }
-
-  .why-choose-box h3 {
-    color: #ff6b35;
-    margin-top: 0;
-    margin-bottom: 1rem;
-  }
-
-  .why-choose-box ul {
-    margin-left: 1.5rem;
-    margin-top: 1rem;
-  }
-
-  .why-choose-box li {
-    margin-bottom: 1rem;
-    line-height: 1.7;
-  }
-
-  .content-section h4 {
-    font-size: 1.25rem;
-    color: #1a1a1a;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-  
-  @media (max-width: 768px) {
-    .location-services-section {
-      padding: 1.5rem;
-    }
-    
-    .location-services-list {
-      grid-template-columns: 1fr;
-    }
-
-    .why-choose-box {
-      padding: 1.5rem;
-    }
-  }
-</style>
-

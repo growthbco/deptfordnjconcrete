@@ -1,172 +1,127 @@
 ---
 import { SITE_CONFIG } from '../config';
+import servicesData from '../content/services.json';
+import locationsData from '../content/locations.json';
+
+const primaryServices = servicesData.filter((s: any) => s.primary);
+const secondaryServices = servicesData.filter((s: any) => !s.primary).slice(0, 4);
 ---
 
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-section">
-      <h3>{SITE_CONFIG.name}</h3>
-      <p>{SITE_CONFIG.tagline}</p>
-      <p>Serving {SITE_CONFIG.serviceAreas.join(', ')} and surrounding areas.</p>
+<footer class="bg-dark text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <!-- Company Info -->
+      <div>
+        <a href="/" class="flex items-center gap-2 mb-4">
+          <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl border-2 border-white">
+            <i class="fa-solid fa-trowel-bricks"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-white font-display font-bold text-xl leading-none tracking-wide">DEPTFORD</span>
+            <span class="text-accent text-xs font-bold tracking-widest uppercase">CONCRETE</span>
+          </div>
+        </a>
+        <p class="text-gray-400 text-sm mb-6">{SITE_CONFIG.tagline}</p>
+        <div class="flex gap-3">
+          <a href="#" class="w-10 h-10 bg-white/10 hover:bg-primary rounded-full flex items-center justify-center transition" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="#" class="w-10 h-10 bg-white/10 hover:bg-primary rounded-full flex items-center justify-center transition" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" class="w-10 h-10 bg-white/10 hover:bg-primary rounded-full flex items-center justify-center transition" aria-label="Google">
+            <i class="fa-brands fa-google"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h4 class="font-display font-bold text-lg mb-4 uppercase">Services</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
+          {primaryServices.map((service: any) => (
+            <li>
+              <a href={`/services/${service.slug}`} class="hover:text-accent transition flex items-center gap-2">
+                <i class="fa-solid fa-chevron-right text-primary text-xs"></i>
+                {service.name}
+              </a>
+            </li>
+          ))}
+          {secondaryServices.map((service: any) => (
+            <li>
+              <a href={`/services/${service.slug}`} class="hover:text-accent transition flex items-center gap-2">
+                <i class="fa-solid fa-chevron-right text-primary text-xs"></i>
+                {service.name}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href="/services" class="hover:text-accent transition font-medium text-primary">
+              View All Services <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Service Areas -->
+      <div>
+        <h4 class="font-display font-bold text-lg mb-4 uppercase">Service Areas</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
+          {locationsData.slice(0, 6).map((location: any) => (
+            <li>
+              <a href={`/locations/${location.slug}`} class="hover:text-accent transition flex items-center gap-2">
+                <i class="fa-solid fa-location-dot text-primary text-xs"></i>
+                {location.name}, NJ
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href="/locations" class="hover:text-accent transition font-medium text-primary">
+              All Service Areas <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="font-display font-bold text-lg mb-4 uppercase">Contact</h4>
+        <ul class="space-y-3 text-gray-400 text-sm">
+          {SITE_CONFIG.phone && (
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-phone text-accent mt-1"></i>
+              <a href={`tel:${SITE_CONFIG.phone}`} class="hover:text-accent transition">{SITE_CONFIG.phone}</a>
+            </li>
+          )}
+          {SITE_CONFIG.email && (
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-envelope text-accent mt-1"></i>
+              <a href={`mailto:${SITE_CONFIG.email}`} class="hover:text-accent transition">{SITE_CONFIG.email}</a>
+            </li>
+          )}
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-location-dot text-accent mt-1"></i>
+            <span>Deptford, NJ<br />Gloucester County</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-clock text-accent mt-1"></i>
+            <span>Mon - Sat: 7AM - 6PM<br />Sun: Closed</span>
+          </li>
+        </ul>
+
+        <a href="/contact" class="inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded font-bold text-sm hover:bg-primary-dark transition mt-6">
+          Get Free Estimate <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
     </div>
-    
-    <div class="footer-section">
-      <h4>Services</h4>
-      <ul>
-        <li><a href="/services/pole-barn-foundations">Pole Barn Foundations</a></li>
-        <li><a href="/services/concrete-slabs">Concrete Slabs</a></li>
-        <li><a href="/services/driveways">Driveways</a></li>
-        <li><a href="/services/patios">Patios</a></li>
-        <li><a href="/services/walkways">Walkways</a></li>
-        <li><a href="/services/retaining-walls">Retaining Walls</a></li>
-        <li><a href="/services/basement-flooring">Basement Flooring</a></li>
-        <li><a href="/services/stamped-concrete">Stamped Concrete</a></li>
-      </ul>
+
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+      <p>&copy; {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="/about" class="hover:text-accent transition">About Us</a>
+        <a href="/contact" class="hover:text-accent transition">Contact</a>
+        <a href="/gallery" class="hover:text-accent transition">Gallery</a>
+      </div>
     </div>
-    
-    <div class="footer-section">
-      <h4>Service Areas</h4>
-      <ul>
-        <li><a href="/locations/deptford-nj">Deptford, NJ</a></li>
-        <li><a href="/locations/west-deptford-nj">West Deptford, NJ</a></li>
-        <li><a href="/locations/woodbury-nj">Woodbury, NJ</a></li>
-        <li><a href="/locations/glassboro-nj">Glassboro, NJ</a></li>
-        <li><a href="/locations/sewell-nj">Sewell, NJ</a></li>
-        <li><a href="/locations/pitman-nj">Pitman, NJ</a></li>
-        <li><a href="/locations">View All Areas</a></li>
-      </ul>
-    </div>
-    
-    <div class="footer-section">
-      <h4>Contact</h4>
-      <p><a href="/contact">Get Free Estimate</a></p>
-      {SITE_CONFIG.phone && <p><a href={`tel:${SITE_CONFIG.phone}`}>{SITE_CONFIG.phone}</a></p>}
-      {SITE_CONFIG.email && <p><a href={`mailto:${SITE_CONFIG.email}`}>{SITE_CONFIG.email}</a></p>}
-    </div>
-  </div>
-  
-  <div class="footer-bottom">
-    <p>&copy; {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.</p>
   </div>
 </footer>
-
-<style>
-  .footer {
-    background: #1a1a1a;
-    color: white;
-    padding: 2.5rem 0 1rem;
-    margin-top: 3rem;
-  }
-  
-  .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-  }
-  
-  .footer-section h3,
-  .footer-section h4 {
-    margin-top: 0;
-    color: #ff6b35;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .footer-section p {
-    margin-bottom: 0.75rem;
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-  
-  .footer-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .footer-section ul li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .footer-section a {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.3s;
-    font-size: 0.9rem;
-    display: inline-block;
-    padding: 0.25rem 0;
-  }
-  
-  .footer-section a:hover {
-    color: #ff6b35;
-  }
-  
-  .footer-bottom {
-    max-width: 1200px;
-    margin: 2rem auto 0;
-    padding: 1.5rem;
-    text-align: center;
-    border-top: 1px solid #333;
-    color: #999;
-    font-size: 0.875rem;
-  }
-  
-  @media (max-width: 768px) {
-    .footer {
-      padding: 2rem 0 1rem;
-      margin-top: 2rem;
-    }
-    
-    .footer-container {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      padding: 0 1rem;
-    }
-    
-    .footer-section h3,
-    .footer-section h4 {
-      font-size: 1rem;
-      margin-bottom: 0.75rem;
-    }
-    
-    .footer-section p {
-      font-size: 0.875rem;
-    }
-    
-    .footer-section a {
-      font-size: 0.875rem;
-      padding: 0.375rem 0;
-    }
-    
-    .footer-bottom {
-      padding: 1rem;
-      font-size: 0.8rem;
-      margin-top: 1.5rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .footer {
-      padding: 1.5rem 0 0.75rem;
-    }
-    
-    .footer-container {
-      padding: 0 0.75rem;
-      gap: 1.5rem;
-    }
-    
-    .footer-section h3,
-    .footer-section h4 {
-      font-size: 0.95rem;
-    }
-    
-    .footer-bottom {
-      padding: 0.75rem;
-      font-size: 0.75rem;
-    }
-  }
-</style>
-

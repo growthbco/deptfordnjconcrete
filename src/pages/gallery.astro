@@ -3,820 +3,384 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_CONFIG } from '../config';
 ---
 
-<BaseLayout 
+<BaseLayout
   title="Project Gallery | Stamped Concrete & Pole Barn Foundations"
   description="View our gallery of stamped concrete, pole barn foundation, and concrete projects throughout Deptford, NJ and surrounding areas."
 >
-  <section class="hero">
-    <div class="container">
-      <h1>Our Project Gallery</h1>
-      <p class="hero-subtitle">View our completed stamped concrete, pole barn foundation, and concrete projects throughout Deptford and surrounding areas.</p>
+  <!-- Hero Section -->
+  <section class="bg-dark py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-gray-400 font-medium uppercase tracking-wider text-sm">Our Work</span>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-2 uppercase font-display">
+        Project Gallery
+      </h1>
+      <p class="text-gray-300 text-lg mt-4 max-w-2xl mx-auto">
+        View our completed stamped concrete, pole barn foundation, and concrete projects throughout Deptford and surrounding areas.
+      </p>
     </div>
   </section>
 
-  <section class="gallery-section">
-    <div class="container">
-      <h2>Stamped Concrete Projects</h2>
-      <p class="gallery-intro">View our beautiful stamped concrete installations throughout Deptford and surrounding New Jersey communities.</p>
-      
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_7649.webp" alt="Stamped concrete patio installation in Deptford, NJ" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Stamped Concrete Patio</p>
-          </div>
+  <!-- Stamped Concrete Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+          <i class="fa-solid fa-palette text-primary text-xl"></i>
         </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_7653.webp" alt="Decorative stamped concrete driveway in Deptford, NJ" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Stamped Concrete Driveway</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_7654.webp" alt="Patterned concrete installation in Deptford, NJ" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Decorative Patterned Concrete</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_7655.webp" alt="Stamped concrete walkway in Deptford, NJ" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Stamped Concrete Walkway</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_7656.webp" alt="Beautiful stamped concrete project in Deptford, NJ" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Stamped Concrete Project</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_7657.webp" alt="Professional stamped concrete installation in Deptford, NJ" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Professional Installation</p>
-          </div>
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 font-display uppercase">Stamped Concrete Projects</h2>
+          <p class="text-gray-600">Beautiful decorative concrete installations throughout South Jersey</p>
         </div>
       </div>
 
-      <h2 class="gallery-section-title">Pole Barn Foundations</h2>
-      <p class="gallery-intro">Expert pole barn foundation installations throughout Deptford and surrounding areas.</p>
-      
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="/images/polebarns/IMG_6471.webp" alt="Pole barn foundation project in Deptford, NJ" loading="lazy" width="800" height="600" />
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_7649.webp" alt="Stamped concrete patio installation in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
           <div class="gallery-overlay">
-            <p>Pole Barn Foundation</p>
+            <p class="font-display font-bold uppercase">Stamped Concrete Patio</p>
           </div>
         </div>
-        <div class="gallery-item">
-          <img src="/images/polebarns/IMG_6472.webp" alt="Professional pole barn foundation installation" loading="lazy" width="800" height="600" />
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_7653.webp" alt="Decorative stamped concrete driveway in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
           <div class="gallery-overlay">
-            <p>Foundation Installation</p>
+            <p class="font-display font-bold uppercase">Stamped Concrete Driveway</p>
           </div>
         </div>
-        <div class="gallery-item">
-          <img src="/images/polebarns/IMG_6480.webp" alt="Pole barn foundation in Deptford, NJ" loading="lazy" width="800" height="600" />
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_7654.webp" alt="Patterned concrete installation in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
           <div class="gallery-overlay">
-            <p>Professional Work</p>
+            <p class="font-display font-bold uppercase">Decorative Patterned Concrete</p>
           </div>
         </div>
-        <div class="gallery-item">
-          <img src="/images/polebarns/IMG_9021.webp" alt="Pole barn foundation project" loading="lazy" width="800" height="600" />
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_7655.webp" alt="Stamped concrete walkway in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
           <div class="gallery-overlay">
-            <p>Quality Workmanship</p>
+            <p class="font-display font-bold uppercase">Stamped Concrete Walkway</p>
           </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_7656.webp" alt="Beautiful stamped concrete project in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Stamped Concrete Project</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_7657.webp" alt="Professional stamped concrete installation in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Professional Installation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pole Barn Foundations Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+          <i class="fa-solid fa-warehouse text-primary text-xl"></i>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 font-display uppercase">Pole Barn Foundations</h2>
+          <p class="text-gray-600">Expert pole barn foundation installations throughout Deptford and surrounding areas</p>
         </div>
       </div>
 
-      <h2 class="gallery-section-title">Concrete Projects</h2>
-      <p class="gallery-intro">Commercial and residential concrete work throughout Deptford, NJ.</p>
-      
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_0973.webp" alt="Concrete project in Deptford, NJ" loading="lazy" width="800" height="600" />
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/polebarns/IMG_6471.webp" alt="Pole barn foundation project in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
           <div class="gallery-overlay">
-            <p>Concrete Installation</p>
+            <p class="font-display font-bold uppercase">Pole Barn Foundation</p>
           </div>
         </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_0974.webp" alt="Professional concrete work" loading="lazy" width="800" height="600" />
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/polebarns/IMG_6472.webp" alt="Professional pole barn foundation installation" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
           <div class="gallery-overlay">
-            <p>Professional Service</p>
+            <p class="font-display font-bold uppercase">Foundation Installation</p>
           </div>
         </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_2635.webp" alt="Concrete contractor work" loading="lazy" width="800" height="600" />
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/polebarns/IMG_6480.webp" alt="Pole barn foundation in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
           <div class="gallery-overlay">
-            <p>Quality Concrete</p>
+            <p class="font-display font-bold uppercase">Professional Work</p>
           </div>
         </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_2711.webp" alt="Concrete project installation" loading="lazy" width="800" height="600" class="rotate-ccw" />
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/polebarns/IMG_9021.webp" alt="Pole barn foundation project" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
           <div class="gallery-overlay">
-            <p>Expert Installation</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_3401.webp" alt="Concrete work in Deptford" loading="lazy" width="800" height="600" class="rotate-ccw" />
-          <div class="gallery-overlay">
-            <p>Concrete Work</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_3402.webp" alt="Professional concrete project" loading="lazy" width="800" height="600" class="rotate-ccw" />
-          <div class="gallery-overlay">
-            <p>Professional Project</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_3403.webp" alt="Concrete installation" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Quality Installation</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_3404.webp" alt="Concrete contractor services" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Expert Service</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_3907.webp" alt="Concrete project" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Concrete Project</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_3910.webp" alt="Professional concrete work" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Professional Work</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_3911.webp" alt="Concrete installation service" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Installation Service</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_5125.webp" alt="Concrete contractor project" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Contractor Project</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_5126.webp" alt="Concrete work" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Concrete Work</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_5164.webp" alt="Professional concrete" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Professional Concrete</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_5165.webp" alt="Concrete installation" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Quality Installation</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_5168.webp" alt="Concrete project" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Concrete Project</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_5600.webp" alt="Concrete contractor work" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Contractor Work</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_5602.webp" alt="Professional concrete service" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Professional Service</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_9885.webp" alt="Concrete installation project" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Installation Project</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_9889.webp" alt="Concrete work in Deptford" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Concrete Work</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/projects/IMG_9890.webp" alt="Professional concrete project" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Professional Project</p>
+            <p class="font-display font-bold uppercase">Quality Workmanship</p>
           </div>
         </div>
       </div>
-      
-      <div class="gallery-note">
-        <h3>Our Services</h3>
-        <p>We specialize in pole barn foundation installation, large commercial concrete projects, and beautiful stamped concrete work. Our gallery showcases completed projects including:</p>
-        <ul>
-          <li>Pole barn foundation installations</li>
-          <li>Large commercial concrete slabs</li>
-          <li>Stamped concrete patios and driveways</li>
-          <li>Decorative concrete patterns</li>
-          <li>Industrial concrete floors</li>
-          <li>Residential driveways and patios</li>
-          <li>Concrete walkways and retaining walls</li>
-        </ul>
-        <p><a href="/services/stamped-concrete">Learn more about our stamped concrete services →</a></p>
-        <p><a href="/services/pole-barn-foundations">Learn more about our pole barn foundation services →</a></p>
-        <p>Contact us today to see how we can help with your next concrete project.</p>
+    </div>
+  </section>
+
+  <!-- Concrete Projects Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+          <i class="fa-solid fa-trowel-bricks text-primary text-xl"></i>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 font-display uppercase">Concrete Projects</h2>
+          <p class="text-gray-600">Commercial and residential concrete work throughout Deptford, NJ</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_0973.webp" alt="Concrete project in Deptford, NJ" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Concrete Installation</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_0974.webp" alt="Professional concrete work" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Professional Service</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_2635.webp" alt="Concrete contractor work" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Quality Concrete</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_2711.webp" alt="Concrete project installation" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Expert Installation</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_3401.webp" alt="Concrete work in Deptford" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Concrete Work</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_3402.webp" alt="Professional concrete project" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Professional Project</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_3403.webp" alt="Concrete installation" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Quality Installation</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_3404.webp" alt="Concrete contractor services" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Expert Service</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_3907.webp" alt="Concrete project" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Concrete Project</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_3910.webp" alt="Professional concrete work" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Professional Work</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_5164.webp" alt="Professional concrete" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Professional Concrete</p>
+          </div>
+        </div>
+        <div class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+          <img src="/images/projects/IMG_9889.webp" alt="Concrete work in Deptford" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="gallery-overlay">
+            <p class="font-display font-bold uppercase">Concrete Work</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Note -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-gray-100">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-info-circle text-primary text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 font-display uppercase mb-4">Our Services</h3>
+            <p class="text-gray-600 mb-6">We specialize in pole barn foundation installation, large commercial concrete projects, and beautiful stamped concrete work. Our gallery showcases completed projects including:</p>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600">
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-primary"></i>
+                Pole barn foundation installations
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-primary"></i>
+                Large commercial concrete slabs
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-primary"></i>
+                Stamped concrete patios and driveways
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-primary"></i>
+                Decorative concrete patterns
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-primary"></i>
+                Industrial concrete floors
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-primary"></i>
+                Residential driveways and patios
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-4 mt-8">
+          <a href="/services/stamped-concrete" class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-bold hover:bg-primary-dark transition">
+            Stamped Concrete <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="/services/pole-barn-foundations" class="inline-flex items-center gap-2 bg-gray-100 text-gray-900 px-6 py-3 rounded font-bold hover:bg-gray-200 transition">
+            Pole Barn Foundations <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4 font-display uppercase">Ready to Start Your Project?</h2>
+      <p class="text-white/80 mb-8">Contact us today for your free estimate on your next concrete project.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded font-bold hover:bg-gray-100 transition">
+          Get Free Estimate <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        {SITE_CONFIG.phone && (
+          <a href={`tel:${SITE_CONFIG.phone}`} class="inline-flex items-center justify-center gap-2 bg-transparent text-white px-8 py-4 rounded font-bold border-2 border-white hover:bg-white hover:text-gray-900 transition">
+            <i class="fa-solid fa-phone"></i> {SITE_CONFIG.phone}
+          </a>
+        )}
       </div>
     </div>
   </section>
 
   <!-- Lightbox Modal -->
-  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
-    <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
-    <button class="lightbox-nav lightbox-prev" aria-label="Previous image">‹</button>
-    <button class="lightbox-nav lightbox-next" aria-label="Next image">›</button>
-    <div class="lightbox-content">
-      <img id="lightbox-image" src="" alt="" />
-      <div class="lightbox-caption" id="lightbox-caption"></div>
+  <div id="lightbox" class="fixed inset-0 bg-black/95 z-[10000] hidden items-center justify-center" role="dialog" aria-modal="true" aria-label="Image lightbox">
+    <button class="absolute top-4 right-4 w-12 h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white text-2xl transition" id="lightbox-close" aria-label="Close lightbox">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <button class="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white text-3xl transition" id="lightbox-prev" aria-label="Previous image">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button class="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white text-3xl transition" id="lightbox-next" aria-label="Next image">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+    <div class="max-w-[90vw] max-h-[85vh] flex flex-col items-center">
+      <img id="lightbox-image" src="" alt="" class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl" />
+      <p id="lightbox-caption" class="text-white text-center mt-4 text-lg font-display"></p>
     </div>
   </div>
 </BaseLayout>
 
-<script>
-  // Lightbox functionality with navigation
+<style>
+  .gallery-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+  }
+
+  .gallery-overlay p {
+    @apply text-white text-sm;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-overlay {
+      @apply opacity-100 bg-gradient-to-t from-black/60 to-transparent;
+    }
+  }
+</style>
+
+<script is:inline>
   (function() {
     'use strict';
-    
+
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightbox-image');
     const lightboxCaption = document.getElementById('lightbox-caption');
-    const closeBtn = document.querySelector('.lightbox-close');
-    const prevBtn = document.querySelector('.lightbox-prev');
-    const nextBtn = document.querySelector('.lightbox-next');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
     const galleryItems = document.querySelectorAll('.gallery-item');
-    
+
     if (!lightbox || !lightboxImage) return;
-    
-    // Build array of all gallery images with their data
+
     const galleryImages = [];
     galleryItems.forEach((item, index) => {
       const img = item.querySelector('img');
       if (img) {
         const caption = item.querySelector('.gallery-overlay p')?.textContent || img.alt;
-        const needsRotation = img.classList.contains('rotate-ccw');
         galleryImages.push({
           src: img.src,
           alt: img.alt,
           caption: caption,
-          needsRotation: needsRotation,
           index: index
         });
       }
     });
-    
+
     let currentIndex = 0;
-    
+
     function updateLightboxImage(index) {
       if (index < 0 || index >= galleryImages.length) return;
-      
       currentIndex = index;
       const imageData = galleryImages[currentIndex];
-      
       lightboxImage.src = imageData.src;
       lightboxImage.alt = imageData.alt;
       lightboxCaption.textContent = imageData.caption;
-      
-      // Apply rotation if needed
-      if (imageData.needsRotation) {
-        lightboxImage.classList.add('rotate-ccw');
-      } else {
-        lightboxImage.classList.remove('rotate-ccw');
-      }
-      
-      // Update button visibility
-      if (prevBtn) {
-        if (currentIndex === 0) {
-          prevBtn.style.display = 'none';
-        } else {
-          prevBtn.style.display = 'flex';
-        }
-      }
-      if (nextBtn) {
-        if (currentIndex === galleryImages.length - 1) {
-          nextBtn.style.display = 'none';
-        } else {
-          nextBtn.style.display = 'flex';
-        }
-      }
+
+      prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
+      nextBtn.style.display = currentIndex === galleryImages.length - 1 ? 'none' : 'flex';
     }
-    
+
     function openLightbox(index) {
-      if (index < 0 || index >= galleryImages.length) return;
-      
       updateLightboxImage(index);
-      lightbox.classList.add('active');
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
       document.body.style.overflow = 'hidden';
     }
-    
+
     function closeLightbox() {
-      lightbox.classList.remove('active');
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
       document.body.style.overflow = '';
     }
-    
-    function showNext() {
-      if (currentIndex < galleryImages.length - 1) {
-        updateLightboxImage(currentIndex + 1);
-      }
-    }
-    
-    function showPrev() {
-      if (currentIndex > 0) {
-        updateLightboxImage(currentIndex - 1);
-      }
-    }
-    
-    // Open lightbox on gallery item click
+
     galleryItems.forEach((item, index) => {
-      const img = item.querySelector('img');
-      
-      if (img) {
-        item.style.cursor = 'pointer';
-        item.addEventListener('click', (e) => {
-          e.preventDefault();
-          openLightbox(index);
-        }, { passive: true });
-      }
+      item.addEventListener('click', () => openLightbox(index));
     });
-    
-    // Navigation buttons
-    if (nextBtn) {
-      nextBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        showNext();
-      }, { passive: true });
-    }
-    
-    if (prevBtn) {
-      prevBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        showPrev();
-      }, { passive: true });
-    }
-    
-    // Close lightbox
-    if (closeBtn) {
-      closeBtn.addEventListener('click', closeLightbox, { passive: true });
-    }
-    
-    // Close on background click
+
+    closeBtn?.addEventListener('click', closeLightbox);
+    prevBtn?.addEventListener('click', () => updateLightboxImage(currentIndex - 1));
+    nextBtn?.addEventListener('click', () => updateLightboxImage(currentIndex + 1));
+
     lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
-    }, { passive: true });
-    
-    // Keyboard navigation
+      if (e.target === lightbox) closeLightbox();
+    });
+
     document.addEventListener('keydown', (e) => {
-      if (!lightbox.classList.contains('active')) return;
-      
-      if (e.key === 'Escape') {
-        closeLightbox();
-      } else if (e.key === 'ArrowRight') {
-        showNext();
-      } else if (e.key === 'ArrowLeft') {
-        showPrev();
-      }
-    }, { passive: true });
+      if (!lightbox.classList.contains('flex')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight' && currentIndex < galleryImages.length - 1) updateLightboxImage(currentIndex + 1);
+      if (e.key === 'ArrowLeft' && currentIndex > 0) updateLightboxImage(currentIndex - 1);
+    });
   })();
 </script>
-
-<style>
-  .hero {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    color: white;
-    padding: 3rem 0;
-    text-align: center;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.25rem;
-    color: #ccc;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .gallery-section {
-    padding: 4rem 0;
-    background: white;
-  }
-  
-  .gallery-intro {
-    text-align: center;
-    color: #666;
-    margin-bottom: 3rem;
-    font-size: 1.1rem;
-  }
-  
-  .gallery-intro code {
-    background: #f8f9fa;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-family: monospace;
-  }
-  
-  .gallery-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #1a1a1a;
-  }
-  
-  .gallery-section-title {
-    text-align: center;
-    font-size: 2rem;
-    margin: 4rem 0 1rem;
-    color: #1a1a1a;
-    padding-top: 3rem;
-    border-top: 2px solid #f0f0f0;
-  }
-  
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 4rem;
-  }
-  
-  .gallery-item {
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    aspect-ratio: 4/3;
-    cursor: pointer;
-  }
-  
-  .gallery-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-  }
-
-  .gallery-item:hover img.rotate-ccw {
-    transform: rotate(-90deg) translateY(-4px);
-  }
-  
-  .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s;
-  }
-
-  /* Fix rotated images - rotate counter-clockwise to correct 90-degree clockwise rotation */
-  .gallery-item img.rotate-ccw {
-    transform: rotate(-90deg);
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .gallery-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    padding: 1.5rem;
-    color: white;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  
-  .gallery-item:hover .gallery-overlay {
-    opacity: 1;
-  }
-  
-  .gallery-overlay p {
-    margin: 0;
-    font-weight: 600;
-  }
-  
-  .gallery-note {
-    background: #f8f9fa;
-    padding: 2rem;
-    border-radius: 8px;
-  }
-  
-  .gallery-note h3 {
-    color: #ff6b35;
-    margin-bottom: 1rem;
-  }
-  
-  .gallery-note ul {
-    margin-left: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .gallery-note a {
-    color: #ff6b35;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  
-  .gallery-note a:hover {
-    text-decoration: underline;
-  }
-  
-  @media (max-width: 768px) {
-    .hero {
-      padding: 2rem 0;
-    }
-    
-    .hero h1 {
-      font-size: 1.75rem;
-      margin-bottom: 0.75rem;
-    }
-    
-    .hero-subtitle {
-      font-size: 1rem;
-    }
-    
-    .gallery-section {
-      padding: 2.5rem 0;
-    }
-    
-    .gallery-section h2,
-    .gallery-section-title {
-      font-size: 1.75rem;
-      margin-bottom: 0.75rem;
-      padding-top: 2rem;
-    }
-    
-    .gallery-intro {
-      font-size: 1rem;
-      margin-bottom: 2rem;
-    }
-    
-    .gallery-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-    
-    .gallery-item {
-      border-radius: 4px;
-    }
-    
-    .gallery-overlay {
-      padding: 1rem;
-      opacity: 1;
-      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-    }
-    
-    .gallery-overlay p {
-      font-size: 0.9rem;
-    }
-    
-    .gallery-note {
-      padding: 1.5rem;
-    }
-    
-    .gallery-note h3 {
-      font-size: 1.25rem;
-    }
-    
-    .gallery-note ul {
-      margin-left: 1.5rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .hero {
-      padding: 1.5rem 0;
-    }
-    
-    .hero h1 {
-      font-size: 1.5rem;
-    }
-    
-    .hero-subtitle {
-      font-size: 0.9rem;
-    }
-    
-    .gallery-section {
-      padding: 2rem 0;
-    }
-    
-    .gallery-section h2,
-    .gallery-section-title {
-      font-size: 1.5rem;
-      padding-top: 1.5rem;
-    }
-    
-    .gallery-intro {
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .gallery-grid {
-      gap: 1.25rem;
-      margin-bottom: 2rem;
-    }
-    
-    .gallery-note {
-      padding: 1.25rem;
-    }
-    
-    .gallery-note h3 {
-      font-size: 1.15rem;
-    }
-  }
-
-  /* Lightbox Styles */
-  .lightbox {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 10000;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .lightbox.active {
-    display: flex;
-    opacity: 1;
-  }
-
-  .lightbox-close {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    color: white;
-    font-size: 2.5rem;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    z-index: 10001;
-    line-height: 1;
-    padding: 0;
-    min-width: 50px;
-    min-height: 50px;
-  }
-
-  .lightbox-close:hover {
-    background: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.8);
-    transform: scale(1.1);
-  }
-
-  .lightbox-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    color: white;
-    font-size: 3rem;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    z-index: 10001;
-    line-height: 1;
-    padding: 0;
-    min-width: 60px;
-    min-height: 60px;
-    font-weight: 300;
-    user-select: none;
-  }
-
-  .lightbox-nav:hover {
-    background: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.8);
-    transform: translateY(-50%) scale(1.1);
-  }
-
-  .lightbox-prev {
-    left: 2rem;
-  }
-
-  .lightbox-next {
-    right: 2rem;
-  }
-
-  .lightbox-content {
-    position: relative;
-    max-width: 90vw;
-    max-height: 90vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .lightbox-content img {
-    max-width: 100%;
-    max-height: 85vh;
-    object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
-  }
-
-  .lightbox-content img.rotate-ccw {
-    transform: rotate(-90deg);
-  }
-
-  .lightbox-caption {
-    color: white;
-    text-align: center;
-    margin-top: 1.5rem;
-    font-size: 1.25rem;
-    font-weight: 600;
-    padding: 0 2rem;
-  }
-
-  @media (max-width: 768px) {
-    .lightbox-close {
-      top: 1rem;
-      right: 1rem;
-      width: 44px;
-      height: 44px;
-      font-size: 2rem;
-      min-width: 44px;
-      min-height: 44px;
-    }
-
-    .lightbox-content {
-      max-width: 95vw;
-      max-height: 95vh;
-      padding: 1rem;
-    }
-
-    .lightbox-content img {
-      max-height: 80vh;
-    }
-
-    .lightbox-caption {
-      font-size: 1rem;
-      margin-top: 1rem;
-      padding: 0 1rem;
-    }
-
-    .lightbox-nav {
-      width: 50px;
-      height: 50px;
-      font-size: 2.5rem;
-      min-width: 50px;
-      min-height: 50px;
-    }
-
-    .lightbox-prev {
-      left: 1rem;
-    }
-
-    .lightbox-next {
-      right: 1rem;
-    }
-  }
-</style>
-

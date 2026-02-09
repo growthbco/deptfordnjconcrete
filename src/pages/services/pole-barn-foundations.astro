@@ -41,208 +41,274 @@ const faqSchema = {
 };
 ---
 
-<BaseLayout 
+<BaseLayout
   title="Pole Barn Foundation Contractors in Deptford, NJ | Free Estimates"
   description="Professional pole barn foundation installation and repair services in Deptford, New Jersey. Expert post-frame building foundations with free estimates."
   schema={serviceSchema}
+  transparentHeader={true}
 >
   <SchemaMarkup type="FAQPage" data={faqSchema} />
-  
-  <section class="hero">
-    <div class="hero-background">
-      <img src="/images/polebarns/IMG_6471.webp" alt="Pole barn foundation installation in Deptford, New Jersey" class="hero-image" width="1920" height="1080" />
-      <div class="hero-overlay"></div>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[500px] flex items-center">
+    <div class="absolute inset-0">
+      <img
+        src="/images/polebarns/IMG_6471.webp"
+        alt="Pole barn foundation installation in Deptford, New Jersey"
+        class="w-full h-full object-cover"
+        width="1920"
+        height="1080"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60"></div>
     </div>
-    <div class="hero-container">
-      <h1>Professional Pole Barn Foundation Installation in Deptford, New Jersey</h1>
-      <p class="hero-subtitle">Expert pole barn foundation specialists serving Deptford and surrounding Gloucester County communities. Free estimates on all pole barn foundation projects.</p>
-      <div class="hero-cta">
-        <a href="#contact-form" class="cta-primary">Get Free Pole Barn Foundation Estimate</a>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-center">
+      <p class="section-subheading text-primary mb-4">Our Primary Specialty</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        Professional Pole Barn Foundation Installation
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Expert pole barn foundation specialists serving Deptford and surrounding Gloucester County communities. Free estimates on all pole barn foundation projects.
+      </p>
+      <a href="#contact-form" class="btn-primary text-lg">
+        Get Free Pole Barn Foundation Estimate
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Our Work</p>
+        <h2 class="section-heading mb-6">Our Pole Barn Foundation Projects</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          See our quality pole barn foundation installations throughout Deptford and surrounding areas.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {[
+          { src: '/images/polebarns/IMG_6471.webp', alt: 'Pole barn foundation project in Deptford, NJ', label: 'Pole Barn Foundation' },
+          { src: '/images/polebarns/IMG_6472.webp', alt: 'Professional pole barn foundation installation', label: 'Foundation Installation' },
+          { src: '/images/polebarns/IMG_6473.webp', alt: 'Concrete pole barn foundation work', label: 'Concrete Foundation' },
+          { src: '/images/polebarns/IMG_6476.webp', alt: 'Pole barn foundation construction', label: 'Quality Construction' },
+          { src: '/images/polebarns/IMG_6477.webp', alt: 'Post-frame building foundation', label: 'Post-Frame Foundation' },
+          { src: '/images/polebarns/IMG_6478.webp', alt: 'Pole barn foundation project', label: 'Expert Installation' },
+          { src: '/images/polebarns/IMG_6480.webp', alt: 'Pole barn foundation in Deptford, NJ', label: 'Professional Work' },
+          { src: '/images/polebarns/IMG_6481.webp', alt: 'Completed pole barn foundation', label: 'Completed Project' }
+        ].map(image => (
+          <div class="group relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+            <img
+              src={image.src}
+              alt={image.alt}
+              loading="lazy"
+              class="w-full h-full object-cover"
+              width="800"
+              height="600"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <p class="text-white font-semibold">{image.label}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="gallery-section">
-    <div class="container">
-      <h2>Our Pole Barn Foundation Projects</h2>
-      <p class="section-intro">See our quality pole barn foundation installations throughout Deptford and surrounding areas.</p>
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="/images/polebarns/IMG_6471.webp" alt="Pole barn foundation project in Deptford, NJ" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Pole Barn Foundation</p>
+  <!-- Content Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-8">
+        Why Choose Us for Your Pole Barn Foundation?
+      </h2>
+      <p class="text-lg text-gray-600 mb-8">
+        Pole barn foundations are our primary specialty. We have extensive experience installing concrete foundations for pole barns and post-frame buildings throughout Deptford, West Deptford, Woodbury, and surrounding New Jersey communities. Our team understands the unique requirements of post-frame construction and ensures your pole barn foundation meets all structural and code requirements.
+      </p>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">What is a Pole Barn Foundation?</h3>
+      <p class="text-gray-600 mb-6">
+        A pole barn foundation provides the structural base for post-frame buildings. Unlike traditional foundations, pole barn foundations typically use concrete footings or piers to support the vertical posts, combined with a concrete slab floor. This construction method is cost-effective, durable, and ideal for agricultural buildings, storage facilities, workshops, and commercial structures.
+      </p>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Types of Pole Barn Foundations</h3>
+      <p class="text-gray-600 mb-4">We install various types of pole barn foundations depending on your specific needs:</p>
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-start gap-3">
+          <i class="fa-solid fa-check text-primary mt-1"></i>
+          <span><strong>Concrete Footings:</strong> Individual concrete footings placed at each post location, typically 12-24 inches in diameter and 4-6 feet deep, depending on soil conditions and local codes.</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <i class="fa-solid fa-check text-primary mt-1"></i>
+          <span><strong>Slab-on-Grade:</strong> A monolithic concrete slab that serves as both the foundation and floor, ideal for smaller pole barns and structures requiring a smooth interior surface.</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <i class="fa-solid fa-check text-primary mt-1"></i>
+          <span><strong>Perimeter Foundation:</strong> A concrete foundation wall around the perimeter with interior footings for posts, providing additional stability for larger structures.</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <i class="fa-solid fa-check text-primary mt-1"></i>
+          <span><strong>Reinforced Concrete:</strong> Foundations with rebar reinforcement for enhanced strength and durability, required for larger pole barns or structures in areas with challenging soil conditions.</span>
+        </li>
+      </ul>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Our Pole Barn Foundation Installation Process</h3>
+      <p class="text-gray-600 mb-4">Our proven installation process ensures your pole barn foundation is built correctly and efficiently:</p>
+      <div class="space-y-4 mb-8">
+        {[
+          { num: '1', title: 'Site Evaluation', desc: 'We assess your property, including soil conditions, drainage, and local building requirements.' },
+          { num: '2', title: 'Design & Planning', desc: 'We create a foundation design that meets structural requirements and local building codes.' },
+          { num: '3', title: 'Permit Assistance', desc: 'We help secure necessary permits and ensure compliance with Deptford and Gloucester County regulations.' },
+          { num: '4', title: 'Excavation', desc: 'Professional excavation to proper depth, accounting for frost line and soil conditions.' },
+          { num: '5', title: 'Formwork & Reinforcement', desc: 'Installation of forms and reinforcement (rebar) as specified in the design.' },
+          { num: '6', title: 'Concrete Pouring', desc: 'Placement of high-quality concrete mix appropriate for pole barn foundation requirements.' },
+          { num: '7', title: 'Finishing', desc: 'Proper finishing and curing to ensure maximum strength and durability.' },
+          { num: '8', title: 'Inspection', desc: 'Final inspection to ensure code compliance and quality standards.' }
+        ].map(step => (
+          <div class="flex items-start gap-4 bg-gray-50 rounded-lg p-4">
+            <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
+              {step.num}
+            </div>
+            <div>
+              <h4 class="font-bold text-lg">{step.title}</h4>
+              <p class="text-gray-600">{step.desc}</p>
+            </div>
           </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/polebarns/IMG_6472.webp" alt="Professional pole barn foundation installation" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Foundation Installation</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/polebarns/IMG_6473.webp" alt="Concrete pole barn foundation work" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Concrete Foundation</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/polebarns/IMG_6476.webp" alt="Pole barn foundation construction" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Quality Construction</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/polebarns/IMG_6477.webp" alt="Post-frame building foundation" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Post-Frame Foundation</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/polebarns/IMG_6478.webp" alt="Pole barn foundation project" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Expert Installation</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/polebarns/IMG_6480.webp" alt="Pole barn foundation in Deptford, NJ" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Professional Work</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/polebarns/IMG_6481.webp" alt="Completed pole barn foundation" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Completed Project</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/polebarns/IMG_9021.webp" alt="Pole barn foundation project" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Quality Workmanship</p>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="/images/polebarns/IMG_9022.webp" alt="Pole barn foundation installation" loading="lazy" width="800" height="600" />
-          <div class="gallery-overlay">
-            <p>Expert Service</p>
-          </div>
-        </div>
+        ))}
       </div>
-    </div>
-  </section>
 
-  <section class="content-section">
-    <div class="container">
-      <h2>Why Choose Us for Your Pole Barn Foundation?</h2>
-      <p>Pole barn foundations are our primary specialty. We have extensive experience installing concrete foundations for pole barns and post-frame buildings throughout Deptford, West Deptford, Woodbury, and surrounding New Jersey communities. Our team understands the unique requirements of post-frame construction and ensures your pole barn foundation meets all structural and code requirements.</p>
-
-      <h3>What is a Pole Barn Foundation?</h3>
-      <p>A pole barn foundation provides the structural base for post-frame buildings. Unlike traditional foundations, pole barn foundations typically use concrete footings or piers to support the vertical posts, combined with a concrete slab floor. This construction method is cost-effective, durable, and ideal for agricultural buildings, storage facilities, workshops, and commercial structures.</p>
-
-      <h3>Types of Pole Barn Foundations</h3>
-      <p>We install various types of pole barn foundations depending on your specific needs:</p>
-      
-      <ul>
-        <li><strong>Concrete Footings:</strong> Individual concrete footings placed at each post location, typically 12-24 inches in diameter and 4-6 feet deep, depending on soil conditions and local codes.</li>
-        <li><strong>Slab-on-Grade:</strong> A monolithic concrete slab that serves as both the foundation and floor, ideal for smaller pole barns and structures requiring a smooth interior surface.</li>
-        <li><strong>Perimeter Foundation:</strong> A concrete foundation wall around the perimeter with interior footings for posts, providing additional stability for larger structures.</li>
-        <li><strong>Reinforced Concrete:</strong> Foundations with rebar reinforcement for enhanced strength and durability, required for larger pole barns or structures in areas with challenging soil conditions.</li>
-      </ul>
-
-      <h3>Our Pole Barn Foundation Installation Process</h3>
-      <p>Our proven installation process ensures your pole barn foundation is built correctly and efficiently:</p>
-      
-      <ol>
-        <li><strong>Site Evaluation:</strong> We assess your property, including soil conditions, drainage, and local building requirements.</li>
-        <li><strong>Design & Planning:</strong> We create a foundation design that meets structural requirements and local building codes.</li>
-        <li><strong>Permit Assistance:</strong> We help secure necessary permits and ensure compliance with Deptford and Gloucester County regulations.</li>
-        <li><strong>Excavation:</strong> Professional excavation to proper depth, accounting for frost line and soil conditions.</li>
-        <li><strong>Formwork & Reinforcement:</strong> Installation of forms and reinforcement (rebar) as specified in the design.</li>
-        <li><strong>Concrete Pouring:</strong> Placement of high-quality concrete mix appropriate for pole barn foundation requirements.</li>
-        <li><strong>Finishing:</strong> Proper finishing and curing to ensure maximum strength and durability.</li>
-        <li><strong>Inspection:</strong> Final inspection to ensure code compliance and quality standards.</li>
-      </ol>
-
-      <h3>What's Included in Our Pole Barn Foundation Service</h3>
-      <p>When you choose Deptford Concrete Contractors for your pole barn foundation, you receive comprehensive service from start to finish:</p>
-      <ul>
-        <li><strong>Free Site Evaluation:</strong> We assess your property, soil conditions, drainage patterns, and local building requirements at no cost</li>
-        <li><strong>Foundation Design:</strong> Custom foundation design that meets structural requirements and local building codes</li>
-        <li><strong>Permit Assistance:</strong> We help navigate the permit process and ensure all paperwork is properly filed</li>
-        <li><strong>Professional Excavation:</strong> Proper site preparation and excavation to the correct depth for your foundation</li>
-        <li><strong>Quality Materials:</strong> High-grade concrete mixes and reinforcement materials appropriate for your project</li>
-        <li><strong>Expert Installation:</strong> Skilled installation by experienced concrete professionals</li>
-        <li><strong>Code Compliance:</strong> All work meets or exceeds local building codes and regulations</li>
-        <li><strong>Final Inspection:</strong> Quality check to ensure your foundation is ready for your pole barn structure</li>
-        <li><strong>Cleanup:</strong> Complete site cleanup after installation</li>
-      </ul>
-
-      <h3>Common Issues Pole Barn Foundations Solve</h3>
-      <p>Pole barn foundations address several critical structural and practical needs:</p>
-      <ul>
-        <li><strong>Frost Heave Protection:</strong> Proper foundation depth prevents damage from New Jersey's freeze-thaw cycles</li>
-        <li><strong>Structural Stability:</strong> Ensures your pole barn can support intended loads without settling or shifting</li>
-        <li><strong>Moisture Management:</strong> Proper foundation design prevents water damage and protects your building's structural integrity</li>
-        <li><strong>Code Compliance:</strong> Meets local building requirements, preventing legal issues and ensuring insurance coverage</li>
-        <li><strong>Long-Term Durability:</strong> Quality foundation installation prevents costly repairs and extends your building's lifespan</li>
-        <li><strong>Property Value:</strong> Properly installed foundation protects your investment and maintains property value</li>
-      </ul>
-
-      <h3>What Happens When You Call</h3>
-      <p>We've streamlined our process to make getting your pole barn foundation installed as straightforward as possible:</p>
-      <ol>
-        <li><strong>Initial Contact (24-48 Hour Response):</strong> When you reach out via phone or our contact form, we'll respond within 24-48 hours to schedule your free estimate</li>
-        <li><strong>Free On-Site Estimate:</strong> We visit your property to assess the site, discuss your needs, and provide a detailed written estimate with no obligation</li>
-        <li><strong>Project Planning:</strong> Once you approve the estimate, we handle all planning including permits, material ordering, and scheduling</li>
-        <li><strong>Professional Installation:</strong> Our experienced team completes your pole barn foundation installation efficiently and professionally</li>
-      </ol>
-
-      <h3>Our Customer Service Promise</h3>
-      <p>At Deptford Concrete Contractors, we believe in complete transparency and honest communication throughout your project:</p>
-      <ul>
-        <li><strong>No Hidden Fees:</strong> Your written estimate includes all costs - no surprises when the project is complete</li>
-        <li><strong>Clear Communication:</strong> We keep you informed at every step, from initial estimate through project completion</li>
-        <li><strong>Realistic Timelines:</strong> We provide honest timelines based on project scope and our current schedule - no false promises</li>
-        <li><strong>Quality Guarantee:</strong> We stand behind our work and ensure your foundation meets all quality and code standards</li>
-        <li><strong>Responsive Service:</strong> We respond to questions and concerns promptly, typically within 24-48 hours</li>
-        <li><strong>Licensed & Insured:</strong> Full professional coverage protects you and your property throughout the project</li>
-      </ul>
-
-      <h3>Pole Barn Foundation Investment Factors</h3>
-      <p>Understanding what affects your pole barn foundation investment helps you make informed decisions. Several factors influence the final cost:</p>
-      <ul>
-        <li><strong>Size and Scope:</strong> Larger pole barns require more materials and labor, affecting overall cost</li>
-        <li><strong>Foundation Type:</strong> Different foundation types (footings, slab, or combination) have varying material and labor requirements</li>
-        <li><strong>Soil Conditions:</strong> Challenging soil may require additional preparation, deeper excavation, or special reinforcement</li>
-        <li><strong>Local Requirements:</strong> Building codes and permit fees vary by municipality and can impact project cost</li>
-        <li><strong>Reinforcement Needs:</strong> Larger structures or challenging conditions may require additional rebar or reinforcement</li>
-        <li><strong>Site Accessibility:</strong> Difficult access may require special equipment or additional time</li>
-      </ul>
-      <p>We provide free, detailed estimates that break down all costs so you understand exactly what you're investing in. There are no hidden fees or surprise charges - what we quote is what you pay.</p>
-
-      <h3>Areas We Serve</h3>
-      <p>We provide pole barn foundation installation services throughout {SITE_CONFIG.serviceAreas.join(', ')} and surrounding Gloucester County communities. Whether you're building a new pole barn in <a href="/locations/deptford-nj">Deptford</a> or need foundation repairs in <a href="/locations/west-deptford-nj">West Deptford</a>, we're here to help. We also serve <a href="/locations/woodbury-nj">Woodbury</a>, <a href="/locations/glassboro-nj">Glassboro</a>, <a href="/locations/sewell-nj">Sewell</a>, and <a href="/locations">all surrounding communities</a>.</p>
-
-      <h3>Why Pole Barn Foundations Matter</h3>
-      <p>A properly installed pole barn foundation is critical for:</p>
-      <ul>
-        <li><strong>Structural Integrity:</strong> Ensures your pole barn can withstand weather, loads, and time.</li>
-        <li><strong>Code Compliance:</strong> Meets local building codes and requirements for post-frame construction.</li>
-        <li><strong>Durability:</strong> Prevents settling, cracking, and other foundation issues that can compromise your building.</li>
-        <li><strong>Property Value:</strong> A well-built foundation protects your investment and maintains property value.</li>
-      </ul>
-
-      <h3>Contact Us for Your Pole Barn Foundation Project</h3>
-      <p>Ready to start your pole barn foundation project? Contact Deptford Concrete Contractors today for a free, no-obligation estimate. We'll assess your needs, provide expert recommendations, and deliver a foundation that supports your pole barn for years to come.</p>
-
-      <div class="related-content">
-        <h3>Related Services</h3>
-        <p>If you're building a pole barn, you may also need:</p>
-        <ul>
-          <li><a href="/services/concrete-slabs">Concrete Slab Installation</a> - For pole barn floors requiring smooth interior surfaces</li>
-          <li><a href="/services/driveways">Driveway Installation</a> - Access driveways for your pole barn property</li>
-          <li><a href="/services/patios">Patio Installation</a> - Outdoor spaces adjacent to your pole barn</li>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">What's Included in Our Pole Barn Foundation Service</h3>
+      <div class="bg-orange-50 border-l-4 border-primary rounded-lg p-6 mb-8">
+        <p class="text-gray-700 mb-4">When you choose Deptford Concrete Contractors for your pole barn foundation, you receive comprehensive service from start to finish:</p>
+        <ul class="space-y-2">
+          {[
+            'Free Site Evaluation - We assess your property, soil conditions, drainage patterns, and local building requirements at no cost',
+            'Foundation Design - Custom foundation design that meets structural requirements and local building codes',
+            'Permit Assistance - We help navigate the permit process and ensure all paperwork is properly filed',
+            'Professional Excavation - Proper site preparation and excavation to the correct depth for your foundation',
+            'Quality Materials - High-grade concrete mixes and reinforcement materials appropriate for your project',
+            'Expert Installation - Skilled installation by experienced concrete professionals',
+            'Code Compliance - All work meets or exceeds local building codes and regulations',
+            'Final Inspection - Quality check to ensure your foundation is ready for your pole barn structure',
+            'Cleanup - Complete site cleanup after installation'
+          ].map(item => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+              <span>{item}</span>
+            </li>
+          ))}
         </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Common Issues Pole Barn Foundations Solve</h3>
+      <p class="text-gray-600 mb-4">Pole barn foundations address several critical structural and practical needs:</p>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { title: 'Frost Heave Protection', desc: 'Proper foundation depth prevents damage from New Jersey\'s freeze-thaw cycles' },
+          { title: 'Structural Stability', desc: 'Ensures your pole barn can support intended loads without settling or shifting' },
+          { title: 'Moisture Management', desc: 'Proper foundation design prevents water damage and protects structural integrity' },
+          { title: 'Code Compliance', desc: 'Meets local building requirements, preventing legal issues and ensuring insurance coverage' },
+          { title: 'Long-Term Durability', desc: 'Quality foundation installation prevents costly repairs and extends building lifespan' },
+          { title: 'Property Value', desc: 'Properly installed foundation protects your investment and maintains property value' }
+        ].map(item => (
+          <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-primary">
+            <h4 class="font-bold mb-1">{item.title}</h4>
+            <p class="text-gray-600 text-sm">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">What Happens When You Call</h3>
+      <p class="text-gray-600 mb-4">We've streamlined our process to make getting your pole barn foundation installed as straightforward as possible:</p>
+      <div class="space-y-4 mb-8">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-phone text-primary text-xl"></i>
+          </div>
+          <div>
+            <h4 class="font-bold">Initial Contact (24-48 Hour Response)</h4>
+            <p class="text-gray-600">When you reach out via phone or our contact form, we'll respond within 24-48 hours to schedule your free estimate</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-clipboard-list text-primary text-xl"></i>
+          </div>
+          <div>
+            <h4 class="font-bold">Free On-Site Estimate</h4>
+            <p class="text-gray-600">We visit your property to assess the site, discuss your needs, and provide a detailed written estimate with no obligation</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-calendar-check text-primary text-xl"></i>
+          </div>
+          <div>
+            <h4 class="font-bold">Project Planning</h4>
+            <p class="text-gray-600">Once you approve the estimate, we handle all planning including permits, material ordering, and scheduling</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-hammer text-primary text-xl"></i>
+          </div>
+          <div>
+            <h4 class="font-bold">Professional Installation</h4>
+            <p class="text-gray-600">Our experienced team completes your pole barn foundation installation efficiently and professionally</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Our Customer Service Promise</h3>
+      <p class="text-gray-600 mb-4">At Deptford Concrete Contractors, we believe in complete transparency and honest communication throughout your project:</p>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { icon: 'fa-dollar-sign', title: 'No Hidden Fees', desc: 'Your written estimate includes all costs - no surprises' },
+          { icon: 'fa-comments', title: 'Clear Communication', desc: 'We keep you informed at every step' },
+          { icon: 'fa-clock', title: 'Realistic Timelines', desc: 'We provide honest timelines based on project scope' },
+          { icon: 'fa-medal', title: 'Quality Guarantee', desc: 'We stand behind our work and ensure quality standards' },
+          { icon: 'fa-headset', title: 'Responsive Service', desc: 'We respond promptly, typically within 24-48 hours' },
+          { icon: 'fa-shield-check', title: 'Licensed & Insured', desc: 'Full professional coverage protects you' }
+        ].map(item => (
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <i class={`fa-solid ${item.icon} text-primary`}></i>
+            </div>
+            <div>
+              <h4 class="font-bold">{item.title}</h4>
+              <p class="text-gray-600 text-sm">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Areas We Serve</h3>
+      <p class="text-gray-600 mb-6">
+        We provide pole barn foundation installation services throughout {SITE_CONFIG.serviceAreas.join(', ')} and surrounding Gloucester County communities. Whether you're building a new pole barn in <a href="/locations/deptford-nj" class="text-primary font-semibold hover:underline">Deptford</a> or need foundation repairs in <a href="/locations/west-deptford-nj" class="text-primary font-semibold hover:underline">West Deptford</a>, we're here to help. We also serve <a href="/locations/woodbury-nj" class="text-primary font-semibold hover:underline">Woodbury</a>, <a href="/locations/glassboro-nj" class="text-primary font-semibold hover:underline">Glassboro</a>, <a href="/locations/sewell-nj" class="text-primary font-semibold hover:underline">Sewell</a>, and <a href="/locations" class="text-primary font-semibold hover:underline">all surrounding communities</a>.
+      </p>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Contact Us for Your Pole Barn Foundation Project</h3>
+      <p class="text-gray-600 mb-8">
+        Ready to start your pole barn foundation project? Contact Deptford Concrete Contractors today for a free, no-obligation estimate. We'll assess your needs, provide expert recommendations, and deliver a foundation that supports your pole barn for years to come.
+      </p>
+
+      <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+        <h4 class="font-bold text-xl mb-4">Related Services</h4>
+        <p class="text-gray-600 mb-4">If you're building a pole barn, you may also need:</p>
+        <div class="space-y-2">
+          <a href="/services/concrete-slabs" class="flex items-center gap-2 text-primary font-semibold hover:underline">
+            <i class="fa-solid fa-layer-group"></i>
+            Concrete Slab Installation - For pole barn floors requiring smooth interior surfaces
+          </a>
+          <a href="/services/driveways" class="flex items-center gap-2 text-primary font-semibold hover:underline">
+            <i class="fa-solid fa-road"></i>
+            Driveway Installation - Access driveways for your pole barn property
+          </a>
+          <a href="/services/patios" class="flex items-center gap-2 text-primary font-semibold hover:underline">
+            <i class="fa-solid fa-umbrella-beach"></i>
+            Patio Installation - Outdoor spaces adjacent to your pole barn
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -250,374 +316,62 @@ const faqSchema = {
   <RelatedServices currentService="pole-barn-foundations" />
   <ServiceAreasLink serviceName="Pole Barn Foundations" />
 
-  <section id="contact-form" class="contact-section">
-    <div class="container">
-      <ContactForm 
+  <!-- Contact Form Section -->
+  <section id="contact-form" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ContactForm
         title="Get Your Free Pole Barn Foundation Estimate"
         service="pole-barn-foundations"
       />
     </div>
   </section>
 
-  <section class="faq-section">
-    <div class="container">
-      <h2>Pole Barn Foundation FAQs</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <h3>How much does a pole barn foundation cost?</h3>
-          <p>Pole barn foundation costs typically range from $4-$8 per square foot, depending on size, soil conditions, and local requirements. We provide free estimates for accurate pricing.</p>
-        </div>
-        <div class="faq-item">
-          <h3>How long does pole barn foundation installation take?</h3>
-          <p>Most pole barn foundation projects are completed within 1-3 days, depending on size and complexity. We'll provide a detailed timeline during your free estimate.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Do you handle permits for pole barn foundations?</h3>
-          <p>Yes, we assist with all permit applications and ensure compliance with local building codes for pole barn construction in Deptford and surrounding areas.</p>
-        </div>
-        <div class="faq-item">
-          <h3>What type of foundation is best for a pole barn?</h3>
-          <p>The best foundation type depends on your specific needs, soil conditions, and local codes. We'll recommend the optimal solution during your free estimate.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Do pole barn foundations need reinforcement?</h3>
-          <p>Reinforcement requirements depend on the size of your pole barn and local building codes. We'll determine the appropriate reinforcement during the design phase.</p>
-        </div>
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Common Questions</p>
+        <h2 class="section-heading">Pole Barn Foundation FAQs</h2>
+      </div>
+
+      <div class="space-y-4">
+        {[
+          { q: 'How much does a pole barn foundation cost?', a: 'Pole barn foundation costs typically range from $4-$8 per square foot, depending on size, soil conditions, and local requirements. We provide free estimates for accurate pricing.' },
+          { q: 'How long does pole barn foundation installation take?', a: 'Most pole barn foundation projects are completed within 1-3 days, depending on size and complexity. We\'ll provide a detailed timeline during your free estimate.' },
+          { q: 'Do you handle permits for pole barn foundations?', a: 'Yes, we assist with all permit applications and ensure compliance with local building codes for pole barn construction in Deptford and surrounding areas.' },
+          { q: 'What type of foundation is best for a pole barn?', a: 'The best foundation type depends on your specific needs, soil conditions, and local codes. We\'ll recommend the optimal solution during your free estimate.' },
+          { q: 'Do pole barn foundations need reinforcement?', a: 'Reinforcement requirements depend on the size of your pole barn and local building codes. We\'ll determine the appropriate reinforcement during the design phase.' }
+        ].map((faq, index) => (
+          <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+            <h3 class="font-bold text-lg text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-600">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Ready to Start Your Pole Barn Project?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Contact us today for a free estimate. No obligation, just honest pricing and expert advice.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact-form" class="btn-secondary">
+          Get Your Free Estimate
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        {SITE_CONFIG.phone && (
+          <a href={`tel:${SITE_CONFIG.phone}`} class="btn-outline">
+            <i class="fa-solid fa-phone"></i>
+            {SITE_CONFIG.phone}
+          </a>
+        )}
       </div>
     </div>
   </section>
 </BaseLayout>
-
-<style>
-  .hero {
-    position: relative;
-    color: white;
-    padding: 6rem 0;
-    text-align: center;
-    min-height: 500px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-  }
-  
-  .hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-  }
-  
-  .hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(26, 26, 26, 0.85) 0%, rgba(45, 45, 45, 0.75) 100%);
-    z-index: 1;
-  }
-  
-  .hero-container {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    width: 100%;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.25rem;
-    color: #ccc;
-    max-width: 800px;
-    margin: 0 auto 2rem;
-  }
-  
-  .hero-cta {
-    margin-top: 2rem;
-  }
-  
-  .gallery-section {
-    padding: 4rem 0;
-    background: #f8f9fa;
-  }
-  
-  .gallery-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #1a1a1a;
-  }
-  
-  .section-intro {
-    text-align: center;
-    color: #666;
-    max-width: 800px;
-    margin: 0 auto 3rem;
-    font-size: 1.1rem;
-  }
-  
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-  }
-  
-  .gallery-item {
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    aspect-ratio: 4/3;
-  }
-  
-  .gallery-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-  }
-  
-  .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  
-  .gallery-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    padding: 1.5rem;
-    color: white;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  
-  .gallery-item:hover .gallery-overlay {
-    opacity: 1;
-  }
-  
-  .gallery-overlay p {
-    margin: 0;
-    font-weight: 600;
-  }
-  
-  .cta-primary {
-    display: inline-block;
-    background: #ff6b35;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background 0.3s;
-  }
-  
-  .cta-primary:hover {
-    background: #e55a2b;
-  }
-  
-  .content-section {
-    padding: 4rem 0;
-    background: white;
-  }
-  
-  .content-section h2 {
-    font-size: 2rem;
-    color: #1a1a1a;
-    margin-bottom: 1.5rem;
-  }
-  
-  .content-section h3 {
-    font-size: 1.5rem;
-    color: #ff6b35;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .content-section ul,
-  .content-section ol {
-    margin-left: 2rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .content-section li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .contact-section {
-    padding: 4rem 0;
-    background: #f8f9fa;
-  }
-  
-  .faq-section {
-    padding: 4rem 0;
-    background: white;
-  }
-  
-  .faq-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 3rem;
-  }
-  
-  .faq-list {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .faq-item {
-    background: #f8f9fa;
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-  }
-  
-  .faq-item h3 {
-    color: #ff6b35;
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-  }
-  
-  @media (max-width: 768px) {
-    .hero {
-      padding: 2rem 0;
-      min-height: 300px;
-    }
-    
-    .hero h1 {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-      line-height: 1.3;
-    }
-    
-    .hero-subtitle {
-      font-size: 0.95rem;
-      margin-bottom: 1.25rem;
-    }
-    
-    .hero-cta {
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    
-    .cta-primary {
-      width: 100%;
-      text-align: center;
-      padding: 0.875rem 1.5rem;
-      font-size: 0.95rem;
-    }
-    
-    .container {
-      padding: 0 1rem;
-    }
-    
-    .content-section,
-    .contact-section,
-    .faq-section {
-      padding: 2.5rem 0;
-    }
-    
-    .content-section h2 {
-      font-size: 1.5rem;
-    }
-    
-    .content-section h3 {
-      font-size: 1.25rem;
-    }
-    
-    .gallery-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    
-    .gallery-overlay {
-      opacity: 1;
-      padding: 1rem;
-    }
-    
-    .faq-item {
-      padding: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .faq-item h3 {
-      font-size: 1.1rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .hero {
-      padding: 1.5rem 0;
-      min-height: 250px;
-    }
-    
-    .hero h1 {
-      font-size: 1.25rem;
-    }
-    
-    .hero-subtitle {
-      font-size: 0.875rem;
-    }
-    
-    .cta-primary {
-      padding: 0.75rem 1.25rem;
-      font-size: 0.875rem;
-    }
-    
-    .container {
-      padding: 0 0.75rem;
-    }
-    
-    .content-section,
-    .contact-section,
-    .faq-section {
-      padding: 2rem 0;
-    }
-    
-    .content-section h2 {
-      font-size: 1.35rem;
-    }
-    
-    .content-section h3 {
-      font-size: 1.15rem;
-    }
-    
-    .gallery-grid {
-      gap: 1.25rem;
-    }
-    
-    .faq-item {
-      padding: 1.25rem;
-    }
-    
-    .faq-item h3 {
-      font-size: 1rem;
-    }
-  }
-</style>
-

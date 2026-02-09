@@ -7,266 +7,215 @@ import { SITE_CONFIG } from '../../config';
 import { generateServiceSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('retaining-walls', 'Professional concrete retaining wall construction in Deptford, NJ. Erosion control and landscaping solutions with free estimates.');
+
+const galleryImages = [
+  { src: '/images/projects/IMG_9889.webp', alt: 'Concrete retaining wall installation in Deptford, NJ', label: 'Retaining Wall' },
+  { src: '/images/projects/IMG_9890.webp', alt: 'Professional retaining wall project', label: 'Professional Installation' },
+  { src: '/images/projects/IMG_2711.webp', alt: 'Concrete wall contractor work', label: 'Quality Workmanship' },
+  { src: '/images/projects/IMG_5125 2.webp', alt: 'Erosion control wall', label: 'Erosion Control' },
+  { src: '/images/projects/IMG_5125 3.webp', alt: 'Concrete wall project', label: 'Concrete Wall' },
+  { src: '/images/projects/IMG_5168.webp', alt: 'Retaining wall installation service', label: 'Expert Service' }
+];
+
+const faqs = [
+  { q: 'How tall can a concrete retaining wall be?', a: 'Retaining wall height depends on soil conditions, design, and local codes. Most residential walls are 3-4 feet, while taller walls may require engineering and permits. We\'ll assess your needs during the free estimate.' },
+  { q: 'Do I need a permit for a retaining wall?', a: 'Permit requirements vary by municipality and wall height. Walls over 4 feet typically require permits. We\'ll check local requirements and assist with permit applications if needed.' },
+  { q: 'How long does retaining wall installation take?', a: 'Most retaining wall installations take 2-4 days depending on height, length, and complexity. We\'ll provide a detailed timeline during your free estimate.' },
+  { q: 'Do retaining walls need drainage?', a: 'Yes, proper drainage behind retaining walls is essential to prevent water pressure buildup that could cause wall failure. We include drainage systems in all our retaining wall installations.' },
+  { q: 'Can a retaining wall be repaired instead of replaced?', a: 'It depends on the extent of damage. Minor issues can often be repaired, but significant structural problems may require replacement. We\'ll assess your wall during the free estimate and recommend the best solution.' }
+];
 ---
 
-<BaseLayout 
+<BaseLayout
   title="Concrete Retaining Wall Installation in Deptford, NJ"
   description="Expert concrete retaining wall contractors in Deptford, NJ. Erosion control, drainage management, and landscaping walls. Professional installation for property protection."
   schema={serviceSchema}
 >
-  <section class="hero">
-    <div class="container">
-      <h1>Concrete Retaining Wall Installation in Deptford, New Jersey</h1>
-      <p class="hero-subtitle">Professional retaining wall construction for erosion control and landscaping. Durable concrete walls that protect your property.</p>
-      <a href="#contact-form" class="cta-primary">Get Free Retaining Wall Estimate</a>
+  <!-- Hero Section -->
+  <section class="bg-dark py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="section-subheading text-primary mb-4">Retaining Wall Services</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        Concrete Retaining Wall Installation
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Professional retaining wall construction for erosion control and landscaping. Durable concrete walls that protect your property.
+      </p>
+      <a href="#contact-form" class="btn-primary text-lg">
+        Get Free Retaining Wall Estimate
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
     </div>
   </section>
 
-  <section class="content-section">
-    <div class="container">
-      <h2>Retaining Wall Services</h2>
-      <p>We build durable concrete retaining walls that control erosion, manage drainage, and enhance your property's appearance.</p>
+  <!-- Gallery Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Our Work</p>
+        <h2 class="section-heading mb-6">Our Retaining Wall Projects</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          See our quality retaining wall installations throughout Deptford and surrounding areas.
+        </p>
+      </div>
 
-      <h3>What's Included in Our Retaining Wall Service</h3>
-      <p>When you choose Deptford Concrete Contractors for your retaining wall project, you receive comprehensive service:</p>
-      <ul>
-        <li><strong>Free Site Evaluation:</strong> We assess your property, soil conditions, drainage patterns, and erosion issues at no cost</li>
-        <li><strong>Wall Design:</strong> Custom retaining wall design that meets structural requirements and addresses your specific needs</li>
-        <li><strong>Permit Assistance:</strong> We help navigate the permit process for retaining walls, which may be required for taller walls</li>
-        <li><strong>Professional Excavation:</strong> Proper site preparation and excavation to the correct depth for your wall foundation</li>
-        <li><strong>Quality Materials:</strong> High-grade concrete and reinforcement materials appropriate for your wall's requirements</li>
-        <li><strong>Expert Installation:</strong> Skilled installation by experienced concrete professionals</li>
-        <li><strong>Drainage Systems:</strong> Proper drainage behind the wall to prevent water pressure buildup</li>
-        <li><strong>Reinforcement:</strong> Appropriate reinforcement based on wall height and soil conditions</li>
-        <li><strong>Code Compliance:</strong> All work meets or exceeds local building codes and regulations</li>
-        <li><strong>Cleanup:</strong> Complete site cleanup after installation</li>
-      </ul>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {galleryImages.map(image => (
+          <div class="group relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+            <img src={image.src} alt={image.alt} loading="lazy" class="w-full h-full object-cover" width="800" height="600" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <p class="text-white font-semibold">{image.label}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-      <h3>Our Retaining Wall Installation Process</h3>
-      <p>We follow a detailed process to ensure your retaining wall is built correctly and safely:</p>
-      <ol>
-        <li><strong>Site Evaluation:</strong> We assess your property, including soil conditions, drainage, erosion issues, and local building requirements</li>
-        <li><strong>Design & Planning:</strong> We create a wall design that meets structural requirements, addresses your needs, and complies with local codes</li>
-        <li><strong>Permit Assistance:</strong> We help secure necessary permits if required (typically for walls over 4 feet)</li>
-        <li><strong>Excavation:</strong> Professional excavation to proper depth for wall foundation</li>
-        <li><strong>Foundation Preparation:</strong> Proper base preparation and foundation installation for stability</li>
-        <li><strong>Reinforcement Placement:</strong> Installation of rebar reinforcement as specified in the design</li>
-        <li><strong>Formwork:</strong> Installation of forms to create your wall's shape and dimensions</li>
-        <li><strong>Concrete Pouring:</strong> Placement of high-quality concrete mix appropriate for retaining wall use</li>
-        <li><strong>Drainage Installation:</strong> Installation of drainage systems behind the wall</li>
-        <li><strong>Finishing:</strong> Proper finishing and texturing of the wall surface</li>
-        <li><strong>Curing:</strong> Proper curing time to ensure maximum strength and durability</li>
-        <li><strong>Final Inspection:</strong> Quality check to ensure your wall meets all standards</li>
-      </ol>
+  <!-- Content Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-8">
+        Professional Retaining Wall Services
+      </h2>
+      <p class="text-lg text-gray-600 mb-8">
+        We build durable concrete retaining walls that control erosion, manage drainage, and enhance your property's appearance. Whether you need erosion control on a sloped property or want to create level landscaping areas, our retaining walls provide lasting solutions.
+      </p>
 
-      <h3>Common Issues Retaining Walls Solve</h3>
-      <p>Retaining walls address many critical property protection and landscaping needs:</p>
-      <ul>
-        <li><strong>Erosion Control:</strong> Prevent soil erosion on sloped properties, especially important in areas with heavy rainfall</li>
-        <li><strong>Drainage Management:</strong> Control water flow and prevent flooding or water damage to structures</li>
-        <li><strong>Property Protection:</strong> Protect buildings, driveways, and other structures from soil movement</li>
-        <li><strong>Landscaping Enhancement:</strong> Create level areas for patios, gardens, or other landscaping features</li>
-        <li><strong>Increased Usable Space:</strong> Create flat, usable areas on sloped properties</li>
-        <li><strong>Safety Concerns:</strong> Prevent dangerous slope failures or collapses that could damage property or cause injury</li>
-      </ul>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">What's Included in Our Retaining Wall Service</h3>
+      <div class="bg-orange-50 border-l-4 border-primary rounded-lg p-6 mb-8">
+        <ul class="space-y-2">
+          {[
+            'Free Site Evaluation - We assess your property, soil conditions, and erosion issues at no cost',
+            'Custom Wall Design - Design that meets structural requirements and addresses your specific needs',
+            'Permit Assistance - We help navigate the permit process for taller walls',
+            'Professional Excavation - Proper site preparation and excavation for wall foundation',
+            'Quality Materials - High-grade concrete and reinforcement materials',
+            'Expert Installation - Skilled installation by experienced concrete professionals',
+            'Drainage Systems - Proper drainage behind the wall to prevent water pressure buildup',
+            'Reinforcement - Appropriate reinforcement based on wall height and soil conditions',
+            'Code Compliance - All work meets or exceeds local building codes',
+            'Cleanup - Complete site cleanup after installation'
+          ].map(item => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-      <h3>What Happens When You Call</h3>
-      <p>Getting your retaining wall installed is straightforward with our streamlined process:</p>
-      <ol>
-        <li><strong>Initial Contact (24-48 Hour Response):</strong> When you reach out via phone or our contact form, we'll respond within 24-48 hours to schedule your free estimate</li>
-        <li><strong>Free On-Site Estimate:</strong> We visit your property to assess your needs, evaluate the site, and provide a detailed written estimate</li>
-        <li><strong>Project Planning:</strong> Once you approve the estimate, we handle all planning including permits (if needed), material ordering, and scheduling</li>
-        <li><strong>Professional Installation:</strong> Our experienced team completes your retaining wall installation efficiently and professionally</li>
-      </ol>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Our Retaining Wall Installation Process</h3>
+      <div class="space-y-4 mb-8">
+        {[
+          { num: '1', title: 'Site Evaluation', desc: 'We assess soil conditions, drainage, erosion issues, and local requirements' },
+          { num: '2', title: 'Design & Planning', desc: 'We create a wall design meeting structural requirements and local codes' },
+          { num: '3', title: 'Permit Assistance', desc: 'We help secure necessary permits for taller walls' },
+          { num: '4', title: 'Excavation', desc: 'Professional excavation to proper depth for wall foundation' },
+          { num: '5', title: 'Foundation & Reinforcement', desc: 'Proper base preparation and rebar installation' },
+          { num: '6', title: 'Concrete Pouring', desc: 'Placement of high-quality concrete mix' },
+          { num: '7', title: 'Drainage & Finishing', desc: 'Installation of drainage systems and proper finishing' }
+        ].map(step => (
+          <div class="flex items-start gap-4 bg-gray-50 rounded-lg p-4">
+            <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">{step.num}</div>
+            <div>
+              <h4 class="font-bold text-lg">{step.title}</h4>
+              <p class="text-gray-600">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
 
-      <h3>Our Customer Service Promise</h3>
-      <p>At Deptford Concrete Contractors, we believe in complete transparency and honest communication:</p>
-      <ul>
-        <li><strong>No Hidden Fees:</strong> Your written estimate includes all costs - materials, labor, permits, drainage systems, and cleanup - no surprises</li>
-        <li><strong>Clear Communication:</strong> We keep you informed at every step, from initial estimate through project completion</li>
-        <li><strong>Realistic Timelines:</strong> We provide honest timelines based on project scope and weather conditions - typically 2-4 days for most retaining walls</li>
-        <li><strong>Quality Guarantee:</strong> We stand behind our work and ensure your retaining wall meets all quality, safety, and code standards</li>
-        <li><strong>Responsive Service:</strong> We respond to questions and concerns promptly, typically within 24-48 hours</li>
-        <li><strong>Licensed & Insured:</strong> Full professional coverage protects you and your property throughout the project</li>
-      </ul>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Common Issues Retaining Walls Solve</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { icon: 'fa-mountain', title: 'Erosion Control', desc: 'Prevent soil erosion on sloped properties, especially during heavy rainfall' },
+          { icon: 'fa-droplet', title: 'Drainage Management', desc: 'Control water flow and prevent flooding or water damage' },
+          { icon: 'fa-shield-halved', title: 'Property Protection', desc: 'Protect buildings and structures from soil movement' },
+          { icon: 'fa-tree', title: 'Landscaping Enhancement', desc: 'Create level areas for patios, gardens, or other features' },
+          { icon: 'fa-expand', title: 'Increased Usable Space', desc: 'Create flat, usable areas on sloped properties' },
+          { icon: 'fa-triangle-exclamation', title: 'Safety', desc: 'Prevent dangerous slope failures that could cause injury' }
+        ].map(item => (
+          <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class={`fa-solid ${item.icon} text-primary`}></i>
+            </div>
+            <div>
+              <h4 class="font-bold">{item.title}</h4>
+              <p class="text-gray-600 text-sm">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
 
-      <h3>Retaining Wall Investment Factors</h3>
-      <p>Understanding what affects your retaining wall investment helps you make informed decisions:</p>
-      <ul>
-        <li><strong>Wall Height:</strong> Taller walls require more materials, deeper foundations, and may need permits</li>
-        <li><strong>Wall Length:</strong> Longer walls require more materials and labor</li>
-        <li><strong>Soil Conditions:</strong> Challenging soil may require additional reinforcement or deeper foundations</li>
-        <li><strong>Drainage Requirements:</strong> Properties with water issues may need more extensive drainage systems</li>
-        <li><strong>Reinforcement Needs:</strong> Taller walls or challenging conditions require more reinforcement</li>
-        <li><strong>Accessibility:</strong> Difficult access may require special equipment or additional time</li>
-      </ul>
-      <p>We provide free, detailed estimates that break down all costs so you understand exactly what you're investing in. There are no hidden fees or surprise charges - what we quote is what you pay.</p>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Investment Factors</h3>
+      <div class="bg-gray-50 rounded-lg p-6 mb-8">
+        <p class="text-gray-600 mb-4">Understanding what affects your retaining wall investment:</p>
+        <ul class="space-y-2">
+          {[
+            'Wall Height - Taller walls require more materials and deeper foundations',
+            'Wall Length - Longer walls require more materials and labor',
+            'Soil Conditions - Challenging soil may require additional reinforcement',
+            'Drainage Requirements - Water issues may need more extensive drainage systems',
+            'Reinforcement Needs - Taller walls require more reinforcement',
+            'Accessibility - Difficult access may require special equipment'
+          ].map(factor => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-info-circle text-primary mt-1"></i>
+              <span>{factor}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-      <h3>Related Services</h3>
-      <p>Retaining walls often work with other concrete features:</p>
-      <ul>
-        <li><a href="/services/patios">Patio Installation</a> - Elevated patios with retaining walls</li>
-        <li><a href="/services/driveways">Driveway Installation</a> - Driveways with grade changes</li>
-        <li><a href="/services/walkways">Walkway Installation</a> - Pathways with retaining walls</li>
-      </ul>
-
-      <h3>Areas We Serve</h3>
-      <p>We provide retaining wall installation services throughout <a href="/locations/deptford-nj">Deptford</a>, <a href="/locations/west-deptford-nj">West Deptford</a>, <a href="/locations/woodbury-nj">Woodbury</a>, <a href="/locations/glassboro-nj">Glassboro</a>, and <a href="/locations">all surrounding Gloucester County communities</a>.</p>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Areas We Serve</h3>
+      <p class="text-gray-600 mb-6">
+        We provide retaining wall installation services throughout <a href="/locations/deptford-nj" class="text-primary font-semibold hover:underline">Deptford</a>, <a href="/locations/west-deptford-nj" class="text-primary font-semibold hover:underline">West Deptford</a>, <a href="/locations/woodbury-nj" class="text-primary font-semibold hover:underline">Woodbury</a>, <a href="/locations/glassboro-nj" class="text-primary font-semibold hover:underline">Glassboro</a>, and <a href="/locations" class="text-primary font-semibold hover:underline">all surrounding Gloucester County communities</a>.
+      </p>
     </div>
   </section>
 
   <RelatedServices currentService="retaining-walls" />
   <ServiceAreasLink serviceName="Retaining Walls" />
 
-  <section id="contact-form" class="contact-section">
-    <div class="container">
-      <ContactForm 
-        title="Get Your Free Retaining Wall Estimate"
-        service="retaining-walls"
-      />
+  <!-- Contact Form Section -->
+  <section id="contact-form" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ContactForm title="Get Your Free Retaining Wall Estimate" service="retaining-walls" />
     </div>
   </section>
 
-  <section class="faq-section">
-    <div class="container">
-      <h2>Retaining Wall FAQs</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <h3>How tall can a concrete retaining wall be?</h3>
-          <p>Retaining wall height depends on soil conditions, design, and local codes. Most residential walls are 3-4 feet, while taller walls may require engineering and permits. We'll assess your needs during the free estimate.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Do I need a permit for a retaining wall?</h3>
-          <p>Permit requirements vary by municipality and wall height. Walls over 4 feet typically require permits. We'll check local requirements and assist with permit applications if needed.</p>
-        </div>
-        <div class="faq-item">
-          <h3>How long does retaining wall installation take?</h3>
-          <p>Most retaining wall installations take 2-4 days depending on height, length, and complexity. We'll provide a detailed timeline during your free estimate.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Do retaining walls need drainage?</h3>
-          <p>Yes, proper drainage behind retaining walls is essential to prevent water pressure buildup that could cause wall failure. We include drainage systems in all our retaining wall installations.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Can a retaining wall be repaired instead of replaced?</h3>
-          <p>It depends on the extent of damage. Minor issues can often be repaired, but significant structural problems may require replacement. We'll assess your wall during the free estimate and recommend the best solution.</p>
-        </div>
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Common Questions</p>
+        <h2 class="section-heading">Retaining Wall FAQs</h2>
+      </div>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+            <h3 class="font-bold text-lg text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-600">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Need a Retaining Wall?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Contact us today for a free estimate. No obligation, just honest pricing.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact-form" class="btn-secondary">Get Your Free Estimate <i class="fa-solid fa-arrow-right"></i></a>
+        {SITE_CONFIG.phone && <a href={`tel:${SITE_CONFIG.phone}`} class="btn-outline"><i class="fa-solid fa-phone"></i> {SITE_CONFIG.phone}</a>}
       </div>
     </div>
   </section>
 </BaseLayout>
-
-<style>
-  .hero {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    color: white;
-    padding: 3rem 0;
-    text-align: center;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.25rem;
-    color: #ccc;
-    max-width: 800px;
-    margin: 0 auto 2rem;
-  }
-  
-  .cta-primary {
-    display: inline-block;
-    background: #ff6b35;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  
-  .content-section {
-    padding: 4rem 0;
-  }
-  
-  .content-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .content-section h3 {
-    font-size: 1.5rem;
-    color: #ff6b35;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .contact-section {
-    padding: 4rem 0;
-    background: #f8f9fa;
-  }
-
-  .faq-section {
-    padding: 4rem 0;
-    background: white;
-  }
-
-  .faq-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 3rem;
-    color: #1a1a1a;
-  }
-
-  .faq-list {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .faq-item {
-    background: #f8f9fa;
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-
-  .faq-item h3 {
-    color: #ff6b35;
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-  }
-
-  .faq-item p {
-    margin: 0;
-    color: #666;
-    line-height: 1.6;
-  }
-
-  @media (max-width: 768px) {
-    .faq-section {
-      padding: 2.5rem 0;
-    }
-
-    .faq-section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .faq-item {
-      padding: 1.5rem;
-    }
-
-    .faq-item h3 {
-      font-size: 1.1rem;
-    }
-  }
-</style>
-

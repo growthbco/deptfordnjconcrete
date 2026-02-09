@@ -1,0 +1,235 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
+import { SITE_CONFIG } from '../../config';
+import { generateServiceSchema } from '../../utils/schema';
+
+const serviceSchema = generateServiceSchema('concrete-repair', 'Professional concrete repair services in Deptford, NJ. Crack repair, resurfacing, leveling, and restoration for driveways, patios, foundations, and more.');
+
+const galleryImages = [
+  { src: '/images/projects/IMG_0973.webp', alt: 'Concrete repair work in Deptford, NJ', label: 'Driveway Repair' },
+  { src: '/images/projects/IMG_3403.webp', alt: 'Concrete crack repair project', label: 'Crack Repair' },
+  { src: '/images/projects/IMG_3404.webp', alt: 'Concrete resurfacing work', label: 'Resurfacing' },
+  { src: '/images/projects/IMG_3907.webp', alt: 'Concrete restoration service', label: 'Restoration' },
+  { src: '/images/projects/IMG_3910.webp', alt: 'Professional concrete repair', label: 'Professional Repair' },
+  { src: '/images/projects/IMG_5164.webp', alt: 'Concrete leveling work', label: 'Leveling Service' }
+];
+
+const faqs = [
+  { q: 'How much does concrete repair cost?', a: 'Concrete repair costs vary based on the type and extent of damage. Simple crack repairs start around $500, while resurfacing projects may cost $3-$7 per square foot. We provide free estimates for accurate pricing.' },
+  { q: 'Can cracked concrete be repaired?', a: 'Yes, most cracks can be repaired. We assess the crack type and cause to determine the best repair method. Hairline cracks are often sealed, while structural cracks may require epoxy injection or other specialized techniques.' },
+  { q: 'How long does concrete repair take?', a: 'Most concrete repair projects are completed within 1-2 days, depending on the scope of work. Simple crack repairs may take just a few hours, while resurfacing projects typically take 1-2 days.' },
+  { q: 'Is it better to repair or replace concrete?', a: 'Repair is often more cost-effective when damage is localized and structural integrity is sound. We\'ll assess your concrete during the free inspection and recommend the best option for your situation.' },
+  { q: 'Will repaired concrete match the existing surface?', a: 'We do our best to match existing concrete, though perfect matching can be difficult with aged concrete. For resurfacing projects, we can create a uniform appearance across the entire surface.' }
+];
+---
+
+<BaseLayout
+  title="Concrete Repair Services in Deptford, NJ | Crack Repair & Resurfacing"
+  description="Expert concrete repair contractors in Deptford, NJ. Crack repair, resurfacing, leveling, and restoration services. Fix damaged driveways, patios, foundations, and slabs. Free estimates."
+  schema={serviceSchema}
+>
+  <!-- Hero Section -->
+  <section class="bg-dark py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="section-subheading text-primary mb-4">Repair Services</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        Concrete Repair Services
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Professional concrete repair, crack repair, resurfacing, and restoration services. Extend the life of your concrete surfaces with expert repair work.
+      </p>
+      <a href="#contact-form" class="btn-primary text-lg">
+        Get Free Repair Estimate
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Our Work</p>
+        <h2 class="section-heading mb-6">Our Concrete Repair Projects</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          See our quality concrete repair work throughout Deptford and surrounding areas.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {galleryImages.map(image => (
+          <div class="group relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+            <img src={image.src} alt={image.alt} loading="lazy" class="w-full h-full object-cover" width="800" height="600" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <p class="text-white font-semibold">{image.label}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-8">
+        Comprehensive Concrete Repair Services
+      </h2>
+      <p class="text-lg text-gray-600 mb-8">
+        Don't replace your concrete - repair it! We provide professional concrete repair services that extend the life of your driveways, patios, foundations, sidewalks, and more. Our repair services are often more cost-effective than replacement and can restore your concrete to like-new condition.
+      </p>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Types of Repairs We Provide</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { title: 'Crack Repair', desc: 'Fix cracks in driveways, foundations, patios, and slabs', link: '/services/crack-repair' },
+          { title: 'Concrete Overlays', desc: 'Resurface worn or damaged concrete with new material', link: '/services/concrete-overlays' },
+          { title: 'Concrete Leveling', desc: 'Level uneven surfaces using mudjacking or injection', link: null },
+          { title: 'Spalling Repair', desc: 'Fix surface flaking from freeze-thaw cycles', link: null },
+          { title: 'Foundation Repair', desc: 'Repair cracks in foundation walls and footings', link: null },
+          { title: 'Joint Repair', desc: 'Repair and seal expansion joints', link: null }
+        ].map(type => (
+          <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-primary">
+            <h4 class="font-bold mb-1">{type.title}</h4>
+            <p class="text-gray-600 text-sm">{type.desc}</p>
+            {type.link && <a href={type.link} class="text-primary text-sm font-semibold hover:underline">Learn more →</a>}
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">What's Included in Our Service</h3>
+      <div class="bg-orange-50 border-l-4 border-primary rounded-lg p-6 mb-8">
+        <ul class="space-y-2">
+          {[
+            'Free Inspection - We assess your concrete damage and causes at no cost',
+            'Damage Assessment - Thorough evaluation of cracks, spalling, and settling',
+            'Repair Plan - Customized plan addressing the root cause of problems',
+            'Quality Materials - Professional-grade repair materials',
+            'Expert Repair - Skilled repair work by experienced professionals',
+            'Preventive Measures - Recommendations to prevent future damage',
+            'Cleanup - Complete cleanup after repair work',
+            'Warranty - Workmanship warranty on all repair projects'
+          ].map(item => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Our Repair Process</h3>
+      <div class="space-y-4 mb-8">
+        {[
+          { num: '1', title: 'Inspection', desc: 'We inspect your concrete to identify all damage and root causes' },
+          { num: '2', title: 'Assessment', desc: 'Evaluation of repair options - repair vs. replacement recommendations' },
+          { num: '3', title: 'Surface Preparation', desc: 'Proper cleaning and preparation of damaged areas' },
+          { num: '4', title: 'Repair Work', desc: 'Professional repair using appropriate techniques and materials' },
+          { num: '5', title: 'Finishing', desc: 'Proper finishing to match existing concrete or improve appearance' },
+          { num: '6', title: 'Sealing', desc: 'Application of sealers when appropriate to protect repaired areas' }
+        ].map(step => (
+          <div class="flex items-start gap-4 bg-gray-50 rounded-lg p-4">
+            <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">{step.num}</div>
+            <div>
+              <h4 class="font-bold text-lg">{step.title}</h4>
+              <p class="text-gray-600">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Common Problems We Fix</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { icon: 'fa-road-crack', title: 'Cracks', desc: 'Hairline, structural, and expansion cracks' },
+          { icon: 'fa-arrow-down', title: 'Settling', desc: 'Uneven concrete from soil settlement' },
+          { icon: 'fa-layer-group', title: 'Spalling', desc: 'Surface deterioration from freeze-thaw' },
+          { icon: 'fa-droplet', title: 'Discoloration', desc: 'Stains from various sources' },
+          { icon: 'fa-grip-lines', title: 'Joint Failure', desc: 'Failed or damaged expansion joints' },
+          { icon: 'fa-house-crack', title: 'Foundation Issues', desc: 'Cracks in foundation walls and footings' }
+        ].map(item => (
+          <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class={`fa-solid ${item.icon} text-primary`}></i>
+            </div>
+            <div>
+              <h4 class="font-bold">{item.title}</h4>
+              <p class="text-gray-600 text-sm">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">When to Repair vs. Replace</h3>
+      <div class="bg-gray-50 rounded-lg p-6 mb-8">
+        <p class="text-gray-600 mb-4">Repair is often the better option when:</p>
+        <ul class="space-y-2">
+          {[
+            'Damage is localized rather than widespread',
+            'Structural integrity is still sound',
+            'Repair cost is significantly less than replacement',
+            'You want to extend the life of existing concrete',
+            'Damage is cosmetic rather than structural'
+          ].map(reason => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check text-primary mt-1"></i>
+              <span>{reason}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Areas We Serve</h3>
+      <p class="text-gray-600 mb-6">
+        We provide concrete repair services throughout <a href="/locations/deptford-nj" class="text-primary font-semibold hover:underline">Deptford</a>, <a href="/locations/west-deptford-nj" class="text-primary font-semibold hover:underline">West Deptford</a>, <a href="/locations/woodbury-nj" class="text-primary font-semibold hover:underline">Woodbury</a>, <a href="/locations/glassboro-nj" class="text-primary font-semibold hover:underline">Glassboro</a>, and <a href="/locations" class="text-primary font-semibold hover:underline">all surrounding Gloucester County communities</a>.
+      </p>
+    </div>
+  </section>
+
+  <RelatedServices currentService="concrete-repair" />
+  <ServiceAreasLink serviceName="Concrete Repair" />
+
+  <!-- Contact Form Section -->
+  <section id="contact-form" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ContactForm title="Get Your Free Concrete Repair Estimate" service="concrete-repair" />
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Common Questions</p>
+        <h2 class="section-heading">Concrete Repair FAQs</h2>
+      </div>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+            <h3 class="font-bold text-lg text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-600">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Need Concrete Repair?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Contact us today for a free inspection and estimate. No obligation, just honest advice.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact-form" class="btn-secondary">Get Your Free Estimate <i class="fa-solid fa-arrow-right"></i></a>
+        {SITE_CONFIG.phone && <a href={`tel:${SITE_CONFIG.phone}`} class="btn-outline"><i class="fa-solid fa-phone"></i> {SITE_CONFIG.phone}</a>}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

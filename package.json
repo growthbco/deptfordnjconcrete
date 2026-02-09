@@ -10,7 +10,9 @@
     "convert-images": "node scripts/convert-to-webp.js"
   },
   "dependencies": {
-    "astro": "^5.15.3"
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.15.3",
+    "tailwindcss": "^3.4.19"
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.6.0",

@@ -62,6 +62,70 @@
     "description": "Decorative stamped concrete for patios, driveways, and walkways",
     "primary": false,
     "keywords": ["stamped concrete", "decorative concrete", "patterned concrete", "stamped concrete patio", "stamped concrete driveway"]
+  },
+  {
+    "id": "indoor-concrete",
+    "name": "Indoor Concrete & Garage Floors",
+    "slug": "indoor-concrete",
+    "description": "Indoor concrete floors for garages, basements, and commercial spaces. Year-round service including winter projects.",
+    "primary": false,
+    "keywords": ["indoor concrete", "garage floor", "garage concrete", "interior concrete", "winter concrete", "polished concrete", "concrete floor repair"]
+  },
+  {
+    "id": "concrete-repair",
+    "name": "Concrete Repair",
+    "slug": "concrete-repair",
+    "description": "Professional concrete repair services for driveways, patios, foundations, and more in Deptford, NJ",
+    "primary": false,
+    "keywords": ["concrete repair", "concrete contractor repair", "concrete restoration", "concrete fixing", "concrete maintenance"]
+  },
+  {
+    "id": "concrete-overlays",
+    "name": "Concrete Overlays",
+    "slug": "concrete-overlays",
+    "description": "Concrete overlay installation to resurface and restore existing concrete surfaces in Deptford, NJ",
+    "primary": false,
+    "keywords": ["concrete overlay", "concrete resurfacing", "concrete restoration", "overlay installation", "concrete refinishing"]
+  },
+  {
+    "id": "pool-decks",
+    "name": "Pool Decks",
+    "slug": "pool-decks",
+    "description": "Professional concrete pool deck installation and repair in Deptford, NJ. Slip-resistant and durable pool decking",
+    "primary": false,
+    "keywords": ["pool deck", "concrete pool deck", "pool decking", "pool deck installation", "pool deck repair"]
+  },
+  {
+    "id": "concrete-removal",
+    "name": "Concrete Removal",
+    "slug": "concrete-removal",
+    "description": "Professional concrete removal and demolition services in Deptford, NJ. Safe and efficient concrete removal",
+    "primary": false,
+    "keywords": ["concrete removal", "concrete demolition", "concrete breaking", "concrete disposal", "remove concrete"]
+  },
+  {
+    "id": "stained-concrete",
+    "name": "Stained Concrete",
+    "slug": "stained-concrete",
+    "description": "Decorative stained concrete floors and surfaces in Deptford, NJ. Beautiful colors and patterns for interior and exterior",
+    "primary": false,
+    "keywords": ["stained concrete", "concrete staining", "decorative concrete", "colored concrete", "concrete color"]
+  },
+  {
+    "id": "crack-repair",
+    "name": "Crack Repair",
+    "slug": "crack-repair",
+    "description": "Professional concrete crack repair services in Deptford, NJ. Fix cracks in driveways, foundations, and more",
+    "primary": false,
+    "keywords": ["crack repair", "concrete crack repair", "foundation crack repair", "driveway crack repair", "fix concrete cracks"]
+  },
+  {
+    "id": "garage-floors",
+    "name": "Garage Floors",
+    "slug": "garage-floors",
+    "description": "Professional garage floor installation, repair, and resurfacing in Deptford, NJ. Perfect for winter projects",
+    "primary": false,
+    "keywords": ["garage floor", "garage floor installation", "garage floor repair", "garage floor resurfacing", "concrete garage floor"]
   }
 ]
 

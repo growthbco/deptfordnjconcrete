@@ -7,274 +7,210 @@ import { SITE_CONFIG } from '../../config';
 import { generateServiceSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('walkways', 'Professional concrete walkway and pathway installation in Deptford, NJ. Durable walkways with free estimates.');
+
+const galleryImages = [
+  { src: '/images/projects/IMG_7654.webp', alt: 'Concrete walkway installation in Deptford, NJ', label: 'Stamped Walkway' },
+  { src: '/images/projects/IMG_7655.webp', alt: 'Professional walkway project', label: 'Pathway Installation' },
+  { src: '/images/projects/IMG_5168.webp', alt: 'Concrete walkway contractor work', label: 'Quality Workmanship' },
+  { src: '/images/projects/IMG_5600.webp', alt: 'Residential walkway installation', label: 'Residential Walkway' },
+  { src: '/images/projects/IMG_5602.webp', alt: 'Concrete pathway project', label: 'Concrete Pathway' },
+  { src: '/images/projects/IMG_9885.webp', alt: 'Walkway installation service', label: 'Expert Installation' }
+];
+
+const faqs = [
+  { q: 'How wide should a concrete walkway be?', a: 'Residential walkways are typically 3-4 feet wide, while commercial sidewalks may need to be wider to meet accessibility requirements. We\'ll recommend the appropriate width during your free estimate.' },
+  { q: 'How long does walkway installation take?', a: 'Most walkway installations are completed within 1-2 days, depending on length and complexity. We\'ll provide a detailed timeline during your free estimate.' },
+  { q: 'Do I need a permit for a new walkway?', a: 'Permit requirements vary by municipality. Public sidewalks typically require permits, while private walkways may not. We\'ll check local requirements and assist with permit applications if needed.' },
+  { q: 'Can walkways be repaired instead of replaced?', a: 'Yes, we can often repair existing walkways if the damage is limited. We\'ll assess your walkway during the free estimate and recommend the best solution.' },
+  { q: 'Are concrete walkways slippery in winter?', a: 'We use textured finishes that provide better traction than smooth surfaces. However, all surfaces can be slippery when icy, so proper snow removal is important.' }
+];
 ---
 
-<BaseLayout 
+<BaseLayout
   title="Concrete Walkway Installation in Deptford, NJ"
   description="Professional concrete walkway contractors serving Deptford, NJ. Residential pathways, commercial sidewalks, and garden walkways. Quality installation and repairs available."
   schema={serviceSchema}
 >
-  <section class="hero">
-    <div class="container">
-      <h1>Concrete Walkway Installation in Deptford, New Jersey</h1>
-      <p class="hero-subtitle">Professional walkway installation services for residential and commercial properties. Enhance your property with durable concrete pathways.</p>
-      <a href="#contact-form" class="cta-primary">Get Free Walkway Estimate</a>
+  <!-- Hero Section -->
+  <section class="bg-dark py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="section-subheading text-primary mb-4">Walkway Services</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        Concrete Walkway Installation
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Professional walkway installation services for residential and commercial properties. Enhance your property with durable concrete pathways.
+      </p>
+      <a href="#contact-form" class="btn-primary text-lg">
+        Get Free Walkway Estimate
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
     </div>
   </section>
 
-  <section class="content-section">
-    <div class="container">
-      <h2>Walkway Services</h2>
-      <p>We install beautiful, durable concrete walkways that enhance your property's appearance and functionality.</p>
+  <!-- Gallery Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Our Work</p>
+        <h2 class="section-heading mb-6">Our Walkway Projects</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          See our quality walkway installations throughout Deptford and surrounding areas.
+        </p>
+      </div>
 
-      <h3>What's Included in Our Walkway Service</h3>
-      <p>When you choose Deptford Concrete Contractors for your walkway project, you receive complete service from design to completion:</p>
-      <ul>
-        <li><strong>Free Design Consultation:</strong> We discuss your needs, assess your property layout, and help design the perfect walkway path</li>
-        <li><strong>Custom Design:</strong> Walkway design tailored to your property, connecting key areas like driveways, patios, and entrances</li>
-        <li><strong>Site Preparation:</strong> Proper excavation, grading, and base preparation to ensure your walkway lasts</li>
-        <li><strong>Quality Materials:</strong> High-grade concrete mixes designed for pedestrian traffic and New Jersey's climate</li>
-        <li><strong>Professional Installation:</strong> Expert installation by experienced concrete professionals</li>
-        <li><strong>Proper Drainage:</strong> Correct slope and drainage to prevent water pooling and ice buildup</li>
-        <li><strong>Safety Features:</strong> Textured finishes for slip resistance, especially important in wet or icy conditions</li>
-        <li><strong>Expansion Joints:</strong> Properly placed expansion joints to prevent cracking from temperature changes</li>
-        <li><strong>Cleanup:</strong> Complete site cleanup after installation, leaving your property ready to use</li>
-        <li><strong>Code Compliance:</strong> All work meets local sidewalk and walkway requirements</li>
-      </ul>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {galleryImages.map(image => (
+          <div class="group relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+            <img src={image.src} alt={image.alt} loading="lazy" class="w-full h-full object-cover" width="800" height="600" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <p class="text-white font-semibold">{image.label}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-      <h3>Our Walkway Installation Process</h3>
-      <p>We follow a proven process to ensure your walkway is installed correctly and efficiently:</p>
-      <ol>
-        <li><strong>Design Consultation:</strong> We discuss your needs, assess your property layout, and create a walkway design</li>
-        <li><strong>Site Evaluation:</strong> We assess your property, drainage patterns, and local requirements</li>
-        <li><strong>Permit Assistance:</strong> We help secure necessary permits if required by your municipality</li>
-        <li><strong>Excavation & Base Preparation:</strong> Professional excavation and proper base material installation for stability</li>
-        <li><strong>Formwork:</strong> Installation of forms to create your walkway's shape and boundaries</li>
-        <li><strong>Reinforcement (if needed):</strong> Placement of reinforcement for wider walkways or challenging conditions</li>
-        <li><strong>Concrete Pouring:</strong> Placement of high-quality concrete mix appropriate for walkway use</li>
-        <li><strong>Finishing:</strong> Proper finishing with textured surface for slip resistance</li>
-        <li><strong>Curing:</strong> Proper curing time to ensure maximum strength and durability</li>
-        <li><strong>Final Inspection:</strong> Quality check to ensure your walkway meets all standards and safety requirements</li>
-      </ol>
+  <!-- Content Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-8">
+        Professional Walkway Services
+      </h2>
+      <p class="text-lg text-gray-600 mb-8">
+        We install beautiful, durable concrete walkways that enhance your property's appearance and functionality. From front entry walkways to garden pathways, we create safe, attractive paths for your home or business.
+      </p>
 
-      <h3>Common Issues Walkways Solve</h3>
-      <p>Our walkway services address many common property needs:</p>
-      <ul>
-        <li><strong>Mud and Mess:</strong> Create clean, dry pathways that eliminate mud and mess during wet weather</li>
-        <li><strong>Safety Concerns:</strong> Provide safe, level walking surfaces that prevent trips and falls</li>
-        <li><strong>Property Access:</strong> Create clear pathways connecting driveways, patios, and entrances</li>
-        <li><strong>Code Compliance:</strong> Meet local requirements for sidewalks and pedestrian pathways</li>
-        <li><strong>Curb Appeal:</strong> Well-designed walkways enhance property appearance and value</li>
-        <li><strong>Accessibility:</strong> Properly designed walkways improve property accessibility for all users</li>
-      </ul>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">What's Included in Our Walkway Service</h3>
+      <div class="bg-orange-50 border-l-4 border-primary rounded-lg p-6 mb-8">
+        <ul class="space-y-2">
+          {[
+            'Free Design Consultation - We discuss your needs and help design the perfect walkway path',
+            'Custom Design - Walkway design tailored to your property and preferences',
+            'Site Preparation - Proper excavation, grading, and base preparation',
+            'Quality Materials - High-grade concrete mixes for New Jersey\'s climate',
+            'Professional Installation - Expert installation by experienced professionals',
+            'Proper Drainage - Correct slope to prevent water pooling and ice buildup',
+            'Safety Features - Textured finishes for slip resistance',
+            'Expansion Joints - Properly placed to prevent cracking',
+            'Cleanup - Complete site cleanup after installation',
+            'Code Compliance - All work meets local sidewalk and walkway requirements'
+          ].map(item => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-      <h3>Walkway Types & Options</h3>
-      <p>We offer various walkway styles to match your property and needs:</p>
-      <ul>
-        <li><strong>Standard Concrete Walkways:</strong> Durable, textured finish perfect for most residential and commercial applications</li>
-        <li><strong>Stamped Concrete Walkways:</strong> Decorative patterns and textures that enhance visual appeal - <a href="/services/stamped-concrete">Learn more about stamped concrete →</a></li>
-        <li><strong>Colored Concrete Walkways:</strong> Custom colors to match your property's aesthetic</li>
-        <li><strong>Commercial Sidewalks:</strong> Code-compliant sidewalks for commercial properties</li>
-        <li><strong>Garden Pathways:</strong> Narrower walkways designed for garden and landscaping areas</li>
-      </ul>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Our Walkway Installation Process</h3>
+      <div class="space-y-4 mb-8">
+        {[
+          { num: '1', title: 'Design Consultation', desc: 'We discuss your needs and create a walkway design' },
+          { num: '2', title: 'Site Evaluation', desc: 'We assess your property and drainage patterns' },
+          { num: '3', title: 'Excavation & Base', desc: 'Professional excavation and base material installation' },
+          { num: '4', title: 'Formwork', desc: 'Installation of forms to create your walkway shape' },
+          { num: '5', title: 'Concrete Pouring', desc: 'Placement of high-quality concrete mix' },
+          { num: '6', title: 'Finishing & Curing', desc: 'Textured finishing for slip resistance and proper curing' }
+        ].map(step => (
+          <div class="flex items-start gap-4 bg-gray-50 rounded-lg p-4">
+            <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">{step.num}</div>
+            <div>
+              <h4 class="font-bold text-lg">{step.title}</h4>
+              <p class="text-gray-600">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
 
-      <h3>What Happens When You Call</h3>
-      <p>Getting your new walkway installed is straightforward with our streamlined process:</p>
-      <ol>
-        <li><strong>Initial Contact (24-48 Hour Response):</strong> When you reach out via phone or our contact form, we'll respond within 24-48 hours to schedule your free estimate</li>
-        <li><strong>Free On-Site Estimate:</strong> We visit your property to assess your needs, discuss layout options, and provide a detailed written estimate</li>
-        <li><strong>Project Planning:</strong> Once you approve the estimate, we handle all planning including permits (if needed), material ordering, and scheduling</li>
-        <li><strong>Professional Installation:</strong> Our experienced team completes your walkway installation efficiently and professionally</li>
-      </ol>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Common Issues Walkways Solve</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { icon: 'fa-cloud-rain', title: 'Mud and Mess', desc: 'Create clean, dry pathways that eliminate mud during wet weather' },
+          { icon: 'fa-person-falling', title: 'Safety Concerns', desc: 'Provide safe, level walking surfaces that prevent trips and falls' },
+          { icon: 'fa-door-open', title: 'Property Access', desc: 'Create clear pathways connecting driveways, patios, and entrances' },
+          { icon: 'fa-file-contract', title: 'Code Compliance', desc: 'Meet local requirements for sidewalks and pedestrian pathways' },
+          { icon: 'fa-home', title: 'Curb Appeal', desc: 'Well-designed walkways enhance property appearance and value' },
+          { icon: 'fa-wheelchair', title: 'Accessibility', desc: 'Improve property accessibility for all users' }
+        ].map(item => (
+          <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class={`fa-solid ${item.icon} text-primary`}></i>
+            </div>
+            <div>
+              <h4 class="font-bold">{item.title}</h4>
+              <p class="text-gray-600 text-sm">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
 
-      <h3>Our Customer Service Promise</h3>
-      <p>At Deptford Concrete Contractors, we believe in complete transparency and honest communication:</p>
-      <ul>
-        <li><strong>No Hidden Fees:</strong> Your written estimate includes all costs - materials, labor, permits, and cleanup - no surprises</li>
-        <li><strong>Clear Communication:</strong> We keep you informed at every step, from initial estimate through project completion</li>
-        <li><strong>Realistic Timelines:</strong> We provide honest timelines based on project scope and weather conditions - typically 1-2 days for most walkways</li>
-        <li><strong>Quality Guarantee:</strong> We stand behind our work and ensure your walkway meets all quality, safety, and code standards</li>
-        <li><strong>Responsive Service:</strong> We respond to questions and concerns promptly, typically within 24-48 hours</li>
-        <li><strong>Licensed & Insured:</strong> Full professional coverage protects you and your property throughout the project</li>
-      </ul>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Walkway Styles & Options</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { title: 'Standard Concrete', desc: 'Durable, textured finish for most applications', link: null },
+          { title: 'Stamped Concrete', desc: 'Decorative patterns and textures', link: '/services/stamped-concrete' },
+          { title: 'Colored Concrete', desc: 'Custom colors to match your property', link: '/services/stained-concrete' },
+          { title: 'Commercial Sidewalks', desc: 'Code-compliant sidewalks for businesses', link: null }
+        ].map(style => (
+          <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-primary">
+            <h4 class="font-bold mb-1">{style.title}</h4>
+            <p class="text-gray-600 text-sm">{style.desc}</p>
+            {style.link && <a href={style.link} class="text-primary text-sm font-semibold hover:underline">Learn more →</a>}
+          </div>
+        ))}
+      </div>
 
-      <h3>Walkway Investment Factors</h3>
-      <p>Understanding what affects your walkway investment helps you make informed decisions:</p>
-      <ul>
-        <li><strong>Length and Width:</strong> Longer or wider walkways require more materials and labor</li>
-        <li><strong>Walkway Style:</strong> Standard concrete is most economical, while stamped or colored options add to the investment</li>
-        <li><strong>Site Preparation:</strong> Challenging terrain, extensive excavation, or existing surface removal affects cost</li>
-        <li><strong>Special Requirements:</strong> Code requirements, accessibility features, or special finishes can impact cost</li>
-        <li><strong>Drainage Requirements:</strong> Properties with drainage challenges may need additional work</li>
-        <li><strong>Accessibility:</strong> Difficult access may require special equipment or additional time</li>
-      </ul>
-      <p>We provide free, detailed estimates that break down all costs so you understand exactly what you're investing in. There are no hidden fees or surprise charges - what we quote is what you pay.</p>
-
-      <h3>Related Services</h3>
-      <p>Walkways work perfectly with other outdoor concrete features:</p>
-      <ul>
-        <li><a href="/services/driveways">Driveway Installation</a> - Connect walkways to driveways</li>
-        <li><a href="/services/patios">Patio Installation</a> - Pathways to outdoor living spaces</li>
-        <li><a href="/services/stamped-concrete">Stamped Concrete</a> - Decorative walkway patterns</li>
-      </ul>
-
-      <h3>Areas We Serve</h3>
-      <p>We provide walkway installation services throughout <a href="/locations/deptford-nj">Deptford</a>, <a href="/locations/west-deptford-nj">West Deptford</a>, <a href="/locations/woodbury-nj">Woodbury</a>, <a href="/locations/glassboro-nj">Glassboro</a>, and <a href="/locations">all surrounding Gloucester County communities</a>.</p>
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Areas We Serve</h3>
+      <p class="text-gray-600 mb-6">
+        We provide walkway installation services throughout <a href="/locations/deptford-nj" class="text-primary font-semibold hover:underline">Deptford</a>, <a href="/locations/west-deptford-nj" class="text-primary font-semibold hover:underline">West Deptford</a>, <a href="/locations/woodbury-nj" class="text-primary font-semibold hover:underline">Woodbury</a>, <a href="/locations/glassboro-nj" class="text-primary font-semibold hover:underline">Glassboro</a>, and <a href="/locations" class="text-primary font-semibold hover:underline">all surrounding Gloucester County communities</a>.
+      </p>
     </div>
   </section>
 
   <RelatedServices currentService="walkways" />
   <ServiceAreasLink serviceName="Walkways" />
 
-  <section id="contact-form" class="contact-section">
-    <div class="container">
-      <ContactForm 
-        title="Get Your Free Walkway Estimate"
-        service="walkways"
-      />
+  <!-- Contact Form Section -->
+  <section id="contact-form" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ContactForm title="Get Your Free Walkway Estimate" service="walkways" />
     </div>
   </section>
 
-  <section class="faq-section">
-    <div class="container">
-      <h2>Walkway FAQs</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <h3>How wide should a concrete walkway be?</h3>
-          <p>Residential walkways are typically 3-4 feet wide, while commercial sidewalks may need to be wider to meet accessibility requirements. We'll recommend the appropriate width during your free estimate.</p>
-        </div>
-        <div class="faq-item">
-          <h3>How long does walkway installation take?</h3>
-          <p>Most walkway installations are completed within 1-2 days, depending on length and complexity. We'll provide a detailed timeline during your free estimate.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Do I need a permit for a new walkway?</h3>
-          <p>Permit requirements vary by municipality. Public sidewalks typically require permits, while private walkways may not. We'll check local requirements and assist with permit applications if needed.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Can walkways be repaired instead of replaced?</h3>
-          <p>Yes, we can often repair existing walkways if the damage is limited. We'll assess your walkway during the free estimate and recommend the best solution.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Are concrete walkways slippery in winter?</h3>
-          <p>We use textured finishes that provide better traction than smooth surfaces. However, all surfaces can be slippery when icy, so proper snow removal is important.</p>
-        </div>
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Common Questions</p>
+        <h2 class="section-heading">Walkway FAQs</h2>
+      </div>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+            <h3 class="font-bold text-lg text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-600">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Ready for a New Walkway?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Contact us today for a free estimate. No obligation, just honest pricing.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact-form" class="btn-secondary">Get Your Free Estimate <i class="fa-solid fa-arrow-right"></i></a>
+        {SITE_CONFIG.phone && <a href={`tel:${SITE_CONFIG.phone}`} class="btn-outline"><i class="fa-solid fa-phone"></i> {SITE_CONFIG.phone}</a>}
       </div>
     </div>
   </section>
 </BaseLayout>
-
-<style>
-  .hero {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    color: white;
-    padding: 3rem 0;
-    text-align: center;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.25rem;
-    color: #ccc;
-    max-width: 800px;
-    margin: 0 auto 2rem;
-  }
-  
-  .cta-primary {
-    display: inline-block;
-    background: #ff6b35;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  
-  .content-section {
-    padding: 4rem 0;
-  }
-  
-  .content-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .content-section h3 {
-    font-size: 1.5rem;
-    color: #ff6b35;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .contact-section {
-    padding: 4rem 0;
-    background: #f8f9fa;
-  }
-
-  .faq-section {
-    padding: 4rem 0;
-    background: white;
-  }
-
-  .faq-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 3rem;
-    color: #1a1a1a;
-  }
-
-  .faq-list {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .faq-item {
-    background: #f8f9fa;
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-
-  .faq-item h3 {
-    color: #ff6b35;
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-  }
-
-  .faq-item p {
-    margin: 0;
-    color: #666;
-    line-height: 1.6;
-  }
-
-  @media (max-width: 768px) {
-    .faq-section {
-      padding: 2.5rem 0;
-    }
-
-    .faq-section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .faq-item {
-      padding: 1.5rem;
-    }
-
-    .faq-item h3 {
-      font-size: 1.1rem;
-    }
-  }
-</style>
-

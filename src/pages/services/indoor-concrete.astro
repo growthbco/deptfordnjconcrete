@@ -1,0 +1,263 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
+import { SITE_CONFIG } from '../../config';
+import { generateServiceSchema } from '../../utils/schema';
+
+const serviceSchema = generateServiceSchema('indoor-concrete', 'Indoor concrete floor installation and repair in Deptford, NJ. Garage floors, basement floors, and commercial interior concrete. Year-round service including winter projects.');
+
+const galleryImages = [
+  { src: '/images/projects/IMG_3907.webp', alt: 'Garage concrete floor installation in Deptford, NJ', label: 'Garage Floor' },
+  { src: '/images/projects/IMG_3910.webp', alt: 'Professional indoor concrete floor project', label: 'Indoor Concrete' },
+  { src: '/images/projects/IMG_3911.webp', alt: 'Commercial interior concrete floor', label: 'Commercial Floor' },
+  { src: '/images/projects/IMG_5164.webp', alt: 'Basement concrete flooring project', label: 'Basement Flooring' },
+  { src: '/images/projects/IMG_5165.webp', alt: 'Interior concrete installation', label: 'Professional Installation' },
+  { src: '/images/projects/IMG_3403.webp', alt: 'Concrete floor repair service', label: 'Floor Repair' }
+];
+
+const faqs = [
+  { q: 'Can you install concrete floors in winter?', a: 'Yes! Indoor concrete installation is perfect for winter months. Since the work is done indoors, it\'s not affected by freezing temperatures, snow, or rain. Winter is actually an ideal time for indoor concrete projects.' },
+  { q: 'How much does a garage floor cost?', a: 'Garage floor costs vary based on size, condition of existing floor, and finishing options. We provide free estimates for accurate pricing. Most garage floors range from $3-$7 per square foot depending on the scope of work.' },
+  { q: 'Do indoor concrete floors need moisture barriers?', a: 'Moisture barriers are often recommended for basement floors and ground-level spaces to prevent moisture issues. We\'ll assess your space during the free estimate and recommend whether a vapor barrier is needed.' },
+  { q: 'How long does indoor concrete installation take?', a: 'Most indoor concrete projects are completed within 1-3 days, depending on size and complexity. We\'ll provide a detailed timeline during your free estimate.' },
+  { q: 'Can you repair existing indoor concrete floors?', a: 'Yes, we can often repair or resurface existing indoor concrete floors if the damage is limited. We\'ll assess your floor during the free estimate and recommend the best solution - repair or replacement.' },
+  { q: 'What\'s the difference between polished and smooth concrete?', a: 'Smooth concrete has a standard troweled finish. Polished concrete goes through a grinding and polishing process that creates a glossy, modern appearance. Polished concrete is more expensive but provides a high-end look.' }
+];
+---
+
+<BaseLayout
+  title="Indoor Concrete & Garage Floors in Deptford, NJ | Year-Round Service"
+  description="Professional indoor concrete floors for garages, basements, and commercial spaces in Deptford, NJ. Garage floor installation, polished concrete, and interior concrete repair. Available year-round including winter months."
+  schema={serviceSchema}
+>
+  <!-- Hero Section -->
+  <section class="bg-dark py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="section-subheading text-primary mb-4">Indoor Services</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        Indoor Concrete & Garage Floors
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Professional indoor concrete floors for garages, basements, and commercial spaces. Year-round service - perfect for winter projects when outdoor work isn't possible.
+      </p>
+      <a href="#contact-form" class="btn-primary text-lg">
+        Get Free Indoor Concrete Estimate
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Winter Highlight Banner -->
+  <section class="py-6 bg-orange-50 border-y-2 border-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-start gap-4">
+        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+          <i class="fa-solid fa-snowflake text-white text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-primary mb-1">Why Winter is Perfect for Indoor Concrete Projects</h3>
+          <p class="text-gray-700 mb-2">Indoor projects aren't affected by freezing temperatures, snow, or rain. Winter is actually an ideal time for garage floors, basement finishing, and commercial interior work.</p>
+          <p class="text-gray-600 text-sm"><strong>Benefits:</strong> No weather delays • Better scheduling availability • Faster project starts • Ideal for home improvement season</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Our Work</p>
+        <h2 class="section-heading mb-6">Our Indoor Concrete Projects</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          See our quality indoor concrete installations throughout Deptford and surrounding areas.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {galleryImages.map(image => (
+          <div class="group relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+            <img src={image.src} alt={image.alt} loading="lazy" class="w-full h-full object-cover" width="800" height="600" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <p class="text-white font-semibold">{image.label}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-8">
+        Year-Round Indoor Concrete Services
+      </h2>
+      <p class="text-lg text-gray-600 mb-8">
+        While outdoor concrete work slows down during New Jersey's winter months, indoor concrete projects are perfect for this time of year. We provide professional indoor concrete floor installation and repair services year-round, making winter an ideal time to tackle garage floors, basement renovations, and commercial interior projects.
+      </p>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Indoor Concrete Services We Provide</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { icon: 'fa-warehouse', title: 'Garage Floors', desc: 'New installation, repair, and leveling for all garage types', link: '/services/garage-floors' },
+          { icon: 'fa-house', title: 'Basement Floors', desc: 'Complete basement floor installation and repair', link: '/services/basement-flooring' },
+          { icon: 'fa-building', title: 'Commercial Floors', desc: 'Warehouse, retail, office, and industrial flooring', link: null },
+          { icon: 'fa-gem', title: 'Polished Concrete', desc: 'Decorative polished floors for modern spaces', link: null },
+          { icon: 'fa-wrench', title: 'Floor Repair', desc: 'Crack repair, leveling, and restoration', link: '/services/concrete-repair' },
+          { icon: 'fa-droplet', title: 'Moisture Barriers', desc: 'Vapor barrier installation for moisture protection', link: null }
+        ].map(service => (
+          <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class={`fa-solid ${service.icon} text-primary`}></i>
+            </div>
+            <div>
+              <h4 class="font-bold">{service.title}</h4>
+              <p class="text-gray-600 text-sm">{service.desc}</p>
+              {service.link && <a href={service.link} class="text-primary text-sm font-semibold hover:underline">Learn more →</a>}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">What's Included in Our Service</h3>
+      <div class="bg-orange-50 border-l-4 border-primary rounded-lg p-6 mb-8">
+        <ul class="space-y-2">
+          {[
+            'Free Site Evaluation - We assess your space and existing floor condition at no cost',
+            'Moisture Assessment - Evaluation of moisture levels and vapor barrier recommendations',
+            'Custom Design - Floor design tailored to your specific needs',
+            'Surface Preparation - Removal of old flooring and surface preparation',
+            'Moisture Barrier Installation - Vapor barrier when required',
+            'Quality Materials - High-grade concrete mixes for interior use',
+            'Professional Installation - Expert installation by experienced professionals',
+            'Leveling Services - Proper floor leveling for smooth, even surfaces',
+            'Finishing Options - Smooth, polished, or other finishes based on your needs',
+            'Sealing Services - Professional sealing when appropriate',
+            'Cleanup - Complete site cleanup after installation'
+          ].map(item => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-check-circle text-primary mt-1"></i>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Our Installation Process</h3>
+      <div class="space-y-4 mb-8">
+        {[
+          { num: '1', title: 'Site Evaluation', desc: 'We assess your space, existing floor condition, and moisture levels' },
+          { num: '2', title: 'Moisture Testing', desc: 'Evaluation to determine if vapor barriers are needed' },
+          { num: '3', title: 'Design & Planning', desc: 'Create a floor plan that addresses your needs' },
+          { num: '4', title: 'Surface Preparation', desc: 'Removal of old flooring and proper surface prep' },
+          { num: '5', title: 'Moisture Barrier', desc: 'Installation of vapor barrier when required' },
+          { num: '6', title: 'Concrete Pouring', desc: 'Placement of high-quality concrete mix' },
+          { num: '7', title: 'Finishing', desc: 'Proper finishing based on your chosen style' },
+          { num: '8', title: 'Curing & Sealing', desc: 'Proper curing and professional sealing' }
+        ].map(step => (
+          <div class="flex items-start gap-4 bg-gray-50 rounded-lg p-4">
+            <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">{step.num}</div>
+            <div>
+              <h4 class="font-bold text-lg">{step.title}</h4>
+              <p class="text-gray-600">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Benefits of Indoor Concrete Floors</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { icon: 'fa-shield-halved', title: 'Durability', desc: 'Extremely durable floors that last for decades' },
+          { icon: 'fa-broom', title: 'Low Maintenance', desc: 'Easy to clean compared to other flooring' },
+          { icon: 'fa-droplet', title: 'Moisture Resistance', desc: 'Resists moisture when properly installed' },
+          { icon: 'fa-dollar-sign', title: 'Cost-Effective', desc: 'More affordable than many flooring options' },
+          { icon: 'fa-palette', title: 'Versatile Finishes', desc: 'Smooth, polished, stained, or decorative' },
+          { icon: 'fa-leaf', title: 'Allergen-Free', desc: 'Doesn\'t harbor allergens like carpet' }
+        ].map(benefit => (
+          <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class={`fa-solid ${benefit.icon} text-primary`}></i>
+            </div>
+            <div>
+              <h4 class="font-bold">{benefit.title}</h4>
+              <p class="text-gray-600 text-sm">{benefit.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Common Issues We Solve</h3>
+      <div class="grid md:grid-cols-2 gap-4 mb-8">
+        {[
+          { icon: 'fa-road-crack', title: 'Cracked Floors', desc: 'Repair cracks in garage, basement, or commercial floors' },
+          { icon: 'fa-ruler-horizontal', title: 'Uneven Surfaces', desc: 'Level uneven floors that create trip hazards' },
+          { icon: 'fa-water', title: 'Moisture Problems', desc: 'Install vapor barriers to prevent moisture issues' },
+          { icon: 'fa-brush', title: 'Worn Surfaces', desc: 'Resurface worn floors to extend their lifespan' }
+        ].map(issue => (
+          <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class={`fa-solid ${issue.icon} text-primary`}></i>
+            </div>
+            <div>
+              <h4 class="font-bold">{issue.title}</h4>
+              <p class="text-gray-600 text-sm">{issue.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary font-display uppercase mt-10 mb-4">Areas We Serve</h3>
+      <p class="text-gray-600 mb-6">
+        We provide indoor concrete services throughout <a href="/locations/deptford-nj" class="text-primary font-semibold hover:underline">Deptford</a>, <a href="/locations/west-deptford-nj" class="text-primary font-semibold hover:underline">West Deptford</a>, <a href="/locations/woodbury-nj" class="text-primary font-semibold hover:underline">Woodbury</a>, <a href="/locations/glassboro-nj" class="text-primary font-semibold hover:underline">Glassboro</a>, and <a href="/locations" class="text-primary font-semibold hover:underline">all surrounding Gloucester County communities</a>.
+      </p>
+    </div>
+  </section>
+
+  <RelatedServices currentService="indoor-concrete" />
+  <ServiceAreasLink serviceName="Indoor Concrete" />
+
+  <!-- Contact Form Section -->
+  <section id="contact-form" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ContactForm title="Get Your Free Indoor Concrete Estimate" service="indoor-concrete" />
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="section-subheading text-primary mb-4">Common Questions</p>
+        <h2 class="section-heading">Indoor Concrete FAQs</h2>
+      </div>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+            <h3 class="font-bold text-lg text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-600">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Ready for Your Indoor Concrete Project?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Contact us today for a free estimate. Winter or summer, we're ready to help.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact-form" class="btn-secondary">Get Your Free Estimate <i class="fa-solid fa-arrow-right"></i></a>
+        {SITE_CONFIG.phone && <a href={`tel:${SITE_CONFIG.phone}`} class="btn-outline"><i class="fa-solid fa-phone"></i> {SITE_CONFIG.phone}</a>}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

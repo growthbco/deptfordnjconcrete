@@ -11,89 +11,21 @@ interface Props {
 const { location } = Astro.props;
 ---
 
-<div class="location-card">
-  <h3>{location.name}</h3>
-  <p class="location-state">{location.fullName}</p>
-  <a href={`/locations/${location.slug}`} class="location-link">
-    View Services →
-  </a>
-</div>
+<a href={`/locations/${location.slug}`} class="group block card p-6 text-center hover:-translate-y-2 border-t-4 border-primary">
+  <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary transition-colors">
+    <i class="fa-solid fa-location-dot text-primary text-xl group-hover:text-white transition-colors"></i>
+  </div>
 
-<style>
-  .location-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    text-align: center;
-  }
-  
-  .location-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  }
-  
-  .location-card h3 {
-    margin-top: 0;
-    color: #1a1a1a;
-    font-size: 1.25rem;
-  }
-  
-  .location-state {
-    color: #666;
-    margin-bottom: 1rem;
-  }
-  
-  .location-link {
-    color: #ff6b35;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-  }
-  
-  .location-link:hover {
-    color: #e55a2b;
-  }
-  
-  @media (max-width: 768px) {
-    .location-card {
-      padding: 1.25rem;
-    }
-    
-    .location-card h3 {
-      font-size: 1.1rem;
-    }
-    
-    .location-state {
-      font-size: 0.9rem;
-    }
-    
-    .location-link {
-      font-size: 0.95rem;
-      display: inline-block;
-      padding: 0.5rem 0;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .location-card {
-      padding: 1rem;
-      border-radius: 4px;
-    }
-    
-    .location-card h3 {
-      font-size: 1rem;
-    }
-    
-    .location-state {
-      font-size: 0.875rem;
-      margin-bottom: 0.75rem;
-    }
-    
-    .location-link {
-      font-size: 0.9rem;
-    }
-  }
-</style>
+  <h3 class="text-lg font-bold text-gray-900 font-display uppercase mb-1 group-hover:text-primary transition-colors">
+    {location.name}
+  </h3>
 
+  <p class="text-gray-500 text-sm mb-4">
+    {location.fullName}
+  </p>
+
+  <span class="inline-flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
+    View Services
+    <i class="fa-solid fa-arrow-right text-xs"></i>
+  </span>
+</a>
