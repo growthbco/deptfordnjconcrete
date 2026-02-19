@@ -1,0 +1,398 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { SITE_CONFIG } from '../config';
+
+const steps = [
+  {
+    num: '01',
+    title: 'Contact Us',
+    subtitle: 'Get in Touch',
+    description: 'Reach out by phone, email, or through our online form. Tell us about your project and we\'ll schedule a time to visit your property.',
+    details: [
+      'Call, email, or fill out our contact form',
+      'Describe your project goals and timeline',
+      'We respond within 24-48 hours',
+      'Schedule a convenient time for your free estimate'
+    ],
+    icon: 'fa-solid fa-phone',
+    image: '/images/projects/IMG_3907.webp'
+  },
+  {
+    num: '02',
+    title: 'Free On-Site Estimate',
+    subtitle: 'Property Assessment',
+    description: 'We visit your property to assess the site, discuss your vision, and provide a detailed written estimate with no obligation.',
+    details: [
+      'We visit your property at a scheduled time',
+      'Evaluate site conditions and access',
+      'Discuss your goals, preferences, and budget',
+      'Provide a detailed written estimate'
+    ],
+    icon: 'fa-solid fa-clipboard-list',
+    image: '/images/polebarns/IMG_6480.webp'
+  },
+  {
+    num: '03',
+    title: 'Planning & Permits',
+    subtitle: 'Project Preparation',
+    description: 'Once you approve the estimate, we handle all the planning details including permit research and scheduling your project.',
+    details: [
+      'Finalize project specifications',
+      'Research local permit requirements',
+      'Assist with permit applications if needed',
+      'Schedule your project start date'
+    ],
+    icon: 'fa-solid fa-file-signature',
+    image: '/images/projects/IMG_5164.webp'
+  },
+  {
+    num: '04',
+    title: 'Site Preparation',
+    subtitle: 'Getting Ready',
+    description: 'Our crew prepares your site with proper excavation, grading, and base installation to ensure a solid foundation for your concrete.',
+    details: [
+      'Mark out the project area',
+      'Excavate to proper depth',
+      'Install and compact base materials',
+      'Set up forms and reinforcement'
+    ],
+    icon: 'fa-solid fa-truck',
+    image: '/images/polebarns/IMG_6471.webp'
+  },
+  {
+    num: '05',
+    title: 'Concrete Installation',
+    subtitle: 'Expert Craftsmanship',
+    description: 'Our experienced team pours and finishes your concrete using quality materials and proven techniques for lasting results.',
+    details: [
+      'Pour high-quality concrete mix',
+      'Level and smooth the surface',
+      'Apply finishing techniques',
+      'Add decorative elements if applicable'
+    ],
+    icon: 'fa-solid fa-trowel-bricks',
+    image: '/images/polebarns/IMG_9021.webp'
+  },
+  {
+    num: '06',
+    title: 'Finishing & Curing',
+    subtitle: 'Quality Assurance',
+    description: 'We complete all finishing work, apply sealants if needed, and ensure proper curing for maximum durability.',
+    details: [
+      'Apply final finishing touches',
+      'Cut control joints as needed',
+      'Apply sealant if specified',
+      'Allow proper curing time'
+    ],
+    icon: 'fa-solid fa-paintbrush',
+    image: '/images/projects/IMG_7653.webp'
+  },
+  {
+    num: '07',
+    title: 'Final Walkthrough',
+    subtitle: 'Your Satisfaction',
+    description: 'We walk through the completed project with you, answer any questions, and ensure you\'re completely satisfied with the results.',
+    details: [
+      'Review completed work together',
+      'Answer any questions',
+      'Provide care and maintenance tips',
+      'Complete cleanup of your property'
+    ],
+    icon: 'fa-solid fa-handshake',
+    image: '/images/projects/IMG_7656.webp'
+  }
+];
+---
+
+<BaseLayout
+  title="Our Process | How We Work | Deptford Concrete Contractors"
+  description="Learn how Deptford Concrete Contractors works - from free estimate to project completion. Our proven process ensures quality results on every concrete project."
+>
+  <!-- Hero Section -->
+  <section class="relative bg-dark py-20 md:py-28">
+    <div class="absolute inset-0 z-0">
+      <img
+        src="/images/polebarns/IMG_6480.webp"
+        alt="Concrete installation process"
+        class="w-full h-full object-cover opacity-20"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-dark via-dark/90 to-dark/70"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm">How We Work</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        Our Process
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        From your first call to the final walkthrough, we make the concrete installation process simple and stress-free. Here's what to expect when you work with us.
+      </p>
+      <a href="#contact-form" class="inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded font-bold hover:bg-primary-dark transition shadow-lg text-lg">
+        Start Your Project <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Process Overview -->
+  <section class="py-12 bg-white border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+        {steps.map((step, i) => (
+          <div class="flex items-center gap-2 text-sm">
+            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xs">
+              {i + 1}
+            </div>
+            <span class="text-gray-600 hidden sm:inline">{step.title}</span>
+            {i < steps.length - 1 && (
+              <i class="fa-solid fa-chevron-right text-gray-300 text-xs ml-2 hidden md:inline"></i>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Steps -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-16 md:space-y-24">
+        {steps.map((step, index) => (
+          <div class={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+            <div class={index % 2 === 1 ? 'lg:order-2' : ''}>
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center text-2xl font-bold font-display">
+                  {step.num}
+                </div>
+                <div>
+                  <p class="text-primary font-bold text-sm uppercase tracking-wide">{step.subtitle}</p>
+                  <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase">{step.title}</h2>
+                </div>
+              </div>
+
+              <p class="text-lg text-gray-600 mb-6">
+                {step.description}
+              </p>
+
+              <div class="bg-white rounded-xl p-6 shadow-md">
+                <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <i class={`${step.icon} text-primary`}></i>
+                  What Happens
+                </h3>
+                <ul class="space-y-3">
+                  {step.details.map(detail => (
+                    <li class="flex items-start gap-3">
+                      <i class="fa-solid fa-check text-primary mt-1"></i>
+                      <span class="text-gray-600">{detail}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div class={index % 2 === 1 ? 'lg:order-1' : ''}>
+              <div class="relative">
+                <img
+                  src={step.image}
+                  alt={step.title}
+                  class="rounded-2xl shadow-2xl w-full"
+                  loading="lazy"
+                />
+                <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-primary rounded-2xl flex items-center justify-center text-white text-4xl font-bold font-display shadow-lg">
+                  {step.num}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What Sets Us Apart -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm">Why Choose Us</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase">
+          What Sets Us Apart
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-clock text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-2 font-display">Fast Response</h3>
+          <p class="text-gray-600 text-sm">We respond to all inquiries within 24-48 hours and schedule estimates at your convenience.</p>
+        </div>
+
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-file-invoice-dollar text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-2 font-display">Transparent Pricing</h3>
+          <p class="text-gray-600 text-sm">Detailed written estimates with no hidden fees. You know exactly what you're paying for.</p>
+        </div>
+
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-comments text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-2 font-display">Clear Communication</h3>
+          <p class="text-gray-600 text-sm">We keep you informed at every step. No surprises, just professional service.</p>
+        </div>
+
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-broom text-primary text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl mb-2 font-display">Clean Worksite</h3>
+          <p class="text-gray-600 text-sm">We respect your property. Every job ends with a thorough cleanup.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Expectations -->
+  <section class="py-16 md:py-24 bg-dark text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm">Project Timeline</p>
+        <h2 class="text-3xl md:text-4xl font-bold font-display uppercase">
+          What to Expect
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white/5 rounded-2xl p-8 border border-white/10">
+          <div class="text-primary text-4xl font-bold font-display mb-4">24-48 hrs</div>
+          <h3 class="text-xl font-bold mb-2">Initial Response</h3>
+          <p class="text-gray-400">We'll respond to your inquiry and schedule your free estimate within 24-48 hours.</p>
+        </div>
+
+        <div class="bg-white/5 rounded-2xl p-8 border border-white/10">
+          <div class="text-primary text-4xl font-bold font-display mb-4">1-2 weeks</div>
+          <h3 class="text-xl font-bold mb-2">Project Scheduling</h3>
+          <p class="text-gray-400">After approval, most projects are scheduled within 1-2 weeks, depending on season and scope.</p>
+        </div>
+
+        <div class="bg-white/5 rounded-2xl p-8 border border-white/10">
+          <div class="text-primary text-4xl font-bold font-display mb-4">1-3 days</div>
+          <h3 class="text-xl font-bold mb-2">Installation</h3>
+          <p class="text-gray-400">Most residential projects are completed in 1-3 days. Larger commercial projects may take longer.</p>
+        </div>
+      </div>
+
+      <p class="text-center text-gray-400 mt-8 text-sm">
+        * Timelines vary based on project scope, weather conditions, and permit requirements. We'll provide a detailed timeline during your estimate.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm">Common Questions</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase">
+          Process FAQs
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-primary">
+          <h3 class="font-bold text-lg text-gray-900 mb-2">How do I get started?</h3>
+          <p class="text-gray-600">Simply contact us by phone, email, or through our website contact form. We'll respond within 24-48 hours to discuss your project and schedule a free on-site estimate.</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-primary">
+          <h3 class="font-bold text-lg text-gray-900 mb-2">Is the estimate really free?</h3>
+          <p class="text-gray-600">Yes, absolutely. We provide free, no-obligation estimates on all projects. There's no pressure to commit - we want you to make the best decision for your needs.</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-primary">
+          <h3 class="font-bold text-lg text-gray-900 mb-2">Do you handle permits?</h3>
+          <p class="text-gray-600">We research permit requirements for your specific project and location. We can assist with permit applications and ensure your project meets all local building codes.</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-primary">
+          <h3 class="font-bold text-lg text-gray-900 mb-2">What if weather delays my project?</h3>
+          <p class="text-gray-600">Weather can impact concrete work. If we need to reschedule due to weather, we'll communicate promptly and get your project back on track as soon as conditions allow.</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-primary">
+          <h3 class="font-bold text-lg text-gray-900 mb-2">How long before I can use my new concrete?</h3>
+          <p class="text-gray-600">Light foot traffic is typically okay after 24-48 hours. We recommend waiting 7 days before driving on a new driveway or placing heavy objects on new concrete.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section id="contact-form" class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm">Step 1</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-6">
+            Ready to Get Started?
+          </h2>
+          <p class="text-lg text-gray-600 mb-8">
+            The first step is easy - just reach out. Tell us about your project and we'll schedule your free on-site estimate.
+          </p>
+
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-phone text-primary"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 mb-1">Call Us</h3>
+                {SITE_CONFIG.phone && <a href={`tel:${SITE_CONFIG.phone}`} class="text-primary font-bold text-lg hover:underline">{SITE_CONFIG.phone}</a>}
+                <p class="text-gray-500 text-sm">Mon-Sat, 7am-6pm</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-envelope text-primary"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 mb-1">Email Us</h3>
+                {SITE_CONFIG.email && <a href={`mailto:${SITE_CONFIG.email}`} class="text-primary font-bold hover:underline">{SITE_CONFIG.email}</a>}
+                <p class="text-gray-500 text-sm">We respond within 24-48 hours</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <ContactForm title="Request Your Free Estimate" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Simple Process. Quality Results.
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        We make concrete easy. Contact us today to start your project.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded font-bold hover:bg-gray-100 transition shadow-lg">
+          Get Free Estimate <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        {SITE_CONFIG.phone && (
+          <a href={`tel:${SITE_CONFIG.phone}`} class="inline-flex items-center justify-center gap-2 bg-transparent text-white px-8 py-4 rounded font-bold border-2 border-white hover:bg-white hover:text-gray-900 transition">
+            <i class="fa-solid fa-phone"></i> {SITE_CONFIG.phone}
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
