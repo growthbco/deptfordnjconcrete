@@ -1,0 +1,389 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { SITE_CONFIG } from '../config';
+
+const testimonials = [
+  {
+    name: 'Mike R.',
+    location: 'Deptford, NJ',
+    project: 'Pole Barn Foundation',
+    rating: 5,
+    text: 'Absolutely fantastic work on our pole barn foundation. The crew was professional, showed up on time, and the finished product exceeded our expectations. They really know their stuff when it comes to post-frame building foundations.',
+    featured: true
+  },
+  {
+    name: 'Jennifer S.',
+    location: 'Washington Township, NJ',
+    project: 'Stamped Concrete Patio',
+    rating: 5,
+    text: 'We had a stamped concrete patio installed and it looks amazing! The team was very knowledgeable about the different patterns and colors available. Our neighbors keep asking who did the work.',
+    featured: true
+  },
+  {
+    name: 'Robert T.',
+    location: 'Glassboro, NJ',
+    project: 'Commercial Slab',
+    rating: 5,
+    text: 'Needed a large concrete slab for our warehouse expansion. Deptford Concrete handled the entire project professionally from start to finish. The quality of work was excellent and they finished ahead of schedule.',
+    featured: true
+  },
+  {
+    name: 'Lisa M.',
+    location: 'Woodbury, NJ',
+    project: 'Driveway Replacement',
+    rating: 5,
+    text: 'Our old driveway was cracked and uneven. The new concrete driveway looks fantastic and we love the brushed finish. Fair pricing and great communication throughout the project.',
+    featured: false
+  },
+  {
+    name: 'David K.',
+    location: 'Sewell, NJ',
+    project: 'Pole Barn Foundation',
+    rating: 5,
+    text: 'Second time using them for a pole barn foundation. Same great quality and service as the first time. These guys are the real deal when it comes to pole barn work.',
+    featured: false
+  },
+  {
+    name: 'Susan H.',
+    location: 'West Deptford, NJ',
+    project: 'Concrete Walkway',
+    rating: 5,
+    text: 'Beautiful walkway from our driveway to the front door. The crew was respectful of our property and cleaned up everything when they were done. Highly recommend!',
+    featured: false
+  },
+  {
+    name: 'James P.',
+    location: 'Pitman, NJ',
+    project: 'Garage Floor',
+    rating: 5,
+    text: 'Had our garage floor redone and it looks brand new. They were able to work during the winter which was perfect for our schedule. Very happy with the results.',
+    featured: false
+  },
+  {
+    name: 'Karen B.',
+    location: 'Mantua, NJ',
+    project: 'Retaining Wall',
+    rating: 5,
+    text: 'The retaining wall they built solved our drainage issues and looks great too. Professional team that clearly takes pride in their work.',
+    featured: false
+  },
+  {
+    name: 'Tom W.',
+    location: 'Turnersville, NJ',
+    project: 'Pool Deck',
+    rating: 5,
+    text: 'Our new pool deck is exactly what we wanted. The slip-resistant finish is perfect and it matches our patio beautifully. Great job!',
+    featured: false
+  }
+];
+
+const featuredTestimonials = testimonials.filter(t => t.featured);
+const otherTestimonials = testimonials.filter(t => !t.featured);
+
+const reviewSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: SITE_CONFIG.name,
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5.0',
+    reviewCount: testimonials.length.toString(),
+    bestRating: '5',
+    worstRating: '1'
+  },
+  review: testimonials.map(t => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: t.name },
+    reviewRating: { '@type': 'Rating', ratingValue: t.rating.toString(), bestRating: '5' },
+    reviewBody: t.text
+  }))
+};
+---
+
+<BaseLayout
+  title="Customer Reviews & Testimonials | Deptford Concrete Contractors"
+  description="Read what our customers say about Deptford Concrete Contractors. 5-star reviews for pole barn foundations, driveways, patios, and concrete services in Gloucester County, NJ."
+  schema={reviewSchema}
+>
+  <!-- Hero Section -->
+  <section class="relative bg-dark py-20 md:py-28">
+    <div class="absolute inset-0 z-0">
+      <img
+        src="/images/projects/IMG_7653.webp"
+        alt="Completed concrete project"
+        class="w-full h-full object-cover opacity-20"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-dark via-dark/90 to-dark/70"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm">What Our Customers Say</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6">
+        Customer Testimonials
+      </h1>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Don't just take our word for it. See what homeowners and businesses throughout Gloucester County say about our concrete work.
+      </p>
+
+      <!-- Rating Summary -->
+      <div class="inline-flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-full px-8 py-4">
+        <div class="flex text-accent text-2xl">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <div class="text-white">
+          <span class="font-bold text-2xl">5.0</span>
+          <span class="text-white/70 ml-2">from {testimonials.length}+ reviews</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Badges -->
+  <section class="py-8 bg-white border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+        <div class="flex items-center gap-3">
+          <i class="fa-brands fa-google text-4xl text-gray-400"></i>
+          <div>
+            <div class="flex text-accent text-sm">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-sm text-gray-600 font-medium">Google Reviews</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <i class="fa-brands fa-facebook text-4xl text-gray-400"></i>
+          <div>
+            <div class="flex text-accent text-sm">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-sm text-gray-600 font-medium">Facebook Reviews</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <i class="fa-solid fa-award text-4xl text-gray-400"></i>
+          <div>
+            <p class="text-lg font-bold text-gray-900">100+</p>
+            <p class="text-sm text-gray-600 font-medium">Projects Completed</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Testimonials -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm">Featured Reviews</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase">
+          What Customers Are Saying
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {featuredTestimonials.map(testimonial => (
+          <div class="bg-white rounded-2xl shadow-lg p-8 relative">
+            <div class="absolute -top-4 left-8">
+              <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white text-xl">
+                <i class="fa-solid fa-quote-left"></i>
+              </div>
+            </div>
+
+            <div class="flex text-accent mb-4 mt-4">
+              {[...Array(testimonial.rating)].map(() => (
+                <i class="fa-solid fa-star"></i>
+              ))}
+            </div>
+
+            <p class="text-gray-700 mb-6 leading-relaxed">"{testimonial.text}"</p>
+
+            <div class="border-t pt-4">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 font-bold text-lg">
+                  {testimonial.name.charAt(0)}
+                </div>
+                <div>
+                  <p class="font-bold text-gray-900">{testimonial.name}</p>
+                  <p class="text-sm text-gray-500">{testimonial.location}</p>
+                  <p class="text-sm text-primary font-medium">{testimonial.project}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- All Testimonials Grid -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm">More Reviews</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase">
+          Trusted by Homeowners & Businesses
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {otherTestimonials.map(testimonial => (
+          <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+            <div class="flex text-accent mb-3 text-sm">
+              {[...Array(testimonial.rating)].map(() => (
+                <i class="fa-solid fa-star"></i>
+              ))}
+            </div>
+
+            <p class="text-gray-700 mb-4 text-sm leading-relaxed">"{testimonial.text}"</p>
+
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 font-bold">
+                {testimonial.name.charAt(0)}
+              </div>
+              <div>
+                <p class="font-bold text-gray-900 text-sm">{testimonial.name}</p>
+                <p class="text-xs text-gray-500">{testimonial.location} • {testimonial.project}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 md:py-24 bg-dark text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold font-display uppercase">
+          Why Customers Choose Us
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="text-5xl font-bold text-primary font-display mb-2">5.0</div>
+          <div class="flex justify-center text-accent mb-2">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-gray-400">Average Rating</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-bold text-primary font-display mb-2">100+</div>
+          <p class="text-gray-400">Projects Completed</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-bold text-primary font-display mb-2">100%</div>
+          <p class="text-gray-400">Customer Satisfaction</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-bold text-primary font-display mb-2">11+</div>
+          <p class="text-gray-400">Communities Served</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leave a Review CTA -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-6">
+        Had a Great Experience?
+      </h2>
+      <p class="text-lg text-gray-600 mb-8">
+        We'd love to hear about your project! Leave us a review on Google or Facebook.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#" class="inline-flex items-center justify-center gap-3 bg-white text-gray-900 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition shadow-lg border">
+          <i class="fa-brands fa-google text-xl"></i>
+          Review on Google
+        </a>
+        <a href="#" class="inline-flex items-center justify-center gap-3 bg-[#1877f2] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#166fe5] transition shadow-lg">
+          <i class="fa-brands fa-facebook text-xl"></i>
+          Review on Facebook
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section id="contact-form" class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm">Ready to Start?</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-6">
+            Get Your Free Estimate
+          </h2>
+          <p class="text-lg text-gray-600 mb-8">
+            Join our growing list of satisfied customers. Contact us today for a free, no-obligation estimate on your concrete project.
+          </p>
+
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                <i class="fa-solid fa-check text-primary"></i>
+              </div>
+              <span class="text-gray-700">Free estimates within 24-48 hours</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                <i class="fa-solid fa-check text-primary"></i>
+              </div>
+              <span class="text-gray-700">Licensed and insured contractors</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                <i class="fa-solid fa-check text-primary"></i>
+              </div>
+              <span class="text-gray-700">Quality workmanship guaranteed</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <ContactForm title="Request Your Free Estimate" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Ready to Experience 5-Star Service?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Contact us today and see why our customers rate us 5 stars.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded font-bold hover:bg-gray-100 transition shadow-lg">
+          Get Free Estimate <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        {SITE_CONFIG.phone && (
+          <a href={`tel:${SITE_CONFIG.phone}`} class="inline-flex items-center justify-center gap-2 bg-transparent text-white px-8 py-4 rounded font-bold border-2 border-white hover:bg-white hover:text-gray-900 transition">
+            <i class="fa-solid fa-phone"></i> {SITE_CONFIG.phone}
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
