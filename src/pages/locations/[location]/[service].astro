@@ -4,15 +4,16 @@ import ContactForm from '../../../components/ContactForm.astro';
 import { SITE_CONFIG } from '../../../config';
 import locationsData from '../../../content/locations.json';
 import servicesData from '../../../content/services.json';
+import locationDetails from '../../../content/location-details.json';
 import { generateLocationSchema } from '../../../utils/schema';
 
 export async function getStaticPaths() {
   const locations = locationsData;
-  const primaryServices = servicesData.filter(s => s.primary);
-  
-  return locations.flatMap(location => 
-    primaryServices.map(service => ({
-      params: { 
+  const allServices = servicesData;
+
+  return locations.flatMap(location =>
+    allServices.map(service => ({
+      params: {
         location: location.slug,
         service: service.slug
       },
@@ -25,9 +26,16 @@ export async function getStaticPaths() {
 }
 
 const { location, service } = Astro.props;
+const details = locationDetails[location.slug] || {};
+
+// Get other services for interlinking (exclude current)
+const otherServices = servicesData.filter(s => s.id !== service.id).slice(0, 6);
+
+// Get nearby locations for interlinking (exclude current)
+const nearbyLocations = locationsData.filter(l => l.slug !== location.slug).slice(0, 4);
 
 const pageTitle = `${service.name} in ${location.name}, NJ | ${SITE_CONFIG.name}`;
-const pageDescription = `Professional ${service.name.toLowerCase()} services in ${location.fullName}. Expert installation and free estimates. Serving ${location.name} and surrounding areas.`;
+const pageDescription = `Professional ${service.name.toLowerCase()} services in ${location.fullName}. Licensed & insured contractors serving ${location.name} with quality workmanship. Free estimates available.`;
 
 const localServiceSchema = {
   ...generateLocationSchema(location.name, location.slug),
@@ -41,303 +49,520 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_CONFIG.url },
+    { '@type': 'ListItem', position: 2, name: 'Service Areas', item: `${SITE_CONFIG.url}/locations` },
+    { '@type': 'ListItem', position: 3, name: location.name, item: `${SITE_CONFIG.url}/locations/${location.slug}` },
+    { '@type': 'ListItem', position: 4, name: service.name, item: `${SITE_CONFIG.url}/locations/${location.slug}/${service.slug}` }
+  ]
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
     {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: SITE_CONFIG.url
+      '@type': 'Question',
+      name: `How much does ${service.name.toLowerCase()} cost in ${location.name}, NJ?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `${service.name} costs in ${location.name} vary based on project size, site conditions, and specifications. We provide free, no-obligation estimates for all ${service.name.toLowerCase()} projects in ${location.name}. Contact us for accurate pricing.`
+      }
     },
     {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Service Areas',
-      item: `${SITE_CONFIG.url}/locations`
+      '@type': 'Question',
+      name: `Do you need a permit for ${service.name.toLowerCase()} in ${location.name}?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `Permit requirements for ${service.name.toLowerCase()} in ${location.name}, NJ vary by project scope. We handle permit research and can assist with applications. During your free estimate, we'll clarify what permits your specific project requires.`
+      }
     },
     {
-      '@type': 'ListItem',
-      position: 3,
-      name: location.name,
-      item: `${SITE_CONFIG.url}/locations/${location.slug}`
-    },
-    {
-      '@type': 'ListItem',
-      position: 4,
-      name: service.name,
-      item: `${SITE_CONFIG.url}/locations/${location.slug}/${service.slug}`
+      '@type': 'Question',
+      name: `How long does ${service.name.toLowerCase()} installation take in ${location.name}?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `${service.name} project timelines in ${location.name} depend on size and complexity. Most residential projects take 1-3 days. We'll provide a detailed timeline during your free estimate.`
+      }
     }
   ]
 };
+
+// Service-specific images mapping
+const serviceImages = {
+  'pole-barn-foundations': [
+    { src: '/images/polebarns/IMG_6480.webp', alt: `Pole barn foundation installation in ${location.name}, NJ` },
+    { src: '/images/polebarns/IMG_6471.webp', alt: `Concrete pole barn foundation in ${location.name}` },
+    { src: '/images/polebarns/IMG_9021.webp', alt: `Professional pole barn foundation contractor ${location.name}` }
+  ],
+  'concrete-slabs': [
+    { src: '/images/projects/IMG_3907.webp', alt: `Commercial concrete slab in ${location.name}, NJ` },
+    { src: '/images/projects/IMG_5164.webp', alt: `Concrete slab installation ${location.name}` },
+    { src: '/images/projects/IMG_3401.webp', alt: `Industrial slab contractor in ${location.name}` }
+  ],
+  'driveways': [
+    { src: '/images/projects/IMG_0973.webp', alt: `Concrete driveway in ${location.name}, NJ` },
+    { src: '/images/projects/IMG_0974.webp', alt: `Driveway installation ${location.name}` },
+    { src: '/images/projects/IMG_2635.webp', alt: `Professional driveway contractor ${location.name}` }
+  ],
+  'stamped-concrete': [
+    { src: '/images/projects/IMG_7649.webp', alt: `Stamped concrete in ${location.name}, NJ` },
+    { src: '/images/projects/IMG_7653.webp', alt: `Decorative stamped concrete ${location.name}` },
+    { src: '/images/projects/IMG_7656.webp', alt: `Stamped concrete patio in ${location.name}` }
+  ],
+  'patios': [
+    { src: '/images/projects/IMG_7649.webp', alt: `Concrete patio in ${location.name}, NJ` },
+    { src: '/images/projects/IMG_7653.webp', alt: `Patio installation ${location.name}` },
+    { src: '/images/projects/IMG_5600.webp', alt: `Backyard patio contractor ${location.name}` }
+  ],
+  'default': [
+    { src: '/images/projects/IMG_3907.webp', alt: `Concrete project in ${location.name}, NJ` },
+    { src: '/images/projects/IMG_5164.webp', alt: `Professional concrete work ${location.name}` },
+    { src: '/images/projects/IMG_9889.webp', alt: `Concrete contractor in ${location.name}` }
+  ]
+};
+
+const images = serviceImages[service.id] || serviceImages['default'];
 ---
 
-<BaseLayout 
+<BaseLayout
   title={pageTitle}
   description={pageDescription}
   schema={localServiceSchema}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <section class="hero">
-    <div class="container">
-      <h1>{service.name} in {location.name}, New Jersey</h1>
-      <p class="hero-subtitle">Expert {service.name.toLowerCase()} installation and services in {location.fullName}. Free estimates on all {service.name.toLowerCase()} projects.</p>
-      <a href="#contact-form" class="cta-primary">Get Free {service.name} Estimate in {location.name}</a>
-    </div>
-  </section>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
-  <section class="content-section">
-    <div class="container">
-      <h2>{service.name} Services in {location.name}, NJ</h2>
-      
-      {service.id === 'pole-barn-foundations' && (
-        <>
-          <p>Deptford Concrete Contractors specializes in professional pole barn foundation installation in {location.name}, New Jersey. Our primary expertise is pole barn foundations, and we have extensive experience installing concrete foundations for post-frame buildings throughout {location.name} and surrounding Gloucester County communities.</p>
-          
-          <h3>Pole Barn Foundation Installation in {location.name}</h3>
-          <p>Pole barn foundations are our primary focus. If you're building a pole barn in {location.name}, we provide expert foundation installation that meets all structural requirements and local building codes. Our team understands the unique requirements of post-frame building construction, including proper footing depth, concrete strength specifications, and local building code compliance.</p>
-          
-          <p>Our pole barn foundation services in {location.name} include:</p>
-          <ul>
-            <li>Concrete footing installation for post-frame buildings</li>
-            <li>Slab-on-grade foundations for pole barns</li>
-            <li>Foundation design consultation for {location.name} projects</li>
-            <li>Permit assistance and code compliance</li>
-            <li>Site preparation and excavation</li>
-            <li>Reinforcement and structural integrity</li>
-          </ul>
-          
-          <h3>Why Choose Us for Pole Barn Foundations in {location.name}?</h3>
-          <p>When you need a pole barn foundation in {location.name}, choose a contractor with specialized pole barn foundation expertise. We understand local building requirements, soil conditions, and the unique needs of {location.name} property owners. Our foundation installations are built to last and meet all structural requirements.</p>
-        </>
-      )}
-      
-      {service.id === 'concrete-slabs' && (
-        <>
-          <p>Deptford Concrete Contractors specializes in large commercial and industrial concrete slab installation in {location.name}, New Jersey. We excel at large-scale concrete slab projects for commercial and industrial applications, handling projects of all sizes with precision and efficiency.</p>
-          
-          <h3>Commercial Concrete Slab Installation in {location.name}</h3>
-          <p>We provide expert concrete slab installation for businesses in {location.name}. From warehouse floors to manufacturing facility foundations, we handle projects of all sizes with precision and efficiency.</p>
-          
-          <p>Our commercial concrete slab services in {location.name} include:</p>
-          <ul>
-            <li>Industrial floor slabs</li>
-            <li>Warehouse concrete foundations</li>
-            <li>Commercial building slabs</li>
-            <li>Heavy-duty concrete installations</li>
-            <li>Reinforced concrete for high-load applications</li>
-            <li>Site preparation and excavation</li>
-          </ul>
-          
-          <h3>Why Choose Us for Concrete Slabs in {location.name}?</h3>
-          <p>Our experience with large-scale concrete projects in {location.name} makes us the ideal choice for your commercial or industrial slab needs. We understand local requirements and deliver projects that meet all structural and code specifications.</p>
-        </>
-      )}
-      
-      {service.id === 'stamped-concrete' && (
-        <>
-          <p>Deptford Concrete Contractors specializes in beautiful stamped concrete installation in {location.name}, New Jersey. Stamped concrete provides an elegant, cost-effective alternative to natural stone or pavers, with a wide variety of patterns and colors to match your style.</p>
-          
-          <h3>Stamped Concrete Installation in {location.name}</h3>
-          <p>Our stamped concrete work in {location.name} enhances curb appeal and adds value to your property. We offer a wide range of patterns, textures, and colors to create beautiful, durable surfaces for your outdoor spaces.</p>
-          
-          <p>Our stamped concrete services in {location.name} include:</p>
-          <ul>
-            <li>Stamped concrete patios and outdoor living spaces</li>
-            <li>Decorative concrete driveways</li>
-            <li>Patterned concrete walkways</li>
-            <li>Pool deck stamped concrete</li>
-            <li>Custom patterns and colors</li>
-            <li>Professional sealing and maintenance</li>
-          </ul>
-          
-          <h3>Why Choose Us for Stamped Concrete in {location.name}?</h3>
-          <p>Our expertise in stamped concrete installation in {location.name} ensures beautiful, long-lasting results that enhance your property's value and appearance. We work with you to choose the perfect pattern and color for your project.</p>
-        </>
-      )}
-      
-      <h3>Contact Us for {service.name} in {location.name}</h3>
-      <p>Ready to start your {service.name.toLowerCase()} project in {location.name}? Contact Deptford Concrete Contractors today for a free, no-obligation estimate. We'll assess your needs and provide expert recommendations.</p>
-    </div>
-  </section>
-
-  <section id="contact-form" class="contact-section">
-    <div class="container">
-      <ContactForm 
-        title={`Get Your Free ${service.name} Estimate in ${location.name}, NJ`}
-        location={location.name}
-        service={service.id}
+  <!-- Hero Section -->
+  <section class="relative bg-dark py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img
+        src={images[0].src}
+        alt={images[0].alt}
+        class="w-full h-full object-cover opacity-30"
+        fetchpriority="high"
       />
+      <div class="absolute inset-0 bg-gradient-to-r from-dark via-dark/90 to-dark/70"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Breadcrumb -->
+      <nav class="text-sm mb-6">
+        <ol class="flex items-center gap-2 text-gray-400">
+          <li><a href="/" class="hover:text-white transition">Home</a></li>
+          <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+          <li><a href="/locations" class="hover:text-white transition">Locations</a></li>
+          <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+          <li><a href={`/locations/${location.slug}`} class="hover:text-white transition">{location.name}</a></li>
+          <li><i class="fa-solid fa-chevron-right text-xs"></i></li>
+          <li class="text-primary">{service.name}</li>
+        </ol>
+      </nav>
+
+      <div class="max-w-4xl">
+        <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm flex items-center gap-2">
+          <i class="fa-solid fa-location-dot"></i> Serving {location.name}, New Jersey
+        </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white uppercase font-display mb-6 leading-tight">
+          {service.name} in {location.name}, NJ
+        </h1>
+        <p class="text-xl text-gray-300 mb-8 max-w-2xl">
+          Professional {service.name.toLowerCase()} installation and services for residential and commercial properties in {location.fullName}. Licensed, insured, and trusted by your neighbors.
+        </p>
+
+        <!-- Trust Signals -->
+        <div class="flex flex-wrap gap-6 mb-8 text-white/80 text-sm">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-shield-halved text-primary"></i>
+            <span>Licensed & Insured</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-star text-accent"></i>
+            <span>5-Star Rated</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-clock text-primary"></i>
+            <span>Free Estimates</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#contact-form" class="inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded font-bold hover:bg-primary-dark transition shadow-lg text-lg">
+            Get Free Estimate <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          {SITE_CONFIG.phone && (
+            <a href={`tel:${SITE_CONFIG.phone}`} class="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded font-bold hover:bg-white/20 transition border border-white/20">
+              <i class="fa-solid fa-phone"></i> {SITE_CONFIG.phone}
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local Service Introduction -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-6">
+            Your Local {service.name} Experts in {location.name}
+          </h2>
+          <p class="text-lg text-gray-600 mb-6">
+            Deptford Concrete Contractors provides professional {service.name.toLowerCase()} services throughout {location.name} and {location.fullName}. As local contractors who understand the unique needs of {location.name} properties, we deliver quality workmanship built for New Jersey's climate.
+          </p>
+          <p class="text-gray-600 mb-6">
+            {service.description}. Whether you're a homeowner looking to enhance your property or a business owner needing commercial concrete work, our experienced team delivers results that last.
+          </p>
+
+          {details.localFeatures && (
+            <div class="bg-orange-50 border-l-4 border-primary rounded-r-lg p-4 mb-6">
+              <p class="text-gray-700">
+                <strong class="text-primary">Local Knowledge:</strong> {details.localFeatures}
+              </p>
+            </div>
+          )}
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <i class="fa-solid fa-check text-primary"></i>
+              <span>New {service.name.toLowerCase()} installation</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <i class="fa-solid fa-check text-primary"></i>
+              <span>{service.name} repair & restoration</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <i class="fa-solid fa-check text-primary"></i>
+              <span>Free on-site estimates</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <i class="fa-solid fa-check text-primary"></i>
+              <span>Permit assistance</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          {images.slice(0, 2).map((img, i) => (
+            <div class={`rounded-xl overflow-hidden shadow-lg ${i === 0 ? 'col-span-2' : ''}`}>
+              <img src={img.src} alt={img.alt} loading="lazy" class="w-full h-full object-cover" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us for This Location -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm">Why Choose Us</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase">
+          {service.name} Experts Serving {location.name}
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl p-6 shadow-md">
+          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <i class="fa-solid fa-map-location-dot text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 font-display">Local {location.name} Knowledge</h3>
+          <p class="text-gray-600">
+            We understand {location.name}'s soil conditions, local building codes, and neighborhood requirements. Our team regularly works near {details.landmarks?.[0] || 'local landmarks'} and throughout {location.name}.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md">
+          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <i class="fa-solid fa-cloud-sun text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 font-display">Built for NJ Weather</h3>
+          <p class="text-gray-600">
+            {details.weatherImpacts || `Our concrete work is designed to withstand New Jersey's freeze-thaw cycles, humid summers, and variable weather conditions.`}
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md">
+          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <i class="fa-solid fa-layer-group text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 font-display">Proper Site Prep</h3>
+          <p class="text-gray-600">
+            {details.soilConditions || `We properly assess and prepare your site for optimal concrete performance, ensuring proper drainage and long-lasting results.`}
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md">
+          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <i class="fa-solid fa-shield-halved text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 font-display">Licensed & Insured</h3>
+          <p class="text-gray-600">
+            Full liability coverage and workers' compensation for your protection. We meet all New Jersey licensing requirements for concrete contractors.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md">
+          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <i class="fa-solid fa-comments-dollar text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 font-display">Transparent Pricing</h3>
+          <p class="text-gray-600">
+            Free detailed estimates with no hidden fees. We provide honest pricing and clear communication throughout your {service.name.toLowerCase()} project.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md">
+          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <i class="fa-solid fa-clock text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 font-display">Fast Response</h3>
+          <p class="text-gray-600">
+            We respond to {location.name} estimate requests within 24-48 hours. Quick scheduling and reliable project timelines.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Process -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm">How It Works</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase">
+          Our {service.name} Process
+        </h2>
+      </div>
+
+      <div class="space-y-6">
+        {[
+          { num: '1', title: 'Free Consultation', desc: `Contact us for a free estimate. We'll visit your ${location.name} property to assess your needs, discuss options, and provide a detailed quote.` },
+          { num: '2', title: 'Planning & Permits', desc: `We handle all planning details including permit research for ${location.name}. We'll confirm specifications and schedule your project.` },
+          { num: '3', title: 'Site Preparation', desc: `Professional excavation, grading, and base preparation. We ensure proper drainage and stable foundation for your ${service.name.toLowerCase()}.` },
+          { num: '4', title: 'Expert Installation', desc: `Our experienced crew installs your ${service.name.toLowerCase()} using quality materials and proven techniques for lasting results.` },
+          { num: '5', title: 'Finishing & Cleanup', desc: `We complete all finishing work, ensure proper curing, and leave your ${location.name} property clean and ready to enjoy.` }
+        ].map(step => (
+          <div class="flex items-start gap-6 bg-gray-50 rounded-xl p-6">
+            <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0 font-display">{step.num}</div>
+            <div>
+              <h3 class="font-bold text-xl mb-2">{step.title}</h3>
+              <p class="text-gray-600">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Gallery -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm">Our Work</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase">
+          {service.name} Projects
+        </h2>
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+          Browse our {service.name.toLowerCase()} work throughout Gloucester County including projects near {location.name}.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {images.map(img => (
+          <div class="group relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1">
+            <img src={img.src} alt={img.alt} loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <p class="text-white font-medium text-sm">{img.alt}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="/gallery" class="inline-flex items-center gap-2 text-primary font-bold hover:underline">
+          View Full Gallery <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm">Common Questions</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase">
+          {service.name} FAQs for {location.name}
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+          <h3 class="font-bold text-lg text-gray-900 mb-2">How much does {service.name.toLowerCase()} cost in {location.name}, NJ?</h3>
+          <p class="text-gray-600">{service.name} costs in {location.name} vary based on project size, site conditions, and specifications. We provide free, no-obligation estimates for all {service.name.toLowerCase()} projects. <a href="#contact-form" class="text-primary font-semibold hover:underline">Contact us</a> for accurate pricing.</p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+          <h3 class="font-bold text-lg text-gray-900 mb-2">Do I need a permit for {service.name.toLowerCase()} in {location.name}?</h3>
+          <p class="text-gray-600">Permit requirements for {service.name.toLowerCase()} in {location.name}, NJ vary by project scope. We handle permit research and can assist with applications. During your free estimate, we'll clarify what permits your specific project requires.</p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+          <h3 class="font-bold text-lg text-gray-900 mb-2">How long does {service.name.toLowerCase()} installation take?</h3>
+          <p class="text-gray-600">{service.name} project timelines in {location.name} depend on size and complexity. Most residential projects take 1-3 days. We'll provide a detailed timeline during your free estimate.</p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+          <h3 class="font-bold text-lg text-gray-900 mb-2">What areas near {location.name} do you serve?</h3>
+          <p class="text-gray-600">We serve {location.name} and all surrounding Gloucester County communities including {nearbyLocations.slice(0, 3).map(l => l.name).join(', ')}, and more. <a href="/locations" class="text-primary font-semibold hover:underline">View all service areas</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section id="contact-form" class="py-16 md:py-24 bg-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="text-white">
+          <h2 class="text-3xl md:text-4xl font-bold font-display uppercase mb-6">
+            Get Your Free {service.name} Estimate in {location.name}
+          </h2>
+          <p class="text-gray-300 text-lg mb-8">
+            Ready to start your {service.name.toLowerCase()} project in {location.name}? Contact us today for a free, no-obligation estimate. We respond within 24-48 hours.
+          </p>
+
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                <i class="fa-solid fa-phone text-primary"></i>
+              </div>
+              <div>
+                <p class="text-gray-400 text-sm">Call Us</p>
+                {SITE_CONFIG.phone && <a href={`tel:${SITE_CONFIG.phone}`} class="text-white font-bold text-lg hover:text-primary transition">{SITE_CONFIG.phone}</a>}
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                <i class="fa-solid fa-envelope text-primary"></i>
+              </div>
+              <div>
+                <p class="text-gray-400 text-sm">Email Us</p>
+                {SITE_CONFIG.email && <a href={`mailto:${SITE_CONFIG.email}`} class="text-white font-bold hover:text-primary transition">{SITE_CONFIG.email}</a>}
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                <i class="fa-solid fa-location-dot text-primary"></i>
+              </div>
+              <div>
+                <p class="text-gray-400 text-sm">Serving</p>
+                <p class="text-white font-bold">{location.name} & Gloucester County, NJ</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 text-white/60 text-sm">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-shield-halved text-primary"></i>
+              <span>Licensed & Insured</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-star text-accent"></i>
+              <span>5-Star Reviews</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <ContactForm
+            title={`Request Your Free Estimate`}
+            location={location.name}
+            service={service.id}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm">More Services</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase">
+          Other Services in {location.name}
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {otherServices.map(s => (
+          <a href={`/locations/${location.slug}/${s.slug}`} class="group bg-gray-50 rounded-xl p-6 hover:bg-primary hover:text-white transition-all duration-300">
+            <h3 class="font-bold text-lg mb-2 font-display">{s.name}</h3>
+            <p class="text-gray-600 group-hover:text-white/80 text-sm mb-3">{s.description}</p>
+            <span class="text-primary group-hover:text-white font-semibold text-sm flex items-center gap-1">
+              Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+            </span>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="/services" class="inline-flex items-center gap-2 text-primary font-bold hover:underline">
+          View All Services <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nearby Locations -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm">Service Areas</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase">
+          {service.name} in Nearby Areas
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {nearbyLocations.map(loc => (
+          <a href={`/locations/${loc.slug}/${service.slug}`} class="group flex items-center gap-3 p-4 bg-white rounded-lg hover:bg-primary hover:text-white transition-all duration-300 shadow-sm">
+            <i class="fa-solid fa-location-dot text-primary group-hover:text-white"></i>
+            <span class="font-medium">{loc.name}, NJ</span>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="/locations" class="inline-flex items-center gap-2 text-primary font-bold hover:underline">
+          View All Service Areas <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 md:py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white font-display uppercase mb-6">
+        Ready for {service.name} in {location.name}?
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Get your free estimate today. No obligation, just honest pricing from your local concrete contractors.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact-form" class="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded font-bold hover:bg-gray-100 transition shadow-lg">
+          Get Free Estimate <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        {SITE_CONFIG.phone && (
+          <a href={`tel:${SITE_CONFIG.phone}`} class="inline-flex items-center justify-center gap-2 bg-transparent text-white px-8 py-4 rounded font-bold border-2 border-white hover:bg-white hover:text-gray-900 transition">
+            <i class="fa-solid fa-phone"></i> {SITE_CONFIG.phone}
+          </a>
+        )}
+      </div>
     </div>
   </section>
 </BaseLayout>
-
-<style>
-  .hero {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    color: white;
-    padding: 3rem 0;
-    text-align: center;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.25rem;
-    color: #ccc;
-    max-width: 800px;
-    margin: 0 auto 2rem;
-  }
-  
-  .cta-primary {
-    display: inline-block;
-    background: #ff6b35;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background 0.3s;
-  }
-  
-  .cta-primary:hover {
-    background: #e55a2b;
-  }
-  
-  .content-section {
-    padding: 4rem 0;
-    background: white;
-  }
-  
-  .content-section h2 {
-    font-size: 2rem;
-    color: #1a1a1a;
-    margin-bottom: 1.5rem;
-  }
-  
-  .content-section h3 {
-    font-size: 1.5rem;
-    color: #ff6b35;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .content-section ul {
-    margin-left: 2rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .content-section li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .contact-section {
-    padding: 4rem 0;
-    background: #f8f9fa;
-  }
-  
-  @media (max-width: 768px) {
-    .hero {
-      padding: 2rem 0;
-    }
-    
-    .hero h1 {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-      line-height: 1.3;
-    }
-    
-    .hero-subtitle {
-      font-size: 0.95rem;
-      margin-bottom: 1.25rem;
-    }
-    
-    .cta-primary {
-      width: 100%;
-      text-align: center;
-      padding: 0.875rem 1.5rem;
-      font-size: 0.95rem;
-    }
-    
-    .container {
-      padding: 0 1rem;
-    }
-    
-    .content-section {
-      padding: 2.5rem 0;
-    }
-    
-    .content-section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1.25rem;
-    }
-    
-    .content-section h3 {
-      font-size: 1.25rem;
-      margin-top: 1.5rem;
-    }
-    
-    .content-section ul {
-      margin-left: 1.5rem;
-    }
-    
-    .content-section li {
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-    }
-    
-    .contact-section {
-      padding: 2.5rem 0;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .hero {
-      padding: 1.5rem 0;
-    }
-    
-    .hero h1 {
-      font-size: 1.25rem;
-    }
-    
-    .hero-subtitle {
-      font-size: 0.875rem;
-    }
-    
-    .cta-primary {
-      padding: 0.75rem 1.25rem;
-      font-size: 0.875rem;
-    }
-    
-    .container {
-      padding: 0 0.75rem;
-    }
-    
-    .content-section {
-      padding: 2rem 0;
-    }
-    
-    .content-section h2 {
-      font-size: 1.35rem;
-    }
-    
-    .content-section h3 {
-      font-size: 1.15rem;
-      margin-top: 1.25rem;
-    }
-    
-    .content-section ul {
-      margin-left: 1.25rem;
-    }
-    
-    .contact-section {
-      padding: 2rem 0;
-    }
-  }
-</style>
