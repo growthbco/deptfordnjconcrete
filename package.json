@@ -7,7 +7,8 @@
     "build": "astro build && node scripts/generate-sitemap.js",
     "preview": "astro preview",
     "astro": "astro",
-    "convert-images": "node scripts/convert-to-webp.js"
+    "convert-images": "node scripts/convert-to-webp.js",
+    "fix-orientation": "node scripts/fix-orientation.js"
   },
   "dependencies": {
     "@astrojs/tailwind": "^6.0.2",

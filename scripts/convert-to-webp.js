@@ -21,6 +21,7 @@ async function convertToWebP(inputPath, outputPath) {
     }
 
     await sharp(inputPath)
+      .rotate() // Auto-rotate based on EXIF orientation
       .webp({ quality: 85, effort: 6 })
       .toFile(outputPath);
     
