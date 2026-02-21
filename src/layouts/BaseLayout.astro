@@ -8,7 +8,7 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
-  schema?: any;
+  schema?: any | any[];
   canonical?: string;
   transparentHeader?: boolean;
 }
@@ -36,8 +36,9 @@ const canonicalUrl = canonical || `${SITE_CONFIG.url}${Astro.url.pathname}`;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+    <!-- Font Awesome (non-render-blocking) -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" media="print" onload="this.media='all'" />
 
     <meta name="google-site-verification" content="gNlWUEJTxmdbWYq8rjpWYcMb4tmvhVl8IJ8kf2R55DM" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -67,9 +68,13 @@ const canonicalUrl = canonical || `${SITE_CONFIG.url}${Astro.url.pathname}`;
 
     <title>{fullTitle}</title>
 
-    {schema && (
+    {schema && Array.isArray(schema) ? (
+      schema.map((s: any) => (
+        <script type="application/ld+json" set:html={JSON.stringify(s)} />
+      ))
+    ) : schema ? (
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-    )}
+    ) : null}
   </head>
   <body class="bg-white text-gray-800">
     <Header transparent={transparentHeader} />

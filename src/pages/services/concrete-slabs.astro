@@ -4,9 +4,15 @@ import ContactForm from '../../components/ContactForm.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
 import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
-import { generateServiceSchema } from '../../utils/schema';
+import { generateServiceSchema, generateBreadcrumbSchema, generateFAQSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('concrete-slabs', 'Large commercial and industrial concrete slab installation in Deptford, NJ. Professional slab contractors for warehouses, manufacturing facilities, and commercial buildings. Free estimates.');
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: 'https://deptfordnjconcrete.com/' },
+  { name: 'Services', url: 'https://deptfordnjconcrete.com/services/' },
+  { name: 'Concrete Slabs', url: 'https://deptfordnjconcrete.com/services/concrete-slabs/' }
+]);
 
 const galleryImages = [
   { src: '/images/projects/IMG_3910.webp', alt: 'Commercial concrete slab installation in Deptford, NJ', label: 'Commercial Slab' },
@@ -24,12 +30,14 @@ const faqs = [
   { q: 'What\'s the difference between a foundation slab and a floor slab?', a: 'Foundation slabs support the building structure and must meet specific structural requirements. Floor slabs are interior surfaces that may have different requirements. We\'ll design the appropriate slab type for your needs.' },
   { q: 'Do I need a vapor barrier under my concrete slab?', a: 'Vapor barriers are often required for interior slabs or in areas with high moisture. We\'ll assess your specific situation and install a vapor barrier if needed to prevent moisture issues.' }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <BaseLayout
   title="Large Concrete Slab Installation in Deptford, NJ | Commercial & Industrial"
   description="Professional large concrete slab installation for commercial and industrial projects in Deptford, NJ. Free estimates on all slab projects."
-  schema={serviceSchema}
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
 >
   <!-- Hero Section -->
   <section class="bg-dark py-20 md:py-28">

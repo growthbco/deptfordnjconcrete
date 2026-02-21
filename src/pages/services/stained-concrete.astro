@@ -4,9 +4,15 @@ import ContactForm from '../../components/ContactForm.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
 import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
-import { generateServiceSchema } from '../../utils/schema';
+import { generateServiceSchema, generateBreadcrumbSchema, generateFAQSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('stained-concrete', 'Professional stained concrete installation and coloring in Deptford, NJ. Beautiful colored concrete floors for interior and exterior. Custom colors and patterns available.');
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: 'https://deptfordnjconcrete.com/' },
+  { name: 'Services', url: 'https://deptfordnjconcrete.com/services/' },
+  { name: 'Stained Concrete', url: 'https://deptfordnjconcrete.com/services/stained-concrete/' }
+]);
 
 const galleryImages = [
   { src: '/images/projects/IMG_7649.webp', alt: 'Stained concrete installation in Deptford, NJ', label: 'Stained Concrete' },
@@ -24,12 +30,14 @@ const faqs = [
   { q: 'What colors are available for stained concrete?', a: 'Acid stains offer earthy tones (browns, tans, greens, blues), while water-based stains provide a wider color range. We can help you choose colors that match your design vision.' },
   { q: 'Can stained concrete be combined with stamped patterns?', a: 'Yes! Stains work beautifully with stamped concrete patterns, creating unique decorative effects that combine texture and color.' }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <BaseLayout
   title="Stained Concrete Floors & Surfaces in Deptford, NJ | Colored Concrete"
   description="Expert stained concrete contractors in Deptford, NJ. Professional concrete staining for floors, driveways, patios, and more. Custom colors and decorative effects. Free estimates."
-  schema={serviceSchema}
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
 >
   <!-- Hero Section -->
   <section class="bg-dark py-20 md:py-28">

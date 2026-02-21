@@ -4,9 +4,15 @@ import ContactForm from '../../components/ContactForm.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
 import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
-import { generateServiceSchema } from '../../utils/schema';
+import { generateServiceSchema, generateBreadcrumbSchema, generateFAQSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('concrete-repair', 'Professional concrete repair services in Deptford, NJ. Crack repair, resurfacing, leveling, and restoration for driveways, patios, foundations, and more.');
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: 'https://deptfordnjconcrete.com/' },
+  { name: 'Services', url: 'https://deptfordnjconcrete.com/services/' },
+  { name: 'Concrete Repair', url: 'https://deptfordnjconcrete.com/services/concrete-repair/' }
+]);
 
 const galleryImages = [
   { src: '/images/projects/IMG_0973.webp', alt: 'Concrete repair work in Deptford, NJ', label: 'Driveway Repair' },
@@ -24,12 +30,14 @@ const faqs = [
   { q: 'Is it better to repair or replace concrete?', a: 'Repair is often more cost-effective when damage is localized and structural integrity is sound. We\'ll assess your concrete during the free inspection and recommend the best option for your situation.' },
   { q: 'Will repaired concrete match the existing surface?', a: 'We do our best to match existing concrete, though perfect matching can be difficult with aged concrete. For resurfacing projects, we can create a uniform appearance across the entire surface.' }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <BaseLayout
   title="Concrete Repair Services in Deptford, NJ | Crack Repair & Resurfacing"
   description="Expert concrete repair contractors in Deptford, NJ. Crack repair, resurfacing, leveling, and restoration services. Fix damaged driveways, patios, foundations, and slabs. Free estimates."
-  schema={serviceSchema}
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
 >
   <!-- Hero Section -->
   <section class="bg-dark py-20 md:py-28">

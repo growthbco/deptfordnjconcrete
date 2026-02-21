@@ -4,9 +4,15 @@ import ContactForm from '../../components/ContactForm.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
 import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
-import { generateServiceSchema } from '../../utils/schema';
+import { generateServiceSchema, generateBreadcrumbSchema, generateFAQSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('concrete-removal', 'Professional concrete removal and demolition services in Deptford, NJ. Safe and efficient concrete removal for driveways, patios, slabs, and foundations.');
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: 'https://deptfordnjconcrete.com/' },
+  { name: 'Services', url: 'https://deptfordnjconcrete.com/services/' },
+  { name: 'Concrete Removal', url: 'https://deptfordnjconcrete.com/services/concrete-removal/' }
+]);
 
 const faqs = [
   { q: 'How much does concrete removal cost?', a: 'Concrete removal costs vary based on thickness, size, and accessibility. Typical costs range from $2-$6 per square foot, including removal and disposal. We provide free estimates for accurate pricing.' },
@@ -15,12 +21,14 @@ const faqs = [
   { q: 'Can you remove concrete and install new concrete?', a: 'Yes! We can handle both removal and new installation. This is often more efficient and cost-effective than hiring separate contractors.' },
   { q: 'Do I need a permit for concrete removal?', a: 'Permit requirements vary by municipality and project scope. We\'ll check local requirements and assist with permits if needed.' }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <BaseLayout
   title="Concrete Removal & Demolition Services in Deptford, NJ"
   description="Expert concrete removal contractors in Deptford, NJ. Safe concrete demolition and removal for driveways, patios, foundations, and slabs. Proper disposal included."
-  schema={serviceSchema}
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
 >
   <!-- Hero Section -->
   <section class="bg-dark py-20 md:py-28">

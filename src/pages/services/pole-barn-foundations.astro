@@ -1,13 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
-import SchemaMarkup from '../../components/SchemaMarkup.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
 import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
-import { generateServiceSchema } from '../../utils/schema';
+import { generateServiceSchema, generateBreadcrumbSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('pole-barn-foundations', 'Professional pole barn foundation installation and repair services in Deptford, NJ and surrounding areas. Expert post-frame building foundations with free estimates.');
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: 'https://deptfordnjconcrete.com/' },
+  { name: 'Services', url: 'https://deptfordnjconcrete.com/services/' },
+  { name: 'Pole Barn Foundations', url: 'https://deptfordnjconcrete.com/services/pole-barn-foundations/' }
+]);
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -44,11 +49,9 @@ const faqSchema = {
 <BaseLayout
   title="Pole Barn Foundation Contractors in Deptford, NJ | Free Estimates"
   description="Professional pole barn foundation installation and repair services in Deptford, New Jersey. Expert post-frame building foundations with free estimates."
-  schema={serviceSchema}
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
   transparentHeader={true}
 >
-  <SchemaMarkup type="FAQPage" data={faqSchema} />
-
   <!-- Hero Section -->
   <section class="relative min-h-[500px] flex items-center">
     <div class="absolute inset-0">

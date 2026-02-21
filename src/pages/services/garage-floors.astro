@@ -4,9 +4,15 @@ import ContactForm from '../../components/ContactForm.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
 import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
-import { generateServiceSchema } from '../../utils/schema';
+import { generateServiceSchema, generateBreadcrumbSchema, generateFAQSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('garage-floors', 'Professional garage floor installation, repair, and resurfacing in Deptford, NJ. Perfect for winter projects. Durable garage floors with decorative options.');
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: 'https://deptfordnjconcrete.com/' },
+  { name: 'Services', url: 'https://deptfordnjconcrete.com/services/' },
+  { name: 'Garage Floors', url: 'https://deptfordnjconcrete.com/services/garage-floors/' }
+]);
 
 const galleryImages = [
   { src: '/images/projects/IMG_3907.webp', alt: 'Garage floor installation in Deptford, NJ', label: 'Garage Floor' },
@@ -24,12 +30,14 @@ const faqs = [
   { q: 'How long does garage floor installation take?', a: 'Most garage floor installations are completed within 1-2 days, depending on size and complexity. Resurfacing projects may take 1 day. We\'ll provide a timeline during your free estimate.' },
   { q: 'Do garage floors need special sealers?', a: 'Garage floors benefit from sealers that resist oil, chemicals, and wear. We use appropriate sealers designed for garage applications to protect your investment.' }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <BaseLayout
   title="Garage Floor Installation & Repair in Deptford, NJ | Winter Projects"
   description="Expert garage floor contractors in Deptford, NJ. Garage floor installation, repair, resurfacing, and decorative options. Perfect for winter projects. Free estimates."
-  schema={serviceSchema}
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
 >
   <!-- Hero Section -->
   <section class="bg-dark py-20 md:py-28">

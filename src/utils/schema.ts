@@ -5,6 +5,40 @@
 
 import { SITE_CONFIG } from '../config';
 
+/**
+ * Generate BreadcrumbList schema for rich snippets in search results
+ */
+export function generateBreadcrumbSchema(items: Array<{ name: string; url: string }>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url
+    }))
+  };
+}
+
+/**
+ * Generate FAQPage schema from an array of questions and answers
+ */
+export function generateFAQSchema(faqs: Array<{ q: string; a: string }>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a
+      }
+    }))
+  };
+}
+
 // Service catalog with detailed information
 export const SERVICE_CATALOG = [
   {

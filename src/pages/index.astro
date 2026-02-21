@@ -4,7 +4,7 @@ import ContactForm from '../components/ContactForm.astro';
 import { SITE_CONFIG } from '../config';
 import servicesData from '../content/services.json';
 import locationsData from '../content/locations.json';
-import { generateHomeAndConstructionBusinessSchema } from '../utils/schema';
+import { generateHomeAndConstructionBusinessSchema, generateBreadcrumbSchema } from '../utils/schema';
 
 const primaryServices = servicesData.filter((s: any) => s.primary);
 const otherServices = servicesData.filter((s: any) => !s.primary);
@@ -62,7 +62,7 @@ const faqSchema = {
 <BaseLayout
   title="Pole Barn Foundation, Stamped Concrete & Large Slab Contractors in Deptford, NJ"
   description="Professional pole barn foundation specialists, stamped concrete experts, and commercial concrete contractors serving Deptford, NJ. Free estimates on all concrete projects."
-  schema={localBusinessSchema}
+  schema={[localBusinessSchema, faqSchema]}
   transparentHeader={true}
 >
   <!-- Hero Section -->
@@ -74,6 +74,8 @@ const faqSchema = {
         class="w-full h-full object-cover opacity-60"
         alt="Pole barn foundation installation in Deptford, New Jersey"
         fetchpriority="high"
+        width="1920"
+        height="1080"
       />
       <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
     </div>
@@ -87,8 +89,8 @@ const faqSchema = {
             <i class="fa-solid fa-star mr-1"></i> 5-Star Concrete Contractors in South Jersey
           </p>
           <h1 class="text-4xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 uppercase leading-tight font-display">
-            Your Trusted Local <br />
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-400">Concrete Contractor</span>
+            Concrete Contractors <br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-400">in Deptford, NJ</span>
           </h1>
           <p class="text-gray-200 text-lg mb-8 max-w-xl font-light">
             Deptford Concrete Contractors: Your trusted partner for pole barn foundations, commercial slabs, and beautiful stamped concrete in Gloucester County. Quality craftsmanship since 2019.
@@ -142,7 +144,7 @@ const faqSchema = {
         <!-- Service 1: Pole Barn Foundations -->
         <div class="group relative bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
           <div class="h-64 overflow-hidden relative">
-            <img src="/images/polebarns/IMG_6480.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Pole Barn Foundation" />
+            <img src="/images/polebarns/IMG_6480.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Pole Barn Foundation" width="800" height="600" />
             <div class="absolute top-4 left-4 w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary text-xl shadow-md">
               <i class="fa-solid fa-warehouse"></i>
             </div>
@@ -159,7 +161,7 @@ const faqSchema = {
         <!-- Service 2: Commercial Slabs -->
         <div class="group relative bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
           <div class="h-64 overflow-hidden relative">
-            <img src="/images/projects/IMG_3907.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Commercial Concrete Slab" />
+            <img src="/images/projects/IMG_3907.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Commercial Concrete Slab" width="800" height="600" />
             <div class="absolute top-4 left-4 w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary text-xl shadow-md">
               <i class="fa-solid fa-building"></i>
             </div>
@@ -176,7 +178,7 @@ const faqSchema = {
         <!-- Service 3: Stamped Concrete -->
         <div class="group relative bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
           <div class="h-64 overflow-hidden relative">
-            <img src="/images/projects/IMG_7653.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Stamped Concrete" />
+            <img src="/images/projects/IMG_7653.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Stamped Concrete" width="800" height="600" />
             <div class="absolute top-4 left-4 w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary text-xl shadow-md">
               <i class="fa-solid fa-palette"></i>
             </div>
@@ -226,43 +228,43 @@ const faqSchema = {
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <a href="/gallery" class="group relative aspect-square overflow-hidden rounded-lg">
-          <img src="/images/polebarns/IMG_6471.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Pole barn foundation" loading="lazy" />
+          <img src="/images/polebarns/IMG_6471.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Pole barn foundation" loading="lazy" width="400" height="400" />
           <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <i class="fa-solid fa-expand text-white text-2xl"></i>
           </div>
         </a>
         <a href="/gallery" class="group relative aspect-square overflow-hidden rounded-lg">
-          <img src="/images/projects/IMG_7649.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Stamped concrete patio" loading="lazy" />
+          <img src="/images/projects/IMG_7649.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Stamped concrete patio" loading="lazy" width="400" height="400" />
           <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <i class="fa-solid fa-expand text-white text-2xl"></i>
           </div>
         </a>
         <a href="/gallery" class="group relative aspect-square overflow-hidden rounded-lg">
-          <img src="/images/projects/IMG_5164.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Commercial concrete" loading="lazy" />
+          <img src="/images/projects/IMG_5164.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Commercial concrete" loading="lazy" width="400" height="400" />
           <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <i class="fa-solid fa-expand text-white text-2xl"></i>
           </div>
         </a>
         <a href="/gallery" class="group relative aspect-square overflow-hidden rounded-lg">
-          <img src="/images/projects/IMG_7656.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Decorative concrete" loading="lazy" />
+          <img src="/images/projects/IMG_7656.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Decorative concrete" loading="lazy" width="400" height="400" />
           <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <i class="fa-solid fa-expand text-white text-2xl"></i>
           </div>
         </a>
         <a href="/gallery" class="group relative aspect-square overflow-hidden rounded-lg hidden md:block">
-          <img src="/images/polebarns/IMG_6472.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Foundation work" loading="lazy" />
+          <img src="/images/polebarns/IMG_6472.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Foundation work" loading="lazy" width="400" height="400" />
           <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <i class="fa-solid fa-expand text-white text-2xl"></i>
           </div>
         </a>
         <a href="/gallery" class="group relative aspect-square overflow-hidden rounded-lg hidden md:block">
-          <img src="/images/projects/IMG_9889.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Concrete project" loading="lazy" />
+          <img src="/images/projects/IMG_9889.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Concrete project" loading="lazy" width="400" height="400" />
           <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <i class="fa-solid fa-expand text-white text-2xl"></i>
           </div>
         </a>
         <a href="/gallery" class="group relative aspect-square overflow-hidden rounded-lg hidden lg:block">
-          <img src="/images/projects/IMG_3401.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Concrete installation" loading="lazy" />
+          <img src="/images/projects/IMG_3401.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Concrete installation" loading="lazy" width="400" height="400" />
           <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <i class="fa-solid fa-expand text-white text-2xl"></i>
           </div>

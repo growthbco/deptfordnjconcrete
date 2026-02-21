@@ -4,9 +4,15 @@ import ContactForm from '../../components/ContactForm.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
 import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
-import { generateServiceSchema } from '../../utils/schema';
+import { generateServiceSchema, generateBreadcrumbSchema, generateFAQSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('crack-repair', 'Professional concrete crack repair services in Deptford, NJ. Fix cracks in driveways, foundations, patios, and slabs. Prevent further damage with expert repair.');
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: 'https://deptfordnjconcrete.com/' },
+  { name: 'Services', url: 'https://deptfordnjconcrete.com/services/' },
+  { name: 'Crack Repair', url: 'https://deptfordnjconcrete.com/services/crack-repair/' }
+]);
 
 const galleryImages = [
   { src: '/images/projects/IMG_3403.webp', alt: 'Concrete crack repair in Deptford, NJ', label: 'Crack Repair' },
@@ -24,12 +30,14 @@ const faqs = [
   { q: 'How long does crack repair take?', a: 'Most crack repairs are completed within a few hours to one day, depending on the number and type of cracks. We\'ll provide a timeline during your free estimate.' },
   { q: 'Should I repair cracks myself or hire a professional?', a: 'While small cracks can sometimes be sealed DIY, professional repair ensures proper technique, appropriate materials, and addresses root causes. Professional repair provides better long-term results.' }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <BaseLayout
   title="Concrete Crack Repair Services in Deptford, NJ | Foundation & Driveway Crack Repair"
   description="Expert concrete crack repair contractors in Deptford, NJ. Professional crack repair for driveways, foundations, patios, and slabs. Prevent further damage with quality repairs."
-  schema={serviceSchema}
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
 >
   <!-- Hero Section -->
   <section class="bg-dark py-20 md:py-28">

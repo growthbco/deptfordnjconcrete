@@ -4,9 +4,15 @@ import ContactForm from '../../components/ContactForm.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
 import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
-import { generateServiceSchema } from '../../utils/schema';
+import { generateServiceSchema, generateBreadcrumbSchema, generateFAQSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('driveways', 'Professional concrete driveway installation and repair services in Deptford, NJ. Residential and commercial driveways with free estimates.');
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: 'https://deptfordnjconcrete.com/' },
+  { name: 'Services', url: 'https://deptfordnjconcrete.com/services/' },
+  { name: 'Concrete Driveways', url: 'https://deptfordnjconcrete.com/services/driveways/' }
+]);
 
 const galleryImages = [
   { src: '/images/projects/IMG_0973.webp', alt: 'Concrete driveway installation in Deptford, NJ', label: 'Driveway Installation' },
@@ -24,12 +30,14 @@ const faqs = [
   { q: 'Do I need a permit for a new driveway?', a: 'Permit requirements vary by municipality. We\'ll check local requirements and assist with permit applications if needed.' },
   { q: 'What\'s the difference between standard and stamped concrete driveways?', a: 'Standard concrete driveways have a smooth or brushed finish. Stamped concrete driveways feature decorative patterns and textures that mimic stone, brick, or other materials.' }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <BaseLayout
   title="Concrete Driveway Installation & Repair in Deptford, NJ"
   description="Expert concrete driveway contractors in Deptford, NJ. New driveway installation, repairs, resurfacing, and decorative options. Serving Gloucester County with quality concrete driveways."
-  schema={serviceSchema}
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
 >
   <!-- Hero Section -->
   <section class="bg-dark py-20 md:py-28">

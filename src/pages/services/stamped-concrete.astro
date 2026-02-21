@@ -4,9 +4,15 @@ import ContactForm from '../../components/ContactForm.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
 import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
-import { generateServiceSchema } from '../../utils/schema';
+import { generateServiceSchema, generateBreadcrumbSchema, generateFAQSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('stamped-concrete', 'Decorative stamped concrete installation for patios, driveways, pool decks, and walkways in Deptford, NJ. Beautiful patterns and textures at a fraction of natural stone cost. Free estimates.');
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: 'https://deptfordnjconcrete.com/' },
+  { name: 'Services', url: 'https://deptfordnjconcrete.com/services/' },
+  { name: 'Stamped Concrete', url: 'https://deptfordnjconcrete.com/services/stamped-concrete/' }
+]);
 
 const galleryImages = [
   { src: '/images/projects/IMG_7649.webp', alt: 'Stamped concrete patio in Deptford, NJ', label: 'Stamped Patio' },
@@ -24,12 +30,14 @@ const faqs = [
   { q: 'How often does stamped concrete need to be resealed?', a: 'Stamped concrete should be resealed every 2-3 years to maintain its appearance and protect against wear, weather, and staining. We provide maintenance guidance after installation.' },
   { q: 'Is stamped concrete slippery when wet?', a: 'Properly sealed stamped concrete can be slippery when wet, but we can apply non-slip additives or use textured patterns for areas like pool decks where safety is a concern.' }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <BaseLayout
   title="Stamped Concrete Installation in Deptford, NJ | Decorative Concrete Patterns"
   description="Professional stamped concrete installation for patios, driveways, and walkways in Deptford, NJ. Beautiful decorative patterns with free estimates."
-  schema={serviceSchema}
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
 >
   <!-- Hero Section -->
   <section class="bg-dark py-20 md:py-28">

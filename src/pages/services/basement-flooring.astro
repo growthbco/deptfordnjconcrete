@@ -4,9 +4,15 @@ import ContactForm from '../../components/ContactForm.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
 import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
-import { generateServiceSchema } from '../../utils/schema';
+import { generateServiceSchema, generateBreadcrumbSchema, generateFAQSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('basement-flooring', 'Professional basement concrete floor installation and repair in Deptford, NJ. Durable basement flooring with free estimates.');
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: 'https://deptfordnjconcrete.com/' },
+  { name: 'Services', url: 'https://deptfordnjconcrete.com/services/' },
+  { name: 'Basement Flooring', url: 'https://deptfordnjconcrete.com/services/basement-flooring/' }
+]);
 
 const galleryImages = [
   { src: '/images/projects/IMG_3907.webp', alt: 'Basement concrete floor installation in Deptford, NJ', label: 'Basement Floor' },
@@ -24,12 +30,14 @@ const faqs = [
   { q: 'Will a new basement floor help with moisture problems?', a: 'A properly installed basement floor with a vapor barrier can help reduce moisture issues, but it\'s important to address underlying moisture sources. We\'ll assess your situation and recommend the best solution.' },
   { q: 'Can I install flooring over a new concrete basement floor?', a: 'Yes, once properly cured, a concrete basement floor can serve as a base for various flooring types. We\'ll ensure the surface is properly prepared for your intended use.' }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <BaseLayout
   title="Basement Concrete Floor Installation in Deptford, NJ"
   description="Basement concrete floor specialists in Deptford, NJ. New installation, repair, leveling, and moisture barrier services. Transform your basement with durable concrete flooring."
-  schema={serviceSchema}
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
 >
   <!-- Hero Section -->
   <section class="bg-dark py-20 md:py-28">

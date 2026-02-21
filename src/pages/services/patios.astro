@@ -4,9 +4,15 @@ import ContactForm from '../../components/ContactForm.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
 import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
-import { generateServiceSchema } from '../../utils/schema';
+import { generateServiceSchema, generateBreadcrumbSchema, generateFAQSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('patios', 'Custom concrete patio design and installation in Deptford, NJ. Professional patio contractors with free estimates.');
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: 'https://deptfordnjconcrete.com/' },
+  { name: 'Services', url: 'https://deptfordnjconcrete.com/services/' },
+  { name: 'Concrete Patios', url: 'https://deptfordnjconcrete.com/services/patios/' }
+]);
 
 const galleryImages = [
   { src: '/images/projects/IMG_7649.webp', alt: 'Concrete patio installation in Deptford, NJ', label: 'Stamped Concrete Patio' },
@@ -24,12 +30,14 @@ const faqs = [
   { q: 'Do I need a permit for a new patio?', a: 'Permit requirements vary by municipality and patio size. We\'ll check local requirements and assist with permits if needed.' },
   { q: 'What\'s the difference between a standard and stamped concrete patio?', a: 'Standard concrete patios have a smooth or brushed finish. Stamped concrete patios feature decorative patterns that mimic stone, brick, or other materials.' }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <BaseLayout
   title="Concrete Patio Installation in Deptford, NJ | Custom Patios"
   description="Custom concrete patio design and installation experts in Deptford, NJ. Stamped, colored, and decorative patio options. Transform your outdoor living space."
-  schema={serviceSchema}
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
 >
   <!-- Hero Section -->
   <section class="bg-dark py-20 md:py-28">

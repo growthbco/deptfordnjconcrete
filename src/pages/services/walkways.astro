@@ -4,9 +4,15 @@ import ContactForm from '../../components/ContactForm.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
 import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
-import { generateServiceSchema } from '../../utils/schema';
+import { generateServiceSchema, generateBreadcrumbSchema, generateFAQSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('walkways', 'Professional concrete walkway and pathway installation in Deptford, NJ. Durable walkways with free estimates.');
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: 'https://deptfordnjconcrete.com/' },
+  { name: 'Services', url: 'https://deptfordnjconcrete.com/services/' },
+  { name: 'Concrete Walkways', url: 'https://deptfordnjconcrete.com/services/walkways/' }
+]);
 
 const galleryImages = [
   { src: '/images/projects/IMG_7654.webp', alt: 'Concrete walkway installation in Deptford, NJ', label: 'Stamped Walkway' },
@@ -24,12 +30,14 @@ const faqs = [
   { q: 'Can walkways be repaired instead of replaced?', a: 'Yes, we can often repair existing walkways if the damage is limited. We\'ll assess your walkway during the free estimate and recommend the best solution.' },
   { q: 'Are concrete walkways slippery in winter?', a: 'We use textured finishes that provide better traction than smooth surfaces. However, all surfaces can be slippery when icy, so proper snow removal is important.' }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <BaseLayout
   title="Concrete Walkway Installation in Deptford, NJ"
   description="Professional concrete walkway contractors serving Deptford, NJ. Residential pathways, commercial sidewalks, and garden walkways. Quality installation and repairs available."
-  schema={serviceSchema}
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
 >
   <!-- Hero Section -->
   <section class="bg-dark py-20 md:py-28">

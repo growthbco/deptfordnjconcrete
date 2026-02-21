@@ -4,9 +4,15 @@ import ContactForm from '../../components/ContactForm.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
 import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
-import { generateServiceSchema } from '../../utils/schema';
+import { generateServiceSchema, generateBreadcrumbSchema, generateFAQSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('concrete-overlays', 'Concrete overlay installation and resurfacing in Deptford, NJ. Restore worn concrete surfaces with professional overlay systems. Cost-effective alternative to replacement.');
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: 'https://deptfordnjconcrete.com/' },
+  { name: 'Services', url: 'https://deptfordnjconcrete.com/services/' },
+  { name: 'Concrete Overlays', url: 'https://deptfordnjconcrete.com/services/concrete-overlays/' }
+]);
 
 const galleryImages = [
   { src: '/images/projects/IMG_3403.webp', alt: 'Concrete overlay installation in Deptford, NJ', label: 'Overlay Installation' },
@@ -24,12 +30,14 @@ const faqs = [
   { q: 'How long does overlay installation take?', a: 'Most overlay projects are completed within 1-2 days, depending on size and complexity. This is much faster than replacement, which can take 3-5 days.' },
   { q: 'Can I add decorative features to overlays?', a: 'Yes! Overlays can be finished with stamps, stains, textures, and colors to match your design preferences. We offer various decorative options.' }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <BaseLayout
   title="Concrete Overlays & Resurfacing in Deptford, NJ | Concrete Restoration"
   description="Professional concrete overlay installation and resurfacing in Deptford, NJ. Restore worn driveways, patios, and floors with durable overlay systems. Cost-effective alternative to replacement."
-  schema={serviceSchema}
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
 >
   <!-- Hero Section -->
   <section class="bg-dark py-20 md:py-28">

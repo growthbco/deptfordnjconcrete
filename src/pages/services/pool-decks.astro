@@ -4,9 +4,15 @@ import ContactForm from '../../components/ContactForm.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
 import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
-import { generateServiceSchema } from '../../utils/schema';
+import { generateServiceSchema, generateBreadcrumbSchema, generateFAQSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('pool-decks', 'Professional concrete pool deck installation and repair in Deptford, NJ. Slip-resistant pool decking with decorative options. Free estimates.');
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: 'https://deptfordnjconcrete.com/' },
+  { name: 'Services', url: 'https://deptfordnjconcrete.com/services/' },
+  { name: 'Pool Decks', url: 'https://deptfordnjconcrete.com/services/pool-decks/' }
+]);
 
 const galleryImages = [
   { src: '/images/projects/IMG_7649.webp', alt: 'Concrete pool deck installation in Deptford, NJ', label: 'Pool Deck Installation' },
@@ -24,12 +30,14 @@ const faqs = [
   { q: 'How long does pool deck installation take?', a: 'Most pool deck installations are completed within 2-3 days, depending on size and design complexity. We\'ll provide a detailed timeline during your free estimate.' },
   { q: 'Do pool decks need special sealers?', a: 'Yes, pool decks benefit from sealers that resist water and pool chemicals. We use appropriate sealers designed for pool deck applications.' }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <BaseLayout
   title="Concrete Pool Deck Installation & Repair in Deptford, NJ"
   description="Expert concrete pool deck contractors in Deptford, NJ. Slip-resistant pool deck installation, repair, and resurfacing. Stamped and decorative pool deck options available."
-  schema={serviceSchema}
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
 >
   <!-- Hero Section -->
   <section class="bg-dark py-20 md:py-28">

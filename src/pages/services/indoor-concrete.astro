@@ -4,9 +4,15 @@ import ContactForm from '../../components/ContactForm.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
 import ServiceAreasLink from '../../components/ServiceAreasLink.astro';
 import { SITE_CONFIG } from '../../config';
-import { generateServiceSchema } from '../../utils/schema';
+import { generateServiceSchema, generateBreadcrumbSchema, generateFAQSchema } from '../../utils/schema';
 
 const serviceSchema = generateServiceSchema('indoor-concrete', 'Indoor concrete floor installation and repair in Deptford, NJ. Garage floors, basement floors, and commercial interior concrete. Year-round service including winter projects.');
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: 'https://deptfordnjconcrete.com/' },
+  { name: 'Services', url: 'https://deptfordnjconcrete.com/services/' },
+  { name: 'Indoor Concrete', url: 'https://deptfordnjconcrete.com/services/indoor-concrete/' }
+]);
 
 const galleryImages = [
   { src: '/images/projects/IMG_3907.webp', alt: 'Garage concrete floor installation in Deptford, NJ', label: 'Garage Floor' },
@@ -25,12 +31,14 @@ const faqs = [
   { q: 'Can you repair existing indoor concrete floors?', a: 'Yes, we can often repair or resurface existing indoor concrete floors if the damage is limited. We\'ll assess your floor during the free estimate and recommend the best solution - repair or replacement.' },
   { q: 'What\'s the difference between polished and smooth concrete?', a: 'Smooth concrete has a standard troweled finish. Polished concrete goes through a grinding and polishing process that creates a glossy, modern appearance. Polished concrete is more expensive but provides a high-end look.' }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <BaseLayout
   title="Indoor Concrete & Garage Floors in Deptford, NJ | Year-Round Service"
   description="Professional indoor concrete floors for garages, basements, and commercial spaces in Deptford, NJ. Garage floor installation, polished concrete, and interior concrete repair. Available year-round including winter months."
-  schema={serviceSchema}
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
 >
   <!-- Hero Section -->
   <section class="bg-dark py-20 md:py-28">
