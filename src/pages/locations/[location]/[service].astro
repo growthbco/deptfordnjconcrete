@@ -5,6 +5,7 @@ import { SITE_CONFIG } from '../../../config';
 import locationsData from '../../../content/locations.json';
 import servicesData from '../../../content/services.json';
 import locationDetails from '../../../content/location-details.json';
+import serviceContentData from '../../../content/service-content.json';
 import { generateLocationSchema } from '../../../utils/schema';
 
 export async function getStaticPaths() {
@@ -27,6 +28,8 @@ export async function getStaticPaths() {
 
 const { location, service } = Astro.props;
 const details = locationDetails[location.slug] || {};
+const sContent = serviceContentData[service.id] || {};
+const serviceNote = details.serviceNotes?.[service.id] || '';
 
 // Get other services for interlinking (exclude current)
 const otherServices = servicesData.filter(s => s.id !== service.id).slice(0, 6);
@@ -56,35 +59,19 @@ const breadcrumbSchema = {
   ]
 };
 
+// Use real FAQ content from service-content.json for richer schema
+const faqs = sContent.faqs || [];
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: `How much does ${service.name.toLowerCase()} cost in ${location.name}, NJ?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: `${service.name} costs in ${location.name} vary based on project size, site conditions, and specifications. We provide free, no-obligation estimates for all ${service.name.toLowerCase()} projects in ${location.name}. Contact us for accurate pricing.`
-      }
-    },
-    {
-      '@type': 'Question',
-      name: `Do you need a permit for ${service.name.toLowerCase()} in ${location.name}?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: `Permit requirements for ${service.name.toLowerCase()} in ${location.name}, NJ vary by project scope. We handle permit research and can assist with applications. During your free estimate, we'll clarify what permits your specific project requires.`
-      }
-    },
-    {
-      '@type': 'Question',
-      name: `How long does ${service.name.toLowerCase()} installation take in ${location.name}?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: `${service.name} project timelines in ${location.name} depend on size and complexity. Most residential projects take 1-3 days. We'll provide a detailed timeline during your free estimate.`
-      }
+  mainEntity: faqs.slice(0, 4).map(faq => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.a
     }
-  ]
+  }))
 };
 
 // Service-specific images mapping
@@ -206,38 +193,47 @@ const images = serviceImages[service.id] || serviceImages['default'];
           <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase mb-6">
             Your Local {service.name} Experts in {location.name}
           </h2>
-          <p class="text-lg text-gray-600 mb-6">
-            Deptford Concrete Contractors provides professional {service.name.toLowerCase()} services throughout {location.name} and {location.fullName}. As local contractors who understand the unique needs of {location.name} properties, we deliver quality workmanship built for New Jersey's climate.
-          </p>
-          <p class="text-gray-600 mb-6">
-            {service.description}. Whether you're a homeowner looking to enhance your property or a business owner needing commercial concrete work, our experienced team delivers results that last.
-          </p>
+          {sContent.intro && (
+            <p class="text-lg text-gray-600 mb-6">
+              {sContent.intro}
+            </p>
+          )}
 
-          {details.localFeatures && (
+          {serviceNote && (
             <div class="bg-orange-50 border-l-4 border-primary rounded-r-lg p-4 mb-6">
               <p class="text-gray-700">
-                <strong class="text-primary">Local Knowledge:</strong> {details.localFeatures}
+                <strong class="text-primary">{service.name} in {location.name}:</strong> {serviceNote}
+              </p>
+            </div>
+          )}
+
+          {sContent.considerations && (
+            <div class="bg-gray-50 border-l-4 border-gray-300 rounded-r-lg p-4 mb-6">
+              <p class="text-gray-700">
+                <strong class="text-gray-900">Before You Start:</strong> {sContent.considerations}
               </p>
             </div>
           )}
 
           <div class="grid sm:grid-cols-2 gap-4">
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-              <i class="fa-solid fa-check text-primary"></i>
-              <span>New {service.name.toLowerCase()} installation</span>
-            </div>
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-              <i class="fa-solid fa-check text-primary"></i>
-              <span>{service.name} repair & restoration</span>
-            </div>
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-              <i class="fa-solid fa-check text-primary"></i>
-              <span>Free on-site estimates</span>
-            </div>
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-              <i class="fa-solid fa-check text-primary"></i>
-              <span>Permit assistance</span>
-            </div>
+            {sContent.timeline && (
+              <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                <i class="fa-solid fa-clock text-primary mt-1"></i>
+                <div>
+                  <span class="font-semibold text-gray-900 block text-sm">Timeline</span>
+                  <span class="text-gray-600 text-sm">{sContent.timeline}</span>
+                </div>
+              </div>
+            )}
+            {sContent.materials && (
+              <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                <i class="fa-solid fa-cubes text-primary mt-1"></i>
+                <div>
+                  <span class="font-semibold text-gray-900 block text-sm">Materials</span>
+                  <span class="text-gray-600 text-sm">{sContent.materials}</span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -252,7 +248,7 @@ const images = serviceImages[service.id] || serviceImages['default'];
     </div>
   </section>
 
-  <!-- Why Choose Us for This Location -->
+  <!-- Why Choose Us — Service-Specific Benefits -->
   <section class="py-16 md:py-24 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
@@ -262,14 +258,26 @@ const images = serviceImages[service.id] || serviceImages['default'];
         </h2>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 gap-8">
+        {/* Service-specific benefits from service-content.json */}
+        {(sContent.benefits || []).map(benefit => (
+          <div class="bg-white rounded-xl p-6 shadow-md">
+            <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+              <i class="fa-solid fa-circle-check text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 font-display">{benefit.title}</h3>
+            <p class="text-gray-600">{benefit.desc}</p>
+          </div>
+        ))}
+
+        {/* Location-specific cards */}
         <div class="bg-white rounded-xl p-6 shadow-md">
           <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
             <i class="fa-solid fa-map-location-dot text-primary text-2xl"></i>
           </div>
           <h3 class="text-xl font-bold mb-3 font-display">Local {location.name} Knowledge</h3>
           <p class="text-gray-600">
-            We understand {location.name}'s soil conditions, local building codes, and neighborhood requirements. Our team regularly works near {details.landmarks?.[0] || 'local landmarks'} and throughout {location.name}.
+            {details.soilConditions || `We understand ${location.name}'s soil conditions and local building codes.`} Our team regularly works near {details.landmarks?.[0] || 'local landmarks'} and throughout {location.name}.
           </p>
         </div>
 
@@ -277,75 +285,35 @@ const images = serviceImages[service.id] || serviceImages['default'];
           <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
             <i class="fa-solid fa-cloud-sun text-primary text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-3 font-display">Built for NJ Weather</h3>
+          <h3 class="text-xl font-bold mb-3 font-display">Built for {location.name} Weather</h3>
           <p class="text-gray-600">
             {details.weatherImpacts || `Our concrete work is designed to withstand New Jersey's freeze-thaw cycles, humid summers, and variable weather conditions.`}
-          </p>
-        </div>
-
-        <div class="bg-white rounded-xl p-6 shadow-md">
-          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-            <i class="fa-solid fa-layer-group text-primary text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 font-display">Proper Site Prep</h3>
-          <p class="text-gray-600">
-            {details.soilConditions || `We properly assess and prepare your site for optimal concrete performance, ensuring proper drainage and long-lasting results.`}
-          </p>
-        </div>
-
-        <div class="bg-white rounded-xl p-6 shadow-md">
-          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-            <i class="fa-solid fa-shield-halved text-primary text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 font-display">Licensed & Insured</h3>
-          <p class="text-gray-600">
-            Full liability coverage and workers' compensation for your protection. We meet all New Jersey licensing requirements for concrete contractors.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-xl p-6 shadow-md">
-          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-            <i class="fa-solid fa-comments-dollar text-primary text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 font-display">Transparent Pricing</h3>
-          <p class="text-gray-600">
-            Free detailed estimates with no hidden fees. We provide honest pricing and clear communication throughout your {service.name.toLowerCase()} project.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-xl p-6 shadow-md">
-          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-            <i class="fa-solid fa-clock text-primary text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 font-display">Fast Response</h3>
-          <p class="text-gray-600">
-            We respond to {location.name} estimate requests within 24-48 hours. Quick scheduling and reliable project timelines.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Our Process -->
+  <!-- Our Process — Service-Specific Steps -->
   <section class="py-16 md:py-24 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <p class="text-primary font-bold tracking-wide mb-3 uppercase text-sm">How It Works</p>
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 font-display uppercase">
-          Our {service.name} Process
+          Our {service.name} Process in {location.name}
         </h2>
       </div>
 
       <div class="space-y-6">
-        {[
-          { num: '1', title: 'Free Consultation', desc: `Contact us for a free estimate. We'll visit your ${location.name} property to assess your needs, discuss options, and provide a detailed quote.` },
-          { num: '2', title: 'Planning & Permits', desc: `We handle all planning details including permit research for ${location.name}. We'll confirm specifications and schedule your project.` },
-          { num: '3', title: 'Site Preparation', desc: `Professional excavation, grading, and base preparation. We ensure proper drainage and stable foundation for your ${service.name.toLowerCase()}.` },
-          { num: '4', title: 'Expert Installation', desc: `Our experienced crew installs your ${service.name.toLowerCase()} using quality materials and proven techniques for lasting results.` },
-          { num: '5', title: 'Finishing & Cleanup', desc: `We complete all finishing work, ensure proper curing, and leave your ${location.name} property clean and ready to enjoy.` }
-        ].map(step => (
+        {(sContent.process || [
+          { title: 'Free Consultation', desc: `Contact us for a free estimate. We'll visit your ${location.name} property to assess your needs and provide a detailed quote.` },
+          { title: 'Planning & Permits', desc: `We handle all planning details including permit research for ${location.name}.` },
+          { title: 'Site Preparation', desc: `Professional excavation, grading, and base preparation for your ${service.name.toLowerCase()}.` },
+          { title: 'Expert Installation', desc: `Our experienced crew installs your ${service.name.toLowerCase()} using quality materials and proven techniques.` },
+          { title: 'Finishing & Cleanup', desc: `We complete all finishing work, ensure proper curing, and leave your ${location.name} property clean.` }
+        ]).map((step, i) => (
           <div class="flex items-start gap-6 bg-gray-50 rounded-xl p-6">
-            <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0 font-display">{step.num}</div>
+            <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0 font-display">{i + 1}</div>
             <div>
               <h3 class="font-bold text-xl mb-2">{step.title}</h3>
               <p class="text-gray-600">{step.desc}</p>
@@ -388,7 +356,7 @@ const images = serviceImages[service.id] || serviceImages['default'];
     </div>
   </section>
 
-  <!-- FAQ Section -->
+  <!-- FAQ Section — Service-Specific Questions -->
   <section class="py-16 md:py-24 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
@@ -399,20 +367,12 @@ const images = serviceImages[service.id] || serviceImages['default'];
       </div>
 
       <div class="space-y-4">
-        <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
-          <h3 class="font-bold text-lg text-gray-900 mb-2">How much does {service.name.toLowerCase()} cost in {location.name}, NJ?</h3>
-          <p class="text-gray-600">{service.name} costs in {location.name} vary based on project size, site conditions, and specifications. We provide free, no-obligation estimates for all {service.name.toLowerCase()} projects. <a href="#contact-form" class="text-primary font-semibold hover:underline">Contact us</a> for accurate pricing.</p>
-        </div>
-
-        <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
-          <h3 class="font-bold text-lg text-gray-900 mb-2">Do I need a permit for {service.name.toLowerCase()} in {location.name}?</h3>
-          <p class="text-gray-600">Permit requirements for {service.name.toLowerCase()} in {location.name}, NJ vary by project scope. We handle permit research and can assist with applications. During your free estimate, we'll clarify what permits your specific project requires.</p>
-        </div>
-
-        <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
-          <h3 class="font-bold text-lg text-gray-900 mb-2">How long does {service.name.toLowerCase()} installation take?</h3>
-          <p class="text-gray-600">{service.name} project timelines in {location.name} depend on size and complexity. Most residential projects take 1-3 days. We'll provide a detailed timeline during your free estimate.</p>
-        </div>
+        {(sContent.faqs || []).map(faq => (
+          <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+            <h3 class="font-bold text-lg text-gray-900 mb-2">{faq.q}</h3>
+            <p class="text-gray-600">{faq.a}</p>
+          </div>
+        ))}
 
         <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
           <h3 class="font-bold text-lg text-gray-900 mb-2">What areas near {location.name} do you serve?</h3>
